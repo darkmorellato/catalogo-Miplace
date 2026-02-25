@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIPLACE MAGAZINE | Catálogo Exclusivo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Playfair Display (Serif/Revista) e DM Sans (Sans/Moderno) -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        paper: {
+                            DEFAULT: '#f4f4f0', // Tom de papel de revista premium
+                            dark: '#eaeaeb',
+                        },
+                        ink: {
+                            DEFAULT: '#1c1917', // Tinta preta
+                            light: '#44403c',
+                        },
+                        accent: '#991b1b', // Vermelho editorial escuro (opcional para destaques)
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f4f4f0;
+            color: #1c1917;
+            overflow-x: hidden;
+            border-left: 12px solid #1c1917;
+            border-right: 12px solid #1c1917;
+        }
+
+        /* Linhas editoriais */
+        .editorial-border { border-color: #1c1917; }
+        .border-b-thick { border-bottom: 3px solid #1c1917; }
+        .border-t-thick { border-top: 3px solid #1c1917; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f4f4f0; }
+        ::-webkit-scrollbar-thumb { background: #1c1917; }
+
+        /* Animações e Transições Extra */
+        .animate-fade-in {
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Efeito de entrada suave */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover de revista para imagens (placeholder) */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .group:hover .img-zoom { transform: scale(1.05); }
+
+        /* Animação para o ícone de música tocando */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 4s linear infinite;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-ink selection:text-paper">
+
+    <!-- Margem superior estilo moldura -->
+    <div class="h-3 bg-ink w-full fixed top-0 z-50"></div>
+
+    <!-- Áudio de Fundo e Controle Editorial -->
+    <audio id="bg-music" loop>
+        <!-- Certifique-se de que o nome do arquivo na pasta esteja exatamente igual a este -->
+        <source src="chrono trigger - peacefull days.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audio-control" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-ink text-paper rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all play-sound" title="Tocar/Pausar Música">
+        <i class="fa-solid fa-music text-lg" id="audio-icon"></i>
+    </button>
+
+    <!-- Cabeçalho (Masthead da Revista) -->
+    <header class="w-full pt-10 pb-6 px-4 md:px-8 bg-paper border-b-thick border-ink z-40 relative mt-3" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <!-- Top bar infos -->
+            <div class="flex justify-between items-center text-xs md:text-sm font-sans uppercase tracking-widest text-ink-light mb-6">
+                <span>Edição Especial 2026 by Dark Morellato</span>
+                <span class="hidden md:block">Piracicaba & Amparo — SP</span>
+                
+                <!-- Dropdown Contato Direto -->
+                <div class="relative group z-50">
+                    <button class="hover:text-ink font-bold underline decoration-1 underline-offset-4 play-sound flex items-center gap-2 cursor-pointer">
+                        Contato Direto 
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    
+                    <!-- Menu Dropdown -->
+                    <div class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 text-left">
+                        <div class="bg-paper border border-ink shadow-2xl flex flex-col py-2">
+                            <!-- Piracicaba -->
+                            <span class="text-[9px] text-ink-light px-4 py-2 uppercase tracking-[0.2em] font-bold bg-paper-dark">Piracicaba, SP</span>
+                            <a href="https://wa.me/5519989605504" target="_blank" class="px-4 py-3 text-xs font-bold hover:bg-ink hover:text-paper transition-colors play-sound flex items-center gap-3">
+                                <img src="logo/xv (1).jpg" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Miplace XV de Novembro" class="w-6 h-6 rounded-full object-cover border border-ink/20"> Miplace XV de Novembro
+                            </a>
+                            <a href="https://wa.me/5519994975131" target="_blank" class="px-4 py-3 text-xs font-bold hover:bg-ink hover:text-paper transition-colors play-sound flex items-center gap-3">
+                                <img src="logo/dp (1).jpg" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Miplace Honor" class="w-6 h-6 rounded-full object-cover border border-ink/20"> Miplace Honor
+                            </a>
+                            <a href="https://wa.me/5519994510123" target="_blank" class="px-4 py-3 text-xs font-bold hover:bg-ink hover:text-paper transition-colors play-sound flex items-center gap-3 border-b border-ink/10">
+                                <img src="logo/realme (1).jpg" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Miplace Realme" class="w-6 h-6 rounded-full object-cover border border-ink/20"> Miplace Realme
+                            </a>
+                            
+                            <!-- Amparo -->
+                            <span class="text-[9px] text-ink-light px-4 py-2 uppercase tracking-[0.2em] font-bold bg-paper-dark mt-1">Amparo, SP</span>
+                            <a href="https://wa.me/5519971077066" target="_blank" class="px-4 py-3 text-xs font-bold hover:bg-ink hover:text-paper transition-colors play-sound flex items-center gap-3">
+                                <img src="logo/kf (1).jpg" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Miplace Kassouf" class="w-6 h-6 rounded-full object-cover border border-ink/20"> Miplace Kassouf
+                            </a>
+                            <a href="https://wa.me/5519999618865" target="_blank" class="px-4 py-3 text-xs font-bold hover:bg-ink hover:text-paper transition-colors play-sound flex items-center gap-3">
+                                <img src="logo/pr (1).jpg" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Miplace Premium" class="w-6 h-6 rounded-full object-cover border border-ink/20"> Miplace Premium
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logo Grande -->
+            <div class="text-center">
+                <h1 class="font-serif text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-ink leading-none cursor-pointer play-sound" onclick="window.scrollTo(0,0)">
+                    Miplace
+                </h1>
+                <p class="font-sans text-sm md:text-base uppercase tracking-[0.3em] md:tracking-[0.5em] mt-4 font-medium">Tecnologia & Estilo de Vida</p>
+            </div>
+
+            <!-- Menu de navegação editorial -->
+            <nav class="mt-10 flex flex-wrap justify-center gap-8 md:gap-16 border-t border-ink pt-4 font-sans text-sm uppercase tracking-widest font-bold">
+                <a href="#inicio" class="hover:text-ink-light transition-colors relative group play-sound">
+                    Capa
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#editorial-boleto" class="hover:text-ink-light transition-colors relative group play-sound">
+                    Destaque
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#catalogo" class="hover:text-ink-light transition-colors relative group play-sound">
+                    A Coleção
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#enderecos" class="hover:text-ink-light transition-colors relative group play-sound">
+                    Endereços
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero / Capa -->
+    <section id="inicio" class="max-w-7xl mx-auto px-4 md:px-8 py-12 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <!-- Imagem Principal (Esquerda/Topo) -->
+            <div class="md:col-span-7 lg:col-span-8 reveal relative flex items-center justify-center">
+                <!-- Removido o bg-ink e text-paper para o fundo ficar igual ao resto do site -->
+                <div class="w-full h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-center items-center relative group p-0 md:p-4">
+                    
+                    <!-- CONTAINER DA MÃO COM CELULAR E VÍDEO -->
+                    <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105">
+                        
+                        <!-- 1. O VÍDEO (Fica na camada de trás) -->
+                        <!-- Valores expandidos para preencher toda a área de recorte da nova imagem. -->
+                        <div class="absolute z-0 overflow-hidden bg-black"
+                             style="top: 4%; left: 2.5%; width: 96%; height: 84.5%; border-radius: 42px;">
+                            <video src="video.mp4" autoplay loop muted playsinline class="w-full h-full object-contain"></video>
+                        </div>
+                        
+                        <!-- 2. A MOLDURA / IMAGEM (Fica na camada da frente) -->
+                        <img src="moldura-celular.png" alt="Mão segurando Smartphone" class="relative z-10 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] pointer-events-none">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Texto da Capa (Direita/Baixo) -->
+            <div class="md:col-span-5 lg:col-span-4 flex flex-col justify-between reveal">
+                <div>
+                    <span class="font-sans text-xs uppercase tracking-widest font-bold border-b border-ink pb-2 mb-6 block w-max">Apresentação</span>
+                    <h3 class="font-sans font-bold text-3xl md:text-4xl leading-tight mb-6">Redefinindo o acesso à alta tecnologia</h3>
+                    <p class="font-sans text-ink-light text-base leading-relaxed mb-6">
+                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong>Xiaomi, Apple, Realme, Honor e Motorola</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
+                    </p>
+                    <p class="font-sans text-ink-light text-base leading-relaxed">
+                        Esqueça a burocracia. A Miplace revoluciona a forma como você adquire seu próximo smartphone.
+                    </p>
+                </div>
+
+                <div class="mt-10 pt-10 border-t border-ink">
+                    <a href="#catalogo" class="font-sans uppercase tracking-widest text-sm font-bold flex items-center justify-between group cursor-pointer play-sound">
+                        <span>Ver a coleção completa</span>
+                        <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artigo de Destaque: Boleto -->
+    <section id="editorial-boleto" class="bg-ink text-paper py-20 my-12 border-y-[12px] border-paper-dark">
+        <div class="max-w-5xl mx-auto px-4 md:px-8 text-center reveal">
+            <h4 class="font-sans text-xs uppercase tracking-[0.4em] mb-6 text-paper/60">Vantagens de comprar na Miplace</h4>
+            <h2 class="font-serif text-5xl md:text-7xl mb-8 leading-tight">Parcelamos em até 24 vezes,<br> sem consulta.</h2>
+            <div class="w-24 h-[1px] bg-paper/30 mx-auto mb-8"></div>
+            <p class="font-sans text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 text-paper/80">
+                A rede Miplace está há 7 anos no mercado, sendo precursora na venda de crediário. Adquira os lançamentos mais cobiçados do mercado através do nosso parcelamento exclusivo no boleto bancário. Uma facilidade pensada para você, com aprovação rápida e sem consulta de score.
+            </p>
+            <a href="#enderecos" class="inline-block bg-paper text-ink font-sans uppercase tracking-widest font-bold text-sm px-10 py-4 hover:bg-paper-dark transition-colors play-sound">
+                Fale com um Consultor
+            </a>
+        </div>
+    </section>
+
+    <!-- Catálogo (A Coleção) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 md:px-8 py-16 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-thick border-ink pb-6 reveal">
+            <div>
+                <h2 class="font-serif text-5xl md:text-6xl font-black">A Coleção</h2>
+                <p class="font-sans uppercase tracking-widest text-sm mt-3 text-ink-light">Selecione uma marca para explorar</p>
+            </div>
+            
+            <!-- Filtros estilo menu editorial -->
+            <div class="flex flex-wrap gap-6 mt-8 md:mt-0 font-sans text-xs uppercase tracking-widest font-bold" id="category-filters">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+
+        <!-- Grid Editorial -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 reveal" id="products-grid">
+            <!-- Produtos preenchidos via JS -->
+        </div>
+
+        <!-- Call to action de acessórios -->
+        <div class="mt-24 pt-12 border-t border-ink grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
+            <div>
+                <h3 class="font-serif text-3xl mb-4">Acessórios & Proteção</h3>
+                <p class="font-sans text-ink-light mb-6">Fones, microfones, carregadores, cabos e a exclusiva película de proteção Rockspace.</p>
+            </div>
+            <div class="md:text-right">
+                <a href="#enderecos" class="font-sans uppercase tracking-widest text-sm font-bold border border-ink px-8 py-3 hover:bg-ink hover:text-paper transition-colors inline-block play-sound">
+                    Consultar Estoque
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lojas (Endereços) -->
+    <section id="enderecos" class="bg-paper-dark py-20 mt-12 border-t border-ink">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-5xl md:text-6xl mb-4">Encontre a Miplace mais próxima:</h2>
+                <div class="w-16 h-[2px] bg-ink mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Piracicaba -->
+                <div class="lg:col-span-6 reveal">
+                    <h3 class="font-sans uppercase tracking-[0.3em] text-lg font-bold border-b border-ink pb-4 mb-8">Piracicaba, SP</h3>
+                    <div class="space-y-8">
+                        <!-- Loja -->
+                        <div class="group flex flex-col sm:flex-row justify-between sm:items-end border-b border-ink/20 pb-6 hover:border-ink transition-colors">
+                            <div class="flex items-center gap-4">
+                                <img src="logo/xv (1).jpg" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Logo Miplace XV" class="w-16 h-16 rounded-full object-cover border border-ink/20">
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold mb-2">Miplace XV de Novembro</h4>
+                                    <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm text-ink-light max-w-xs hover:text-ink transition-colors block play-sound hover:underline"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Quinze de Novembro, 910 - Centro<br>CEP: 13400-370</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
+                                <a href="https://instagram.com/miplace.xvdenovembro" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-pink-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-instagram text-lg"></i> @miplace.xvdenovembro
+                                </a>
+                                <a href="https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-blue-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-facebook text-lg"></i> Miplace XV de Novembro
+                                </a>
+                                <a href="https://wa.me/5519989605504" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Loja -->
+                        <div class="group flex flex-col sm:flex-row justify-between sm:items-end border-b border-ink/20 pb-6 hover:border-ink transition-colors">
+                            <div class="flex items-center gap-4">
+                                <img src="logo/dp (1).jpg" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Logo Miplace Honor" class="w-16 h-16 rounded-full object-cover border border-ink/20">
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold mb-2">Miplace Honor</h4>
+                                    <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm text-ink-light max-w-xs hover:text-ink transition-colors block play-sound hover:underline"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Dom Pedro II, 857 - Centro<br>CEP: 13400-390</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
+                                <a href="https://instagram.com/miplace.dompedro" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-pink-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-instagram text-lg"></i> @miplace.dompedro
+                                </a>
+                                <a href="https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-blue-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-facebook text-lg"></i> Miplace Honor
+                                </a>
+                                <a href="https://wa.me/5519994975131" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Loja -->
+                        <div class="group flex flex-col sm:flex-row justify-between sm:items-end border-b border-ink/20 pb-6 hover:border-ink transition-colors">
+                            <div class="flex items-center gap-4">
+                                <img src="logo/realme (1).jpg" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Logo Miplace Realme" class="w-16 h-16 rounded-full object-cover border border-ink/20">
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold mb-2">Miplace Realme</h4>
+                                    <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm text-ink-light max-w-xs hover:text-ink transition-colors block play-sound hover:underline"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Benjamin Constant, 1230 - Centro<br>CEP: 13400-053</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
+                                <a href="https://instagram.com/miplace.benjamin" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-pink-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-instagram text-lg"></i> @miplace.benjamin
+                                </a>
+                                <a href="https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-blue-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-facebook text-lg"></i> Miplace Realme
+                                </a>
+                                <a href="https://wa.me/5519994510123" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amparo -->
+                <div class="lg:col-span-6 reveal">
+                    <h3 class="font-sans uppercase tracking-[0.3em] text-lg font-bold border-b border-ink pb-4 mb-8">Amparo, SP</h3>
+                    <div class="space-y-8">
+                        <!-- Loja -->
+                        <div class="group flex flex-col sm:flex-row justify-between sm:items-end border-b border-ink/20 pb-6 hover:border-ink transition-colors">
+                            <div class="flex items-center gap-4">
+                                <img src="logo/kf (1).jpg" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Logo Miplace Kassouf" class="w-16 h-16 rounded-full object-cover border border-ink/20">
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold mb-2">Miplace Kassouf</h4>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP" target="_blank" class="font-sans text-sm text-ink-light max-w-xs hover:text-ink transition-colors block play-sound hover:underline"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 218 - sala 09 - Centro<br>CEP: 13900-005</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
+                                <a href="https://instagram.com/miplace.kassouf" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-pink-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-instagram text-lg"></i> @miplace.kassouf
+                                </a>
+                                <a href="https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-blue-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-facebook text-lg"></i> Miplace Kassouf
+                                </a>
+                                <a href="https://wa.me/5519971077066" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Loja -->
+                        <div class="group flex flex-col sm:flex-row justify-between sm:items-end border-b border-ink/20 pb-6 hover:border-ink transition-colors">
+                            <div class="flex items-center gap-4">
+                                <img src="logo/pr (1).jpg" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Logo Miplace Premium" class="w-16 h-16 rounded-full object-cover border border-ink/20">
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold mb-2">Miplace Premium</h4>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" class="font-sans text-sm text-ink-light max-w-xs hover:text-ink transition-colors block play-sound hover:underline"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 26 - Centro<br>CEP: 13900-005</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
+                                <a href="https://instagram.com/miplace.premium" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-pink-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-instagram text-lg"></i> @miplace.premium
+                                </a>
+                                <a href="https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-blue-600 transition-colors play-sound">
+                                    <i class="fa-brands fa-facebook text-lg"></i> Miplace Premium
+                                </a>
+                                <a href="https://wa.me/5519999618865" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé Editorial (Colofão) -->
+    <footer class="bg-ink text-paper py-12 text-center font-sans">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-serif text-3xl font-black uppercase tracking-widest mb-6">Miplace</h2>
+            <p class="text-xs uppercase tracking-widest text-paper/50 mb-4">
+                Rede Miplace © 2024. Todos os direitos reservados.
+            </p>
+            <p class="text-[10px] uppercase tracking-widest text-paper/30">
+                Marcas mencionadas pertencem aos seus respectivos proprietários.<br>
+                Parcelamento sujeito a condições da loja.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lightbox de Imagem com Efeito Zoom -->
+    <div id="lightbox" class="fixed inset-0 z-[200] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-ink/95 backdrop-blur-md cursor-zoom-out" onclick="closeLightbox()"></div>
+        
+        <!-- Imagem Ampliada -->
+        <img id="lightbox-img" src="" class="relative z-10 max-w-[95vw] max-h-[95vh] object-contain transform scale-95 transition-transform duration-300 cursor-zoom-out" onclick="closeLightbox()">
+        
+        <!-- Botão Fechar -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 bg-paper text-ink rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 play-sound shadow-2xl">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Modal de Produto -->
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-ink/90 backdrop-blur-sm cursor-pointer" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-paper relative z-10 w-full max-w-6xl max-h-[95vh] min-h-[60vh] overflow-y-auto flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300" id="modal-container">
+            <!-- Botão Fechar -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 bg-ink text-paper rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 play-sound shadow-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div id="modal-content" class="w-full flex flex-col md:flex-row">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DADOS DO CATÁLOGO
+        const productsData = [
+            { 
+                id: 1, 
+                brand: 'Realme', 
+                name: 'REALME C61', 
+                highlight: false, 
+                image: 'Realme/c61-1.png',
+                price: 'A partir de R$ 1.499',
+                description: 'O Realme C61 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.',
+                specs: [
+                    { label: 'Processador', value: 'Unisoc T612' },
+                    { label: 'Memória RAM', value: '4 GB, 6 GB ou 8 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB ou 256 GB' },
+                    { label: 'Tela', value: '6,74" IPS LCD, HD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },
+                    { label: 'Bateria', value: '5.000 mAh (15W)' },
+                    { label: 'Sistema', value: 'Android 14 (Realme UI)' },
+                    { label: 'Recursos', value: 'IP54, NFC, P2, Mini Cápsula 2.0' }
+                ],
+                highlights: [
+                    { title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },
+                    { title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Dourado.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }
+                ],
+                gallery: ['Realme/c61-1.png', 'Realme/c61-2.png', 'Realme/c61-3.png', 'Realme/c61-4.png'] // Adicionado c61-2 (png e jpg para garantir que carregue dependendo de como você salvou)
+            },
+            { 
+                id: 2, 
+                brand: 'Realme', 
+                name: 'REALME C63', 
+                highlight: false, 
+                image: 'Realme/c63-1.png',
+                price: 'A partir de R$ 1.499',
+                description: 'O Realme C63 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.',
+                specs: [
+                    { label: 'Processador', value: 'Unisoc T612' },
+                    { label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB ou 256 GB' },
+                    { label: 'Tela', value: '6,74" IPS LCD, HD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },
+                    { label: 'Bateria', value: '5.000 mAh (Carregamento 45W)' },
+                    { label: 'Sistema', value: 'Android 14 (Realme UI)' },
+                    { label: 'Recursos', value: 'IP54, NFC, P2, Alto-falante mono, Mini Cápsula 2.0' }
+                ],
+                highlights: [
+                    { title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },
+                    { title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Azul.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }
+                ],
+                gallery: ['Realme/c63-1.png']
+            },
+            { id: 3, brand: 'Realme', name: 'REALME C67', highlight: true },
+            { id: 4, brand: 'Realme', name: 'REALME C71', highlight: false },
+            { id: 5, brand: 'Realme', name: 'REALME C75', highlight: false },
+            { id: 6, brand: 'Realme', name: 'REALME C85', highlight: false },
+            { id: 7, brand: 'Realme', name: 'REALME C85 PRO', highlight: true },
+            { id: 8, brand: 'Realme', name: 'REALME NOTE 70', highlight: false },
+            { id: 9, brand: 'Honor', name: 'HONOR X5C', highlight: false },
+            { id: 10, brand: 'Honor', name: 'HONOR X5C PLUS', highlight: false },
+            { id: 11, brand: 'Honor', name: 'HONOR X7C', highlight: true },
+            { id: 12, brand: 'Honor', name: 'HONOR X7D', highlight: false },
+            { id: 13, brand: 'Motorola', name: 'MOTO G05', highlight: false },
+            { id: 14, brand: 'Motorola', name: 'MOTO G15', highlight: false },
+            { id: 15, brand: 'Motorola', name: 'MOTO G56 5G', highlight: false },
+            { id: 16, brand: 'Motorola', name: 'MOTO G86 5G', highlight: true },
+            { id: 17, brand: 'Motorola', name: 'EDGE 50 5G FUSION', highlight: true },
+            { id: 18, brand: 'Motorola', name: 'EDGE 60 5G FUSION', highlight: true },
+            { id: 19, brand: 'Redmi', name: 'REDMI A5', highlight: false },
+            { id: 20, brand: 'Redmi', name: 'NOTE 14 PRO', highlight: true },
+            { id: 21, brand: 'Poco', name: 'POCO X7 5G', highlight: false },
+            { id: 22, brand: 'Poco', name: 'POCO X7 PRO', highlight: true },
+            { id: 23, brand: 'iPhone', name: 'LINHA IPHONE', highlight: true, specialPrice: 'Sob Consulta' }
+        ];
+
+        const brands = ['Todos', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone'];
+        let currentFilter = 'Todos';
+
+        // SOM SUTIL (Página / Clique)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playUIClick() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime); 
+            osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.05);
+            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        // RENDER FILTROS
+        function renderFilters() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = brands.map(brand => `
+                <button 
+                    onclick="setFilter('${brand}')" 
+                    class="relative pb-1 transition-colors play-sound ${
+                        currentFilter === brand 
+                        ? 'text-ink border-b-2 border-ink' 
+                        : 'text-ink-light hover:text-ink'
+                    }"
+                >
+                    ${brand}
+                </button>
+            `).join('');
+        }
+
+        // RENDER PRODUTOS (Layout Editorial)
+        function renderProducts() {
+            const container = document.getElementById('products-grid');
+            const filtered = currentFilter === 'Todos' ? productsData : productsData.filter(p => p.brand === currentFilter);
+
+            container.innerHTML = filtered.map((p, index) => {
+                let iconClass = 'fa-mobile-screen';
+                if(p.brand === 'iPhone') iconClass = 'fa-apple';
+                
+                // O primeiro item de cada filtro (ou destaques) recebe um layout maior se quisermos, 
+                // mas para manter a harmonia editorial, faremos o primeiro item ocupar 2 colunas em telas grandes.
+                const isFeatured = index === 0;
+                const gridClass = isFeatured ? "md:col-span-2 lg:col-span-2 border-b md:border-b-0 md:border-r border-ink pb-8 md:pb-0 md:pr-8" : "border-b border-ink/20 pb-8";
+                const titleSize = isFeatured ? "text-4xl md:text-5xl" : "text-2xl";
+
+                // Se houver imagem cadastrada, exibe a imagem ocupando todo o fundo (object-cover). Se não, exibe o ícone.
+                const imageContent = p.image 
+                    ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom">`
+                    : `<i class="fa-solid ${iconClass} text-5xl text-ink/20 img-zoom"></i>`;
+
+                return `
+                <div class="${gridClass} group flex flex-col justify-between h-full">
+                    <div>
+                        <!-- Caixa ajustada dinamicamente para proporção 16:9 com aspect-video -->
+                        <div class="w-full aspect-video bg-paper-dark flex items-center justify-center mb-6 img-zoom-container relative cursor-pointer" onclick="openModal(${p.id})">
+                            ${p.highlight ? '<span class="absolute top-4 left-4 bg-ink text-paper text-[10px] uppercase tracking-widest px-2 py-1 z-10">Destaque</span>' : ''}
+                            
+                            <!-- Overlay de Hover "Ver Mais" -->
+                            <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
+                                <span class="text-paper font-sans uppercase tracking-[0.2em] text-xs font-bold border border-paper px-4 py-2 hover:bg-paper hover:text-ink transition-colors play-sound">Ver Detalhes</span>
+                            </div>
+                            
+                            ${imageContent}
+                        </div>
+                        
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-ink-light">${p.brand}</span>
+                        </div>
+                        <h4 class="font-serif ${titleSize} leading-none mb-4">${p.name}</h4>
+                    </div>
+                    
+                    <div class="mt-4 flex items-end justify-between">
+                        <div class="font-sans text-sm">
+                            ${p.specialPrice 
+                                ? `<span class="font-bold border-b border-ink pb-1">${p.specialPrice}</span>` 
+                                : `<span class="block text-ink-light text-xs uppercase tracking-widest mb-1">Disponível</span>
+                                   <span class="font-bold">Em até 24x Boleto</span>`
+                            }
+                        </div>
+                        <a href="#enderecos" class="w-8 h-8 flex items-center justify-center border border-ink rounded-full hover:bg-ink hover:text-paper transition-colors play-sound" title="Consultar">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            `;}).join('');
+
+            attachSoundEvents();
+        }
+
+        window.setFilter = (brand) => {
+            currentFilter = brand;
+            renderFilters();
+            
+            const grid = document.getElementById('products-grid');
+            grid.style.opacity = '0';
+            setTimeout(() => {
+                renderProducts();
+                grid.style.opacity = '1';
+                grid.style.transition = 'opacity 0.5s ease-in';
+            }, 300);
+        };
+
+        // FUNÇÕES DO MODAL
+        window.openModal = (id) => {
+            playUIClick();
+            const product = productsData.find(p => p.id === id);
+            if (!product) return;
+
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+            const content = document.getElementById('modal-content');
+
+            // Gerar Galeria Empilhada
+            const galleryImages = product.gallery && product.gallery.length > 0 
+                ? product.gallery 
+                : (product.image ? [product.image] : []);
+                
+            let galleryHTML = '';
+            if (galleryImages.length > 0) {
+                galleryHTML = `
+                    <div class="w-full flex flex-col gap-12">
+                        ${galleryImages.map(img => `
+                            <div class="w-full max-w-sm mx-auto aspect-[4/5] bg-transparent flex items-center justify-center cursor-zoom-in group transition-colors" onclick="openLightbox('${img}')" title="Clique para ampliar">
+                                <img src="${img}" class="w-full h-full object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                galleryHTML = `
+                    <div class="w-full max-w-sm mx-auto aspect-[4/5] flex items-center justify-center">
+                        <i class="fa-solid fa-mobile-screen text-8xl text-ink/20"></i>
+                    </div>
+                `;
+            }
+
+            // Gerar Especificações
+            let specsHTML = '';
+            if (product.specs && product.specs.length > 0) {
+                specsHTML = `
+                    <div class="mt-8 border-t border-ink pt-6">
+                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4">Ficha Técnica</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm font-sans">
+                            ${product.specs.map(spec => `
+                                <div class="border-b border-ink/10 pb-2">
+                                    <span class="block text-ink-light text-[10px] uppercase tracking-widest">${spec.label}</span>
+                                    <span class="font-medium">${spec.value}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Gerar Destaques
+            let highlightsHTML = '';
+            if (product.highlights && product.highlights.length > 0) {
+                highlightsHTML = `
+                    <div class="mt-8">
+                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4">Destaques</h4>
+                        <ul class="space-y-4">
+                            ${product.highlights.map(h => `
+                                <li class="font-sans text-sm">
+                                    <strong class="block mb-1">${h.title}</strong>
+                                    <span class="text-ink-light leading-relaxed">${h.text}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            // Construir o HTML final
+            if (product.description) {
+                content.innerHTML = `
+                    <!-- Esquerda: Galeria de Imagens Empilhadas -->
+                    <div class="w-full md:w-5/12 bg-paper-dark relative min-h-[300px] border-r border-ink/10">
+                        <div class="md:absolute inset-0 p-8 md:p-12 overflow-y-auto flex flex-col justify-start items-center">
+                            ${galleryHTML}
+                        </div>
+                    </div>
+                    
+                    <!-- Direita: Informações -->
+                    <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col bg-paper">
+                        <div class="mb-2 flex justify-between items-center">
+                            <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-ink-light">${product.brand}</span>
+                        </div>
+                        
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 leading-none">${product.name}</h2>
+                        
+                        ${product.price ? `<p class="font-sans text-xl font-bold border-b-2 border-ink pb-4 mb-6 inline-block w-max">${product.price}</p>` : ''}
+                        
+                        <p class="font-sans text-sm md:text-base text-ink-light leading-relaxed mb-6">
+                            ${product.description}
+                        </p>
+                        
+                        ${highlightsHTML}
+                        ${specsHTML}
+                        
+                        <div class="mt-10 pt-8 border-t border-ink w-full relative">
+                            <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4">Escolha a cidade para comprar</h4>
+                            
+                            <div class="relative w-full">
+                                <!-- Contatos Piracicaba (Dropup Overlay) -->
+                                <div id="contacts-pira" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                    <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
+                                        <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Piracicaba</span>
+                                        <button onclick="document.getElementById('contacts-pira').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace XV de Novembro</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519989605504?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Quinze de Novembro, 910 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Honor</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519994975131?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Dom Pedro II, 857 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Realme</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519994510123?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Benjamin Constant, 1230 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contatos Amparo (Dropup Overlay) -->
+                                <div id="contacts-amp" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                    <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
+                                        <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Amparo</span>
+                                        <button onclick="document.getElementById('contacts-amp').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Kassouf</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519971077066?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+Centro,+Amparo+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Treze de Maio, 218 - sala 09 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Premium</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519999618865?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Treze de Maio, 26 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botões -->
+                                <div class="flex flex-col sm:flex-row gap-4 mb-2">
+                                    <button onclick="document.getElementById('contacts-pira').classList.toggle('hidden'); document.getElementById('contacts-amp').classList.add('hidden');" class="flex-1 bg-ink text-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink-light play-sound flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-location-dot"></i> Piracicaba
+                                    </button>
+                                    <button onclick="document.getElementById('contacts-amp').classList.toggle('hidden'); document.getElementById('contacts-pira').classList.add('hidden');" class="flex-1 border border-ink text-ink bg-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink hover:text-paper play-sound flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-location-dot"></i> Amparo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Fallback para produtos sem detalhes ainda
+                content.innerHTML = `
+                    <div class="w-full p-12 flex flex-col items-center justify-center min-h-[40vh] text-center bg-paper">
+                        <div class="w-32 h-32 bg-paper-dark rounded-full flex items-center justify-center mb-6">
+                            ${product.image ? `<img src="${product.image}" class="w-20 h-20 object-contain">` : `<i class="fa-solid fa-mobile-screen text-4xl text-ink/20"></i>`}
+                        </div>
+                        <h2 class="font-serif text-3xl font-bold mb-4">${product.name}</h2>
+                        <p class="font-sans text-ink-light mb-8">Ainda estamos preparando os detalhes e a ficha técnica deste editorial.</p>
+                        
+                        <div class="mt-8 border-t border-ink pt-8 w-full text-left relative">
+                            <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4 text-center md:text-left">Escolha a cidade para comprar</h4>
+                            
+                            <div class="relative w-full">
+                                <!-- Contatos Piracicaba (Dropup Overlay) -->
+                                <div id="contacts-pira-fallback" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                    <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
+                                        <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Piracicaba</span>
+                                        <button onclick="document.getElementById('contacts-pira-fallback').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink text-left">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace XV de Novembro</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519989605504?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Quinze de Novembro, 910 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink text-left">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Honor</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519994975131?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Dom Pedro II, 857 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink text-left">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Realme</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519994510123?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Benjamin Constant, 1230 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contatos Amparo (Dropup Overlay) -->
+                                <div id="contacts-amp-fallback" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                    <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
+                                        <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Amparo</span>
+                                        <button onclick="document.getElementById('contacts-amp-fallback').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink text-left">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Kassouf</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519971077066?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+Centro,+Amparo+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Treze de Maio, 218 - sala 09 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bg-paper-dark p-4 border-l-4 border-ink text-left">
+                                        <h5 class="font-serif font-bold text-lg mb-2">Miplace Premium</h5>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://wa.me/5519999618865?text=Olá! Gostaria de saber mais sobre o ${product.name}." target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 hover:text-green-700 transition-colors play-sound w-max">
+                                                <i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865
+                                            </a>
+                                            <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" class="text-xs font-sans text-ink-light flex items-center gap-2 hover:text-ink transition-colors play-sound w-max">
+                                                <i class="fa-solid fa-map-location-dot text-base"></i> R. Treze de Maio, 26 - Centro
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botões -->
+                                <div class="flex flex-col sm:flex-row gap-4 mb-2">
+                                    <button onclick="document.getElementById('contacts-pira-fallback').classList.toggle('hidden'); document.getElementById('contacts-amp-fallback').classList.add('hidden');" class="flex-1 bg-ink text-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink-light play-sound flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-location-dot"></i> Piracicaba
+                                    </button>
+                                    <button onclick="document.getElementById('contacts-amp-fallback').classList.toggle('hidden'); document.getElementById('contacts-pira-fallback').classList.add('hidden');" class="flex-1 border border-ink text-ink bg-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink hover:text-paper play-sound flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-location-dot"></i> Amparo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Exibir modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Timeout para animação
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = () => {
+            playUIClick();
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+            
+            modal.classList.add('opacity-0');
+            container.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        };
+
+        // FUNÇÕES DO LIGHTBOX
+        window.openLightbox = (src) => {
+            playUIClick();
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                img.classList.remove('scale-95');
+                img.classList.add('scale-100');
+            }, 10);
+            
+            // Garantir que a imagem seja recarregada em alta res
+            img.onload = () => {};
+        };
+
+        window.closeLightbox = () => {
+            playUIClick();
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            
+            lightbox.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                img.src = '';
+            }, 300);
+        };
+
+        // Fechar modal ou lightbox ao apertar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox && !lightbox.classList.contains('hidden')) {
+                    closeLightbox();
+                    return; // Fecha o lightbox, mas deixa o modal aberto
+                }
+                const modal = document.getElementById('product-modal');
+                if (!modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            }
+        });
+
+        // EVENTOS
+        function attachSoundEvents() {
+            document.querySelectorAll('.play-sound').forEach(el => {
+                el.removeEventListener('click', playUIClick);
+                el.addEventListener('click', () => playUIClick());
+            });
+        }
+
+        // SCROLL REVEAL
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(reveal => observer.observe(reveal));
+        }
+
+        // INIT
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFilters();
+            renderProducts();
+            initScrollReveal();
+            attachSoundEvents();
+
+            // Controle de Música de Fundo
+            const bgMusic = document.getElementById('bg-music');
+            const audioControl = document.getElementById('audio-control');
+            const audioIcon = document.getElementById('audio-icon');
+            let isMusicPlaying = false;
+
+            function toggleMusic() {
+                if (isMusicPlaying) {
+                    bgMusic.pause();
+                    audioIcon.classList.remove('fa-compact-disc', 'animate-spin-slow');
+                    audioIcon.classList.add('fa-music');
+                    isMusicPlaying = false;
+                } else {
+                    bgMusic.volume = 0.2; // Volume suave (20%) como música ambiente
+                    bgMusic.play().then(() => {
+                        audioIcon.classList.remove('fa-music');
+                        audioIcon.classList.add('fa-compact-disc', 'animate-spin-slow');
+                        isMusicPlaying = true;
+                    }).catch(err => console.log("Autoplay bloqueado pelo navegador:", err));
+                }
+            }
+
+            audioControl.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita conflito com o clique global
+                toggleMusic();
+            });
+
+            // Tenta tocar a música na primeira interação do usuário na página (ao clicar em qualquer lugar)
+            document.body.addEventListener('click', function firstInteraction() {
+                if (!isMusicPlaying) {
+                    toggleMusic();
+                }
+                // Remove o evento após o primeiro clique para não rodar a função repetidas vezes
+                document.body.removeEventListener('click', firstInteraction);
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
