@@ -463,7 +463,7 @@
                 brand: 'Realme', 
                 name: 'REALME C61', 
                 highlight: false, 
-                image: 'realme/c61-1.png',
+                image: 'Realme/c61-1.png',
                 price: 'A partir de R$ 1.499',
                 description: 'O Realme C61 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.',
                 specs: [
@@ -481,14 +481,14 @@
                     { title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Dourado.' },
                     { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }
                 ],
-                gallery: ['realme/c61-1.png', 'realme/c61-2.png', 'realme/c61-3.png', 'realme/c61-4.png'] // Adicionado c61-2 (png e jpg para garantir que carregue dependendo de como você salvou)
+                gallery: ['Realme/c61-1.png', 'Realme/c61-2.png', 'Realme/c61-3.png', 'Realme/c61-4.png'] // Adicionado c61-2 (png e jpg para garantir que carregue dependendo de como você salvou)
             },
             { 
                 id: 2, 
                 brand: 'Realme', 
                 name: 'REALME C63', 
                 highlight: false, 
-                image: 'realme/c63-1.png',
+                image: 'Realme/c63-1.png',
                 price: 'A partir de R$ 1.499',
                 description: 'O Realme C63 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.',
                 specs: [
@@ -506,7 +506,7 @@
                     { title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Azul.' },
                     { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }
                 ],
-                gallery: ['realme/c63-1.png']
+                gallery: ['Realme/c63-1.png']
             },
             { id: 3, brand: 'Realme', name: 'REALME C67', highlight: true },
             { id: 4, brand: 'Realme', name: 'REALME C71', highlight: false },
@@ -1068,6 +1068,31 @@
                 // Remove o evento após o primeiro clique para não rodar a função repetidas vezes
                 document.body.removeEventListener('click', firstInteraction);
             }, { once: true });
+
+            // Tratamento global de erros de imagem (Ajuda a evitar problemas de Case Sensitivity no Vercel)
+            document.addEventListener('error', function(e) {
+                if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
+                    const img = e.target;
+                    // Ignora imagens que já vieram de base64 ou URLs externas garantidas
+                    if (img.src.startsWith('data:') || !img.getAttribute('src')) return;
+                    
+                    const originalSrc = img.getAttribute('src');
+                    
+                    if (!img.dataset.fallback) {
+                        img.dataset.fallback = 'lower';
+                        // 1ª Tentativa: Tudo em minúsculo (Vercel é sensível a letras maiúsculas/minúsculas)
+                        img.src = originalSrc.toLowerCase();
+                    } else if (img.dataset.fallback === 'lower') {
+                        img.dataset.fallback = 'jpg';
+                        // 2ª Tentativa: Tentar como .jpg caso tenha sido salva diferente
+                        img.src = originalSrc.toLowerCase().replace('.png', '.jpg');
+                    } else if (img.dataset.fallback === 'jpg') {
+                        img.dataset.fallback = 'upper';
+                        // 3ª Tentativa: Nome original, mas com extensão .PNG maiúscula
+                        img.src = originalSrc.replace('.png', '.PNG').replace('.jpg', '.JPG');
+                    }
+                }
+            }, true);
         });
     </script>
 </body>
