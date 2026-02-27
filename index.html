@@ -90,9 +90,66 @@
         .animate-spin-slow {
             animation: spin-slow 4s linear infinite;
         }
+
+        /* Letra Capitular (Drop Cap) - Clássico de Revistas */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 0.7;
+            float: left;
+            margin-right: 0.5rem;
+            margin-top: 0.3rem;
+            color: #1c1917;
+        }
+        
+        /* Ruído/Textura de Papel (Tátil) */
+        .paper-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Marquee Editorial (Letreiro Contínuo) */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            border-top: 1px solid #1c1917;
+            border-bottom: 1px solid #1c1917;
+            padding: 0.4rem 0;
+            background-color: #eaeaeb;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: #44403c;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Linha dupla editorial */
+        .border-double-thick {
+            border-top: 4px solid #1c1917;
+            border-bottom: 1px solid #1c1917;
+            padding-top: 3px;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative selection:bg-ink selection:text-paper">
+
+    <!-- Textura de Papel Premium -->
+    <div class="paper-grain"></div>
 
     <!-- Margem superior estilo moldura -->
     <div class="h-3 bg-ink w-full fixed top-0 z-50"></div>
@@ -179,6 +236,13 @@
         </div>
     </header>
 
+    <!-- Ticker Editorial Dinâmico -->
+    <div class="marquee-container relative z-30">
+        <div class="marquee-content">
+            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • MIPLACE MAGAZINE • ESTILO DE VIDA • MIPLACE MAGAZINE • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • MIPLACE MAGAZINE • ESTILO DE VIDA • MIPLACE MAGAZINE • EDIÇÃO ESPECIAL • 
+        </div>
+    </div>
+
     <!-- Seção Hero / Capa -->
     <section id="inicio" class="max-w-7xl mx-auto px-4 md:px-8 py-12 w-full">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
@@ -208,12 +272,20 @@
             <!-- Texto da Capa (Direita/Baixo) -->
             <div class="md:col-span-5 lg:col-span-4 flex flex-col justify-between reveal">
                 <div>
-                    <span class="font-sans text-xs uppercase tracking-widest font-bold border-b border-ink pb-2 mb-6 block w-max">Apresentação</span>
-                    <h3 class="font-sans font-bold text-3xl md:text-4xl leading-tight mb-6">Redefinindo o acesso à alta tecnologia</h3>
-                    <p class="font-sans text-ink-light text-base leading-relaxed mb-6">
+                    <div class="border-double-thick mb-6 w-max">
+                        <span class="font-sans text-[10px] uppercase tracking-[0.3em] font-bold block pb-1 text-ink-light">Editorial de Apresentação</span>
+                    </div>
+                    
+                    <!-- Hierarquia tipográfica misturando Serif + Sans e Pesos diferentes -->
+                    <h3 class="font-serif font-black text-4xl md:text-5xl leading-[1.1] tracking-tighter mb-8 text-ink">
+                        Redefinindo o acesso à <br><span class="font-light italic tracking-normal text-ink-light">alta tecnologia</span>
+                    </h3>
+                    
+                    <!-- Parágrafo com Letra Capitular -->
+                    <p class="font-sans text-ink-light text-base leading-relaxed mb-6 drop-cap">
                         Uma curadoria exclusiva com as melhores marcas do mercado: <strong>Xiaomi, Apple, Realme, Honor e Motorola</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
                     </p>
-                    <p class="font-sans text-ink-light text-base leading-relaxed">
+                    <p class="font-sans text-ink-light text-base leading-relaxed border-l-2 border-ink pl-4 italic">
                         Esqueça a burocracia. A Miplace revoluciona a forma como você adquire seu próximo smartphone.
                     </p>
                 </div>
@@ -247,8 +319,8 @@
     <section id="catalogo" class="max-w-7xl mx-auto px-4 md:px-8 py-16 w-full">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-thick border-ink pb-6 reveal">
             <div>
-                <h2 class="font-serif text-5xl md:text-6xl font-black">A Coleção</h2>
-                <p class="font-sans uppercase tracking-widest text-sm mt-3 text-ink-light">Selecione uma marca para explorar</p>
+                <h2 class="font-serif text-5xl md:text-7xl font-black tracking-tighter">A <span class="font-light italic tracking-normal">Coleção</span></h2>
+                <p class="font-sans uppercase tracking-[0.3em] text-xs mt-4 text-ink-light font-bold">Selecione uma marca para explorar</p>
             </div>
             
             <!-- Filtros estilo menu editorial -->
@@ -608,22 +680,326 @@
                 ],
                 gallery: ['Realme/c85pro-1.png','Realme/c85pro-2.png','Realme/c85pro-3.png','Realme/c85pro-4.png']
             },
-            { id: 8, brand: 'Realme', name: 'REALME NOTE 70', highlight: false },
-            { id: 9, brand: 'Honor', name: 'HONOR X5C', highlight: false },
-            { id: 10, brand: 'Honor', name: 'HONOR X5C PLUS', highlight: false },
-            { id: 11, brand: 'Honor', name: 'HONOR X7C', highlight: true },
-            { id: 12, brand: 'Honor', name: 'HONOR X7D', highlight: false },
-            { id: 13, brand: 'Motorola', name: 'MOTO G05', highlight: false },
-            { id: 14, brand: 'Motorola', name: 'MOTO G15', highlight: false },
-            { id: 15, brand: 'Motorola', name: 'MOTO G56 5G', highlight: false },
-            { id: 16, brand: 'Motorola', name: 'MOTO G86 5G', highlight: true },
-            { id: 17, brand: 'Motorola', name: 'EDGE 50 5G FUSION', highlight: true },
-            { id: 18, brand: 'Motorola', name: 'EDGE 60 5G FUSION', highlight: true },
-            { id: 19, brand: 'Redmi', name: 'REDMI A5', highlight: false },
-            { id: 20, brand: 'Redmi', name: 'NOTE 14 PRO', highlight: true },
-            { id: 21, brand: 'Poco', name: 'POCO X7 5G', highlight: false },
-            { id: 22, brand: 'Poco', name: 'POCO X7 PRO', highlight: true },
-            { id: 23, brand: 'iPhone', name: 'LINHA IPHONE', highlight: true, specialPrice: 'Sob Consulta' }
+            { id: 8, brand: 'Realme', name: 'REALME NOTE 70', highlight: false, image: 'Realme/note70-1.png',
+                price: 'A partir de R$ 1.399',
+                description: 'O Realme Note 70 é um smartphone de entrada, design elegante com certificação IP54, com personalização de led traseiro.',
+                specs: [
+                    { label: 'Processador', value: 'Unisoc T7250' },
+                    { label: 'Memória RAM', value: '4 GB ou 6 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB ou 256 GB' },
+                    { label: 'Tela', value: '6,72" IPS LCD, HD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 13 MP | Frontal 5 MP' },
+                    { label: 'Bateria', value: '6.300 mAh (Carregamento 15W)' },
+                    { label: 'Sistema', value: 'Android 15 (Realme UI 5.0)' },
+                    { label: 'Recursos', value: 'IP54' }
+                ],
+                highlights: [
+                    { title: 'Resistência', text: 'Projetado para quedas de até 1.8 metros.' },
+                    { title: 'Design', text: 'Corpo (7,9 mm) e disponível nas cores Preto e Dourado.' },
+                    { title: 'Performance', text: 'Ótimo desempenho para tarefas diárias e internet.' }
+                ],
+                gallery: ['Realme/note70-1.png','Realme/note70-2.png','Realme/note70-3.png','Realme/note70-4.png']
+            },
+            { id: 9, brand: 'Honor', name: 'HONOR X5C', highlight: false, image: 'Honor/x5c-1.png',
+                price: 'A partir de R$ 1.399',
+                description: 'O Honor X5C é um smartphone de entrada com design elegante, NFC e certificação IP54.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Helio G81' },
+                    { label: 'Memória RAM', value: '4 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB' },
+                    { label: 'Tela', value: '6,74" TFT LCD, HD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },
+                    { label: 'Bateria', value: '5.260 mAh (Carregamento 15W)' },
+                    { label: 'Sistema', value: 'Android 15 (Honor Magic OS 9)' },
+                    { label: 'Recursos', value: 'IP54, NFC' }
+                ],
+                highlights: [
+                    { title: 'Custo Benefício', text: 'Melhor custo benefício para o preço.' },
+                    { title: 'Design', text: 'Corpo (7,9 mm) e disponível nas cores Preto e Azul.' },
+                    { title: 'Performance', text: 'Ótimo desempenho para tarefas diárias com NFC.' }
+                ],
+                gallery: ['Honor/x5c-1.png','Honor/x5c-2.png','Honor/x5c-3.png','Honor/x5c-4.png']
+             },
+            { id: 10, brand: 'Honor', name: 'HONOR X5C PLUS', highlight: false, image:'Honor/x5cplus-1.png',
+                price:'A partir de R$ 1.499',
+                description:'O Honor X5C Plus é um smartphone de entrada com design elegante e certificação IP54.',
+                specs:[
+                    {label:'Processador',value:'Mediatek Helio G81'},
+                    {label:'Memória RAM',value:'4 GB ou 6 GB (+ virtual)'},
+                    {label:'Armazenamento',value:'128 GB ou 256 GB'},
+                    {label:'Tela',value:'6,74" TFT LCD, HD+, 90 Hz'},
+                    {label:'Câmeras',value:'Principal 50 MP | Frontal 5 MP'},
+                    {label:'Bateria',value:'5.260 mAh (Carregamento 15W)'},
+                    {label:'Sistema',value:'Android 15 (Honor Magic OS 9)'},
+                    {label:'Recursos',value:'IP54, NFC'}
+                ],
+                highlights:[
+                    {title: 'Custo Benefício', text: 'Melhor custo benefício para o preço.'},
+                    {title:'Design',text:'Corpo (7,9 mm) e disponível nas cores Preto e Azul.'},
+                    {title:'Performance',text:'Ótimo desempenho para tarefas diárias.'}
+                ],
+                gallery:['Honor/x5cplus-1.png','Honor/x5cplus-2.png','Honor/x5cplus-3.png','Honor/x5cplus-4.png']
+            },
+            { id: 11, brand: 'Honor', name: 'HONOR X7C', highlight: false, image:"Honor/x7c-1.png",
+                price:"A partir de R$ 1.499",
+                description:"O Honor X7C é um smartphone intermediário com design elegante, 108mp na camera e com resistência a quedas.",
+                specs:[
+                 	{label:"Processador",value:"Snapdragon 685"},
+                 	{label:"Memória RAM",value:"8 GB (+ virtual)"},
+                 	{label:"Armazenamento",value:"256 GB"},
+                 	{label:"Tela",value:"6,77\" TFTLCD, HD+, 120 Hz"},
+                 	{label:"Câmeras",value:"Principal 108 MP | Frontal 8 MP"},
+                 	{label:"Bateria",value:"6.000 mAh (Carregamento rápido de até 35W)"},
+                 	{label:"Sistema",value:"Android 14 (Honor Magic OS 8)"},
+                 	{label:"Recursos",value:"IP64, NFC (confirmar versão), resistência a quedas" }
+                 ],
+                 highlights:[
+                     {title:"Resistência",text:"Projetado para quedas de até 1.2 metros."},
+                     {title:'Design',text:"Corpo (8,1 mm) e disponível nas cores Preto, Branco e Verde."},
+                     {title:"Performance",text:"Ótimo desempenho para tarefas diárias e jogos."}
+                 ],
+                 gallery:["Honor/x7c-1.png","Honor/x7c-2.png","Honor/x7c-3.png","Honor/x7c-4.png"]
+            },
+            { id: 12, brand: 'Honor', name: 'HONOR X7D', highlight:false, image:"Honor/x7d-1.png",
+              price:"A partir de R$ 1.899",
+              description:"O Honor X7D é um smartphone intermediário com design elegante com certificação IP65 e camera de 108mp.",
+              specs:[
+              	{label:"Processador",value:"Snapdragon 685"},
+              	{label:"Memória RAM",value:"8 GB (+ virtual)"},
+              	{label:"Armazenamento",value:"256 GB"},
+              	{label:"Tela",value:"6,77\" TFT LCD, FHD+, 120 Hz"},
+              	{label:"Câmeras",value:"Principal 108 MP | Frontal 8 MP"},
+              	{label:"Bateria",value:"6.500 mAh (Carregamento rápido de até 35W)"},
+              	{label:"Sistema",value:".Android 15 (Honor Magic OS 9)"},
+              	{label :"Recursos", value :"IP65, NFC, resistência a quedas" }
+              ],
+              highlights:[
+                  {title:"Resistência",text:"Projetado para quedas de até 1.2 metros."},
+                  {title:"Design",text:"Corpo (8,2 mm) e disponível nas cores Preto, Dourado, Prata e Azul."},
+                  {title:"Performance",text:"Ótimo desempenho para tarefas diárias, fotos e jogos."}
+              ],
+              gallery:["Honor/x7d-1.png","Honor/x7d-2.png","Honor/x7d-3.png","Honor/x7d-4.png"]
+            },
+            { id: 13, brand: 'Motorola', name: 'MOTO G05', highlight: false, image: 'Motorola/g05-1.png',
+                price: 'A partir de R$ 999',
+                description: 'O Moto G05 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Helio G81 Extreme' },
+                    { label: 'Memória RAM', value: '4 GB ou 8 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB ou 256 GB' },
+                    { label: 'Tela', value: '6,67" IPS LCD, HD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 18W)' },
+                    { label: 'Sistema', value: 'Android 15 (My UX)' },
+                    { label: 'Recursos', value: 'IP54' }
+                ],
+                highlights: [
+                    { title: 'Confiabilidade', text: 'Projeto com alta qualidade e durabilidade.' },
+                    { title: 'Design', text: 'Corpo fino (8,2 mm) e disponível nas cores Vermelho e Verde.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }
+                ],
+                gallery: ['Motorola/g05-1.png','Motorola/g05-2.png','Motorola/g05-3.png','Motorola/g05-4.png']
+             },
+            { id: 14, brand: 'Motorola', name: 'MOTO G15', highlight: false, image: 'Motorola/g15-1.png',
+                price: 'A partir de R$ 1.199',
+                description: 'O Moto G15 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, NFC ideal para uso diário.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Helio G81 Extreme' },
+                    { label: 'Memória RAM', value: '4 GB, 6 GB ou8 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB ou 256 GB' },
+                    { label: 'Tela', value: '6,72" IPS LCD, FHD+, 90 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 18W)' },
+                    { label: 'Sistema', value: 'Android 15 (My UX)' },
+                    { label: 'Recursos', value: 'IP54, NFC' }
+                ],
+                highlights: [
+                    { title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },
+                    { title: 'Design', text: 'Corpo fino (8,2 mm) e disponível nas cores Cinza, Verde, Laranja e Azul.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }
+                ],
+                gallery: ['Motorola/g15-1.png','Motorola/g15-2.png','Motorola/g15-3.png','Motorola/g15-4.png']
+             },
+            { id: 15, brand: 'Motorola', name: 'MOTO G56 5G', highlight: false, image: 'Motorola/g56-1.png',
+                price: 'A partir de R$ 1.799',
+                description: 'O Moto G56 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 5.000 mAh e design resistente, ideal para uso diário e streaming.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 7060' },
+                    { label: 'Memória RAM', value: '4 GB ou 6 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB, 256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,72" IPS LCD, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 32 MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 30W)' },
+                    { label: 'Sistema', value: 'Android 15 (My UX)' },
+                    { label: 'Recursos', value: 'IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros' }
+                ],
+                highlights: [
+                    { title: 'Conectividade', text: 'Suporte a redes 5G para internet mais rápida.' },
+                    { title: 'Perfomance', text: 'Adequado para tarefas diárias e streaming, jogos e multitarefa.' },
+                    { title: 'Design', text: 'Corpo fino (8,4 mm) e disponível nas cores Preto, Cinza e Azul.' }
+                ],
+                gallery: ['Motorola/g56-1.png','Motorola/g56-2.png','Motorola/g56-3.png','Motorola/g56-4.png']
+             },
+            { id: 16, brand: 'Motorola', name: 'MOTO G86 5G', highlight: true, image: 'Motorola/g86-1.png',
+                price: 'A partir de R$ 2.099',
+                description: 'O Moto G86 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria,design resistente, tela e performance ideal para uso diário e streaming.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 7300' },
+                    { label: 'Memória RAM', value: '8 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,67" P-OLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 32MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 30W)' },
+                    { label: 'Sistema', value: 'Android 15 (My UX)' },
+                    { label: 'Recursos', value: 'IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros' }
+                ],
+                highlights: [
+                    { title: 'Design', text: 'Sistema de design moderno e resistente com acabamento premium nas cores Lilas e Preto.' },
+                    { title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias e streaming, jogos e multitarefa.' }
+                ],
+                gallery: ['Motorola/g86-1.png','Motorola/g86-2.png','Motorola/g86-3.png','Motorola/g86-4.png']
+             },
+            { id: 17, brand: 'Motorola', name: 'EDGE 50 5G FUSION', highlight: true, image: 'Motorola/edge50-1.png',
+                price: 'A partir de R$ 1.999',
+                description:    'O Moto Edge 50 5G Fusion é um smartphone linha pro que se destaca pela sua conectividade 5G, bateria, design, tela e performance em camera.',
+                specs: [
+                    { label: 'Processador', value: 'Snapdragon 7s Gen 2 ou Snapdragon 6 Gen 1' },
+                    { label: 'Memória RAM', value: '8 GB ou 12 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB, 256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,7" P-OLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 32 MP' },
+                    { label: 'Bateria', value: '5.000 mAh (Carregamento 68W)' },
+                    { label: 'Sistema', value: 'Android 14 (My UX)' },
+                    { label: 'Recursos', value: 'IP68, NFC, Conectividade 5G' }
+                ],
+                highlights: [
+                    { title: 'Conectividade', text: 'Suporte a redes 5G para internet mais rápida.' },
+                    { title: 'Resistência e Performance', text: 'Projetado para ser robusto, com boa resistência a quedas, jogo de cameras incrível e performance.' },
+                    { title: 'Design', text: 'Corpo fino (7,9 mm) acabamento premium, disponível nas cores Pink, Azul Escuro e Azul Claro.' }
+                ],
+                gallery: ['Motorola/edge50-1.png','Motorola/edge50-2.png','Motorola/edge50-3.png','Motorola/edge50-4.png']
+             },
+            { id: 18, brand: 'Motorola', name: 'EDGE 60 5G FUSION', highlight: true, image: 'Motorola/edge60-1.png',
+                price: 'A partir de R$ 2.299',
+                description: 'O Moto Edge 60 5G Fusion é um smartphone de alto desempenho com design moderno e tela P-OLED de alta resolução.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 7300' },
+                    { label: 'Memória RAM', value: '8 GB ou 12 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,67" P-OLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 32 MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 68W)' },
+                    { label: 'Sistema', value: 'Android 15 (My UX)' },
+                    { label: 'Recursos', value: 'IP68/IP69, NFC, Conectividade 5G' }
+                ],
+                highlights: [
+                    { title: 'Desempenho', text: 'Processador Mediatek Dimensity 7300 para uma experiência fluida.' },
+                    { title: 'Design', text: 'Tela P-OLED com resolução FHD+ e taxa de atualização de até 120 Hz, nas cores Rosa, Preto e Azul.' },
+                    { title: 'Câmeras', text: 'Câmera principal de 50 MP e frontal de 32 MP para selfies nítidos.' }
+                ],
+                gallery: ['Motorola/edge60-1.png','Motorola/edge60-2.png','Motorola/edge60-3.png','Motorola/edge60-4.png']
+             },
+            { id: 19, brand: 'Redmi', name: 'REDMI A5', highlight: false, image: 'Redmi/a5-1.png',
+                price: 'A partir de R$ 899',
+                description: 'O Redmi A5 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, ideal para uso diário.',
+                specs: [
+                    { label: 'Processador', value: 'Unisoc T7250' },
+                    { label: 'Memória RAM', value: '4 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '128 GB' },
+                    { label: 'Tela', value: '6,88" IPS LCD, HD+ 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 32 MP | Frontal 8 MP' },
+                    { label: 'Bateria', value: '5.200 mAh (Carregamento 15W)' },
+                    { label: 'Sistema', value: 'Android 15 (GO)' },
+                    { label: 'Recursos', value: 'IP54' }
+                ],
+                highlights: [
+                    { title: 'Custo Benefício', text: 'Projetado para oferecer um bom desempenho para tarefas básicas a um preço acessível.' },
+                    { title: 'Design', text: 'Corpo fino (8,9 mm) e disponível nas cores Preto, Verde, Dourado e Azul.' },
+                    { title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }
+                ],
+                gallery: ['Redmi/a5-1.png','Redmi/a5-2.png','Redmi/a5-3.png','Redmi/a5-4.png']
+             },
+            { id: 20, brand: 'Redmi', name: 'NOTE 14 PRO 5G', highlight: true, image: 'Redmi/note14pro-1.png',
+                price: 'A partir de R$ 2.399',
+                description: 'O Redmi Note 14 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 7300' },
+                    { label: 'Memória RAM', value: '8 GB ou 12 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,67" AMOLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 200 MP | Frontal 20 MP' },
+                    { label: 'Bateria', value: '5.110 mAh (Carregamento 45W)' },
+                    { label: 'Sistema', value: 'Android 14 (HyperOs)' },
+                    { label: 'Recursos', value: 'IP68, Conectividade 5G, NFC' }
+                ],
+                highlights: [
+                    { title: 'Desempenho', text: 'Processador Dimensity 7300 para uma experiência fluida.' },
+                    { title: 'Design', text: 'Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz.' },
+                    { title: 'Câmeras', text: 'Câmera principal de 200 MP e frontal de 20 MP para selfies nítidos.' }
+                ],
+                gallery: ['Redmi/note14pro-1.png','Redmi/note14pro-2.png','Redmi/note14pro-3.png','Redmi/note14pro-4.png']
+             },
+            { id: 21, brand: 'Poco', name: 'POCO X7 5G', highlight: false, image: 'Poco/x7-1.png',
+                price: 'A partir de R$ 1.899',
+                description: 'O POCO X7 5G é um smartphone de alto desempenho que se destaca pela sua conectividade 5G, bateria, design resistente, ideal para uso gamer e streaming.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 7300 Ultra' },
+                    { label: 'Memória RAM', value: '8 GB ou 12 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,67" AMOLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 20 MP' },
+                    { label: 'Bateria', value: '5.110 mAh (Carregamento 45W)' },
+                    { label: 'Sistema', value: 'Android 14 (HyperOs)' },
+                    { label: 'Recursos', value: 'IP69, NFC, Conectividade 5G' }
+                ],
+                highlights: [
+                    { title: 'Conectividade', text: 'Suporte a redes 5G para internet mais rápida.' },
+                    { title: 'Desempenho', text: 'Processador Mediatek Dimensity 7300 Ultra para uma experiência fluida.' },
+                    { title: 'Design', text: 'Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz.' }
+                ],
+                gallery: ['Poco/x7-1.png','Poco/x7-2.png','Poco/x7-3.png','Poco/x7-4.png']
+             },
+            { id: 22, brand: 'Poco', name: 'POCO X7 PRO', highlight: true, image: 'Poco/x7pro-1.png',
+                price: 'A partir de R$ 2.799',
+                description: 'O POCO X7 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução. ideal para uso gamer e streaming.',
+                specs: [
+                    { label: 'Processador', value: 'Mediatek Dimensity 8400 Ultra' },
+                    { label: 'Memória RAM', value: '8 GB ou 12 GB (+ virtual)' },
+                    { label: 'Armazenamento', value: '256 GB ou 512 GB' },
+                    { label: 'Tela', value: '6,67" AMOLED, FHD+, 120 Hz' },
+                    { label: 'Câmeras', value: 'Principal 50 MP | Frontal 20 MP' },
+                    { label: 'Bateria', value: '6.000 mAh (Carregamento 90W)' },
+                    { label: 'Sistema', value: 'Android 14 (HyperOs)' },
+                    { label: 'Recursos', value: 'IP68/IP69, NFC, Conectividade 5G' }
+                ],
+                highlights: [
+                    { title: 'Desempenho', text: 'Processador Mediatek Dimensity 8400 Ultra para uma experiência fluida.' },
+                    { title: 'Design', text: 'Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz.' },
+                    { title: 'Câmeras', text: 'Câmera principal de 50 MP e frontal de 20 MP para selfies nítidos.' }
+                ],
+                gallery: ['Poco/x7pro-1.png','Poco/x7pro-2.png','Poco/x7pro-3.png','Poco/x7pro-4.png']
+             },
+            { id: 23, brand: 'iPhone', name: 'LINHA IPHONE', highlight: true, specialPrice: 'Linha 13 a 17', image: 'iPhone/iphone-1.png',
+                price: 'A partir de R$ 3.899',
+                description: 'A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.',
+                specs: [
+                    { label: 'Processador', value: 'Apple' },
+                    { label: 'Memória RAM', value: '6 GB (iPhone 15 Pro)' },
+                    { label: 'Armazenamento', value: '128 GB, 256 GB, 512 GB ou 1 TB' },
+                    { label: 'Tela', value: '6,1" ou 6,7" Super Retina XDR OLED' },
+                    { label: 'Câmeras', value: 'Sistema de câmeras avançado ' },
+                    { label: 'Bateria', value: 'Duração variável, geralmente um dia inteiro' },
+                    { label: 'Sistema', value: 'iOS' },
+                    { label: 'Recursos', value: 'Face ID, resistência à água IP68, carregamento MagSafe' }
+                ],
+                highlights: [
+                    { title: 'Desempenho', text: 'Processador Apple A17 Pro para uma experiência fluida e rápida.' },
+                    { title: 'Design', text: 'Construção premium em aço inoxidável e vidro, disponível em várias cores.' },
+                    { title: 'Câmeras', text: 'Sistema de câmeras avançado com recursos como modo noturno e gravação em 4K.' }
+                ],
+                gallery: ['iPhone/iphone-1.png','iPhone/iphone-2.png','iPhone/iphone-3.png','iPhone/iphone-4.png']
+             }
         ];
 
         const brands = ['Todos', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone'];
@@ -698,10 +1074,11 @@
                             ${imageContent}
                         </div>
                         
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="flex justify-between items-end mb-3 border-b border-ink/10 pb-2">
                             <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-ink-light">${p.brand}</span>
+                            <span class="font-sans text-[9px] uppercase tracking-widest text-ink-light/60">Ref. ${String(p.id).padStart(3, '0')}</span>
                         </div>
-                        <h4 class="font-serif ${titleSize} leading-none mb-4">${p.name}</h4>
+                        <h4 class="font-serif ${titleSize} leading-none tracking-tight mb-4">${p.name}</h4>
                     </div>
                     
                     <div class="mt-4 flex items-end justify-between">
