@@ -161,6 +161,9 @@
     <!-- Textura de Papel Premium -->
     <div class="paper-grain"></div>
 
+    <!-- Indicador de Leitura (Scroll Progress) -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-accent z-[60] w-0 transition-all duration-100 ease-out"></div>
+
     <!-- Margem superior estilo moldura -->
     <div class="h-3 bg-ink w-full fixed top-0 z-50"></div>
 
@@ -169,8 +172,9 @@
         <!-- Certifique-se de que o nome do arquivo na pasta esteja exatamente igual a este -->
         <source src="chrono trigger - peacefull days.mp3" type="audio/mpeg">
     </audio>
-    <button id="audio-control" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-ink text-paper rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all play-sound" title="Tocar/Pausar Música">
-        <i class="fa-solid fa-music text-lg" id="audio-icon"></i>
+    <button id="audio-control" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-ink text-paper rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all play-sound group" title="Tocar/Pausar Música">
+        <span class="absolute inset-0 rounded-full border-2 border-ink animate-ping opacity-50 group-hover:opacity-0 transition-opacity" id="audio-pulse"></span>
+        <i class="fa-solid fa-music text-lg relative z-10" id="audio-icon"></i>
     </button>
 
     <!-- Cabeçalho (Masthead da Revista) -->
@@ -492,17 +496,32 @@
         </div>
     </section>
 
-    <!-- Rodapé Editorial (Colofão) -->
-    <footer class="bg-ink text-paper py-12 text-center font-sans">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="font-serif text-3xl font-black uppercase tracking-widest mb-6">Miplace</h2>
-            <p class="text-xs uppercase tracking-widest text-paper/50 mb-4">
-                Rede Miplace © 2024. Todos os direitos reservados.
+    <!-- Rodapé Editorial (Contracapa) -->
+    <footer class="bg-ink text-paper pt-24 pb-8 text-center font-sans relative overflow-hidden flex flex-col items-center justify-between min-h-[45vh]">
+        <div class="relative z-10 w-full px-4 mb-16">
+            <p class="text-[10px] uppercase tracking-[0.4em] text-paper/50 mb-4">Fim da Edição</p>
+            <div class="w-12 h-[2px] bg-paper/30 mx-auto mb-12"></div>
+            
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16 text-xs uppercase tracking-widest text-paper/70 mb-16 font-bold">
+                <a href="#inicio" class="hover:text-paper hover:underline underline-offset-4 transition-all play-sound">Voltar à Capa</a>
+                <a href="#catalogo" class="hover:text-paper hover:underline underline-offset-4 transition-all play-sound">Revisitar Coleção</a>
+                <a href="#enderecos" class="hover:text-paper hover:underline underline-offset-4 transition-all play-sound">Nossas Lojas</a>
+            </div>
+
+            <p class="text-[10px] uppercase tracking-[0.3em] text-paper/40 mb-4">
+                Rede Miplace © 2026. Todos os direitos reservados.
             </p>
-            <p class="text-[10px] uppercase tracking-widest text-paper/30">
+            <p class="text-[9px] uppercase tracking-[0.2em] text-paper/20 max-w-md mx-auto leading-relaxed">
                 Marcas mencionadas pertencem aos seus respectivos proprietários.<br>
-                Parcelamento sujeito a condições da loja.
+                O parcelamento no boleto está sujeito a análise e condições da loja física.
             </p>
+        </div>
+        
+        <!-- Marca D'água Gigante (Design de Contracapa) -->
+        <div class="w-full flex justify-center mt-auto opacity-5 select-none pointer-events-none translate-y-8">
+            <h2 class="font-serif text-[18vw] md:text-[20vw] leading-[0.7] font-black uppercase tracking-tighter text-paper m-0">
+                Miplace
+            </h2>
         </div>
     </footer>
 
@@ -1595,6 +1614,15 @@
             initScrollReveal();
             attachSoundEvents();
 
+            // Progress Bar de Leitura Editorial
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                const progressBar = document.getElementById('scroll-progress');
+                if(progressBar) progressBar.style.width = scrolled + "%";
+            });
+
             // Controle de Música de Fundo
             const bgMusic = document.getElementById('bg-music');
             const audioControl = document.getElementById('audio-control');
@@ -1602,16 +1630,19 @@
             let isMusicPlaying = false;
 
             function toggleMusic() {
+                const pulse = document.getElementById('audio-pulse');
                 if (isMusicPlaying) {
                     bgMusic.pause();
                     audioIcon.classList.remove('fa-compact-disc', 'animate-spin-slow');
                     audioIcon.classList.add('fa-music');
+                    if(pulse) pulse.classList.remove('hidden');
                     isMusicPlaying = false;
                 } else {
                     bgMusic.volume = 0.2; // Volume suave (20%) como música ambiente
                     bgMusic.play().then(() => {
                         audioIcon.classList.remove('fa-music');
                         audioIcon.classList.add('fa-compact-disc', 'animate-spin-slow');
+                        if(pulse) pulse.classList.add('hidden');
                         isMusicPlaying = true;
                     }).catch(err => console.log("Autoplay bloqueado pelo navegador:", err));
                 }
