@@ -94,12 +94,12 @@
         /* Letra Capitular (Drop Cap) - Clássico de Revistas */
         .drop-cap::first-letter {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            line-height: 0.7;
+            line-height: 0.8;
             float: left;
-            margin-right: 0.5rem;
-            margin-top: 0.3rem;
+            margin-right: 0.7rem;
+            margin-top: 0.1rem;
             color: #1c1917;
         }
         
@@ -125,7 +125,7 @@
         }
         .marquee-content {
             display: inline-block;
-            animation: marquee 30s linear infinite;
+            animation: marquee 35s linear infinite;
             font-family: 'DM Sans', sans-serif;
             font-size: 0.65rem;
             text-transform: uppercase;
@@ -238,8 +238,9 @@
 
     <!-- Ticker Editorial Dinâmico -->
     <div class="marquee-container relative z-30">
+        <!-- O conteúdo foi duplicado extensamente para preencher telas 4k sem deixar buraco branco na animação em loop -->
         <div class="marquee-content">
-            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • 
+            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • 
         </div>
     </div>
 
@@ -255,7 +256,6 @@
                     <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105">
                         
                         <!-- 1. O VÍDEO (Fica na camada de trás) -->
-                        <!-- Valores expandidos para preencher toda a área de recorte da nova imagem. -->
                         <div class="absolute z-0 overflow-hidden bg-black"
                              style="top: 4%; left: 2.5%; width: 96%; height: 84.5%; border-radius: 42px;">
                             <iframe src="https://www.youtube.com/embed/gwBz0OCk_hA?autoplay=1&mute=1&loop=1&playlist=gwBz0OCk_hA&controls=0&playsinline=1&modestbranding=1&rel=0" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="pointer-events: none;"></iframe>
@@ -319,6 +319,7 @@
     <section id="catalogo" class="max-w-7xl mx-auto px-4 md:px-8 py-16 w-full">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-thick border-ink pb-6 reveal">
             <div>
+                <!-- Titulo com Itálico -->
                 <h2 class="font-serif text-5xl md:text-7xl font-black tracking-tighter">A <span class="font-light italic tracking-normal">Coleção</span></h2>
                 <p class="font-sans uppercase tracking-[0.3em] text-xs mt-4 text-ink-light font-bold">Selecione uma marca para explorar</p>
             </div>
@@ -740,7 +741,7 @@
                 ],
                 gallery:['Honor/x5cplus-1.png','Honor/x5cplus-2.png','Honor/x5cplus-3.png','Honor/x5cplus-4.png']
             },
-            { id: 11, brand: 'Honor', name: 'HONOR X7C', highlight: false, image:"Honor/x7c-1.png",
+            { id: 11, brand: 'Honor', name: 'HONOR X7C', highlight: true, image:"Honor/x7c-1.png",
                 price:"A partir de R$ 1.499",
                 description:"O Honor X7C é um smartphone intermediário com design elegante, 108mp na camera e com resistência a quedas.",
                 specs:[
@@ -920,7 +921,7 @@
                 ],
                 gallery: ['Redmi/a5-1.png','Redmi/a5-2.png','Redmi/a5-3.png','Redmi/a5-4.png']
              },
-            { id: 20, brand: 'Redmi', name: 'NOTE 14 PRO 5G', highlight: true, image: 'Redmi/note14pro-1.png',
+            { id: 20, brand: 'Redmi', name: 'NOTE 14 PRO', highlight: true, image: 'Redmi/note14pro-1.png',
                 price: 'A partir de R$ 2.399',
                 description: 'O Redmi Note 14 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.',
                 specs: [
@@ -980,7 +981,7 @@
                 ],
                 gallery: ['Poco/x7pro-1.png','Poco/x7pro-2.png','Poco/x7pro-3.png','Poco/x7pro-4.png']
              },
-            { id: 23, brand: 'iPhone', name: 'LINHA IPHONE', highlight: true, specialPrice: 'Linha 13 a 17', image: 'iPhone/iphone-1.png',
+            { id: 23, brand: 'iPhone', name: 'LINHA IPHONE', highlight: true, specialPrice: 'Sob Consulta', image: 'iPhone/iphone-1.png',
                 price: 'A partir de R$ 3.899',
                 description: 'A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.',
                 specs: [
@@ -1486,6 +1487,7 @@
             setTimeout(() => {
                 lightbox.classList.add('hidden');
                 lightbox.classList.remove('flex');
+                // NÃO LIMPAMOS MAIS O SRC AQUI (img.src = '') PARA QUE A IMAGEM REABRA NORMALMENTE NO PRÓXIMO CLIQUE.
             }, 300);
         };
 
