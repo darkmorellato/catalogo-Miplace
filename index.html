@@ -172,14 +172,14 @@
                 <span class="hidden md:block">Piracicaba & Amparo — SP</span>
                 
                 <!-- Dropdown Contato Direto -->
-                <div class="relative group z-50">
-                    <button class="hover:text-ink font-bold underline decoration-1 underline-offset-4 play-sound flex items-center gap-2 cursor-pointer">
+                <div class="relative z-50 dropdown-container">
+                    <button onclick="toggleContato()" class="hover:text-ink font-bold underline decoration-1 underline-offset-4 play-sound flex items-center gap-2 cursor-pointer">
                         Contato Direto 
-                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                        <i id="contato-icon" class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300"></i>
                     </button>
                     
                     <!-- Menu Dropdown -->
-                    <div class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 text-left">
+                    <div id="contato-menu" class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible transition-all duration-300 text-left">
                         <div class="bg-paper border border-ink shadow-2xl flex flex-col py-2">
                             <!-- Piracicaba -->
                             <span class="text-[9px] text-ink-light px-4 py-2 uppercase tracking-[0.2em] font-bold bg-paper-dark">Piracicaba, SP</span>
@@ -239,7 +239,7 @@
     <!-- Ticker Editorial Dinâmico -->
     <div class="marquee-container relative z-30">
         <div class="marquee-content">
-            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • MIPLACE MAGAZINE • ESTILO DE VIDA • MIPLACE MAGAZINE • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • MIPLACE MAGAZINE • ESTILO DE VIDA • MIPLACE MAGAZINE • EDIÇÃO ESPECIAL • 
+            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • 
         </div>
     </div>
 
@@ -1085,8 +1085,8 @@
                         <div class="font-sans text-sm">
                             ${p.specialPrice 
                                 ? `<span class="font-bold border-b border-ink pb-1">${p.specialPrice}</span>` 
-                                : `<span class="block text-ink-light text-xs uppercase tracking-widest mb-1">Disponível</span>
-                                   <span class="font-bold">Em até 24x Boleto</span>`
+                                : `<span class="block text-ink-light text-[10px] uppercase tracking-widest mb-1">Entre em Contato</span>
+                                   <span class="font-bold text-xs leading-tight block">Confirmar disponibilidade</span>`
                             }
                         </div>
                         <a href="#enderecos" class="w-8 h-8 flex items-center justify-center border border-ink rounded-full hover:bg-ink hover:text-paper transition-colors play-sound" title="Consultar">
@@ -1098,6 +1098,35 @@
 
             attachSoundEvents();
         }
+
+        window.toggleContato = () => {
+            playUIClick();
+            const menu = document.getElementById('contato-menu');
+            const icon = document.getElementById('contato-icon');
+            if (menu.classList.contains('opacity-0')) {
+                menu.classList.remove('opacity-0', 'invisible');
+                menu.classList.add('opacity-100', 'visible');
+                icon.classList.add('rotate-180');
+            } else {
+                menu.classList.add('opacity-0', 'invisible');
+                menu.classList.remove('opacity-100', 'visible');
+                icon.classList.remove('rotate-180');
+            }
+        };
+
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', (e) => {
+            const container = document.querySelector('.dropdown-container');
+            if (container && !container.contains(e.target)) {
+                const menu = document.getElementById('contato-menu');
+                const icon = document.getElementById('contato-icon');
+                if (menu && !menu.classList.contains('opacity-0')) {
+                    menu.classList.add('opacity-0', 'invisible');
+                    menu.classList.remove('opacity-100', 'visible');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        });
 
         window.setFilter = (brand) => {
             currentFilter = brand;
@@ -1457,7 +1486,6 @@
             setTimeout(() => {
                 lightbox.classList.add('hidden');
                 lightbox.classList.remove('flex');
-                img.src = '';
             }, 300);
         };
 
