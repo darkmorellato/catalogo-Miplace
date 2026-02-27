@@ -91,6 +91,16 @@
             animation: spin-slow 4s linear infinite;
         }
 
+        /* Cascata de Produtos (Stagger) */
+        @keyframes staggerFade {
+            from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        .stagger-item {
+            opacity: 0;
+            animation: staggerFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
         /* Letra Capitular (Drop Cap) - Clássico de Revistas */
         .drop-cap::first-letter {
             font-family: 'Playfair Display', serif;
@@ -325,7 +335,7 @@
             </div>
             
             <!-- Filtros estilo menu editorial -->
-            <div class="flex flex-wrap gap-6 mt-8 md:mt-0 font-sans text-xs uppercase tracking-widest font-bold" id="category-filters">
+            <div class="sticky top-3 z-40 bg-paper/95 backdrop-blur-md py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-y border-ink/10 flex flex-wrap gap-6 mt-8 md:mt-0 font-sans text-xs uppercase tracking-widest font-bold transition-all" id="category-filters">
                 <!-- Preenchido via JS -->
             </div>
         </div>
@@ -1056,20 +1066,25 @@
                 const titleSize = isFeatured ? "text-4xl md:text-5xl" : "text-2xl";
 
                 // Se houver imagem cadastrada, exibe a imagem ocupando todo o fundo (object-cover). Se não, exibe o ícone.
-                const imageContent = p.image 
-                    ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom">`
-                    : `<i class="fa-solid ${iconClass} text-5xl text-ink/20 img-zoom"></i>`;
+                const imageContent = p.gallery && p.gallery.length > 1
+                    ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
+                    : (p.image ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom">` : `<i class="fa-solid ${iconClass} text-5xl text-ink/20 img-zoom"></i>`);
+
+                // Micro-Specs para o layout de catálogo
+                const microSpecs = p.specs && p.specs.length > 0 
+                    ? p.specs.slice(0, 2).map(s => s.value.split(' ')[0] + ' ' + (s.value.split(' ')[1] || '')).join(' • ')
+                    : '';
 
                 return `
-                <div class="${gridClass} group flex flex-col justify-between h-full">
+                <div class="${gridClass} group flex flex-col justify-between h-full stagger-item" style="animation-delay: ${index * 0.08}s">
                     <div>
                         <!-- Caixa ajustada dinamicamente para proporção 16:9 com aspect-video -->
                         <div class="w-full aspect-video bg-paper-dark flex items-center justify-center mb-6 img-zoom-container relative cursor-pointer" onclick="openModal(${p.id})">
-                            ${p.highlight ? '<span class="absolute top-4 left-4 bg-ink text-paper text-[10px] uppercase tracking-widest px-2 py-1 z-10">Destaque</span>' : ''}
+                            ${p.highlight ? '<span class="absolute top-4 left-4 bg-ink text-paper text-[10px] uppercase tracking-widest px-3 py-1.5 z-10">Destaque</span>' : ''}
                             
                             <!-- Overlay de Hover "Ver Mais" -->
-                            <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
-                                <span class="text-paper font-sans uppercase tracking-[0.2em] text-xs font-bold border border-paper px-4 py-2 hover:bg-paper hover:text-ink transition-colors play-sound">Ver Detalhes</span>
+                            <div class="absolute inset-0 bg-ink/30 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 flex items-center justify-center">
+                                <span class="text-paper font-sans uppercase tracking-[0.2em] text-xs font-bold border border-paper px-6 py-3 hover:bg-paper hover:text-ink transition-colors play-sound transform translate-y-4 group-hover:translate-y-0 duration-500">Ver Detalhes</span>
                             </div>
                             
                             ${imageContent}
@@ -1079,19 +1094,20 @@
                             <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-ink-light">${p.brand}</span>
                             <span class="font-sans text-[9px] uppercase tracking-widest text-ink-light/60">Ref. ${String(p.id).padStart(3, '0')}</span>
                         </div>
-                        <h4 class="font-serif ${titleSize} leading-none tracking-tight mb-4">${p.name}</h4>
+                        <h4 class="font-serif ${titleSize} leading-none tracking-tight mb-2 text-ink group-hover:text-ink-light transition-colors">${p.name}</h4>
+                        ${microSpecs ? `<p class="font-sans text-[10px] uppercase tracking-[0.15em] text-ink-light/70 truncate">${microSpecs}</p>` : ''}
                     </div>
                     
-                    <div class="mt-4 flex items-end justify-between">
+                    <div class="mt-6 flex items-end justify-between border-t border-ink/10 pt-4">
                         <div class="font-sans text-sm">
                             ${p.specialPrice 
-                                ? `<span class="font-bold border-b border-ink pb-1">${p.specialPrice}</span>` 
+                                ? `<span class="font-bold text-ink">${p.specialPrice}</span>` 
                                 : `<span class="block text-ink-light text-[10px] uppercase tracking-widest mb-1">Entre em Contato</span>
                                    <span class="font-bold text-xs leading-tight block">Confirmar disponibilidade</span>`
                             }
                         </div>
-                        <a href="#enderecos" class="w-8 h-8 flex items-center justify-center border border-ink rounded-full hover:bg-ink hover:text-paper transition-colors play-sound" title="Consultar">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        <a href="#enderecos" class="w-8 h-8 flex items-center justify-center border border-ink/30 rounded-full group-hover:bg-ink group-hover:border-ink group-hover:text-paper transition-all duration-300 play-sound" title="Consultar">
+                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -1134,12 +1150,49 @@
             renderFilters();
             
             const grid = document.getElementById('products-grid');
-            grid.style.opacity = '0';
-            setTimeout(() => {
-                renderProducts();
-                grid.style.opacity = '1';
-                grid.style.transition = 'opacity 0.5s ease-in';
-            }, 300);
+            renderProducts();
+            if(typeof startGridCarousel === 'function') startGridCarousel();
+            grid.style.opacity = '1';
+        };
+
+        // CARROSSEL ORGÂNICO EDITORIAL (UX Premium)
+        let gridCarouselInterval;
+        window.startGridCarousel = () => {
+            if(gridCarouselInterval) clearInterval(gridCarouselInterval);
+            
+            gridCarouselInterval = setInterval(() => {
+                const images = document.querySelectorAll('.grid-gallery-img');
+                if(images.length === 0) return;
+                
+                // Escolhe de 1 a 2 imagens para animar neste ciclo (evita piscar a tela inteira)
+                const numToChange = Math.min(images.length, Math.floor(Math.random() * 2) + 1);
+                const shuffled = Array.from(images).sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, numToChange);
+
+                selected.forEach(img => {
+                    // UX: Não altera a imagem se o usuário estiver com o mouse em cima focando nela
+                    if(img.closest('.group') && img.closest('.group').matches(':hover')) return;
+
+                    const productId = parseInt(img.getAttribute('data-product-id'));
+                    const product = productsData.find(p => p.id === productId);
+                    if(!product || !product.gallery || product.gallery.length <= 1) return;
+
+                    let currentIdx = parseInt(img.getAttribute('data-current-idx'));
+                    currentIdx = (currentIdx + 1) % product.gallery.length;
+                    
+                    // Efeito Crossfade (Fade out -> troca -> Fade in)
+                    img.style.opacity = '0.4'; 
+                    setTimeout(() => {
+                        // Reseta erro de fallback de imagem, se houver
+                        delete img.dataset.fallback;
+                        delete img.dataset.originalSrc;
+                        
+                        img.src = product.gallery[currentIdx];
+                        img.setAttribute('data-current-idx', currentIdx);
+                        img.style.opacity = '1';
+                    }, 500); 
+                });
+            }, 7000); // 7 segundos de intervalo aleatório como você sugeriu
         };
 
         // FUNÇÕES DO MODAL
@@ -1538,6 +1591,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderFilters();
             renderProducts();
+            if(typeof startGridCarousel === 'function') startGridCarousel();
             initScrollReveal();
             attachSoundEvents();
 
