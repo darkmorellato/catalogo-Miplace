@@ -1460,6 +1460,12 @@
             playUIClick();
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
+            
+            // MÁGICA AQUI: Limpa os registros de erros anteriores da imagem
+            // para que ela possa recarregar e corrigir o path sempre que for aberta!
+            delete img.dataset.fallback;
+            delete img.dataset.originalSrc;
+            
             img.src = src;
             
             lightbox.classList.remove('hidden');
@@ -1578,15 +1584,19 @@
                     // Ignora imagens que já vieram de base64 ou URLs externas garantidas
                     if (img.src.startsWith('data:') || !img.getAttribute('src')) return;
                     
-                    const originalSrc = img.getAttribute('src');
+                    // Salva a origem real apenas na primeira vez que der erro
+                    if (!img.dataset.originalSrc) {
+                        img.dataset.originalSrc = img.getAttribute('src');
+                    }
+                    const originalSrc = img.dataset.originalSrc;
                     
                     if (!img.dataset.fallback) {
                         img.dataset.fallback = 'lower';
-                        // 1ª Tentativa: Tudo em minúsculo (Vercel é sensível a letras maiúsculas/minúsculas)
+                        // 1ª Tentativa: Tudo em minúsculo
                         img.src = originalSrc.toLowerCase();
                     } else if (img.dataset.fallback === 'lower') {
                         img.dataset.fallback = 'jpg';
-                        // 2ª Tentativa: Tentar como .jpg caso tenha sido salva diferente
+                        // 2ª Tentativa: Tentar como .jpg
                         img.src = originalSrc.toLowerCase().replace('.png', '.jpg');
                     } else if (img.dataset.fallback === 'jpg') {
                         img.dataset.fallback = 'upper';
