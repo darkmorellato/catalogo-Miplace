@@ -276,10 +276,7 @@
         <i class="fa-solid fa-music text-lg relative z-10" id="audio-icon"></i>
     </button>
 
-    <!-- Botão Compartilhar WhatsApp -->
-    <a id="share-btn" href="https://wa.me/?text=Confira%20o%20cat%C3%A1logo%20exclusivo%20da%20Miplace%20Magazine%21%20Smartphones%20premium%20parcelados%20em%20at%C3%A9%2024x%20no%20boleto%20sem%20consulta.%20https%3A%2F%2Fmiplacemagazine.com.br%2F" aria-label="Compartilhar site via WhatsApp" title="Compartilhar no WhatsApp" target="_blank" rel="noopener noreferrer" class="fixed bottom-[5.5rem] left-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all" style="background-color:#16a34a !important; color:#ffffff !important;">
-        <i class="fa-brands fa-whatsapp text-xl"></i>
-    </a>
+
 
     <!-- Cabeçalho -->
     <header class="w-full pt-10 pb-6 px-4 md:px-8 border-b-thick z-40 relative mt-3" style="background-color:#f4f4f0 !important; border-bottom-color:#1c1917;" id="navbar">
@@ -288,9 +285,9 @@
                 <span>Edição Especial 2026 by Dark Morellato</span>
                 <span class="hidden md:block">Piracicaba & Amparo — SP</span>
                 <div class="relative z-50 dropdown-container">
-                    <button onclick="toggleContato()" class="font-bold underline decoration-1 underline-offset-4 flex items-center gap-2 cursor-pointer" style="color:#44403c !important;">
-                        Contato Direto
-                        <i id="contato-icon" class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                    <button onclick="toggleContato()" aria-label="Abrir contatos das lojas via WhatsApp" title="Contato via WhatsApp" class="flex items-center gap-2 cursor-pointer hover:scale-110 transition-transform" style="color:#44403c !important;">
+                        <i class="fa-brands fa-whatsapp text-2xl transition-transform duration-300" id="contato-icon" style="color:#16a34a;"></i>
+                        <span class="font-sans font-bold text-xs uppercase tracking-widest hidden sm:inline" style="color:#1c1917 !important;">Fale na Miplace</span>
                     </button>
                     <div id="contato-menu" class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible transition-all duration-300 text-left">
                         <div class="border shadow-2xl flex flex-col py-2" style="background-color:#f4f4f0 !important; border-color:#1c1917;">
@@ -789,11 +786,11 @@
             if (menu.classList.contains('opacity-0')) {
                 menu.classList.remove('opacity-0', 'invisible');
                 menu.classList.add('opacity-100', 'visible');
-                icon.classList.add('rotate-180');
+                if (icon) icon.style.transform = 'scale(1.2)';
             } else {
                 menu.classList.add('opacity-0', 'invisible');
                 menu.classList.remove('opacity-100', 'visible');
-                icon.classList.remove('rotate-180');
+                if (icon) icon.style.transform = 'scale(1)';
             }
         };
 
@@ -1107,11 +1104,7 @@
                 if (!isMusicPlaying) toggleMusic();
             }, { once: true });
 
-            const shareBtn = document.getElementById('share-btn');
-            if (shareBtn) {
-                const shareText = 'Confira o catálogo exclusivo da Miplace Magazine! Smartphones premium parcelados em até 24x no boleto sem consulta. ' + window.location.href;
-                shareBtn.href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
-            }
+
 
             document.addEventListener('error', function(e) {
                 if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
