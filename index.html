@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIPLACE MAGAZINE | Catálogo Exclusivo</title>
-    
+    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones premium: Xiaomi, Apple, Realme, Honor e Motorola. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
+    <meta name="theme-color" content="#1c1917">
+    <meta property="og:title" content="MIPLACE MAGAZINE | Catálogo Exclusivo">
+    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Confira nossa coleção exclusiva.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <meta name="msapplication-TileImage" content="favicon_io/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#1c1917">
+
+    <!-- Preconnect para carregamento mais rápido -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -185,6 +204,11 @@
         <!-- Certifique-se de que o nome do arquivo na pasta esteja exatamente igual a este -->
         <source src="chrono trigger - peacefull days.mp3" type="audio/mpeg">
     </audio>
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-ink text-paper rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 play-sound" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
     <button id="audio-control" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-ink text-paper rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all play-sound group" title="Tocar/Pausar Música">
         <span class="absolute inset-0 rounded-full border-2 border-ink animate-ping opacity-50 group-hover:opacity-0 transition-opacity" id="audio-pulse"></span>
         <i class="fa-solid fa-music text-lg relative z-10" id="audio-icon"></i>
@@ -543,9 +567,24 @@
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-ink/95 backdrop-blur-md cursor-zoom-out" onclick="closeLightbox()"></div>
         
+        <!-- Seta Esquerda -->
+        <button onclick="lightboxNavigate(-1)" class="absolute left-4 md:left-8 z-20 w-12 h-12 bg-paper/20 hover:bg-paper text-paper hover:text-ink rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 play-sound shadow-xl">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </button>
+
         <!-- Imagem Ampliada -->
-        <img id="lightbox-img" src="" class="relative z-10 max-w-[95vw] max-h-[95vh] object-contain transform scale-95 transition-transform duration-300 cursor-zoom-out" onclick="closeLightbox()">
-        
+        <img id="lightbox-img" src="" class="relative z-10 max-w-[85vw] max-h-[90vh] object-contain transform scale-95 transition-all duration-300 cursor-zoom-out" style="transition: opacity 0.2s ease, transform 0.3s ease;" onclick="closeLightbox()">
+
+        <!-- Seta Direita -->
+        <button onclick="lightboxNavigate(1)" class="absolute right-4 md:right-8 z-20 w-12 h-12 bg-paper/20 hover:bg-paper text-paper hover:text-ink rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 play-sound shadow-xl">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+        </button>
+
+        <!-- Contador de imagens -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 font-sans text-[10px] uppercase tracking-widest text-paper/60">
+            <span id="lightbox-counter"></span>
+        </div>
+
         <!-- Botão Fechar -->
         <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 bg-paper text-ink rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 play-sound shadow-2xl">
             <i class="fa-solid fa-xmark text-xl"></i>
@@ -1164,8 +1203,8 @@
 
                 // Se houver imagem cadastrada, exibe a imagem ocupando todo o fundo (object-cover). Se não, exibe o ícone.
                 const imageContent = p.gallery && p.gallery.length > 1
-                    ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
-                    : (p.image ? `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom">` : `<i class="fa-solid ${iconClass} text-5xl text-ink/20 img-zoom"></i>`);
+                    ? `<img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
+                    : (p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover img-zoom">` : `<i class="fa-solid ${iconClass} text-5xl text-ink/20 img-zoom"></i>`);
 
                 // Micro-Specs para o layout de catálogo
                 const microSpecs = p.specs && p.specs.length > 0 
@@ -1346,8 +1385,8 @@
                 galleryHTML = `
                     <div class="w-full flex flex-col gap-3 p-3">
                         ${galleryImages.map((img, i) => `
-                            <div class="w-full aspect-video bg-paper rounded overflow-hidden relative cursor-zoom-in group border border-ink/10 hover:border-ink/40 transition-all duration-300 shadow-sm hover:shadow-lg" onclick="openLightbox('${img}')" title="Clique para ampliar">
-                                <img src="${img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="w-full aspect-video bg-paper rounded overflow-hidden relative cursor-zoom-in group border border-ink/10 hover:border-ink/40 transition-all duration-300 shadow-sm hover:shadow-lg" onclick="openLightbox('${img}', ${i})" title="Clique para ampliar">
+                                <img src="${img}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 <div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-ink/10">
                                     <span class="text-[9px] font-sans uppercase tracking-widest bg-ink text-paper px-2 py-1 rounded">Ampliar</span>
                                 </div>
@@ -1410,7 +1449,7 @@
                     </div>
                     
                     <!-- Direita: Informações -->
-                    <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col bg-paper">
+                    <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col bg-paper overflow-y-auto" style="max-height:95vh;">
                         <div class="mb-2 flex justify-between items-center">
                             <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-ink-light">${product.brand}</span>
                         </div>
@@ -1643,29 +1682,52 @@
         };
 
         // FUNÇÕES DO LIGHTBOX
-        window.openLightbox = (src) => {
+        let lightboxImages = [];
+        let lightboxCurrentIdx = 0;
+
+        window.openLightbox = (src, idx) => {
             playUIClick();
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
-            
-            // MÁGICA AQUI: Limpa os registros de erros anteriores da imagem
-            // para que ela possa recarregar e corrigir o path sempre que for aberta!
+
+            // Captura todas as imagens do modal aberto para navegação por setas
+            const modalImgs = Array.from(document.querySelectorAll('#modal-content .aspect-video img'));
+            lightboxImages = modalImgs.map(i => i.getAttribute('src'));
+            lightboxCurrentIdx = (idx !== undefined && idx >= 0) ? idx : lightboxImages.indexOf(src);
+            if (lightboxCurrentIdx < 0) lightboxCurrentIdx = 0;
+
             delete img.dataset.fallback;
             delete img.dataset.originalSrc;
-            
             img.src = src;
-            
+
             lightbox.classList.remove('hidden');
             lightbox.classList.add('flex');
-            
+
             setTimeout(() => {
                 lightbox.classList.remove('opacity-0');
                 img.classList.remove('scale-95');
                 img.classList.add('scale-100');
             }, 10);
-            
-            // Garantir que a imagem seja recarregada em alta res
-            img.onload = () => {};
+
+            // Atualiza contador
+            const counter = document.getElementById('lightbox-counter');
+            if (counter && lightboxImages.length > 1) counter.textContent = `${lightboxCurrentIdx + 1} / ${lightboxImages.length}`;
+        };
+
+        window.lightboxNavigate = (dir) => {
+            if (lightboxImages.length <= 1) return;
+            playUIClick();
+            lightboxCurrentIdx = (lightboxCurrentIdx + dir + lightboxImages.length) % lightboxImages.length;
+            const img = document.getElementById('lightbox-img');
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                delete img.dataset.fallback;
+                delete img.dataset.originalSrc;
+                img.src = lightboxImages[lightboxCurrentIdx];
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            }, 200);
         };
 
         window.closeLightbox = () => {
@@ -1684,18 +1746,19 @@
             }, 300);
         };
 
-        // Fechar modal ou lightbox ao apertar ESC
+        // Fechar modal ou lightbox ao apertar ESC + navegar com setas no lightbox
         document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxOpen = lightbox && !lightbox.classList.contains('hidden');
+
             if (e.key === 'Escape') {
-                const lightbox = document.getElementById('lightbox');
-                if (lightbox && !lightbox.classList.contains('hidden')) {
-                    closeLightbox();
-                    return; // Fecha o lightbox, mas deixa o modal aberto
-                }
+                if (lightboxOpen) { closeLightbox(); return; }
                 const modal = document.getElementById('product-modal');
-                if (!modal.classList.contains('hidden')) {
-                    closeModal();
-                }
+                if (!modal.classList.contains('hidden')) closeModal();
+            }
+            if (lightboxOpen) {
+                if (e.key === 'ArrowRight') lightboxNavigate(1);
+                if (e.key === 'ArrowLeft') lightboxNavigate(-1);
             }
         });
 
@@ -1729,13 +1792,25 @@
             initScrollReveal();
             attachSoundEvents();
 
-            // Progress Bar de Leitura Editorial
+            // Progress Bar de Leitura Editorial + Back to Top
+            const backToTop = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 const progressBar = document.getElementById('scroll-progress');
                 if(progressBar) progressBar.style.width = scrolled + "%";
+
+                // Mostrar/ocultar botão voltar ao topo
+                if (backToTop) {
+                    if (winScroll > 400) {
+                        backToTop.style.opacity = '1';
+                        backToTop.style.pointerEvents = 'auto';
+                    } else {
+                        backToTop.style.opacity = '0';
+                        backToTop.style.pointerEvents = 'none';
+                    }
+                }
             });
 
             // Controle de Música de Fundo
