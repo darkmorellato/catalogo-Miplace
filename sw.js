@@ -2,9 +2,12 @@
 // MIPLACE MAGAZINE — Service Worker (PWA)
 // Estratégia: Cache First para assets estáticos,
 //             Network First para dados dinâmicos (produtos.json)
+// Versão gerada automaticamente por timestamp de build
 // ============================================================
 
-const CACHE_NAME = 'miplace-v1';
+const BUILD_TIMESTAMP = '__BUILD_TIMESTAMP__';
+const CACHE_NAME = `miplace-v${BUILD_TIMESTAMP}`;
+
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -18,20 +21,20 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('[SW] Cacheando assets principais...');
+            console.log(`[SW] Cacheando assets (cache: ${CACHE_NAME})...`);
             return cache.addAll(ASSETS_TO_CACHE);
         }).catch(err => console.warn('[SW] Falha ao cachear alguns assets:', err))
     );
     self.skipWaiting();
 });
 
-// ACTIVATE — Remove caches antigos
+// ACTIVATE — Remove todos os caches antigos automaticamente
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames
-                    .filter(name => name !== CACHE_NAME)
+                    .filter(name => name.startsWith('miplace-') && name !== CACHE_NAME)
                     .map(name => {
                         console.log('[SW] Removendo cache antigo:', name);
                         return caches.delete(name);

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIPLACE MAGAZINE | Catálogo Exclusivo</title>
-    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones premium: Xiaomi, Apple, Realme, Honor e Motorola. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
-    <meta name="keywords" content="Miplace, smartphones, celulares, parcelamento boleto, sem consulta, Xiaomi, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Piracicaba, Amparo, crediário, tecnologia">
+    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones premium: Apple, Realme, Honor, Motorola, Redmi e Poco. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
+    <meta name="keywords" content="Miplace, smartphones, celulares, parcelamento boleto, sem consulta, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Piracicaba, Amparo, crediário, tecnologia">
     <meta name="author" content="Miplace Magazine">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f4f4f0">
@@ -16,13 +16,10 @@
 
     <!-- FORÇAR TEMA CLARO ANTES DE QUALQUER COISA — deve ser o primeiro script -->
     <script>
-        // Bloqueia dark mode ANTES do Tailwind e qualquer CSS carregar
         document.documentElement.style.setProperty('background-color', '#f4f4f0', 'important');
         document.documentElement.style.setProperty('color', '#1c1917', 'important');
         document.documentElement.style.setProperty('color-scheme', 'light only', 'important');
-        // Remove qualquer classe dark que possa ter sido injetada
         document.documentElement.classList.remove('dark');
-        // Observa e remove a classe dark caso seja injetada depois
         const __obs = new MutationObserver(() => {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -38,7 +35,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://miplacemagazine.com.br/">
     <meta property="og:title" content="MIPLACE MAGAZINE | Catálogo Exclusivo de Smartphones">
-    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Xiaomi, Apple, Realme, Honor, Motorola e muito mais. Piracicaba & Amparo, SP.">
+    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Apple, Realme, Honor, Motorola, Redmi e muito mais. Piracicaba & Amparo, SP.">
     <meta property="og:image" content="https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
@@ -79,21 +76,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX', {
-            page_title: 'Miplace Magazine — Catálogo',
-            page_location: window.location.href
-        });
-        function trackEvent(eventName, params = {}) {
-            if (typeof gtag === 'function') gtag('event', eventName, params);
-        }
-    </script>
-
     <!-- YouTube IFrame API -->
     <script>
         var tag = document.createElement('script');
@@ -113,17 +95,107 @@
         }
     </script>
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org JSON-LD — múltiplas lojas com dados completos -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Store",
+      "@type": "Organization",
       "name": "Miplace Magazine",
       "description": "Catálogo exclusivo de smartphones premium com parcelamento em até 24x no boleto sem consulta.",
       "url": "https://miplacemagazine.com.br/",
       "logo": "https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png",
-      "areaServed": ["Piracicaba", "Amparo"],
-      "address": { "@type": "PostalAddress", "addressRegion": "SP", "addressCountry": "BR" }
+      "location": [
+        {
+          "@type": "Store",
+          "name": "Miplace XV de Novembro",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Quinze de Novembro, 910",
+            "addressLocality": "Piracicaba",
+            "addressRegion": "SP",
+            "postalCode": "13400-370",
+            "addressCountry": "BR"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -22.7253, "longitude": -47.6476 },
+          "telephone": "+55-19-98960-5504",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+          ]
+        },
+        {
+          "@type": "Store",
+          "name": "Miplace Honor",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Dom Pedro II, 857",
+            "addressLocality": "Piracicaba",
+            "addressRegion": "SP",
+            "postalCode": "13400-390",
+            "addressCountry": "BR"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -22.7248, "longitude": -47.6491 },
+          "telephone": "+55-19-99497-5131",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+          ]
+        },
+        {
+          "@type": "Store",
+          "name": "Miplace Realme",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Benjamin Constant, 1230",
+            "addressLocality": "Piracicaba",
+            "addressRegion": "SP",
+            "postalCode": "13400-053",
+            "addressCountry": "BR"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -22.7261, "longitude": -47.6468 },
+          "telephone": "+55-19-99451-0123",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+          ]
+        },
+        {
+          "@type": "Store",
+          "name": "Miplace Kassouf",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Treze de Maio, 218 - sala 09",
+            "addressLocality": "Amparo",
+            "addressRegion": "SP",
+            "postalCode": "13900-005",
+            "addressCountry": "BR"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -22.7019, "longitude": -46.7706 },
+          "telephone": "+55-19-97107-7066",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+          ]
+        },
+        {
+          "@type": "Store",
+          "name": "Miplace Premium",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Treze de Maio, 26",
+            "addressLocality": "Amparo",
+            "addressRegion": "SP",
+            "postalCode": "13900-005",
+            "addressCountry": "BR"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -22.7021, "longitude": -46.7708 },
+          "telephone": "+55-19-99961-8865",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -174,6 +246,21 @@
             :root { color-scheme: light only !important; }
             html { background-color: #f4f4f0 !important; color: #1c1917 !important; }
             body { background-color: #f4f4f0 !important; color: #1c1917 !important; }
+        }
+
+        /* ============================================================
+           RESPEITAR prefers-reduced-motion
+        ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .marquee-content { animation: none !important; }
+            .grid-gallery-img { transform: none !important; transition: none !important; }
+            .stagger-item { animation: none !important; opacity: 1 !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
         }
 
         #yt-player, #yt-player iframe {
@@ -253,6 +340,36 @@
         #hamburger-btn.open .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         #hamburger-btn.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
         #hamburger-btn.open .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        /* ============================================================
+           HOVER VIA CSS — substitui onmouseover/onmouseout inline
+        ============================================================ */
+        .btn-hover-ink {
+            transition: background-color 0.2s ease, color 0.2s ease;
+            color: #1c1917;
+            background-color: transparent;
+        }
+        .btn-hover-ink:hover {
+            background-color: #1c1917 !important;
+            color: #f4f4f0 !important;
+        }
+
+        .btn-hover-ink-border {
+            transition: background-color 0.2s ease, color 0.2s ease;
+            color: #1c1917;
+            background-color: transparent;
+            border: 1px solid #1c1917;
+        }
+        .btn-hover-ink-border:hover {
+            background-color: #1c1917 !important;
+            color: #f4f4f0 !important;
+        }
+
+        /* Modal unificado — scroll único no container direito */
+        #modal-content .modal-scroll-pane {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative" style="background-color:#f4f4f0 !important; color:#1c1917 !important;">
@@ -261,7 +378,7 @@
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 z-[60] w-0 transition-all duration-100 ease-out" style="background-color:#991b1b;"></div>
     <div class="h-3 w-full fixed top-0 z-50" style="background-color:#1c1917 !important;"></div>
 
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop preload="none">
         <source src="chrono trigger - peaceful days.mp3" type="audio/mpeg">
     </audio>
 
@@ -290,20 +407,20 @@
                     <div id="contato-menu" class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible transition-all duration-300 text-left">
                         <div class="border shadow-2xl flex flex-col py-2" style="background-color:#f4f4f0 !important; border-color:#1c1917;">
                             <span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#44403c !important; background-color:#eaeaeb !important;">Piracicaba, SP</span>
-                            <a href="https://wa.me/5519989605504" target="_blank" class="px-4 py-3 text-xs font-bold flex items-center gap-3 transition-colors" style="color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                            <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
                                 <img src="logo/xv (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Miplace XV de Novembro" class="w-6 h-6 rounded-full object-cover"> Miplace XV de Novembro
                             </a>
-                            <a href="https://wa.me/5519994975131" target="_blank" class="px-4 py-3 text-xs font-bold flex items-center gap-3 transition-colors" style="color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                            <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
                                 <img src="logo/dp (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Miplace Honor" class="w-6 h-6 rounded-full object-cover"> Miplace Honor
                             </a>
-                            <a href="https://wa.me/5519994510123" target="_blank" class="px-4 py-3 text-xs font-bold flex items-center gap-3 transition-colors" style="border-bottom:1px solid #e5e5e5; color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                            <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="border-bottom:1px solid #e5e5e5; color:#1c1917 !important;">
                                 <img src="logo/realme (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Miplace Realme" class="w-6 h-6 rounded-full object-cover"> Miplace Realme
                             </a>
                             <span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold mt-1" style="color:#44403c !important; background-color:#eaeaeb !important;">Amparo, SP</span>
-                            <a href="https://wa.me/5519971077066" target="_blank" class="px-4 py-3 text-xs font-bold flex items-center gap-3 transition-colors" style="color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                            <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
                                 <img src="logo/kf (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Miplace Kassouf" class="w-6 h-6 rounded-full object-cover"> Miplace Kassouf
                             </a>
-                            <a href="https://wa.me/5519999618865" target="_blank" class="px-4 py-3 text-xs font-bold flex items-center gap-3 transition-colors" style="color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                            <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
                                 <img src="logo/pr (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Miplace Premium" class="w-6 h-6 rounded-full object-cover"> Miplace Premium
                             </a>
                         </div>
@@ -368,11 +485,12 @@
                     <div class="border-double-thick mb-6 w-max">
                         <span class="font-sans text-[10px] uppercase tracking-[0.3em] font-bold block pb-1" style="color:#44403c !important;">Editorial de Apresentação</span>
                     </div>
-                    <h3 class="font-serif font-black text-4xl md:text-5xl leading-[1.1] tracking-tighter mb-8" style="color:#1c1917 !important;">
+                    <!-- h2 corrigido: hierarquia correta após h1 do logo -->
+                    <h2 class="font-serif font-black text-4xl md:text-5xl leading-[1.1] tracking-tighter mb-8" style="color:#1c1917 !important;">
                         Redefinindo o acesso à <br><span class="font-light italic tracking-normal" style="color:#44403c !important;">alta tecnologia</span>
-                    </h3>
+                    </h2>
                     <p class="font-sans text-base leading-relaxed mb-6 drop-cap" style="color:#44403c !important;">
-                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong style="color:#1c1917;">Xiaomi, Apple, Realme, Honor e Motorola</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
+                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong style="color:#1c1917;">Apple, Realme, Honor, Motorola, Redmi e Poco</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
                     </p>
                     <p class="font-sans text-base leading-relaxed pl-4 italic" style="color:#44403c !important; border-left: 2px solid #1c1917;">
                         Esqueça a burocracia. A Miplace revoluciona a forma como você adquire seu próximo smartphone.
@@ -435,7 +553,7 @@
                 <p class="font-sans mb-6" style="color:#44403c !important;">Fones, microfones, carregadores, cabos e a exclusiva película de proteção Rockspace.</p>
             </div>
             <div class="md:text-right">
-                <a href="#enderecos" class="font-sans uppercase tracking-widest text-sm font-bold px-8 py-3 inline-block transition-colors" style="border: 1px solid #1c1917; color:#1c1917 !important;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">Consultar Estoque</a>
+                <a href="#enderecos" class="font-sans uppercase tracking-widest text-sm font-bold px-8 py-3 inline-block btn-hover-ink-border">Consultar Estoque</a>
             </div>
         </div>
     </section>
@@ -456,13 +574,13 @@
                                 <img src="logo/xv (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Logo Miplace XV" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace XV de Novembro</h4>
-                                    <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Quinze de Novembro, 910 - Centro<br>CEP: 13400-370</a>
+                                    <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Quinze de Novembro, 910 - Centro<br>CEP: 13400-370</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.xvdenovembro" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.xvdenovembro</a>
-                                <a href="https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace XV de Novembro</a>
-                                <a href="https://wa.me/5519989605504" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504</a>
+                                <a href="https://instagram.com/miplace.xvdenovembro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.xvdenovembro</a>
+                                <a href="https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace XV de Novembro</a>
+                                <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -470,13 +588,13 @@
                                 <img src="logo/dp (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Logo Miplace Honor" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Honor</h4>
-                                    <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Dom Pedro II, 857 - Centro<br>CEP: 13400-390</a>
+                                    <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Dom Pedro II, 857 - Centro<br>CEP: 13400-390</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.dompedro" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.dompedro</a>
-                                <a href="https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Honor</a>
-                                <a href="https://wa.me/5519994975131" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131</a>
+                                <a href="https://instagram.com/miplace.dompedro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.dompedro</a>
+                                <a href="https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Honor</a>
+                                <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -484,13 +602,13 @@
                                 <img src="logo/realme (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Logo Miplace Realme" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Realme</h4>
-                                    <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Benjamin Constant, 1230 - Centro<br>CEP: 13400-053</a>
+                                    <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Benjamin Constant, 1230 - Centro<br>CEP: 13400-053</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.benjamin" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.benjamin</a>
-                                <a href="https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Realme</a>
-                                <a href="https://wa.me/5519994510123" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123</a>
+                                <a href="https://instagram.com/miplace.benjamin" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.benjamin</a>
+                                <a href="https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Realme</a>
+                                <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123</a>
                             </div>
                         </div>
                     </div>
@@ -503,13 +621,13 @@
                                 <img src="logo/kf (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Logo Miplace Kassouf" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Kassouf</h4>
-                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP" target="_blank" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 218 - sala 09 - Centro<br>CEP: 13900-005</a>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 218 - sala 09 - Centro<br>CEP: 13900-005</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.kassouf" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.kassouf</a>
-                                <a href="https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Kassouf</a>
-                                <a href="https://wa.me/5519971077066" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066</a>
+                                <a href="https://instagram.com/miplace.kassouf" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.kassouf</a>
+                                <a href="https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Kassouf</a>
+                                <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -517,13 +635,13 @@
                                 <img src="logo/pr (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Logo Miplace Premium" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Premium</h4>
-                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 26 - Centro<br>CEP: 13900-005</a>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 26 - Centro<br>CEP: 13900-005</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.premium" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.premium</a>
-                                <a href="https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Premium</a>
-                                <a href="https://wa.me/5519999618865" target="_blank" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865</a>
+                                <a href="https://instagram.com/miplace.premium" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.premium</a>
+                                <a href="https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Premium</a>
+                                <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865</a>
                             </div>
                         </div>
                     </div>
@@ -571,24 +689,39 @@
         </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal — scroll unificado no painel direito -->
     <div id="product-modal" class="fixed inset-0 z-[100] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 backdrop-blur-sm cursor-pointer" style="background-color:rgba(28,25,23,0.9);" onclick="closeModal()"></div>
-        <div class="relative z-10 w-full max-w-6xl max-h-[95vh] min-h-[60vh] overflow-y-auto flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300" id="modal-container" style="background-color:#f4f4f0 !important;">
+        <div class="relative z-10 w-full max-w-6xl max-h-[95vh] flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300 overflow-hidden" id="modal-container" style="background-color:#f4f4f0 !important;">
             <button onclick="closeModal()" aria-label="Fechar detalhes do produto" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-lg" style="background-color:#1c1917 !important; color:#f4f4f0 !important;">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content" class="w-full flex flex-col md:flex-row"></div>
+            <div id="modal-content" class="w-full flex flex-col md:flex-row h-full"></div>
         </div>
     </div>
 
     <script>
+        // Função utilitária de debounce
+        function debounce(fn, delay) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn.apply(this, args), delay);
+            };
+        }
+
+        // trackEvent sem GA — stub seguro para não quebrar chamadas existentes
+        function trackEvent(eventName, params = {}) {
+            // Vercel Analytics é capturado automaticamente pelo script injetado
+            // Sem Google Analytics configurado — função mantida para compatibilidade
+        }
+
         const productsData = [
             { id: 1, brand: 'Realme', name: 'REALME C61', highlight: false, image: 'Realme/c61-1.png', price: 'A partir de R$ 1.499', description: 'O Realme C61 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.', specs: [{ label: 'Processador', value: 'Unisoc T612' },{ label: 'Memória RAM', value: '4 GB, 6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,74" IPS LCD, HD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },{ label: 'Bateria', value: '5.000 mAh (15W)' },{ label: 'Sistema', value: 'Android 14 (Realme UI)' },{ label: 'Recursos', value: 'IP54, NFC, P2, Mini Cápsula 2.0' }], highlights: [{ title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },{ title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Dourado.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte).' }], gallery: ['Realme/c61-1.png','Realme/c61-2.png','Realme/c61-3.png','Realme/c61-4.png'] },
             { id: 2, brand: 'Realme', name: 'REALME C63', highlight: false, image: 'Realme/c63-1.png', price: 'A partir de R$ 1.499', description: 'O Realme C63 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.', specs: [{ label: 'Processador', value: 'Unisoc T612' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,74" IPS LCD, HD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },{ label: 'Bateria', value: '5.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 14 (Realme UI)' },{ label: 'Recursos', value: 'IP54, NFC, P2, Alto-falante mono, Mini Cápsula 2.0' }], highlights: [{ title: 'Resistência', text: 'Projetado para ser robusto, com boa resistência a quedas.' },{ title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Azul.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }], gallery: ['Realme/c63-1.png','Realme/c63-2.png','Realme/c63-3.png','Realme/c63-4.png'] },
             { id: 3, brand: 'Realme', name: 'REALME C67', highlight: false, image: 'Realme/c67-1.png', price: 'A partir de R$ 1.499', description: 'O Realme C67 é um smartphone de entrada avançado que se destaca pela sua câmera de 108 MP e design elegante com certificação IP54 contra poeira e respingo.', specs: [{ label: 'Processador', value: 'Snapdragon 685' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,72" IPS LCD, FHD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 108 MP | Frontal 8 MP' },{ label: 'Bateria', value: '5.000 mAh (Carregamento 33W)' },{ label: 'Sistema', value: 'Android 14 (Realme UI)' },{ label: 'Recursos', value: 'IP54' }], highlights: [{ title: 'Câmera', text: 'Câmera principal de 108 MP com excelente qualidade de imagem.' },{ title: 'Design', text: 'Corpo fino (7,6 mm) e disponível nas cores Verde e Preto.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), bom desempenho em jogos.' }], gallery: ['Realme/c67-1.png','Realme/c67-2.png','Realme/c67-3.png','Realme/c67-4.png'] },
-            { id: 4, brand: 'Realme', name: 'REALME C71', highlight: false, image: 'Realme/c71-1.png', price: 'A partir de R$ 1.399', description: 'O Realme C71 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP54 contra poeira e respingo.', specs: [{ label: 'Processador', value: 'Unisoc T7250' },{ label: 'Memória RAM', value: '4 GB, 6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,67" IPS LCD, HD+, 120 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },{ label: 'Bateria', value: '6.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 15 com a interface realme UI 6.0' },{ label: 'Recursos', value: 'IP54, NFC, P2' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Branco.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }], gallery: ['Realme/c71-1.png','Realme/c71-2.png','Realme/c71-3.png','Realme/c71-4.png'] },
-            { id: 5, brand: 'Realme', name: 'REALME C75/C75X', highlight: false, image: 'Realme/c75-1.png', price: 'A partir de R$ 1.699', description: 'O Realme C75 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP68/IP69 até 1,5 metros por 25 minutos.', specs: [{ label: 'Processador', value: 'Mediatek Helio G92 Max' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,72" IPS LCD, FHD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },{ label: 'Bateria', value: '6.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 14 com a interface realme UI 5.0' },{ label: 'Recursos', value: 'IP68/IP69, NFC' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo fino (8 mm) e disponível nas cores Dourado, Preto, Rosa, Azul e Vermelho.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }], gallery: ['Realme/c75-1.png','Realme/c75-2.png','Realme/c75-3.png','Realme/c75-4.png'] },
+            { id: 4, brand: 'Realme', name: 'REALME C71', highlight: false, image: 'Realme/c71-1.png', price: 'A partir de R$ 1.399', description: 'O Realme C71 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP54 contra poeira e respingo.', specs: [{ label: 'Processador', value: 'Unisoc T7250' },{ label: 'Memória RAM', value: '4 GB, 6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,67" IPS LCD, HD+, 120 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 5 MP' },{ label: 'Bateria', value: '6.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 15 com a interface Realme UI 6.0' },{ label: 'Recursos', value: 'IP54, NFC, P2' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo fino (7,8 mm) e disponível nas cores Verde e Branco.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }], gallery: ['Realme/c71-1.png','Realme/c71-2.png','Realme/c71-3.png','Realme/c71-4.png'] },
+            { id: 5, brand: 'Realme', name: 'REALME C75/C75X', highlight: false, image: 'Realme/c75-1.png', price: 'A partir de R$ 1.699', description: 'O Realme C75 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP68/IP69 até 1,5 metros por 25 minutos.', specs: [{ label: 'Processador', value: 'Mediatek Helio G92 Max' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,72" IPS LCD, FHD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },{ label: 'Bateria', value: '6.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 14 com a interface Realme UI 5.0' },{ label: 'Recursos', value: 'IP68/IP69, NFC' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo fino (8 mm) e disponível nas cores Dourado, Preto, Rosa, Azul e Vermelho.' },{ title: 'Performance', text: 'Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados.' }], gallery: ['Realme/c75-1.png','Realme/c75-2.png','Realme/c75-3.png','Realme/c75-4.png'] },
             { id: 6, brand: 'Realme', name: 'REALME C85', highlight: false, image: 'Realme/c85-1.png', price: 'A partir de R$ 1.899', description: 'O Realme C85 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.', specs: [{ label: 'Processador', value: 'Mediatek Dimensity 6300' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,8" IPS LCD, HD+, 144 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },{ label: 'Bateria', value: '7.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 15 (Realme UI 6.0)' },{ label: 'Recursos', value: 'IP68/IP69k, NFC' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo (8,4 mm) e disponível nas cores Azul e Preto.' },{ title: 'Performance', text: 'Adequado para tarefas diárias, bom desempenho em jogos.' }], gallery: ['Realme/c85-1.png','Realme/c85-2.png','Realme/c85-3.png','Realme/c85-4.png'] },
             { id: 7, brand: 'Realme', name: 'REALME C85 PRO', highlight: false, image: 'Realme/c85pro-1.png', price: 'A partir de R$ 2.099', description: 'O Realme C85 Pro é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.', specs: [{ label: 'Processador', value: 'Snapdragon 685' },{ label: 'Memória RAM', value: '6 GB ou 8 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,8" AMOLED, FHD+, 120 Hz' },{ label: 'Câmeras', value: 'Principal 50 MP | Frontal 8 MP' },{ label: 'Bateria', value: '7.000 mAh (Carregamento 45W)' },{ label: 'Sistema', value: 'Android 15 (Realme UI 6.0)' },{ label: 'Recursos', value: 'IP68/IP69k, NFC' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,5 metros.' },{ title: 'Design', text: 'Corpo (8,1 mm) e disponível nas cores Rosa e Verde.' },{ title: 'Performance', text: 'Ótimo desempenho para tarefas diárias e jogos.' }], gallery: ['Realme/c85pro-1.png','Realme/c85pro-2.png','Realme/c85pro-3.png','Realme/c85pro-4.png'] },
             { id: 8, brand: 'Realme', name: 'REALME NOTE 70', highlight: false, image: 'Realme/note70-1.png', price: 'A partir de R$ 1.399', description: 'O Realme Note 70 é um smartphone de entrada com design elegante, certificação IP54 e personalização de LED traseiro.', specs: [{ label: 'Processador', value: 'Unisoc T7250' },{ label: 'Memória RAM', value: '4 GB ou 6 GB (+ virtual)' },{ label: 'Armazenamento', value: '128 GB ou 256 GB' },{ label: 'Tela', value: '6,72" IPS LCD, HD+, 90 Hz' },{ label: 'Câmeras', value: 'Principal 13 MP | Frontal 5 MP' },{ label: 'Bateria', value: '6.300 mAh (Carregamento 15W)' },{ label: 'Sistema', value: 'Android 15 (Realme UI 5.0)' },{ label: 'Recursos', value: 'IP54' }], highlights: [{ title: 'Resistência', text: 'Projetado para quedas de até 1,8 metros.' },{ title: 'Design', text: 'Corpo (7,9 mm) e disponível nas cores Preto e Dourado.' },{ title: 'Performance', text: 'Ótimo desempenho para tarefas diárias e internet.' }], gallery: ['Realme/note70-1.png','Realme/note70-2.png','Realme/note70-3.png','Realme/note70-4.png'] },
@@ -670,14 +803,21 @@
             const clearBtn = document.getElementById('search-clear');
             const searchIcon = document.getElementById('search-icon');
             if (!input) return;
-            input.addEventListener('input', () => {
+
+            const debouncedSearch = debounce(() => {
                 currentSearch = input.value.trim().toLowerCase();
-                if (currentSearch.length > 0) { clearBtn.classList.remove('hidden'); searchIcon.classList.add('hidden'); }
-                else { clearBtn.classList.add('hidden'); searchIcon.classList.remove('hidden'); }
-                if (currentSearch.length >= 3) trackEvent('search', { search_term: currentSearch });
+                if (currentSearch.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                    searchIcon.classList.add('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                    searchIcon.classList.remove('hidden');
+                }
                 renderProducts();
                 if (typeof startGridCarousel === 'function') startGridCarousel();
-            });
+            }, 200);
+
+            input.addEventListener('input', debouncedSearch);
         }
 
         window.clearSearch = () => {
@@ -753,7 +893,7 @@
                 <i class="fa-solid fa-magnifying-glass text-4xl mb-6" style="color:rgba(28,25,23,0.2);"></i>
                 <h3 class="font-serif text-3xl mb-3" style="color:#1c1917;">Nenhum produto encontrado</h3>
                 <p class="font-sans text-sm mb-8" style="color:#44403c;">Não há produtos para <strong>${term}</strong> no momento.</p>
-                <button onclick="setFilter('Todos');clearSearch();" class="font-sans uppercase tracking-widest text-xs font-bold px-8 py-3 transition-colors" style="border:1px solid #1c1917; color:#1c1917; background:transparent;" onmouseover="this.style.backgroundColor='#1c1917';this.style.color='#f4f4f0';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#1c1917';">
+                <button onclick="setFilter('Todos');clearSearch();" class="font-sans uppercase tracking-widest text-xs font-bold px-8 py-3 btn-hover-ink-border">
                     Ver todos os produtos
                 </button>
             </div>`;
@@ -800,7 +940,7 @@
                 if (menu && !menu.classList.contains('opacity-0')) {
                     menu.classList.add('opacity-0', 'invisible');
                     menu.classList.remove('opacity-100', 'visible');
-                    icon.classList.remove('rotate-180');
+                    if (icon) icon.style.transform = 'scale(1)';
                 }
             }
         });
@@ -867,7 +1007,7 @@
             const product = productsData.find(p => p.id === id);
             if (!product) return;
             document.title = `${product.name} | Miplace Magazine`;
-            trackEvent('view_item', { item_id: String(product.id), item_name: product.name, item_brand: product.brand, item_category: product.brand, price: product.price ? parseFloat(product.price.replace(/[^\d,]/g, '').replace(',', '.')) : 0 });
+            trackEvent('view_item', { item_id: String(product.id), item_name: product.name, item_brand: product.brand });
             const modal = document.getElementById('product-modal');
             const container = document.getElementById('modal-container');
             const content = document.getElementById('modal-content');
@@ -888,28 +1028,28 @@
                 <div id="contacts-pira" style="display:none; background-color:#f4f4f0 !important; color:#1c1917 !important;" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in p-6 border z-50 max-h-[50vh] overflow-y-auto">
                     <div class="flex justify-between items-center mb-2 pb-2" style="border-bottom:1px solid rgba(28,25,23,0.2);">
                         <span class="font-sans text-[10px] font-bold uppercase tracking-widest" style="color:#44403c;">Lojas em Piracicaba</span>
-                        <button onclick="document.getElementById('contacts-pira').style.display='none'" style="color:#1c1917;" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                        <button onclick="document.getElementById('contacts-pira').style.display='none'" style="color:#1c1917;" title="Fechar" aria-label="Fechar lojas de Piracicaba"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     ${[['Miplace XV de Novembro','5519989605504','R.+Quinze+de+Novembro,+910','R. Quinze de Novembro, 910 - Centro'],['Miplace Honor','5519994975131','R.+Dom+Pedro+II,+857','R. Dom Pedro II, 857 - Centro'],['Miplace Realme','5519994510123','R.+Benjamin+Constant,+1230','R. Benjamin Constant, 1230 - Centro']].map(([nome,tel,maps,end]) => `
                     <div class="p-4" style="background-color:#eaeaeb; border-left:4px solid #1c1917;">
                         <h5 class="font-serif font-bold text-lg mb-2" style="color:#1c1917;">${nome}</h5>
                         <div class="flex flex-col gap-2">
-                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
-                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Piracicaba+-+SP" target="_blank" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
+                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
+                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
                         </div>
                     </div>`).join('')}
                 </div>
                 <div id="contacts-amp" style="display:none; background-color:#f4f4f0 !important; color:#1c1917 !important;" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in p-6 border z-50 max-h-[50vh] overflow-y-auto">
                     <div class="flex justify-between items-center mb-2 pb-2" style="border-bottom:1px solid rgba(28,25,23,0.2);">
                         <span class="font-sans text-[10px] font-bold uppercase tracking-widest" style="color:#44403c;">Lojas em Amparo</span>
-                        <button onclick="document.getElementById('contacts-amp').style.display='none'" style="color:#1c1917;" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                        <button onclick="document.getElementById('contacts-amp').style.display='none'" style="color:#1c1917;" title="Fechar" aria-label="Fechar lojas de Amparo"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     ${[['Miplace Kassouf','5519971077066','R.+Treze+de+Maio,+218','R. Treze de Maio, 218 - sala 09 - Centro'],['Miplace Premium','5519999618865','R.+Treze+de+Maio,+26','R. Treze de Maio, 26 - Centro']].map(([nome,tel,maps,end]) => `
                     <div class="p-4" style="background-color:#eaeaeb; border-left:4px solid #1c1917;">
                         <h5 class="font-serif font-bold text-lg mb-2" style="color:#1c1917;">${nome}</h5>
                         <div class="flex flex-col gap-2">
-                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
-                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Amparo+-+SP" target="_blank" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
+                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
+                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
                         </div>
                     </div>`).join('')}
                 </div>
@@ -922,11 +1062,12 @@
                     </button>
                 </div>`;
 
+            // Modal com scroll unificado — apenas o painel direito rola
             content.innerHTML = product.description ? `
-                <div class="w-full md:w-5/12 relative overflow-y-auto" style="background-color:#eaeaeb; border-right:1px solid rgba(28,25,23,0.1); max-height:95vh;">
+                <div class="w-full md:w-5/12 overflow-y-auto modal-scroll-pane" style="background-color:#eaeaeb; border-right:1px solid rgba(28,25,23,0.1); max-height:95vh;">
                     <div class="w-full">${galleryHTML}</div>
                 </div>
-                <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col overflow-y-auto" style="background-color:#f4f4f0 !important; color:#1c1917 !important; max-height:95vh;">
+                <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col overflow-y-auto modal-scroll-pane" style="background-color:#f4f4f0 !important; color:#1c1917 !important; max-height:95vh;">
                     <div class="mb-2"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${product.brand}</span></div>
                     <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 leading-none" style="color:#1c1917 !important;">${product.name}</h2>
                     ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-6 inline-block w-max" style="color:#1c1917; border-bottom:2px solid #1c1917;">${product.price}</p>` : ''}
@@ -939,7 +1080,7 @@
                 </div>` : `
                 <div class="w-full p-12 flex flex-col items-center justify-center min-h-[40vh] text-center" style="background-color:#f4f4f0 !important;">
                     <div class="w-32 h-32 rounded-full flex items-center justify-center mb-6" style="background-color:#eaeaeb;">
-                        ${product.image ? `<img src="${product.image}" class="w-20 h-20 object-contain">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(28,25,23,0.2);"></i>`}
+                        ${product.image ? `<img src="${product.image}" class="w-20 h-20 object-contain" alt="${product.name}">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(28,25,23,0.2);"></i>`}
                     </div>
                     <h2 class="font-serif text-3xl font-bold mb-4" style="color:#1c1917 !important;">${product.name}</h2>
                     <p class="font-sans mb-8" style="color:#44403c !important;">Ainda estamos preparando os detalhes deste editorial.</p>
@@ -1070,7 +1211,7 @@
                     backToTop.style.opacity = winScroll > 400 ? '1' : '0';
                     backToTop.style.pointerEvents = winScroll > 400 ? 'auto' : 'none';
                 }
-            });
+            }, { passive: true });
 
             const bgMusic = document.getElementById('bg-music');
             const audioControl = document.getElementById('audio-control');
