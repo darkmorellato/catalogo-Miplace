@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth" style="background-color:#f4f4f0 !important; color:#1c1917 !important; color-scheme: light !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,8 @@
     <meta name="theme-color" content="#f4f4f0">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://miplacemagazine.com.br/">
@@ -170,13 +172,35 @@
            Impede que preferências de dark mode do SO sobrescrevam o design
         ============================================================ */
         :root {
-            color-scheme: light only;
+            color-scheme: light !important;
         }
 
-        html, body, * {
+        /* SOLUÇÃO DEFINITIVA — Força tema claro em TODOS os elementos */
+        html {
+            background-color: #f4f4f0 !important;
+            color: #1c1917 !important;
+            color-scheme: light !important;
+            -webkit-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        html, body, div, section, header, footer, nav, main, aside, article, span, p, h1, h2, h3, h4, h5, h6, a, button, input, textarea, select {
             -webkit-color-adjust: exact !important;
             color-adjust: exact !important;
             forced-color-adjust: none !important;
+        }
+
+        /* Impede qualquer media query de dark mode do Tailwind ou CSS externo */
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background-color: #f4f4f0 !important;
+                color: #1c1917 !important;
+                color-scheme: light !important;
+            }
+            * {
+                background-color: inherit;
+                color: inherit;
+            }
         }
 
         body {
@@ -324,7 +348,7 @@
         #hamburger-btn.open .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col relative selection:bg-ink selection:text-paper">
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-ink selection:text-paper" style="background-color:#f4f4f0 !important; color:#1c1917 !important;">
 
     <div class="paper-grain"></div>
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-accent z-[60] w-0 transition-all duration-100 ease-out"></div>
