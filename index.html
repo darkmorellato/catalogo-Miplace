@@ -55,6 +55,99 @@
     <!-- Google Fonts: Playfair Display (Serif/Revista) e DM Sans (Sans/Moderno) -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
 
+    <!-- Google Analytics 4 -->
+    <!-- Substitua G-XXXXXXXXXX pelo seu ID real em https://analytics.google.com -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            page_title: 'Miplace Magazine — Catálogo',
+            page_location: window.location.href
+        });
+
+        // Helper para rastrear eventos customizados
+        function trackEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+        }
+    </script>
+
+    <!-- YouTube IFrame API — necessária para forçar autoplay independente de visibility -->
+    <script>
+        // Carrega a API do YouTube de forma assíncrona
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var ytPlayer;
+
+        // Chamada automática pela API quando estiver pronta
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                videoId: 'gwBz0OCk_hA',
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    loop: 1,
+                    playlist: 'gwBz0OCk_hA',
+                    controls: 0,
+                    playsinline: 1,
+                    modestbranding: 1,
+                    rel: 0,
+                    disablekb: 1,
+                    fs: 0
+                },
+                events: {
+                    onReady: function(event) {
+                        event.target.mute();
+                        event.target.playVideo();
+                    },
+                    onStateChange: function(event) {
+                        // Garante que o vídeo continue em loop mesmo após terminar
+                        if (event.data === YT.PlayerState.ENDED) {
+                            event.target.playVideo();
+                        }
+                    }
+                }
+            });
+
+            // Aplica estilo ao iframe gerado pela API
+            setTimeout(function() {
+                var iframe = document.querySelector('#yt-player iframe');
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.position = 'absolute';
+                    iframe.style.top = '0';
+                    iframe.style.left = '0';
+                }
+            }, 500);
+        }
+    </script>
+
+    <!-- Schema.org JSON-LD para SEO estruturado -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Miplace Magazine",
+      "description": "Catálogo exclusivo de smartphones premium com parcelamento em até 24x no boleto sem consulta.",
+      "url": "https://miplacemagazine.com.br/",
+      "logo": "https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png",
+      "areaServed": ["Piracicaba", "Amparo"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+
     <!-- Configuração do Tailwind -->
     <script>
         tailwind.config = {
@@ -87,6 +180,16 @@
             overflow-x: hidden;
             border-left: 12px solid #1c1917;
             border-right: 12px solid #1c1917;
+        }
+
+        /* YouTube IFrame API — garante que o player ocupe todo o container */
+        #yt-player,
+        #yt-player iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            border: none;
         }
 
         .editorial-border { border-color: #1c1917; }
@@ -198,6 +301,68 @@
             border-bottom: 1px solid #1c1917;
             padding-top: 3px;
         }
+
+        /* Menu Hamburguer Mobile */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .hamburger-line {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #1c1917;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: center;
+        }
+        #hamburger-btn.open .hamburger-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        #hamburger-btn.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #hamburger-btn.open .hamburger-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        /* Marquee pausa ao hover */
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1c1917;
+                color: #f4f4f0;
+                border-left-color: #f4f4f0;
+                border-right-color: #f4f4f0;
+            }
+            header, .bg-paper { background-color: #27241f !important; }
+            .bg-paper-dark { background-color: #1c1917 !important; }
+            .text-ink { color: #f4f4f0 !important; }
+            .text-ink-light { color: #a8a29e !important; }
+            .border-ink { border-color: #f4f4f0 !important; }
+            .border-b-thick { border-bottom-color: #f4f4f0 !important; }
+            .marquee-container { background-color: #27241f; border-color: #f4f4f0; }
+            .marquee-content { color: #a8a29e; }
+            .h-3.bg-ink { background-color: #f4f4f0 !important; }
+            #scroll-progress { background-color: #ef4444; }
+            ::-webkit-scrollbar-track { background: #1c1917; }
+            ::-webkit-scrollbar-thumb { background: #f4f4f0; }
+            .paper-grain { opacity: 0.02; }
+            .bg-paper\/95 { background-color: rgba(39,36,31,0.95) !important; }
+            #back-to-top, #audio-control { background-color: #f4f4f0 !important; color: #1c1917 !important; }
+            .stagger-item { color: #f4f4f0; }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative selection:bg-ink selection:text-paper">
@@ -225,6 +390,11 @@
         <span class="absolute inset-0 rounded-full border-2 border-ink animate-ping opacity-50 group-hover:opacity-0 transition-opacity" id="audio-pulse"></span>
         <i class="fa-solid fa-music text-lg relative z-10" id="audio-icon"></i>
     </button>
+
+    <!-- Botão Compartilhar via WhatsApp (fixo, mobile) -->
+    <a id="share-btn" href="https://wa.me/?text=Confira%20o%20cat%C3%A1logo%20exclusivo%20da%20Miplace%20Magazine%21%20Smartphones%20premium%20parcelados%20em%20at%C3%A9%2024x%20no%20boleto%20sem%20consulta.%20https%3A%2F%2Fmiplacemagazine.com.br%2F" aria-label="Compartilhar site via WhatsApp" title="Compartilhar no WhatsApp" target="_blank" rel="noopener noreferrer" class="fixed bottom-[5.5rem] left-6 z-50 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all hover:bg-green-700">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+    </a>
 
     <!-- Cabeçalho (Masthead da Revista) -->
     <header class="w-full pt-10 pb-6 px-4 md:px-8 bg-paper border-b-thick border-ink z-40 relative mt-3" id="navbar">
@@ -278,23 +448,54 @@
             </div>
 
             <!-- Menu de navegação editorial -->
-            <nav class="mt-10 flex flex-wrap justify-center gap-8 md:gap-16 border-t border-ink pt-4 font-sans text-sm uppercase tracking-widest font-bold">
-                <a href="#inicio" class="hover:text-ink-light transition-colors relative group play-sound">
-                    Capa
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#editorial-boleto" class="hover:text-ink-light transition-colors relative group play-sound">
-                    Destaque
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#catalogo" class="hover:text-ink-light transition-colors relative group play-sound">
-                    A Coleção
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#enderecos" class="hover:text-ink-light transition-colors relative group play-sound">
-                    Endereços
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
-                </a>
+            <nav class="mt-10 border-t border-ink pt-4 font-sans text-sm uppercase tracking-widest font-bold">
+                <!-- Desktop -->
+                <div class="hidden md:flex justify-center gap-16">
+                    <a href="#inicio" class="hover:text-ink-light transition-colors relative group play-sound">
+                        Capa
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#editorial-boleto" class="hover:text-ink-light transition-colors relative group play-sound">
+                        Destaque
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#catalogo" class="hover:text-ink-light transition-colors relative group play-sound">
+                        A Coleção
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#enderecos" class="hover:text-ink-light transition-colors relative group play-sound">
+                        Endereços
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-ink transition-all group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburguer -->
+                <div class="flex md:hidden justify-between items-center">
+                    <span class="text-[10px] tracking-[0.3em] text-ink-light">Navegar</span>
+                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" onclick="toggleMobileMenu()" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Collapsible -->
+                <div id="mobile-menu" role="navigation" aria-label="Menu principal mobile">
+                    <div class="flex flex-col gap-0 pt-4 pb-2">
+                        <a href="#inicio" onclick="closeMobileMenu()" class="py-3 border-b border-ink/10 hover:text-ink-light transition-colors play-sound flex items-center justify-between">
+                            Capa <i class="fa-solid fa-arrow-right text-[10px] text-ink-light"></i>
+                        </a>
+                        <a href="#editorial-boleto" onclick="closeMobileMenu()" class="py-3 border-b border-ink/10 hover:text-ink-light transition-colors play-sound flex items-center justify-between">
+                            Destaque <i class="fa-solid fa-arrow-right text-[10px] text-ink-light"></i>
+                        </a>
+                        <a href="#catalogo" onclick="closeMobileMenu()" class="py-3 border-b border-ink/10 hover:text-ink-light transition-colors play-sound flex items-center justify-between">
+                            A Coleção <i class="fa-solid fa-arrow-right text-[10px] text-ink-light"></i>
+                        </a>
+                        <a href="#enderecos" onclick="closeMobileMenu()" class="py-3 hover:text-ink-light transition-colors play-sound flex items-center justify-between">
+                            Endereços <i class="fa-solid fa-arrow-right text-[10px] text-ink-light"></i>
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -316,10 +517,10 @@
                     <!-- CONTAINER DA MÃO COM CELULAR E VÍDEO -->
                     <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105">
                         
-                        <!-- 1. O VÍDEO (Fica na camada de trás) -->
+                        <!-- 1. O VÍDEO (Autoplay via YouTube IFrame API) -->
                         <div class="absolute z-0 overflow-hidden bg-black"
                              style="top: 5%; left: 2%; width: 95%; height: 80%; border-radius: 6px;">
-                            <iframe src="https://www.youtube-nocookie.com/embed/gwBz0OCk_hA?autoplay=1&mute=1&loop=1&playlist=gwBz0OCk_hA&controls=0&playsinline=1&modestbranding=1&rel=0&vq=hd2160&hd=1&quality=hd2160" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="pointer-events: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></iframe>
+                            <div id="yt-player"></div>
                         </div>
                         
                         <!-- 2. A MOLDURA / IMAGEM (Fica na camada da frente) -->
@@ -386,6 +587,25 @@
             <div class="sticky top-3 z-40 bg-paper/95 backdrop-blur-md py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-y border-ink/10 flex flex-wrap gap-6 mt-8 md:mt-0 font-sans text-xs uppercase tracking-widest font-bold transition-all" id="category-filters">
                 <!-- Preenchido via JS -->
             </div>
+        </div>
+
+        <!-- Busca em Tempo Real -->
+        <div class="mb-10 reveal">
+            <div class="relative max-w-md">
+                <input 
+                    type="search" 
+                    id="search-input"
+                    placeholder="Buscar produto... ex: Redmi, AMOLED, 5G"
+                    autocomplete="off"
+                    aria-label="Buscar produtos no catálogo"
+                    class="w-full font-sans text-sm bg-transparent border-b-2 border-ink/30 focus:border-ink outline-none py-3 pr-10 pl-0 placeholder:text-ink/30 transition-colors duration-300 uppercase tracking-widest"
+                >
+                <i class="fa-solid fa-magnifying-glass absolute right-2 top-1/2 -translate-y-1/2 text-ink/30 text-sm pointer-events-none" id="search-icon"></i>
+                <button id="search-clear" onclick="clearSearch()" aria-label="Limpar busca" class="absolute right-2 top-1/2 -translate-y-1/2 text-ink/50 hover:text-ink transition-colors hidden">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <p id="search-count" class="font-sans text-[10px] uppercase tracking-widest text-ink/40 mt-2 h-4"></p>
         </div>
 
         <!-- Grid Editorial -->
@@ -1148,6 +1368,31 @@
 
         const brands = ['Todos', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone'];
         let currentFilter = 'Todos';
+        let currentSearch = '';
+
+        // ============================================================
+        // PREÇOS DINÂMICOS VIA JSON EXTERNO
+        // Carrega produtos.json e atualiza os preços no productsData
+        // ============================================================
+        async function loadPrecosFromJSON() {
+            try {
+                const response = await fetch('produtos.json?v=' + Date.now());
+                if (!response.ok) throw new Error('Falha ao carregar produtos.json');
+                const precos = await response.json();
+                
+                precos.forEach(item => {
+                    const produto = productsData.find(p => p.id === item.id);
+                    if (produto) {
+                        if (item.price) produto.price = item.price;
+                        if (item.specialPrice !== undefined) produto.specialPrice = item.specialPrice;
+                    }
+                });
+
+                console.log('[Miplace] Preços atualizados via produtos.json ✓');
+            } catch (err) {
+                console.warn('[Miplace] Usando preços embutidos (produtos.json indisponível):', err.message);
+            }
+        }
 
         // SOM SUTIL (Página / Clique)
         let audioCtx = null;
@@ -1188,10 +1433,85 @@
             `).join('');
         }
 
+        // ============================================================
+        // BUSCA EM TEMPO REAL
+        // ============================================================
+        function initSearch() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('search-clear');
+            const searchIcon = document.getElementById('search-icon');
+            if (!input) return;
+
+            input.addEventListener('input', () => {
+                currentSearch = input.value.trim().toLowerCase();
+                
+                // Mostra/oculta botão de limpar
+                if (currentSearch.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                    searchIcon.classList.add('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                    searchIcon.classList.remove('hidden');
+                }
+
+                // Rastreia busca no GA4 (só após 3 caracteres para evitar spam)
+                if (currentSearch.length >= 3) {
+                    trackEvent('search', { search_term: currentSearch });
+                }
+
+                renderProducts();
+                if (typeof startGridCarousel === 'function') startGridCarousel();
+            });
+        }
+
+        window.clearSearch = () => {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('search-clear');
+            const searchIcon = document.getElementById('search-icon');
+            if (input) input.value = '';
+            currentSearch = '';
+            clearBtn.classList.add('hidden');
+            searchIcon.classList.remove('hidden');
+            renderProducts();
+            if (typeof startGridCarousel === 'function') startGridCarousel();
+        };
+
         // RENDER PRODUTOS (Layout Editorial)
         function renderProducts() {
             const container = document.getElementById('products-grid');
-            const filtered = currentFilter === 'Todos' ? productsData : productsData.filter(p => p.brand === currentFilter);
+            const searchCount = document.getElementById('search-count');
+
+            // Filtra por marca
+            let filtered = currentFilter === 'Todos' ? productsData : productsData.filter(p => p.brand === currentFilter);
+
+            // Filtra por busca em tempo real
+            if (currentSearch.length > 0) {
+                filtered = filtered.filter(p => {
+                    const searchableText = [
+                        p.name,
+                        p.brand,
+                        p.description || '',
+                        ...(p.specs || []).map(s => s.value),
+                        p.price || ''
+                    ].join(' ').toLowerCase();
+                    return searchableText.includes(currentSearch);
+                });
+            }
+
+            // Atualiza contador de resultados
+            if (searchCount) {
+                if (currentSearch.length > 0) {
+                    searchCount.textContent = `${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+                } else {
+                    searchCount.textContent = '';
+                }
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = renderEmptyState(currentSearch.length > 0 ? `"${currentSearch}"` : currentFilter);
+                attachSoundEvents();
+                return;
+            }
 
             container.innerHTML = filtered.map((p, index) => {
                 let iconClass = 'fa-mobile-screen';
@@ -1251,6 +1571,27 @@
             attachSoundEvents();
         }
 
+
+
+        // MENU HAMBURGUER MOBILE
+        window.toggleMobileMenu = () => {
+            playUIClick();
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = menu.classList.contains('open');
+            menu.classList.toggle('open', !isOpen);
+            btn.classList.toggle('open', !isOpen);
+            btn.setAttribute('aria-expanded', String(!isOpen));
+        };
+        window.closeMobileMenu = () => {
+            playUIClick();
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('hamburger-btn');
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        };
+
         window.toggleContato = () => {
             playUIClick();
             const menu = document.getElementById('contato-menu');
@@ -1282,6 +1623,8 @@
 
         window.setFilter = (brand) => {
             currentFilter = brand;
+            // Rastreia uso de filtro no GA4
+            trackEvent('filter_brand', { brand_name: brand });
             renderFilters();
 
             // SKELETON LOADER: mostra placeholders animados antes de renderizar
@@ -1303,6 +1646,20 @@
                 grid.style.opacity = '1';
             }, 350);
         };
+
+        // MENSAGEM DE NENHUM PRODUTO ENCONTRADO
+        function renderEmptyState(brand) {
+            return `
+                <div class="col-span-full flex flex-col items-center justify-center py-24 text-center">
+                    <i class="fa-solid fa-magnifying-glass text-4xl text-ink/20 mb-6"></i>
+                    <h3 class="font-serif text-3xl mb-3">Nenhum produto encontrado</h3>
+                    <p class="font-sans text-ink-light text-sm mb-8">Não há produtos cadastrados para a marca <strong>${brand}</strong> no momento.</p>
+                    <button onclick="setFilter('Todos')" class="font-sans uppercase tracking-widest text-xs font-bold border border-ink px-8 py-3 hover:bg-ink hover:text-paper transition-colors play-sound">
+                        Ver todos os produtos
+                    </button>
+                </div>
+            `;
+        }
 
         // Nota: animation-fill-mode: forwards já está declarado no CSS principal via "animation: ... forwards"
 
@@ -1376,6 +1733,18 @@
             playUIClick();
             const product = productsData.find(p => p.id === id);
             if (!product) return;
+
+            // Atualiza o título da aba do navegador dinamicamente
+            document.title = `${product.name} | Miplace Magazine`;
+
+            // Rastreia visualização de produto no GA4
+            trackEvent('view_item', {
+                item_id: String(product.id),
+                item_name: product.name,
+                item_brand: product.brand,
+                item_category: product.brand,
+                price: product.price ? parseFloat(product.price.replace(/[^\d,]/g, '').replace(',', '.')) : 0
+            });
 
             const modal = document.getElementById('product-modal');
             const container = document.getElementById('modal-container');
@@ -1661,9 +2030,10 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                // BUG FIX: limpa conteúdo ao fechar para evitar flash do produto anterior ao reabrir
                 document.getElementById('modal-content').innerHTML = '';
                 document.body.style.overflow = 'auto';
+                // Restaura título original ao fechar
+                document.title = 'MIPLACE MAGAZINE | Catálogo Exclusivo';
             }, 300);
         };
 
@@ -1771,12 +2141,27 @@
         }
 
         // INIT
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            // 1. Carrega preços dinâmicos do JSON externo antes de renderizar
+            await loadPrecosFromJSON();
+
+            // 2. Renderiza catálogo com dados atualizados
             renderFilters();
             renderProducts();
             if(typeof startGridCarousel === 'function') startGridCarousel();
             initScrollReveal();
             attachSoundEvents();
+
+            // 3. Inicializa busca em tempo real
+            initSearch();
+
+            // 4. Registra Service Worker (PWA)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
+                    .catch(err => console.warn('[PWA] Falha ao registrar Service Worker:', err));
+            }
 
             const backToTop = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
@@ -1812,9 +2197,7 @@
                     if(pulse) pulse.classList.remove('hidden');
                     isMusicPlaying = false;
                 } else {
-                    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-                    const isMobile = /Android|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-                    bgMusic.volume = isIOS ? 0.05 : isMobile ? 0.05 : 0.05;
+                    bgMusic.volume = 0.05;
                     bgMusic.play().then(() => {
                         audioIcon.classList.remove('fa-music');
                         audioIcon.classList.add('fa-compact-disc', 'animate-spin-slow');
@@ -1835,6 +2218,13 @@
                     toggleMusic();
                 }
             }, { once: true });
+
+            // Atualiza link do botão de compartilhar WhatsApp com a URL real da página
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn) {
+                const shareText = 'Confira o catálogo exclusivo da Miplace Magazine! Smartphones premium parcelados em até 24x no boleto sem consulta. ' + window.location.href;
+                shareBtn.href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+            }
 
             // Tratamento global de erros de imagem
             document.addEventListener('error', function(e) {
