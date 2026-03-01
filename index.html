@@ -8,7 +8,9 @@
     <meta name="keywords" content="Miplace, smartphones, celulares, parcelamento boleto, sem consulta, Xiaomi, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Piracicaba, Amparo, crediário, tecnologia">
     <meta name="author" content="Miplace Magazine">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#1c1917">
+    <meta name="theme-color" content="#f4f4f0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://miplacemagazine.com.br/">
@@ -145,6 +147,7 @@
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -162,9 +165,23 @@
     </script>
 
     <style>
+        /* ============================================================
+           FORÇA TEMA CLARO EM TODOS OS DISPOSITIVOS E SISTEMAS
+           Impede que preferências de dark mode do SO sobrescrevam o design
+        ============================================================ */
+        :root {
+            color-scheme: light only;
+        }
+
+        html, body, * {
+            -webkit-color-adjust: exact !important;
+            color-adjust: exact !important;
+            forced-color-adjust: none !important;
+        }
+
         body {
-            background-color: #f4f4f0;
-            color: #1c1917;
+            background-color: #f4f4f0 !important;
+            color: #1c1917 !important;
             overflow-x: hidden;
             border-left: 12px solid #1c1917;
             border-right: 12px solid #1c1917;
