@@ -1828,8 +1828,9 @@
                     if(pulse) pulse.classList.remove('hidden');
                     isMusicPlaying = false;
                 } else {
-                    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-                    bgMusic.volume = isMobile ? 0.04 : 0.04; // Mobile: 4% | Desktop: 4%
+                    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+                    const isMobile = /Android|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+                    bgMusic.volume = isIOS ? 0.05 : isMobile ? 0.05 : 0.05; // iOS: 5% | Android: 5% | Desktop: 5%
                     bgMusic.play().then(() => {
                         audioIcon.classList.remove('fa-music');
                         audioIcon.classList.add('fa-compact-disc', 'animate-spin-slow');
