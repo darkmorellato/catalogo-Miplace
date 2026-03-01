@@ -82,6 +82,19 @@
         .img-zoom { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .group:hover .img-zoom { transform: scale(1.05); }
 
+        /* Transição profissional de carrossel: Ken Burns */
+        .grid-gallery-img {
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center center;
+        }
+        .grid-gallery-img.kb-active {
+            transform: scale(1.08) translate(1%, 0.5%);
+        }
+        .grid-gallery-img.kb-alt {
+            transform: scale(1.08) translate(-1%, -0.5%);
+        }
+
         /* Animação para o ícone de música tocando */
         @keyframes spin-slow {
             from { transform: rotate(0deg); }
@@ -271,8 +284,8 @@
                         
                         <!-- 1. O VÍDEO (Fica na camada de trás) -->
                         <div class="absolute z-0 overflow-hidden bg-black"
-                             style="top: 4%; left: 2.5%; width: 96%; height: 84.5%; border-radius: 42px;">
-                            <iframe src="https://www.youtube.com/embed/gwBz0OCk_hA?autoplay=1&mute=1&loop=1&playlist=gwBz0OCk_hA&controls=0&playsinline=1&modestbranding=1&rel=0" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="pointer-events: none;"></iframe>
+                             style="top: 5%; left: 2%; width: 95%; height: 80%; border-radius: 6px;">
+                            <iframe src="https://www.youtube-nocookie.com/embed/gwBz0OCk_hA?autoplay=1&mute=1&loop=1&playlist=gwBz0OCk_hA&controls=0&playsinline=1&modestbranding=1&rel=0&vq=hd2160&hd=1&quality=hd2160" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="pointer-events: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></iframe>
                         </div>
                         
                         <!-- 2. A MOLDURA / IMAGEM (Fica na camada da frente) -->
@@ -800,7 +813,7 @@
               	{label:"Tela",value:"6,77\" TFT LCD, FHD+, 120 Hz"},
               	{label:"Câmeras",value:"Principal 108 MP | Frontal 8 MP"},
               	{label:"Bateria",value:"6.500 mAh (Carregamento rápido de até 35W)"},
-              	{label:"Sistema",value:".Android 15 (Honor Magic OS 9)"},
+              	{label:"Sistema",value:"Android 15 (Honor Magic OS 9)"},
               	{label :"Recursos", value :"IP65, NFC, resistência a quedas" }
               ],
               highlights:[
@@ -988,7 +1001,7 @@
                     { title: 'Design', text: 'Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz.' },
                     { title: 'Câmeras', text: 'Câmera principal de 200 MP e frontal de 20 MP para selfies nítidos.' }
                 ],
-                gallery: ['Redmi/note15-1.png','Redmi/note15-2.png','Redmi/note15-3.png','Redmi/note15-4.png']
+                gallery: ['Redmi/note14pro-1.png','Redmi/note14pro-2.png','Redmi/note14pro-3.png','Redmi/note14pro-4.png']
              },
              { id: 22, brand: 'Redmi', name: 'NOTE 15 5G', highlight: false, image: 'Redmi/note15-1.png',
                 price: 'A partir de R$ 2.099',
@@ -1028,7 +1041,7 @@
                     { title: 'Design', text: 'Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz.' },
                     { title: 'Câmeras', text: 'Câmera principal de 200 MP e frontal de 32 MP para selfies nítidos.' }
                 ],
-                gallery: ['Redmi/note15-1.png','Redmi/note15-2.png','Redmi/note15-3.png','Redmi/note15-4.png']
+                gallery: ['Redmi/note15pro-1.png','Redmi/note15pro-2.png','Redmi/note15pro-3.png','Redmi/note15pro-4.png']
              },
             { id: 24, brand: 'Poco', name: 'POCO X7 5G', highlight: false, image: 'Poco/x7-1.png',
                 price: 'A partir de R$ 1.899',
@@ -1096,20 +1109,25 @@
         let currentFilter = 'Todos';
 
         // SOM SUTIL (Página / Clique)
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let audioCtx = null;
+        function getAudioCtx() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            return audioCtx;
+        }
         function playUIClick() {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
+            const ctx = getAudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+            const osc = ctx.createOscillator();
+            const gainNode = ctx.createGain();
             osc.type = 'triangle';
-            osc.frequency.setValueAtTime(150, audioCtx.currentTime); 
-            osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.05);
-            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            osc.frequency.setValueAtTime(150, ctx.currentTime); 
+            osc.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.05);
+            gainNode.gain.setValueAtTime(0.05, ctx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
             osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
+            gainNode.connect(ctx.destination);
             osc.start();
-            osc.stop(audioCtx.currentTime + 0.05);
+            osc.stop(ctx.currentTime + 0.05);
         }
 
         // RENDER FILTROS
@@ -1234,44 +1252,78 @@
             grid.style.opacity = '1';
         };
 
-        // CARROSSEL ORGÂNICO EDITORIAL (UX Premium)
+        // CARROSSEL PROFISSIONAL — 5 cards aleatórios, stagger individual, Ken Burns
         let gridCarouselInterval;
+        let kbToggle = false; // alterna direção do Ken Burns a cada ciclo
+
+        function transitionCard(img, delay) {
+            const productId = parseInt(img.getAttribute('data-product-id'));
+            const product = productsData.find(p => p.id === productId);
+            if (!product || !product.gallery || product.gallery.length <= 1) return;
+
+            // UX: não troca se o usuário está com mouse em cima
+            if (img.closest('.group') && img.closest('.group').matches(':hover')) return;
+
+            const currentIdx = parseInt(img.getAttribute('data-current-idx') || '0');
+
+            // Índice aleatório diferente do atual
+            let randomIdx;
+            do {
+                randomIdx = Math.floor(Math.random() * product.gallery.length);
+            } while (randomIdx === currentIdx && product.gallery.length > 1);
+
+            setTimeout(() => {
+                // 1. Fade out suave
+                img.style.opacity = '0';
+                img.style.transform = 'scale(1.0) translate(0,0)';
+                img.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease';
+
+                setTimeout(() => {
+                    // 2. Troca a imagem sem piscar
+                    delete img.dataset.fallback;
+                    delete img.dataset.originalSrc;
+                    img.src = product.gallery[randomIdx];
+                    img.setAttribute('data-current-idx', randomIdx);
+
+                    // 3. Fade in + Ken Burns na nova imagem
+                    img.style.transition = 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    img.style.opacity = '1';
+
+                    // Alterna direção do Ken Burns para variedade visual
+                    const kbClass = kbToggle ? 'kb-active' : 'kb-alt';
+                    img.classList.remove('kb-active', 'kb-alt');
+                    void img.offsetWidth; // force reflow para reiniciar animação
+                    img.classList.add(kbClass);
+
+                }, 850); // espera o fade out terminar
+            }, delay);
+        }
+
         window.startGridCarousel = () => {
-            if(gridCarouselInterval) clearInterval(gridCarouselInterval);
-            
+            if (gridCarouselInterval) clearInterval(gridCarouselInterval);
+
+            // Inicia Ken Burns nas imagens visíveis logo ao carregar
+            document.querySelectorAll('.grid-gallery-img').forEach((img, i) => {
+                img.classList.add(i % 2 === 0 ? 'kb-active' : 'kb-alt');
+            });
+
             gridCarouselInterval = setInterval(() => {
-                const images = document.querySelectorAll('.grid-gallery-img');
-                if(images.length === 0) return;
-                
-                // Escolhe de 1 a 2 imagens para animar neste ciclo (evita piscar a tela inteira)
-                const numToChange = Math.min(images.length, Math.floor(Math.random() * 2) + 1);
-                const shuffled = Array.from(images).sort(() => 0.5 - Math.random());
-                const selected = shuffled.slice(0, numToChange);
+                const allImages = Array.from(document.querySelectorAll('.grid-gallery-img'));
+                if (allImages.length === 0) return;
 
-                selected.forEach(img => {
-                    // UX: Não altera a imagem se o usuário estiver com o mouse em cima focando nela
-                    if(img.closest('.group') && img.closest('.group').matches(':hover')) return;
+                kbToggle = !kbToggle; // alterna direção global a cada ciclo
 
-                    const productId = parseInt(img.getAttribute('data-product-id'));
-                    const product = productsData.find(p => p.id === productId);
-                    if(!product || !product.gallery || product.gallery.length <= 1) return;
+                // Embaralha e pega até 15 cards aleatórios
+                const shuffled = allImages.sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, Math.min(15, shuffled.length));
 
-                    let currentIdx = parseInt(img.getAttribute('data-current-idx'));
-                    currentIdx = (currentIdx + 1) % product.gallery.length;
-                    
-                    // Efeito Crossfade (Fade out -> troca -> Fade in)
-                    img.style.opacity = '0.4'; 
-                    setTimeout(() => {
-                        // Reseta erro de fallback de imagem, se houver
-                        delete img.dataset.fallback;
-                        delete img.dataset.originalSrc;
-                        
-                        img.src = product.gallery[currentIdx];
-                        img.setAttribute('data-current-idx', currentIdx);
-                        img.style.opacity = '1';
-                    }, 500); 
+                // Cada card recebe um delay escalonado aleatório (stagger orgânico)
+                selected.forEach((img, i) => {
+                    const staggerDelay = i * (300 + Math.random() * 400); // 300~700ms entre cada
+                    transitionCard(img, staggerDelay);
                 });
-            }, 7000); // 7 segundos de intervalo aleatório como você sugeriu
+
+            }, 7000); // ciclo principal de 7 segundos
         };
 
         // FUNÇÕES DO MODAL
@@ -1292,17 +1344,20 @@
             let galleryHTML = '';
             if (galleryImages.length > 0) {
                 galleryHTML = `
-                    <div class="w-full flex flex-col gap-12">
-                        ${galleryImages.map(img => `
-                            <div class="w-full max-w-sm mx-auto aspect-[4/5] bg-transparent flex items-center justify-center cursor-zoom-in group transition-colors" onclick="openLightbox('${img}')" title="Clique para ampliar">
-                                <img src="${img}" class="w-full h-full object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                    <div class="w-full flex flex-col gap-3 p-3">
+                        ${galleryImages.map((img, i) => `
+                            <div class="w-full aspect-video bg-paper rounded overflow-hidden relative cursor-zoom-in group border border-ink/10 hover:border-ink/40 transition-all duration-300 shadow-sm hover:shadow-lg" onclick="openLightbox('${img}')" title="Clique para ampliar">
+                                <img src="${img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-ink/10">
+                                    <span class="text-[9px] font-sans uppercase tracking-widest bg-ink text-paper px-2 py-1 rounded">Ampliar</span>
+                                </div>
                             </div>
                         `).join('')}
                     </div>
                 `;
             } else {
                 galleryHTML = `
-                    <div class="w-full max-w-sm mx-auto aspect-[4/5] flex items-center justify-center">
+                    <div class="w-full flex items-center justify-center h-full">
                         <i class="fa-solid fa-mobile-screen text-8xl text-ink/20"></i>
                     </div>
                 `;
@@ -1347,9 +1402,9 @@
             // Construir o HTML final
             if (product.description) {
                 content.innerHTML = `
-                    <!-- Esquerda: Galeria de Imagens Empilhadas -->
-                    <div class="w-full md:w-5/12 bg-paper-dark relative min-h-[300px] border-r border-ink/10">
-                        <div class="md:absolute inset-0 p-8 md:p-12 overflow-y-auto flex flex-col justify-start items-center">
+                    <!-- Esquerda: Galeria empilhada 16:9 com scroll -->
+                    <div class="w-full md:w-5/12 bg-paper-dark relative border-r border-ink/10 overflow-y-auto" style="max-height:95vh;">
+                        <div class="w-full">
                             ${galleryHTML}
                         </div>
                     </div>
@@ -1376,10 +1431,10 @@
                             
                             <div class="relative w-full">
                                 <!-- Contatos Piracicaba (Dropup Overlay) -->
-                                <div id="contacts-pira" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                <div id="contacts-pira" style="display:none" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
                                     <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
                                         <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Piracicaba</span>
-                                        <button onclick="document.getElementById('contacts-pira').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                        <button onclick="document.getElementById('contacts-pira').style.display='none'" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
                                     </div>
                                     <div class="bg-paper-dark p-4 border-l-4 border-ink">
                                         <h5 class="font-serif font-bold text-lg mb-2">Miplace XV de Novembro</h5>
@@ -1417,10 +1472,10 @@
                                 </div>
 
                                 <!-- Contatos Amparo (Dropup Overlay) -->
-                                <div id="contacts-amp" class="hidden absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
+                                <div id="contacts-amp" style="display:none" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in bg-paper p-6 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] border border-ink z-50 max-h-[50vh] overflow-y-auto">
                                     <div class="flex justify-between items-center mb-2 pb-2 border-b border-ink/20">
                                         <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-ink-light">Lojas em Amparo</span>
-                                        <button onclick="document.getElementById('contacts-amp').classList.add('hidden')" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                                        <button onclick="document.getElementById('contacts-amp').style.display='none'" class="text-ink hover:text-red-600 transition-colors" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
                                     </div>
                                     <div class="bg-paper-dark p-4 border-l-4 border-ink">
                                         <h5 class="font-serif font-bold text-lg mb-2">Miplace Kassouf</h5>
@@ -1448,10 +1503,10 @@
 
                                 <!-- Botões -->
                                 <div class="flex flex-col sm:flex-row gap-4 mb-2">
-                                    <button onclick="document.getElementById('contacts-pira').classList.toggle('hidden'); document.getElementById('contacts-amp').classList.add('hidden');" class="flex-1 bg-ink text-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink-light play-sound flex items-center justify-center gap-2">
+                                    <button onclick="var p=document.getElementById('contacts-pira'),a=document.getElementById('contacts-amp'); p.style.display=p.style.display==='flex'?'none':'flex'; a.style.display='none';" class="flex-1 bg-ink text-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink-light play-sound flex items-center justify-center gap-2">
                                         <i class="fa-solid fa-location-dot"></i> Piracicaba
                                     </button>
-                                    <button onclick="document.getElementById('contacts-amp').classList.toggle('hidden'); document.getElementById('contacts-pira').classList.add('hidden');" class="flex-1 border border-ink text-ink bg-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink hover:text-paper play-sound flex items-center justify-center gap-2">
+                                    <button onclick="var p=document.getElementById('contacts-pira'),a=document.getElementById('contacts-amp'); a.style.display=a.style.display==='flex'?'none':'flex'; p.style.display='none';" class="flex-1 border border-ink text-ink bg-paper font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(28,25,23,0.3)] hover:bg-ink hover:text-paper play-sound flex items-center justify-center gap-2">
                                         <i class="fa-solid fa-location-dot"></i> Amparo
                                     </button>
                                 </div>
@@ -1648,7 +1703,7 @@
         function attachSoundEvents() {
             document.querySelectorAll('.play-sound').forEach(el => {
                 el.removeEventListener('click', playUIClick);
-                el.addEventListener('click', () => playUIClick());
+                el.addEventListener('click', playUIClick);
             });
         }
 
@@ -1714,12 +1769,12 @@
             });
 
             // Tenta tocar a música na primeira interação do usuário na página (ao clicar em qualquer lugar)
-            document.body.addEventListener('click', function firstInteraction() {
+            document.body.addEventListener('click', function firstInteraction(e) {
+                // Ignora se o clique foi no botão de áudio (ele já tem seu próprio handler)
+                if (audioControl.contains(e.target)) return;
                 if (!isMusicPlaying) {
                     toggleMusic();
                 }
-                // Remove o evento após o primeiro clique para não rodar a função repetidas vezes
-                document.body.removeEventListener('click', firstInteraction);
             }, { once: true });
 
             // Tratamento global de erros de imagem (Ajuda a evitar problemas de Case Sensitivity no Vercel)
