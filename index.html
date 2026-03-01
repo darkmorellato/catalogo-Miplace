@@ -346,13 +346,48 @@
         ============================================================ */
         .btn-hover-ink {
             transition: background-color 0.2s ease, color 0.2s ease;
-            color: #1c1917;
+            color: #1c1917 !important;
             background-color: transparent;
         }
         .btn-hover-ink:hover {
             background-color: #1c1917 !important;
             color: #f4f4f0 !important;
         }
+        .btn-hover-ink:hover,
+        .btn-hover-ink:hover * {
+            color: #f4f4f0 !important;
+        }
+        .btn-hover-ink:hover img {
+            outline: 2px solid rgba(244,244,240,0.4);
+        }
+
+        /* ============================================================
+           HOVER CORES REDES SOCIAIS — Endereços e Modal
+        ============================================================ */
+
+        /* Instagram — rosa */
+        .link-instagram { transition: color 0.2s ease; }
+        .link-instagram:hover,
+        .link-instagram:hover i,
+        .link-instagram:hover span { color: #E1306C !important; }
+
+        /* Facebook — azul */
+        .link-facebook { transition: color 0.2s ease; }
+        .link-facebook:hover,
+        .link-facebook:hover i,
+        .link-facebook:hover span { color: #1877F2 !important; }
+
+        /* WhatsApp — verde */
+        .link-whatsapp { transition: color 0.2s ease; }
+        .link-whatsapp:hover,
+        .link-whatsapp:hover i,
+        .link-whatsapp:hover span { color: #25D366 !important; }
+
+        /* Endereço / Maps — laranja */
+        .link-maps { transition: color 0.2s ease; }
+        .link-maps:hover,
+        .link-maps:hover i,
+        .link-maps:hover span { color: #F97316 !important; }
 
         .btn-hover-ink-border {
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -370,9 +405,133 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
+
+        /* ============================================================
+           EFEITOS VISUAIS EDITORIAIS
+        ============================================================ */
+
+        /* 1. CURSOR — padrão do sistema operacional */
+        /* cursor personalizado removido — usando cursor nativo */
+
+        /* 2. FADE DE ENTRADA DA PÁGINA */
+        #page-fade {
+            position: fixed; inset: 0; z-index: 99998;
+            background: #f4f4f0; pointer-events: none;
+            animation: pageFadeOut 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+        }
+        @keyframes pageFadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* 3. SPLIT TEXT — título Miplace entra letra por letra */
+        .split-letter {
+            display: inline-block;
+            animation: letterDrop 0.6s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        @keyframes letterDrop {
+            from { opacity: 0; transform: translateY(-40px) rotate(-4deg); }
+            to   { opacity: 1; transform: translateY(0) rotate(0deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .split-letter { animation: none !important; opacity: 1 !important; transform: none !important; }
+        }
+
+        /* 4. SHIMMER nos cards ao hover */
+        .card-shimmer {
+            position: relative; overflow: hidden;
+        }
+        .card-shimmer::after {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244,244,240,0.25), transparent);
+            transform: skewX(-15deg);
+            transition: none;
+            pointer-events: none;
+        }
+        .card-shimmer:hover::after {
+            left: 150%;
+            transition: left 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .card-shimmer::after { display: none; }
+        }
+
+        /* 5. RIPPLE ao clicar nos cards */
+        .ripple-effect {
+            position: absolute; border-radius: 50%;
+            background: rgba(28,25,23,0.12);
+            transform: scale(0);
+            animation: rippleAnim 0.5s linear forwards;
+            pointer-events: none;
+        }
+        @keyframes rippleAnim {
+            to { transform: scale(4); opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ripple-effect { display: none; }
+        }
+
+        /* 6. PARALLAX no hero */
+        #hero-parallax {
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        /* 7. CONTADOR ANIMADO no editorial */
+        .count-up {
+            display: inline-block;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* 8. MAGNETIC HOVER nos links do nav */
+        .magnetic-link {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        /* 9. LINHA de scan animada no hero */
+        .scan-line {
+            position: absolute; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(28,25,23,0.15), transparent);
+            animation: scanDown 4s ease-in-out infinite;
+            pointer-events: none; z-index: 5;
+        }
+        @keyframes scanDown {
+            0%   { top: 0%; opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scan-line { display: none; }
+        }
+
+        /* 10. BORDA PULSANTE no botão de consultor */
+        .pulse-border {
+            position: relative;
+        }
+        .pulse-border::before {
+            content: '';
+            position: absolute; inset: -4px;
+            border: 1px solid rgba(244,244,240,0.3);
+            animation: pulseBorder 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes pulseBorder {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50%       { opacity: 0.8; transform: scale(1.03); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .pulse-border::before { animation: none; opacity: 0.4; }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative" style="background-color:#f4f4f0 !important; color:#1c1917 !important;">
+
+    <!-- Fade de entrada da página -->
+    <div id="page-fade"></div>
 
     <div class="paper-grain"></div>
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 z-[60] w-0 transition-all duration-100 ease-out" style="background-color:#991b1b;"></div>
@@ -407,20 +566,20 @@
                     <div id="contato-menu" class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible transition-all duration-300 text-left">
                         <div class="border shadow-2xl flex flex-col py-2" style="background-color:#f4f4f0 !important; border-color:#1c1917;">
                             <span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#44403c !important; background-color:#eaeaeb !important;">Piracicaba, SP</span>
-                            <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
+                            <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink">
                                 <img src="logo/xv (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Miplace XV de Novembro" class="w-6 h-6 rounded-full object-cover"> Miplace XV de Novembro
                             </a>
-                            <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
+                            <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink">
                                 <img src="logo/dp (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Miplace Honor" class="w-6 h-6 rounded-full object-cover"> Miplace Honor
                             </a>
-                            <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="border-bottom:1px solid #e5e5e5; color:#1c1917 !important;">
+                            <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="border-bottom:1px solid #e5e5e5;">
                                 <img src="logo/realme (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Miplace Realme" class="w-6 h-6 rounded-full object-cover"> Miplace Realme
                             </a>
                             <span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold mt-1" style="color:#44403c !important; background-color:#eaeaeb !important;">Amparo, SP</span>
-                            <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
+                            <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink">
                                 <img src="logo/kf (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Miplace Kassouf" class="w-6 h-6 rounded-full object-cover"> Miplace Kassouf
                             </a>
-                            <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="color:#1c1917 !important;">
+                            <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink">
                                 <img src="logo/pr (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Miplace Premium" class="w-6 h-6 rounded-full object-cover"> Miplace Premium
                             </a>
                         </div>
@@ -472,9 +631,10 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             <div class="md:col-span-7 lg:col-span-8 reveal relative flex items-center justify-center">
                 <div class="w-full h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-center items-center relative group p-0 md:p-4">
-                    <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105">
+                    <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105" id="hero-parallax">
                         <div class="absolute z-0 overflow-hidden" style="top:5%;left:2%;width:95%;height:80%;border-radius:6px;background:#000;">
                             <div id="yt-player"></div>
+                            <div class="scan-line"></div>
                         </div>
                         <img src="moldura-celular.png" alt="Mão segurando Smartphone" class="relative z-10 w-full h-auto pointer-events-none" style="filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));">
                     </div>
@@ -513,9 +673,9 @@
             <h2 class="font-serif text-5xl md:text-7xl mb-8 leading-tight" style="color:#f4f4f0 !important;">Parcelamos em até 24 vezes,<br> sem consulta.</h2>
             <div class="w-24 h-[1px] mx-auto mb-8" style="background-color:rgba(244,244,240,0.3);"></div>
             <p class="font-sans text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color:rgba(244,244,240,0.8) !important;">
-                A rede Miplace está há 7 anos no mercado, sendo precursora na venda de crediário. Adquira os lançamentos mais cobiçados do mercado através do nosso parcelamento exclusivo no boleto bancário. Uma facilidade pensada para você, com aprovação rápida e sem consulta de score.
+                A rede Miplace está há <span class="count-up font-bold" data-target="7" data-suffix=" anos">0 anos</span> no mercado, sendo precursora na venda de crediário. Adquira os lançamentos mais cobiçados do mercado através do nosso parcelamento exclusivo no boleto bancário. Uma facilidade pensada para você, com aprovação rápida e sem consulta de score.
             </p>
-            <a href="#enderecos" class="inline-block font-sans uppercase tracking-widest font-bold text-sm px-10 py-4 transition-colors" style="background-color:#f4f4f0 !important; color:#1c1917 !important;">
+            <a href="#enderecos" class="inline-block font-sans uppercase tracking-widest font-bold text-sm px-10 py-4 transition-colors pulse-border" style="background-color:#f4f4f0 !important; color:#1c1917 !important;">
                 Fale com um Consultor
             </a>
         </div>
@@ -574,13 +734,13 @@
                                 <img src="logo/xv (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/xv (1).png';" alt="Logo Miplace XV" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace XV de Novembro</h4>
-                                    <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Quinze de Novembro, 910 - Centro<br>CEP: 13400-370</a>
+                                    <a href="https://maps.google.com/?q=R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Quinze de Novembro, 910 - Centro<br>CEP: 13400-370</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.xvdenovembro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.xvdenovembro</a>
-                                <a href="https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace XV de Novembro</a>
-                                <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504</a>
+                                <a href="https://instagram.com/miplace.xvdenovembro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.xvdenovembro</a>
+                                <a href="https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace XV de Novembro</a>
+                                <a href="https://wa.me/5519989605504" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 98960-5504</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -588,13 +748,13 @@
                                 <img src="logo/dp (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/dp (1).png';" alt="Logo Miplace Honor" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Honor</h4>
-                                    <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Dom Pedro II, 857 - Centro<br>CEP: 13400-390</a>
+                                    <a href="https://maps.google.com/?q=R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Dom Pedro II, 857 - Centro<br>CEP: 13400-390</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.dompedro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.dompedro</a>
-                                <a href="https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Honor</a>
-                                <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131</a>
+                                <a href="https://instagram.com/miplace.dompedro" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.dompedro</a>
+                                <a href="https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Honor</a>
+                                <a href="https://wa.me/5519994975131" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99497-5131</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -602,13 +762,13 @@
                                 <img src="logo/realme (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/realme (1).png';" alt="Logo Miplace Realme" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Realme</h4>
-                                    <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Benjamin Constant, 1230 - Centro<br>CEP: 13400-053</a>
+                                    <a href="https://maps.google.com/?q=R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Benjamin Constant, 1230 - Centro<br>CEP: 13400-053</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.benjamin" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.benjamin</a>
-                                <a href="https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Realme</a>
-                                <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123</a>
+                                <a href="https://instagram.com/miplace.benjamin" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.benjamin</a>
+                                <a href="https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Realme</a>
+                                <a href="https://wa.me/5519994510123" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99451-0123</a>
                             </div>
                         </div>
                     </div>
@@ -621,13 +781,13 @@
                                 <img src="logo/kf (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/kf (1).png';" alt="Logo Miplace Kassouf" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Kassouf</h4>
-                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 218 - sala 09 - Centro<br>CEP: 13900-005</a>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 218 - sala 09 - Centro<br>CEP: 13900-005</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.kassouf" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.kassouf</a>
-                                <a href="https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Kassouf</a>
-                                <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066</a>
+                                <a href="https://instagram.com/miplace.kassouf" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.kassouf</a>
+                                <a href="https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Kassouf</a>
+                                <a href="https://wa.me/5519971077066" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 97107-7066</a>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
@@ -635,13 +795,13 @@
                                 <img src="logo/pr (1).jpg" loading="lazy" onerror="this.onerror=null; this.src='logo/pr (1).png';" alt="Logo Miplace Premium" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                                 <div>
                                     <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917 !important;">Miplace Premium</h4>
-                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 26 - Centro<br>CEP: 13900-005</a>
+                                    <a href="https://maps.google.com/?q=R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c !important;"><i class="fa-solid fa-map-location-dot mr-1"></i> R. Treze de Maio, 26 - Centro<br>CEP: 13900-005</a>
                                 </div>
                             </div>
                             <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                                <a href="https://instagram.com/miplace.premium" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.premium</a>
-                                <a href="https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Premium</a>
-                                <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865</a>
+                                <a href="https://instagram.com/miplace.premium" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917 !important;"><i class="fa-brands fa-instagram text-lg"></i> @miplace.premium</a>
+                                <a href="https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917 !important;"><i class="fa-brands fa-facebook text-lg"></i> Miplace Premium</a>
+                                <a href="https://wa.me/5519999618865" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917 !important;"><i class="fa-brands fa-whatsapp text-lg"></i> (19) 99961-8865</a>
                             </div>
                         </div>
                     </div>
@@ -1034,8 +1194,8 @@
                     <div class="p-4" style="background-color:#eaeaeb; border-left:4px solid #1c1917;">
                         <h5 class="font-serif font-bold text-lg mb-2" style="color:#1c1917;">${nome}</h5>
                         <div class="flex flex-col gap-2">
-                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
-                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
+                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
+                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Piracicaba+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
                         </div>
                     </div>`).join('')}
                 </div>
@@ -1048,8 +1208,8 @@
                     <div class="p-4" style="background-color:#eaeaeb; border-left:4px solid #1c1917;">
                         <h5 class="font-serif font-bold text-lg mb-2" style="color:#1c1917;">${nome}</h5>
                         <div class="flex flex-col gap-2">
-                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
-                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
+                            <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> (${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}</a>
+                            <a href="https://maps.google.com/?q=${maps}+-+Centro,+Amparo+-+SP" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${end}</a>
                         </div>
                     </div>`).join('')}
                 </div>
@@ -1242,6 +1402,102 @@
                 if (audioControl.contains(e.target)) return;
                 if (!isMusicPlaying) toggleMusic();
             }, { once: true });
+
+            // ============================================================
+            // EFEITOS VISUAIS
+            // ============================================================
+
+            // 2. SPLIT TEXT no título h1
+            const h1 = document.querySelector('h1.font-serif');
+            if (h1) {
+                const text = h1.textContent.trim();
+                h1.innerHTML = text.split('').map((ch, i) =>
+                    ch === ' '
+                        ? ' '
+                        : `<span class="split-letter" style="animation-delay:${i * 0.06}s">${ch}</span>`
+                ).join('');
+            }
+
+            // 3. PARALLAX no hero ao mover o mouse
+            const heroParallax = document.getElementById('hero-parallax');
+            if (heroParallax) {
+                document.addEventListener('mousemove', e => {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    const rect = heroParallax.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top  + rect.height / 2;
+                    const dx = (e.clientX - cx) / window.innerWidth;
+                    const dy = (e.clientY - cy) / window.innerHeight;
+                    heroParallax.style.transform = `translate(${dx * 12}px, ${dy * 8}px)`;
+                }, { passive: true });
+            }
+
+            // 4. MAGNETIC HOVER nos links de navegação desktop
+            document.querySelectorAll('nav .hidden.md\\:flex a').forEach(link => {
+                link.classList.add('magnetic-link');
+                link.addEventListener('mousemove', e => {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    const rect = link.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width  / 2;
+                    const y = e.clientY - rect.top  - rect.height / 2;
+                    link.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+                });
+                link.addEventListener('mouseleave', () => {
+                    link.style.transform = 'translate(0,0)';
+                });
+            });
+
+            // 5. RIPPLE ao clicar nos cards de produto
+            document.getElementById('products-grid').addEventListener('click', e => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const card = e.target.closest('.img-zoom-container');
+                if (!card) return;
+                const rect = card.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
+                ripple.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    left: ${e.clientX - rect.left - size/2}px;
+                    top:  ${e.clientY - rect.top  - size/2}px;
+                `;
+                card.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+
+            // 6. SHIMMER nos cards — adiciona classe quando renderizados
+            function addShimmerToCards() {
+                document.querySelectorAll('#products-grid .img-zoom-container').forEach(el => {
+                    el.classList.add('card-shimmer');
+                });
+            }
+            const gridObserver = new MutationObserver(addShimmerToCards);
+            gridObserver.observe(document.getElementById('products-grid'), { childList: true });
+            addShimmerToCards();
+
+            // 7. CONTADOR ANIMADO (count-up)
+            function animateCountUp(el) {
+                const target  = parseInt(el.getAttribute('data-target'));
+                const suffix  = el.getAttribute('data-suffix') || '';
+                const duration = 1800;
+                const start    = performance.now();
+                function step(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased    = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target) + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+            const countObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCountUp(entry.target);
+                        countObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
 
             document.addEventListener('error', function(e) {
                 if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
