@@ -4,7 +4,7 @@
   { "id": 3, "brand": "Realme", "name": "REALME C67", "price": "A partir de R$ 1.499" },
   { "id": 4, "brand": "Realme", "name": "REALME C71", "price": "A partir de R$ 1.399" },
   { "id": 5, "brand": "Realme", "name": "REALME C75/C75X", "price": "A partir de R$ 1.699" },
-  { "id": 6, "brand": "Realme", "name": "REALME C85", "price": "A partir de R$ 1.899" },
+  { "id": 6, "brand": "Realme", "name": "REALME C85", "price": "A partir de R$ 2.099" },
   { "id": 7, "brand": "Realme", "name": "REALME C85 PRO", "price": "A partir de R$ 2.099" },
   { "id": 8, "brand": "Realme", "name": "REALME NOTE 70", "price": "A partir de R$ 1.399" },
   { "id": 9, "brand": "Honor", "name": "HONOR X5C", "price": "A partir de R$ 1.399" },
@@ -26,3 +26,4 @@
   { "id": 25, "brand": "Poco", "name": "POCO X7 PRO", "price": "A partir de R$ 2.799" },
   { "id": 26, "brand": "iPhone", "name": "IPHONE 13/14/15/16/17", "price": "A partir de R$ 3.899", "specialPrice": "Sob Consulta" }
 ]
+
