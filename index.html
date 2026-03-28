@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth" style="background-color:#f4f4f0; color:#1c1917; color-scheme: light only;" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIPLACE MAGAZINE | Catálogo Exclusivo</title>
+    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones premium: Apple, Realme, Honor, Motorola, Redmi e Poco. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
+    <meta name="keywords" content="Miplace, smartphones, celulares, parcelamento boleto, sem consulta, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Piracicaba, Amparo, crediário, tecnologia">
+    <meta name="author" content="Miplace Magazine">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f4f4f0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- FORÇAR TEMA CLARO ANTES DE QUALQUER COISA — deve ser o primeiro script -->
+    <script>
+        document.documentElement.style.setProperty('background-color', '#f4f4f0', 'important');
+        document.documentElement.style.setProperty('color', '#1c1917', 'important');
+        document.documentElement.style.setProperty('color-scheme', 'light only', 'important');
+        document.documentElement.classList.remove('dark');
+        const __obs = new MutationObserver(() => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        __obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] });
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://miplacemagazine.com.br/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miplacemagazine.com.br/">
+    <meta property="og:title" content="MIPLACE MAGAZINE | Catálogo Exclusivo de Smartphones">
+    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Apple, Realme, Honor, Motorola, Redmi e muito mais. Piracicaba & Amparo, SP.">
+    <meta property="og:image" content="https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="Miplace Magazine — Catálogo de Smartphones Premium">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Miplace Magazine">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MIPLACE MAGAZINE | Catálogo Exclusivo de Smartphones">
+    <meta name="twitter:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Confira nossa coleção exclusiva.">
+    <meta name="twitter:image" content="https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png">
+    <meta name="twitter:image:alt" content="Miplace Magazine — Catálogo de Smartphones Premium">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <meta name="msapplication-TileImage" content="favicon_io/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#1c1917">
+
+
+    <!-- Preconnect / DNS prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="tailwind.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" as="style">
+
+    <!-- Tailwind CSS (build local — apenas classes usadas) -->
+    <link rel="stylesheet" href="tailwind.css">
+
+    <!-- Font Awesome (apenas solid + brands — os únicos estilos usados) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha384-bGIKHDMAvn+yR8S/yTRi+6S++WqBdA+TaJ1nOZf079H6r492oh7V6uAqq739oSZC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha384-o96F2rFLAgwGpsvjLInkYtEFanaHuHeDtH47SxRhOsBCB2GOvUZke4yVjULPMFnv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha384-2ExAXhxetFPlyL5ZypKQbz0ZrD6S0xW1jF2n+bGda67tIfsjcfHQy3FkuA1IjuxK" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- YouTube IFrame API — lazy load -->
+    <script>
+        var ytPlayer;
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                videoId: 'gwBz0OCk_hA',
+                playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: 'gwBz0OCk_hA', controls: 0, playsinline: 1, modestbranding: 1, rel: 0, disablekb: 1, fs: 0 },
+                events: {
+                    onReady: function(e) { e.target.mute(); e.target.playVideo(); },
+                    onStateChange: function(e) { if (e.data === YT.PlayerState.ENDED) e.target.playVideo(); }
+                }
+            });
+        }
+        function loadYouTubeAPI() {
+            if (document.getElementById('yt-api-script')) return;
+            var tag = document.createElement('script');
+            tag.id = 'yt-api-script';
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+        }
+        window.addEventListener('scroll', function ytLazy() {
+            loadYouTubeAPI();
+            window.removeEventListener('scroll', ytLazy);
+        }, { once: true, passive: true });
+        setTimeout(loadYouTubeAPI, 3000);
+    </script>
+    <!-- Schema.org JSON-LD gerado dinamicamente por stores.js -->
+    <script id="schema-org" type="application/ld+json"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="stores.js" defer></script>
+    <script src="modules/ui.js" defer></script>
+    <script src="modules/catalog.js" defer></script>
+    <script src="modules/modal.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative" style="background-color:#f4f4f0; color:#1c1917;">
+
+    <!-- Skip to content (acessibilidade) -->
+    <a href="#catalogo" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:text-xs focus:font-bold focus:uppercase focus:tracking-widest" style="background-color:#1c1917;color:#f4f4f0;">Ir para o conteúdo</a>
+
+    <!-- Fade de entrada da página -->
+    <div id="page-fade"></div>
+
+    <div class="paper-grain"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 z-[60] w-0 transition-all duration-100 ease-out" style="background-color:#991b1b;"></div>
+    <div class="h-3 w-full fixed top-0 z-50" style="background-color:#1c1917;"></div>
+
+    <audio id="bg-music" loop preload="none">
+        <source src="chrono trigger - peaceful days.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" aria-label="Voltar ao topo da página" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:scale-110" style="background-color:#1c1917; color:#f4f4f0;" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
+    <!-- Botão Música -->
+    <button id="audio-control" aria-label="Tocar ou pausar música de fundo" class="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all group" style="background-color:#1c1917; color:#f4f4f0;" title="Tocar/Pausar Música">
+        <span class="absolute inset-0 rounded-full border-2 animate-ping opacity-50 group-hover:opacity-0 transition-opacity" id="audio-pulse" style="border-color:#1c1917;"></span>
+        <i class="fa-solid fa-music text-lg relative z-10" id="audio-icon"></i>
+    </button>
+
+    <!-- Cabeçalho -->
+    <header class="w-full pt-10 pb-6 px-4 md:px-8 border-b-thick z-40 relative mt-3" style="background-color:#f4f4f0; border-bottom-color:#1c1917;" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center text-xs md:text-sm font-sans uppercase tracking-widest mb-6" style="color:#44403c;">
+                <span>Edição Especial 2026 by Dark Morellato</span>
+                <span class="hidden md:block">Piracicaba & Amparo — SP</span>
+                <div class="relative z-50 dropdown-container">
+                    <button onclick="toggleContato()" aria-label="Abrir contatos das lojas via WhatsApp" title="Contato via WhatsApp" class="flex items-center gap-2 cursor-pointer hover:scale-110 transition-transform" style="color:#44403c;">
+                        <i class="fa-brands fa-whatsapp text-2xl transition-transform duration-300" id="contato-icon" style="color:#16a34a;"></i>
+                        <span class="font-sans font-bold text-xs uppercase tracking-widest hidden sm:inline" style="color:#1c1917;">Fale na Miplace</span>
+                    </button>
+                    <div id="contato-menu" class="absolute right-0 top-full pt-4 w-60 opacity-0 invisible transition-all duration-300 text-left">
+                        <div id="contato-dropdown-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h1 class="font-serif text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none cursor-pointer" style="color:#1c1917;" onclick="window.scrollTo({top:0,behavior:'smooth'})">Miplace</h1>
+                <p class="font-sans text-sm md:text-base uppercase tracking-[0.3em] md:tracking-[0.5em] mt-4 font-medium" style="color:#1c1917;">Tecnologia & Estilo de Vida</p>
+            </div>
+
+            <nav class="mt-10 border-t pt-4 font-sans text-sm uppercase tracking-widest font-bold" style="border-color:#1c1917;">
+                <div class="hidden md:flex justify-center gap-16">
+                    <a href="#inicio" class="transition-colors relative group" style="color:#1c1917;">Capa<span class="absolute -bottom-1 left-0 w-0 h-[2px] transition-all group-hover:w-full" style="background-color:#1c1917;"></span></a>
+                    <a href="#editorial-boleto" class="transition-colors relative group" style="color:#1c1917;">Destaque<span class="absolute -bottom-1 left-0 w-0 h-[2px] transition-all group-hover:w-full" style="background-color:#1c1917;"></span></a>
+                    <a href="#catalogo" class="transition-colors relative group" style="color:#1c1917;">A Coleção<span class="absolute -bottom-1 left-0 w-0 h-[2px] transition-all group-hover:w-full" style="background-color:#1c1917;"></span></a>
+                    <a href="#enderecos" class="transition-colors relative group" style="color:#1c1917;">Endereços<span class="absolute -bottom-1 left-0 w-0 h-[2px] transition-all group-hover:w-full" style="background-color:#1c1917;"></span></a>
+                </div>
+                <div class="flex md:hidden justify-between items-center">
+                    <span class="text-[10px] tracking-[0.3em]" style="color:#44403c;">Navegar</span>
+                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" onclick="toggleMobileMenu()" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                <div id="mobile-menu" role="navigation" aria-label="Menu principal mobile">
+                    <div class="flex flex-col gap-0 pt-4 pb-2">
+                        <a href="#inicio" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Capa <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#editorial-boleto" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Destaque <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#catalogo" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">A Coleção <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#enderecos" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917;">Endereços <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee-container relative z-30">
+        <div class="marquee-content">
+            MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL • MIPLACE MAGAZINE • TECNOLOGIA PREMIUM • ESTILO DE VIDA • EDIÇÃO ESPECIAL •
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="inicio" class="max-w-7xl mx-auto px-4 md:px-8 py-12 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-7 lg:col-span-8 reveal relative flex items-center justify-center">
+                <div class="w-full h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-center items-center relative group p-0 md:p-4">
+                    <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105" id="hero-parallax">
+                        <div class="absolute z-0 overflow-hidden" style="top:5%;left:2%;width:95%;height:80%;border-radius:6px;background:#000;">
+                            <div id="yt-player"></div>
+                        </div>
+                        <picture>
+                            <source srcset="moldura-celular.webp" type="image/webp">
+                            <img src="moldura-celular.png" alt="Mão segurando Smartphone" width="700" height="950" fetchpriority="high" loading="eager" class="relative z-10 w-full h-auto pointer-events-none" style="filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-5 lg:col-span-4 flex flex-col justify-between reveal">
+                <div>
+                    <div class="border-double-thick mb-6 w-max">
+                        <span class="font-sans text-[10px] uppercase tracking-[0.3em] font-bold block pb-1" style="color:#44403c;">Editorial de Apresentação</span>
+                    </div>
+                    <!-- h2 corrigido: hierarquia correta após h1 do logo -->
+                    <h2 class="font-serif font-black text-4xl md:text-5xl leading-[1.1] tracking-tighter mb-8" style="color:#1c1917;">
+                        Redefinindo o acesso à <br><span class="font-light italic tracking-normal" style="color:#44403c;">alta tecnologia</span>
+                    </h2>
+                    <p class="font-sans text-base leading-relaxed mb-6 drop-cap" style="color:#44403c;">
+                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong style="color:#1c1917;">Apple, Realme, Honor, Motorola, Redmi e Poco</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
+                    </p>
+                    <p class="font-sans text-base leading-relaxed pl-4 italic" style="color:#44403c; border-left: 2px solid #1c1917;">
+                        Esqueça a burocracia. A Miplace revoluciona a forma como você adquire seu próximo smartphone.
+                    </p>
+                </div>
+                <div class="mt-10 pt-10" style="border-top: 1px solid #1c1917;">
+                    <a href="#catalogo" class="font-sans uppercase tracking-widest text-sm font-bold flex items-center justify-between group cursor-pointer" style="color:#1c1917;">
+                        <span>Ver a coleção completa</span>
+                        <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Boleto -->
+    <section id="editorial-boleto" class="py-20 my-12" style="background-color:#1c1917; color:#f4f4f0; border-top:12px solid #eaeaeb; border-bottom:12px solid #eaeaeb;">
+        <div class="max-w-5xl mx-auto px-4 md:px-8 text-center reveal">
+            <p class="font-sans text-xs uppercase tracking-[0.4em] mb-6" style="color:rgba(244,244,240,0.6);">Vantagens de comprar na Miplace</p>
+            <h2 class="font-serif text-5xl md:text-7xl mb-8 leading-tight" style="color:#f4f4f0;">Parcelamos em até 24 vezes,<br> sem consulta.</h2>
+            <div class="w-24 h-[1px] mx-auto mb-8" style="background-color:rgba(244,244,240,0.3);"></div>
+            <p class="font-sans text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color:rgba(244,244,240,0.8);">
+                A rede Miplace está há <span class="count-up font-bold" data-target="7" data-suffix=" anos">0 anos</span> no mercado, sendo precursora na venda de crediário. Adquira os lançamentos mais cobiçados do mercado através do nosso parcelamento exclusivo no boleto bancário. Uma facilidade pensada para você, com aprovação rápida e sem consulta de score.
+            </p>
+            <a href="#enderecos" class="inline-block font-sans uppercase tracking-widest font-bold text-sm px-10 py-4 transition-colors pulse-border" style="background-color:#f4f4f0; color:#1c1917;">
+                Fale com um Consultor
+            </a>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 md:px-8 py-16 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 pb-6 reveal" style="border-bottom:3px solid #1c1917;">
+            <div>
+                <h2 class="font-serif text-5xl md:text-7xl font-black tracking-tighter" style="color:#1c1917;">A <span class="font-light italic tracking-normal">Coleção</span></h2>
+                <p class="font-sans uppercase tracking-[0.3em] text-xs mt-4 font-bold" style="color:#44403c;">Selecione uma marca para explorar</p>
+            </div>
+            <div class="sticky top-3 z-40 py-4 -mx-4 px-4 md:-mx-8 md:px-8 flex flex-wrap gap-6 mt-8 md:mt-0 font-sans text-xs uppercase tracking-widest font-bold" style="background-color:rgba(244,244,240,0.95);" id="category-filters"></div>
+        </div>
+
+        <!-- Busca -->
+        <div class="mb-10 reveal">
+            <div class="relative max-w-md">
+                <input type="search" id="search-input" placeholder="Buscar produto... ex: Redmi, AMOLED, 5G" autocomplete="off" aria-label="Buscar produtos no catálogo"
+                    class="w-full font-sans text-sm bg-transparent outline-none py-3 pr-10 pl-0 uppercase tracking-widest"
+                    style="border-bottom: 2px solid rgba(28,25,23,0.3); color:#1c1917; background-color:transparent;">
+                <i class="fa-solid fa-magnifying-glass absolute right-2 top-1/2 -translate-y-1/2 text-sm pointer-events-none" id="search-icon" style="color:rgba(28,25,23,0.3);"></i>
+                <button id="search-clear" onclick="clearSearch()" aria-label="Limpar busca" class="absolute right-2 top-1/2 -translate-y-1/2 transition-colors hidden" style="color:rgba(28,25,23,0.5);">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <p id="search-count" aria-live="polite" aria-atomic="true" class="font-sans text-[10px] uppercase tracking-widest mt-2 h-4" style="color:#6f6966;"></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8" id="products-grid" aria-live="polite" aria-busy="false"></div>
+
+        <div class="mt-24 pt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal" style="border-top: 1px solid #1c1917;">
+            <div>
+                <h3 class="font-serif text-3xl mb-4" style="color:#1c1917;">Acessórios & Proteção</h3>
+                <p class="font-sans mb-6" style="color:#44403c;">Fones, microfones, carregadores, cabos e a exclusiva película de proteção Rockspace.</p>
+            </div>
+            <div class="md:text-right">
+                <a href="#enderecos" class="font-sans uppercase tracking-widest text-sm font-bold px-8 py-3 inline-block btn-hover-ink-border">Consultar Estoque</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Endereços -->
+    <section id="enderecos" class="py-20 mt-12" style="background-color:#eaeaeb; border-top: 1px solid #1c1917;">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-5xl md:text-6xl mb-4" style="color:#1c1917;">Encontre a Miplace mais próxima:</h2>
+                <div class="w-16 h-[2px] mx-auto" style="background-color:#1c1917;"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12" id="stores-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-24 pb-8 text-center font-sans relative overflow-hidden flex flex-col items-center justify-between min-h-[45vh]" style="background-color:#1c1917; color:#f4f4f0;">
+        <div class="relative z-10 w-full px-4 mb-16">
+            <p class="text-[10px] uppercase tracking-[0.4em] mb-4" style="color:rgba(244,244,240,0.5);">Fim da Edição</p>
+            <div class="w-12 h-[2px] mx-auto mb-12" style="background-color:rgba(244,244,240,0.3);"></div>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16 text-xs uppercase tracking-widest mb-16 font-bold" style="color:rgba(244,244,240,0.7);">
+                <a href="#inicio" class="hover:underline underline-offset-4" style="color:rgba(244,244,240,0.7);">Voltar à Capa</a>
+                <a href="#catalogo" class="hover:underline underline-offset-4" style="color:rgba(244,244,240,0.7);">Revisitar Coleção</a>
+                <a href="#enderecos" class="hover:underline underline-offset-4" style="color:rgba(244,244,240,0.7);">Nossas Lojas</a>
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.3em] mb-4" style="color:rgba(244,244,240,0.65);">Rede Miplace © 2026. Todos os direitos reservados.</p>
+            <p class="text-[9px] uppercase tracking-[0.2em] max-w-md mx-auto leading-relaxed" style="color:rgba(244,244,240,0.55);">
+                Marcas mencionadas pertencem aos seus respectivos proprietários.<br>
+                O parcelamento no boleto está sujeito a análise e condições da loja física.
+            </p>
+        </div>
+        <div class="w-full flex justify-center mt-auto select-none pointer-events-none translate-y-8" style="opacity:0.05;">
+            <h2 class="font-serif leading-[0.7] font-black uppercase tracking-tighter m-0" style="font-size:18vw; color:#f4f4f0;">Miplace</h2>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de imagem" class="fixed inset-0 z-[200] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 backdrop-blur-md cursor-zoom-out" style="background-color:rgba(28,25,23,0.95);" onclick="closeLightbox()"></div>
+        <button onclick="lightboxNavigate(-1)" aria-label="Imagem anterior" class="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Imagem ampliada do produto" class="relative z-10 max-w-[85vw] max-h-[90vh] object-contain transform scale-95 transition-all duration-300 cursor-zoom-out" onclick="closeLightbox()">
+        <button onclick="lightboxNavigate(1)" aria-label="Próxima imagem" class="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+        </button>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 font-sans text-[10px] uppercase tracking-widest" style="color:rgba(244,244,240,0.6);">
+            <span id="lightbox-counter"></span>
+        </div>
+        <button onclick="closeLightbox()" aria-label="Fechar visualização de imagem" class="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-2xl" style="background-color:#f4f4f0; color:#1c1917;">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Modal — scroll unificado no painel direito -->
+    <div id="product-modal" role="dialog" aria-modal="true" aria-label="Detalhes do produto" class="fixed inset-0 z-[100] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 backdrop-blur-sm cursor-pointer" style="background-color:rgba(28,25,23,0.9);" onclick="closeModal()"></div>
+        <div class="relative z-10 w-full max-w-6xl max-h-[95vh] flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300 overflow-hidden" id="modal-container" style="background-color:#f4f4f0;">
+            <button onclick="closeModal()" aria-label="Fechar detalhes do produto" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-lg" style="background-color:#1c1917; color:#f4f4f0;">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="w-full flex flex-col md:flex-row h-full"></div>
+        </div>
+    </div>
+
+</body>
+</html>

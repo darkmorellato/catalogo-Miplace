@@ -1,0 +1,1704 @@
+[
+  {
+    "id": 1,
+    "brand": "Realme",
+    "name": "REALME C61",
+    "highlight": false,
+    "image": "Realme/c61-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Realme C61 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74\" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T612"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,74\" IPS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (Realme UI)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC, P2, Mini Cápsula 2.0"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para ser robusto, com boa resistência a quedas."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (7,8 mm) e disponível nas cores Verde e Dourado."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "Realme/c61-1.webp",
+      "Realme/c61-2.webp",
+      "Realme/c61-3.webp",
+      "Realme/c61-4.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "brand": "Realme",
+    "name": "REALME C63",
+    "highlight": false,
+    "image": "Realme/c63-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Realme C63 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74\" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T612"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,74\" IPS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (Realme UI)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC, P2, Alto-falante mono, Mini Cápsula 2.0"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para ser robusto, com boa resistência a quedas."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (7,8 mm) e disponível nas cores Verde e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados."
+      }
+    ],
+    "gallery": [
+      "Realme/c63-1.webp",
+      "Realme/c63-2.webp",
+      "Realme/c63-3.webp",
+      "Realme/c63-4.webp"
+    ]
+  },
+  {
+    "id": 3,
+    "brand": "Realme",
+    "name": "REALME C67",
+    "highlight": false,
+    "image": "Realme/c67-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Realme C67 é um smartphone de entrada avançado que se destaca pela sua câmera de 108 MP e design elegante com certificação IP54 contra poeira e respingo.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 685"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 108 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 33W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (Realme UI)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Câmera",
+        "text": "Câmera principal de 108 MP com excelente qualidade de imagem."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (7,6 mm) e disponível nas cores Verde e Preto."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte), bom desempenho em jogos."
+      }
+    ],
+    "gallery": [
+      "Realme/c67-1.webp",
+      "Realme/c67-2.webp",
+      "Realme/c67-3.webp",
+      "Realme/c67-4.webp"
+    ]
+  },
+  {
+    "id": 4,
+    "brand": "Realme",
+    "name": "REALME C71",
+    "highlight": false,
+    "image": "Realme/c71-1.webp",
+    "price": "A partir de R$ 1.399",
+    "description": "O Realme C71 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP54 contra poeira e respingo.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 com a interface Realme UI 6.0"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (7,8 mm) e disponível nas cores Verde e Branco."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados."
+      }
+    ],
+    "gallery": [
+      "Realme/c71-1.webp",
+      "Realme/c71-2.webp",
+      "Realme/c71-3.webp",
+      "Realme/c71-4.webp"
+    ]
+  },
+  {
+    "id": 5,
+    "brand": "Realme",
+    "name": "REALME C75/C75X",
+    "highlight": false,
+    "image": "Realme/c75-1.webp",
+    "price": "A partir de R$ 1.699",
+    "description": "O Realme C75 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP68/IP69 até 1,5 metros por 25 minutos.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G92 Max"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 com a interface Realme UI 5.0"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8 mm) e disponível nas cores Dourado, Preto, Rosa, Azul e Vermelho."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte), mas pode sofrer com jogos pesados."
+      }
+    ],
+    "gallery": [
+      "Realme/c75-1.webp",
+      "Realme/c75-2.webp",
+      "Realme/c75-3.webp",
+      "Realme/c75-4.webp"
+    ]
+  },
+  {
+    "id": 6,
+    "brand": "Realme",
+    "name": "REALME C85",
+    "highlight": false,
+    "image": "Realme/c85-1.webp",
+    "price": "A partir de R$ 1.899",
+    "description": "O Realme C85 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 6300"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,8\" IPS LCD, HD+, 144 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "7.000 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Realme UI 6.0)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69k, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (8,4 mm) e disponível nas cores Azul e Preto."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias, bom desempenho em jogos."
+      }
+    ],
+    "gallery": [
+      "Realme/c85-1.webp",
+      "Realme/c85-2.webp",
+      "Realme/c85-3.webp",
+      "Realme/c85-4.webp"
+    ]
+  },
+  {
+    "id": 7,
+    "brand": "Realme",
+    "name": "REALME C85 PRO",
+    "highlight": false,
+    "image": "Realme/c85pro-1.webp",
+    "price": "A partir de R$ 2.099",
+    "description": "O Realme C85 Pro é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 685"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,8\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "7.000 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Realme UI 6.0)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69k, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (8,1 mm) e disponível nas cores Rosa e Verde."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e jogos."
+      }
+    ],
+    "gallery": [
+      "Realme/c85pro-1.webp",
+      "Realme/c85pro-2.webp",
+      "Realme/c85pro-3.webp",
+      "Realme/c85pro-4.webp"
+    ]
+  },
+  {
+    "id": 8,
+    "brand": "Realme",
+    "name": "REALME NOTE 70",
+    "highlight": false,
+    "image": "Realme/note70-1.webp",
+    "price": "A partir de R$ 1.399",
+    "description": "O Realme Note 70 é um smartphone de entrada com design elegante, certificação IP54 e personalização de LED traseiro.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 13 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.300 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Realme UI 5.0)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,8 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (7,9 mm) e disponível nas cores Preto e Dourado."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e internet."
+      }
+    ],
+    "gallery": [
+      "Realme/note70-1.webp",
+      "Realme/note70-2.webp",
+      "Realme/note70-3.webp",
+      "Realme/note70-4.webp"
+    ]
+  },
+  {
+    "id": 9,
+    "brand": "Honor",
+    "name": "HONOR X5C",
+    "highlight": false,
+    "image": "Honor/x5c-1.webp",
+    "price": "A partir de R$ 1.399",
+    "description": "O Honor X5C é um smartphone de entrada com design elegante, NFC e certificação IP54.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G81"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,74\" TFT LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.260 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Honor Magic OS 9)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Custo-Benefício",
+        "text": "Melhor custo-benefício para o preço."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (7,9 mm) e disponível nas cores Preto e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias com NFC."
+      }
+    ],
+    "gallery": [
+      "Honor/x5c-1.webp",
+      "Honor/x5c-2.webp",
+      "Honor/x5c-3.webp",
+      "Honor/x5c-4.webp"
+    ]
+  },
+  {
+    "id": 10,
+    "brand": "Honor",
+    "name": "HONOR X5C PLUS",
+    "highlight": false,
+    "image": "Honor/x5cplus-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Honor X5C Plus é um smartphone de entrada com design elegante e certificação IP54.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G81"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,74\" TFT LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.260 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Honor Magic OS 9)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Custo-Benefício",
+        "text": "Melhor custo-benefício para o preço."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (7,9 mm) e disponível nas cores Preto e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias."
+      }
+    ],
+    "gallery": [
+      "Honor/x5cplus-1.webp",
+      "Honor/x5cplus-2.webp",
+      "Honor/x5cplus-3.webp",
+      "Honor/x5cplus-4.webp"
+    ]
+  },
+  {
+    "id": 11,
+    "brand": "Honor",
+    "name": "HONOR X7C",
+    "highlight": false,
+    "image": "Honor/x7c-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Honor X7C é um smartphone intermediário com design elegante, câmera de 108 MP e resistência a quedas.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 685"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,77\" TFT LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 108 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento rápido de até 35W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (Honor Magic OS 8)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, NFC, resistência a quedas"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,2 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (8,1 mm) e disponível nas cores Preto, Branco e Verde."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e jogos."
+      }
+    ],
+    "gallery": [
+      "Honor/x7c-1.webp",
+      "Honor/x7c-2.webp",
+      "Honor/x7c-3.webp",
+      "Honor/x7c-4.webp"
+    ]
+  },
+  {
+    "id": 12,
+    "brand": "Honor",
+    "name": "HONOR X7D",
+    "highlight": false,
+    "image": "Honor/x7d-1.webp",
+    "price": "A partir de R$ 1.899",
+    "description": "O Honor X7D é um smartphone intermediário com design elegante, certificação IP65 e câmera de 108 MP.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 685"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,77\" TFT LCD, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 108 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.500 mAh (Carregamento rápido de até 35W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Honor Magic OS 9)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP65, NFC, resistência a quedas"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,2 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (8,2 mm) e disponível nas cores Preto, Dourado, Prata e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias, fotos e jogos."
+      }
+    ],
+    "gallery": [
+      "Honor/x7d-1.webp",
+      "Honor/x7d-2.webp",
+      "Honor/x7d-3.webp",
+      "Honor/x7d-4.webp"
+    ]
+  },
+  {
+    "id": 13,
+    "brand": "Honor",
+    "name": "MAGIC 7 LITE 5G",
+    "highlight": false,
+    "image": "Honor/magic7lite-1.webp",
+    "price": "A partir de R$ 2.199",
+    "description": "O Honor Magic 7 Lite é um smartphone intermediário com design moderno, tela AMOLED e muita bateria.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 6 Gen 1"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,78\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 108 MP | Frontal 16 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.600 mAh (Carregamento 66W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (Honor Magic OS 8)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, Conectividade 5G, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Snapdragon 6 Gen 1 para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 108 MP e frontal de 16 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Honor/magic7lite-1.webp",
+      "Honor/magic7lite-2.webp",
+      "Honor/magic7lite-3.webp",
+      "Honor/magic7lite-4.webp"
+    ]
+  },
+  {
+    "id": 14,
+    "brand": "Motorola",
+    "name": "MOTO G05",
+    "highlight": false,
+    "image": "Motorola/g05-1.webp",
+    "price": "A partir de R$ 999",
+    "description": "O Moto G05 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G81 Extreme"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" IPS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 18W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Confiabilidade",
+        "text": "Projetado com alta qualidade e durabilidade."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,2 mm) e disponível nas cores Vermelho e Verde."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "Motorola/g05-1.webp",
+      "Motorola/g05-2.webp",
+      "Motorola/g05-3.webp",
+      "Motorola/g05-4.webp"
+    ]
+  },
+  {
+    "id": 15,
+    "brand": "Motorola",
+    "name": "MOTO G15",
+    "highlight": false,
+    "image": "Motorola/g15-1.webp",
+    "price": "A partir de R$ 1.199",
+    "description": "O Moto G15 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, design resistente e NFC, ideal para uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G81 Extreme"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 18W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para ser robusto, com boa resistência a quedas."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,2 mm) e disponível nas cores Cinza, Verde, Laranja e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "Motorola/g15-1.webp",
+      "Motorola/g15-2.webp",
+      "Motorola/g15-3.webp",
+      "Motorola/g15-4.webp"
+    ]
+  },
+  {
+    "id": 16,
+    "brand": "Motorola",
+    "name": "MOTO G56 5G",
+    "highlight": false,
+    "image": "Motorola/g56-1.webp",
+    "price": "A partir de R$ 1.799",
+    "description": "O Moto G56 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 5.200 mAh e design resistente, ideal para uso diário e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7060"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB, 256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 30W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Conectividade",
+        "text": "Suporte a redes 5G para internet mais rápida."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias e streaming, jogos e multitarefa."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,4 mm) e disponível nas cores Preto, Cinza e Azul."
+      }
+    ],
+    "gallery": [
+      "Motorola/g56-1.webp",
+      "Motorola/g56-2.webp",
+      "Motorola/g56-3.webp",
+      "Motorola/g56-4.webp"
+    ]
+  },
+  {
+    "id": 17,
+    "brand": "Motorola",
+    "name": "MOTO G86 5G",
+    "highlight": false,
+    "image": "Motorola/g86-1.webp",
+    "price": "A partir de R$ 2.099",
+    "description": "O Moto G86 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria, design resistente, tela e performance, ideal para uso diário e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7300"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" P-OLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 30W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Design",
+        "text": "Sistema de design moderno e resistente com acabamento premium nas cores Lilás e Preto."
+      },
+      {
+        "title": "Resistência",
+        "text": "Projetado para ser robusto, com boa resistência a quedas."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias e streaming, jogos e multitarefa."
+      }
+    ],
+    "gallery": [
+      "Motorola/g86-1.webp",
+      "Motorola/g86-2.webp",
+      "Motorola/g86-3.webp",
+      "Motorola/g86-4.webp"
+    ]
+  },
+  {
+    "id": 18,
+    "brand": "Motorola",
+    "name": "EDGE 50 5G FUSION",
+    "highlight": false,
+    "image": "Motorola/edge50-1.webp",
+    "price": "A partir de R$ 1.999",
+    "description": "O Moto Edge 50 5G Fusion é um smartphone linha Pro que se destaca pela sua conectividade 5G, bateria, design, tela e performance em câmera.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 7s Gen 2 ou Snapdragon 6 Gen 1"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB, 256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,7\" P-OLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 68W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68, NFC, Conectividade 5G"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Conectividade",
+        "text": "Suporte a redes 5G para internet mais rápida."
+      },
+      {
+        "title": "Resistência e Performance",
+        "text": "Projetado para ser robusto, com boa resistência a quedas, jogo de câmeras incrível e performance."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (7,9 mm) com acabamento premium, disponível nas cores Rosa, Azul Escuro e Azul Claro."
+      }
+    ],
+    "gallery": [
+      "Motorola/edge50-1.webp",
+      "Motorola/edge50-2.webp",
+      "Motorola/edge50-3.webp",
+      "Motorola/edge50-4.webp"
+    ]
+  },
+  {
+    "id": 19,
+    "brand": "Motorola",
+    "name": "EDGE 60 5G FUSION",
+    "highlight": false,
+    "image": "Motorola/edge60-1.webp",
+    "price": "A partir de R$ 2.299",
+    "description": "O Moto Edge 60 5G Fusion é um smartphone de alto desempenho com design moderno e tela P-OLED de alta resolução.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7300"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" P-OLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 68W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC, Conectividade 5G"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Mediatek Dimensity 7300 para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela P-OLED com resolução FHD+ e taxa de atualização de até 120 Hz, nas cores Rosa, Preto e Azul."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 50 MP e frontal de 32 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Motorola/edge60-1.webp",
+      "Motorola/edge60-2.webp",
+      "Motorola/edge60-3.webp",
+      "Motorola/edge60-4.webp"
+    ]
+  },
+  {
+    "id": 20,
+    "brand": "Redmi",
+    "name": "REDMI A5",
+    "highlight": false,
+    "image": "Redmi/a5-1.webp",
+    "price": "A partir de R$ 899",
+    "description": "O Redmi A5 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, ideal para uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,88\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 32 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (GO)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Custo-Benefício",
+        "text": "Projetado para oferecer um bom desempenho para tarefas básicas a um preço acessível."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,9 mm) e disponível nas cores Preto, Verde, Dourado e Azul."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "Redmi/a5-1.webp",
+      "Redmi/a5-2.webp",
+      "Redmi/a5-3.webp",
+      "Redmi/a5-4.webp"
+    ]
+  },
+  {
+    "id": 21,
+    "brand": "Redmi",
+    "name": "NOTE 14 PRO 5G",
+    "highlight": false,
+    "image": "Redmi/note14pro-1.webp",
+    "price": "A partir de R$ 2.399",
+    "description": "O Redmi Note 14 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7300"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 200 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.110 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68, Conectividade 5G, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Dimensity 7300 para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 200 MP e frontal de 20 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Redmi/note14pro-1.webp",
+      "Redmi/note14pro-2.webp",
+      "Redmi/note14pro-3.webp",
+      "Redmi/note14pro-4.webp"
+    ]
+  },
+  {
+    "id": 22,
+    "brand": "Redmi",
+    "name": "NOTE 15 5G",
+    "highlight": false,
+    "image": "Redmi/note15-1.webp",
+    "price": "A partir de R$ 2.099",
+    "description": "O Redmi Note 15 é um smartphone intermediário com design moderno e tela AMOLED de alta resolução.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Snapdragon 6 Gen 3"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB, 8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB, 256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,77\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 108 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.520 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP66, Conectividade 5G, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Snapdragon 6 Gen 3 para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 108 MP e frontal de 20 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Redmi/note15-1.webp",
+      "Redmi/note15-2.webp",
+      "Redmi/note15-3.webp",
+      "Redmi/note15-4.webp"
+    ]
+  },
+  {
+    "id": 23,
+    "brand": "Redmi",
+    "name": "NOTE 15 PRO 4G",
+    "highlight": false,
+    "image": "Redmi/note15pro-1.webp",
+    "price": "A partir de R$ 2.199",
+    "description": "O Redmi Note 15 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Helio G200 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,77\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 200 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.500 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP65, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Helio G200 Ultra para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 200 MP e frontal de 32 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Redmi/note15pro-1.webp",
+      "Redmi/note15pro-2.webp",
+      "Redmi/note15pro-3.webp",
+      "Redmi/note15pro-4.webp"
+    ]
+  },
+  {
+    "id": 24,
+    "brand": "Poco",
+    "name": "POCO X7 5G",
+    "highlight": false,
+    "image": "Poco/x7-1.webp",
+    "price": "A partir de R$ 1.899",
+    "description": "O POCO X7 5G é um smartphone de alto desempenho que se destaca pela sua conectividade 5G, bateria, design resistente, ideal para uso gamer e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7300 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.110 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP69, NFC, Conectividade 5G"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Conectividade",
+        "text": "Suporte a redes 5G para internet mais rápida."
+      },
+      {
+        "title": "Desempenho",
+        "text": "Processador Mediatek Dimensity 7300 Ultra para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      }
+    ],
+    "gallery": [
+      "Poco/x7-1.webp",
+      "Poco/x7-2.webp",
+      "Poco/x7-3.webp",
+      "Poco/x7-4.webp"
+    ]
+  },
+  {
+    "id": 25,
+    "brand": "Poco",
+    "name": "POCO X7 PRO",
+    "highlight": false,
+    "image": "Poco/x7pro-1.webp",
+    "price": "A partir de R$ 2.799",
+    "description": "O POCO X7 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução. Ideal para uso gamer e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 8400 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,67\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento 90W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC, Conectividade 5G"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Mediatek Dimensity 8400 Ultra para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 50 MP e frontal de 20 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Poco/x7pro-1.webp",
+      "Poco/x7pro-2.webp",
+      "Poco/x7pro-3.webp",
+      "Poco/x7pro-4.webp"
+    ]
+  },
+  {
+    "id": 26,
+    "brand": "Poco",
+    "name": "POCO X8 PRO",
+    "highlight": false,
+    "image": "Poco/x8pro-1.webp",
+    "price": "A partir de R$ 3.000",
+    "description": "O POCO X8 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução. Ideal para uso gamer e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 8500 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,59\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.500 mAh (Carregamento 100W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 14 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69K, NFC, Conectividade 5G"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Mediatek Dimensity 8500 Ultra para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Câmera principal de 50 MP e frontal de 20 MP para selfies nítidos."
+      }
+    ],
+    "gallery": [
+      "Poco/x8pro-1.webp",
+      "Poco/x8pro-2.webp",
+      "Poco/x8pro-3.webp",
+      "Poco/x8pro-4.webp"
+    ]
+  },
+  {
+    "id": 27,
+    "brand": "iPhone",
+    "name": "IPHONE 13/14/15/16/17",
+    "highlight": false,
+    "specialPrice": "Sob Consulta",
+    "image": "Iphone/iphone-1.webp",
+    "price": "A partir de R$ 3.899",
+    "description": "A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Apple Silicon"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "6 GB, 8 GB ou 12 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB, 256 GB, 512 GB ou 1 TB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,1\" ou 6,7\" Super Retina XDR OLED"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Sistema de câmeras avançado"
+      },
+      {
+        "label": "Bateria",
+        "value": "Duração variável, geralmente um dia inteiro"
+      },
+      {
+        "label": "Sistema",
+        "value": "iOS"
+      },
+      {
+        "label": "Recursos",
+        "value": "Face ID, resistência à água IP68, carregamento MagSafe"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Desempenho",
+        "text": "Processador Apple Silicon para uma experiência fluida e rápida."
+      },
+      {
+        "title": "Design",
+        "text": "Construção premium em aço inoxidável e vidro, disponível em várias cores."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Sistema de câmeras avançado com recursos como modo noturno e gravação em 4K."
+      }
+    ],
+    "gallery": [
+      "Iphone/iphone-1.webp",
+      "Iphone/iphone-2.webp",
+      "Iphone/iphone-3.webp",
+      "Iphone/iphone-4.webp"
+    ]
+  }
+]

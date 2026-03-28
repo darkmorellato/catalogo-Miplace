@@ -1,0 +1,391 @@
+/* ============================================================
+   MIPLACE MAGAZINE — Estilos Customizados
+   Tema: Light Only — Editorial / Revista
+   ============================================================ */
+
+/* ============================================================
+   1. RESET & CORES GLOBAIS (substitui CSS inline massivo)
+   ============================================================ */
+:root {
+    --color-ink: #1c1917;
+    --color-ink-light: #44403c;
+    --color-paper: #f4f4f0;
+    --color-paper-dark: #eaeaeb;
+    --color-accent: #991b1b;
+    --color-ink-70: rgba(28, 25, 23, 0.7);
+    --color-ink-50: rgba(28, 25, 23, 0.5);
+    --color-ink-30: rgba(28, 25, 23, 0.3);
+    --color-paper-70: rgba(244, 244, 240, 0.7);
+    --color-paper-50: rgba(244, 244, 240, 0.5);
+    color-scheme: light only !important;
+}
+
+html, html[data-theme="light"] {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    color-scheme: light only;
+}
+
+body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    overflow-x: hidden;
+    border-left: 12px solid var(--color-ink);
+    border-right: 12px solid var(--color-ink);
+}
+
+/* Bloqueia dark mode do sistema */
+@media (prefers-color-scheme: dark) {
+    :root { color-scheme: light only; }
+    html, body { background-color: var(--color-paper); color: var(--color-ink); }
+}
+
+/* ============================================================
+   2. ACESSIBILIDADE — Classes utilitárias
+   ============================================================ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   3. REDUCE MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .marquee-content { animation: none !important; }
+    .grid-gallery-img { transform: none !important; transition: none !important; }
+    .stagger-item { animation: none !important; opacity: 1 !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .scan-line { display: none !important; }
+    .card-shimmer::after { display: none !important; }
+    .ripple-effect { display: none !important; }
+    .split-letter { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .pulse-border::before { animation: none !important; opacity: 0.4; }
+}
+
+/* ============================================================
+   4. YOUTUBE PLAYER
+   ============================================================ */
+#yt-player, #yt-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border: none;
+}
+
+/* ============================================================
+   5. BORDAS EDITORIAIS
+   ============================================================ */
+.editorial-border { border-color: var(--color-ink); }
+.border-b-thick { border-bottom: 3px solid var(--color-ink); }
+.border-t-thick { border-top: 3px solid var(--color-ink); }
+.border-double-thick {
+    border-top: 4px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-ink);
+    padding-top: 3px;
+}
+
+/* ============================================================
+   6. SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-paper); }
+::-webkit-scrollbar-thumb { background: var(--color-ink); }
+
+/* ============================================================
+   7. ANIMAÇÕES
+   ============================================================ */
+.animate-fade-in { animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* Zoom nas imagens */
+.img-zoom-container { overflow: hidden; }
+.img-zoom { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.group:hover .img-zoom { transform: scale(1.05); }
+
+/* Grid gallery */
+.grid-gallery-img {
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+}
+.grid-gallery-img.kb-active { transform: scale(1.08) translate(1%, 0.5%); }
+.grid-gallery-img.kb-alt { transform: scale(1.08) translate(-1%, -0.5%); }
+
+/* Spin lento */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 4s linear infinite; }
+
+/* Stagger fade */
+@keyframes staggerFade {
+    from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.stagger-item { opacity: 0; animation: staggerFade 0.5s cubic-bezier(0.16, 0.8, 0.3, 1) forwards; }
+
+/* Drop cap */
+.drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 0.8;
+    float: left;
+    margin-right: 0.7rem;
+    margin-top: 0.1rem;
+    color: var(--color-ink);
+}
+
+/* Paper grain */
+.paper-grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   8. MARQUEE
+   ============================================================ */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    border-top: 1px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-ink);
+    padding: 0.4rem 0;
+    background-color: var(--color-paper-dark);
+}
+.marquee-content {
+    display: inline-block;
+    animation: marquee 90s linear infinite;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    color: var(--color-ink-light);
+}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+/* ============================================================
+   9. MENU MOBILE
+   ============================================================ */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+#mobile-menu.open { max-height: 300px; opacity: 1; }
+
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+}
+#hamburger-btn.open .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+#hamburger-btn.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#hamburger-btn.open .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ============================================================
+   10. BOTÕES — Hover
+   ============================================================ */
+.btn-hover-ink {
+    transition: background-color 0.2s ease, color 0.2s ease;
+    color: var(--color-ink);
+    background-color: transparent;
+}
+.btn-hover-ink:hover {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+}
+.btn-hover-ink:hover,
+.btn-hover-ink:hover * {
+    color: var(--color-paper);
+}
+.btn-hover-ink:hover img {
+    outline: 2px solid rgba(244, 244, 240, 0.4);
+}
+
+.btn-hover-ink-border {
+    transition: background-color 0.2s ease, color 0.2s ease;
+    color: var(--color-ink);
+    background-color: transparent;
+    border: 1px solid var(--color-ink);
+}
+.btn-hover-ink-border:hover {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+}
+
+/* ============================================================
+   11. HOVER CORES REDES SOCIAIS
+   ============================================================ */
+.link-instagram { transition: color 0.2s ease; }
+.link-instagram:hover,
+.link-instagram:hover i,
+.link-instagram:hover span { color: #E1306C; }
+
+.link-facebook { transition: color 0.2s ease; }
+.link-facebook:hover,
+.link-facebook:hover i,
+.link-facebook:hover span { color: #1877F2; }
+
+.link-whatsapp { transition: color 0.2s ease; }
+.link-whatsapp:hover,
+.link-whatsapp:hover i,
+.link-whatsapp:hover span { color: #25D366; }
+
+.link-maps { transition: color 0.2s ease; }
+.link-maps:hover,
+.link-maps:hover i,
+.link-maps:hover span { color: #F97316; }
+
+/* ============================================================
+   12. MODAL — Scroll pane
+   ============================================================ */
+#modal-content .modal-scroll-pane {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================================
+   13. EFEITOS VISUAIS
+   ============================================================ */
+
+/* Page fade */
+#page-fade {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    background: var(--color-paper);
+    pointer-events: none;
+    animation: pageFadeOut 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+@keyframes pageFadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+/* Split text */
+.split-letter {
+    display: inline-block;
+    animation: letterDrop 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes letterDrop {
+    from { opacity: 0; transform: translateY(-40px) rotate(-4deg); }
+    to { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+
+/* Shimmer */
+.card-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+.card-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(244, 244, 240, 0.25), transparent);
+    transform: skewX(-15deg);
+    transition: none;
+    pointer-events: none;
+}
+.card-shimmer:hover::after {
+    left: 150%;
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ripple */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(28, 25, 23, 0.12);
+    transform: scale(0);
+    animation: rippleAnim 0.5s linear forwards;
+    pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* Scan line */
+.scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(28, 25, 23, 0.15), transparent);
+    animation: scanDown 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+@keyframes scanDown {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Pulse border */
+.pulse-border { position: relative; }
+.pulse-border::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1px solid rgba(244, 244, 240, 0.3);
+    animation: pulseBorder 2s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes pulseBorder {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.03); }
+}
+
+/* Magnetic link */
+.magnetic-link {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Count up */
+.count-up {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}

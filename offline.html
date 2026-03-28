@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sem conexão — Miplace Magazine</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f4f4f0;
+            color: #1c1917;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            border-left: 12px solid #1c1917;
+            border-right: 12px solid #1c1917;
+        }
+        .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: #44403c;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            font-size: 1rem;
+            color: #44403c;
+            max-width: 28rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+        a {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.875rem 2.5rem;
+            background-color: #1c1917;
+            color: #f4f4f0;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        a:hover { opacity: 0.85; }
+        .divider {
+            width: 3rem;
+            height: 2px;
+            background-color: #1c1917;
+            margin: 0 auto 2rem;
+        }
+    </style>
+</head>
+<body>
+    <p class="label">Miplace Magazine — Sem conexão</p>
+    <h1>Você está<br><em style="font-weight:400; font-style:italic; color:#44403c;">offline</em></h1>
+    <div class="divider"></div>
+    <p>Parece que você perdeu a conexão com a internet. Verifique sua rede e tente novamente.</p>
+    <a href="/">Tentar novamente</a>
+</body>
+</html>
