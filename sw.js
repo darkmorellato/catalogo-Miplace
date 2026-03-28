@@ -5,7 +5,7 @@
 // Versão gerada automaticamente por timestamp de build
 // ============================================================
 
-const BUILD_TIMESTAMP = '20260328f';
+const BUILD_TIMESTAMP = '20260328g';
 const CACHE_NAME = `miplace-v${BUILD_TIMESTAMP}`;
 
 // Apenas assets locais — CDN externos não podem ser pré-cacheados via addAll (CORS)
