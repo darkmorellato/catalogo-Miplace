@@ -4,7 +4,7 @@
     "brand": "Realme",
     "name": "REALME C61",
     "highlight": false,
-    "image": "Realme/c61-1.webp",
+    "image": "realme/c61-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Realme C61 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74\" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.",
     "specs": [
@@ -56,10 +56,10 @@
       }
     ],
     "gallery": [
-      "Realme/c61-1.webp",
-      "Realme/c61-2.webp",
-      "Realme/c61-3.webp",
-      "Realme/c61-4.webp"
+      "realme/c61-1.webp",
+      "realme/c61-2.webp",
+      "realme/c61-3.webp",
+      "realme/c61-4.webp"
     ]
   },
   {
@@ -67,7 +67,7 @@
     "brand": "Realme",
     "name": "REALME C63",
     "highlight": false,
-    "image": "Realme/c63-1.webp",
+    "image": "realme/c63-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Realme C63 é um smartphone básico/intermediário focado em durabilidade e custo-benefício. Destaca-se pela bateria de 5.000 mAh com ótima autonomia, câmera principal de 50 MP, tela de 6,74\" (90 Hz) e proteção IP54 contra água/poeira, sendo ideal para uso diário.",
     "specs": [
@@ -119,10 +119,10 @@
       }
     ],
     "gallery": [
-      "Realme/c63-1.webp",
-      "Realme/c63-2.webp",
-      "Realme/c63-3.webp",
-      "Realme/c63-4.webp"
+      "realme/c63-1.webp",
+      "realme/c63-2.webp",
+      "realme/c63-3.webp",
+      "realme/c63-4.webp"
     ]
   },
   {
@@ -130,7 +130,7 @@
     "brand": "Realme",
     "name": "REALME C67",
     "highlight": false,
-    "image": "Realme/c67-1.webp",
+    "image": "realme/c67-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Realme C67 é um smartphone de entrada avançado que se destaca pela sua câmera de 108 MP e design elegante com certificação IP54 contra poeira e respingo.",
     "specs": [
@@ -182,10 +182,10 @@
       }
     ],
     "gallery": [
-      "Realme/c67-1.webp",
-      "Realme/c67-2.webp",
-      "Realme/c67-3.webp",
-      "Realme/c67-4.webp"
+      "realme/c67-1.webp",
+      "realme/c67-2.webp",
+      "realme/c67-3.webp",
+      "realme/c67-4.webp"
     ]
   },
   {
@@ -193,7 +193,7 @@
     "brand": "Realme",
     "name": "REALME C71",
     "highlight": false,
-    "image": "Realme/c71-1.webp",
+    "image": "realme/c71-1.webp",
     "price": "A partir de R$ 1.399",
     "description": "O Realme C71 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP54 contra poeira e respingo.",
     "specs": [
@@ -245,10 +245,10 @@
       }
     ],
     "gallery": [
-      "Realme/c71-1.webp",
-      "Realme/c71-2.webp",
-      "Realme/c71-3.webp",
-      "Realme/c71-4.webp"
+      "realme/c71-1.webp",
+      "realme/c71-2.webp",
+      "realme/c71-3.webp",
+      "realme/c71-4.webp"
     ]
   },
   {
@@ -256,7 +256,7 @@
     "brand": "Realme",
     "name": "REALME C75/C75X",
     "highlight": false,
-    "image": "Realme/c75-1.webp",
+    "image": "realme/c75-1.webp",
     "price": "A partir de R$ 1.699",
     "description": "O Realme C75 é um smartphone de entrada que se destaca pela sua câmera de 50 MP e design elegante com certificação IP68/IP69 até 1,5 metros por 25 minutos.",
     "specs": [
@@ -308,10 +308,10 @@
       }
     ],
     "gallery": [
-      "Realme/c75-1.webp",
-      "Realme/c75-2.webp",
-      "Realme/c75-3.webp",
-      "Realme/c75-4.webp"
+      "realme/c75-1.webp",
+      "realme/c75-2.webp",
+      "realme/c75-3.webp",
+      "realme/c75-4.webp"
     ]
   },
   {
@@ -319,7 +319,7 @@
     "brand": "Realme",
     "name": "REALME C85",
     "highlight": false,
-    "image": "Realme/c85-1.webp",
+    "image": "realme/c85-1.webp",
     "price": "A partir de R$ 1.899",
     "description": "O Realme C85 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
     "specs": [
@@ -371,10 +371,10 @@
       }
     ],
     "gallery": [
-      "Realme/c85-1.webp",
-      "Realme/c85-2.webp",
-      "Realme/c85-3.webp",
-      "Realme/c85-4.webp"
+      "realme/c85-1.webp",
+      "realme/c85-2.webp",
+      "realme/c85-3.webp",
+      "realme/c85-4.webp"
     ]
   },
   {
@@ -382,7 +382,7 @@
     "brand": "Realme",
     "name": "REALME C85 PRO",
     "highlight": false,
-    "image": "Realme/c85pro-1.webp",
+    "image": "realme/c85pro-1.webp",
     "price": "A partir de R$ 2.099",
     "description": "O Realme C85 Pro é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
     "specs": [
@@ -434,10 +434,10 @@
       }
     ],
     "gallery": [
-      "Realme/c85pro-1.webp",
-      "Realme/c85pro-2.webp",
-      "Realme/c85pro-3.webp",
-      "Realme/c85pro-4.webp"
+      "realme/c85pro-1.webp",
+      "realme/c85pro-2.webp",
+      "realme/c85pro-3.webp",
+      "realme/c85pro-4.webp"
     ]
   },
   {
@@ -445,7 +445,7 @@
     "brand": "Realme",
     "name": "REALME NOTE 70",
     "highlight": false,
-    "image": "Realme/note70-1.webp",
+    "image": "realme/note70-1.webp",
     "price": "A partir de R$ 1.399",
     "description": "O Realme Note 70 é um smartphone de entrada com design elegante, certificação IP54 e personalização de LED traseiro.",
     "specs": [
@@ -497,10 +497,10 @@
       }
     ],
     "gallery": [
-      "Realme/note70-1.webp",
-      "Realme/note70-2.webp",
-      "Realme/note70-3.webp",
-      "Realme/note70-4.webp"
+      "realme/note70-1.webp",
+      "realme/note70-2.webp",
+      "realme/note70-3.webp",
+      "realme/note70-4.webp"
     ]
   },
   {
@@ -508,7 +508,7 @@
     "brand": "Honor",
     "name": "HONOR X5C",
     "highlight": false,
-    "image": "Honor/x5c-1.webp",
+    "image": "honor/x5c-1.webp",
     "price": "A partir de R$ 1.399",
     "description": "O Honor X5C é um smartphone de entrada com design elegante, NFC e certificação IP54.",
     "specs": [
@@ -560,10 +560,10 @@
       }
     ],
     "gallery": [
-      "Honor/x5c-1.webp",
-      "Honor/x5c-2.webp",
-      "Honor/x5c-3.webp",
-      "Honor/x5c-4.webp"
+      "honor/x5c-1.webp",
+      "honor/x5c-2.webp",
+      "honor/x5c-3.webp",
+      "honor/x5c-4.webp"
     ]
   },
   {
@@ -571,7 +571,7 @@
     "brand": "Honor",
     "name": "HONOR X5C PLUS",
     "highlight": false,
-    "image": "Honor/x5cplus-1.webp",
+    "image": "honor/x5cplus-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Honor X5C Plus é um smartphone de entrada com design elegante e certificação IP54.",
     "specs": [
@@ -623,10 +623,10 @@
       }
     ],
     "gallery": [
-      "Honor/x5cplus-1.webp",
-      "Honor/x5cplus-2.webp",
-      "Honor/x5cplus-3.webp",
-      "Honor/x5cplus-4.webp"
+      "honor/x5cplus-1.webp",
+      "honor/x5cplus-2.webp",
+      "honor/x5cplus-3.webp",
+      "honor/x5cplus-4.webp"
     ]
   },
   {
@@ -634,7 +634,7 @@
     "brand": "Honor",
     "name": "HONOR X7C",
     "highlight": false,
-    "image": "Honor/x7c-1.webp",
+    "image": "honor/x7c-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Honor X7C é um smartphone intermediário com design elegante, câmera de 108 MP e resistência a quedas.",
     "specs": [
@@ -686,10 +686,10 @@
       }
     ],
     "gallery": [
-      "Honor/x7c-1.webp",
-      "Honor/x7c-2.webp",
-      "Honor/x7c-3.webp",
-      "Honor/x7c-4.webp"
+      "honor/x7c-1.webp",
+      "honor/x7c-2.webp",
+      "honor/x7c-3.webp",
+      "honor/x7c-4.webp"
     ]
   },
   {
@@ -697,7 +697,7 @@
     "brand": "Honor",
     "name": "HONOR X7D",
     "highlight": false,
-    "image": "Honor/x7d-1.webp",
+    "image": "honor/x7d-1.webp",
     "price": "A partir de R$ 1.899",
     "description": "O Honor X7D é um smartphone intermediário com design elegante, certificação IP65 e câmera de 108 MP.",
     "specs": [
@@ -749,10 +749,10 @@
       }
     ],
     "gallery": [
-      "Honor/x7d-1.webp",
-      "Honor/x7d-2.webp",
-      "Honor/x7d-3.webp",
-      "Honor/x7d-4.webp"
+      "honor/x7d-1.webp",
+      "honor/x7d-2.webp",
+      "honor/x7d-3.webp",
+      "honor/x7d-4.webp"
     ]
   },
   {
@@ -760,7 +760,7 @@
     "brand": "Honor",
     "name": "MAGIC 7 LITE 5G",
     "highlight": false,
-    "image": "Honor/magic7lite-1.webp",
+    "image": "honor/magic7lite-1.webp",
     "price": "A partir de R$ 2.199",
     "description": "O Honor Magic 7 Lite é um smartphone intermediário com design moderno, tela AMOLED e muita bateria.",
     "specs": [
@@ -812,10 +812,10 @@
       }
     ],
     "gallery": [
-      "Honor/magic7lite-1.webp",
-      "Honor/magic7lite-2.webp",
-      "Honor/magic7lite-3.webp",
-      "Honor/magic7lite-4.webp"
+      "honor/magic7lite-1.webp",
+      "honor/magic7lite-2.webp",
+      "honor/magic7lite-3.webp",
+      "honor/magic7lite-4.webp"
     ]
   },
   {
@@ -823,7 +823,7 @@
     "brand": "Motorola",
     "name": "MOTO G05",
     "highlight": false,
-    "image": "Motorola/g05-1.webp",
+    "image": "motorola/g05-1.webp",
     "price": "A partir de R$ 999",
     "description": "O Moto G05 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.",
     "specs": [
@@ -875,10 +875,10 @@
       }
     ],
     "gallery": [
-      "Motorola/g05-1.webp",
-      "Motorola/g05-2.webp",
-      "Motorola/g05-3.webp",
-      "Motorola/g05-4.webp"
+      "motorola/g05-1.webp",
+      "motorola/g05-2.webp",
+      "motorola/g05-3.webp",
+      "motorola/g05-4.webp"
     ]
   },
   {
@@ -886,7 +886,7 @@
     "brand": "Motorola",
     "name": "MOTO G15",
     "highlight": false,
-    "image": "Motorola/g15-1.webp",
+    "image": "motorola/g15-1.webp",
     "price": "A partir de R$ 1.199",
     "description": "O Moto G15 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, design resistente e NFC, ideal para uso diário.",
     "specs": [
@@ -938,10 +938,10 @@
       }
     ],
     "gallery": [
-      "Motorola/g15-1.webp",
-      "Motorola/g15-2.webp",
-      "Motorola/g15-3.webp",
-      "Motorola/g15-4.webp"
+      "motorola/g15-1.webp",
+      "motorola/g15-2.webp",
+      "motorola/g15-3.webp",
+      "motorola/g15-4.webp"
     ]
   },
   {
@@ -949,7 +949,7 @@
     "brand": "Motorola",
     "name": "MOTO G56 5G",
     "highlight": false,
-    "image": "Motorola/g56-1.webp",
+    "image": "motorola/g56-1.webp",
     "price": "A partir de R$ 1.799",
     "description": "O Moto G56 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 5.200 mAh e design resistente, ideal para uso diário e streaming.",
     "specs": [
@@ -1001,10 +1001,10 @@
       }
     ],
     "gallery": [
-      "Motorola/g56-1.webp",
-      "Motorola/g56-2.webp",
-      "Motorola/g56-3.webp",
-      "Motorola/g56-4.webp"
+      "motorola/g56-1.webp",
+      "motorola/g56-2.webp",
+      "motorola/g56-3.webp",
+      "motorola/g56-4.webp"
     ]
   },
   {
@@ -1012,7 +1012,7 @@
     "brand": "Motorola",
     "name": "MOTO G86 5G",
     "highlight": false,
-    "image": "Motorola/g86-1.webp",
+    "image": "motorola/g86-1.webp",
     "price": "A partir de R$ 2.099",
     "description": "O Moto G86 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria, design resistente, tela e performance, ideal para uso diário e streaming.",
     "specs": [
@@ -1064,10 +1064,10 @@
       }
     ],
     "gallery": [
-      "Motorola/g86-1.webp",
-      "Motorola/g86-2.webp",
-      "Motorola/g86-3.webp",
-      "Motorola/g86-4.webp"
+      "motorola/g86-1.webp",
+      "motorola/g86-2.webp",
+      "motorola/g86-3.webp",
+      "motorola/g86-4.webp"
     ]
   },
   {
@@ -1075,7 +1075,7 @@
     "brand": "Motorola",
     "name": "EDGE 50 5G FUSION",
     "highlight": false,
-    "image": "Motorola/edge50-1.webp",
+    "image": "motorola/edge50-1.webp",
     "price": "A partir de R$ 1.999",
     "description": "O Moto Edge 50 5G Fusion é um smartphone linha Pro que se destaca pela sua conectividade 5G, bateria, design, tela e performance em câmera.",
     "specs": [
@@ -1127,10 +1127,10 @@
       }
     ],
     "gallery": [
-      "Motorola/edge50-1.webp",
-      "Motorola/edge50-2.webp",
-      "Motorola/edge50-3.webp",
-      "Motorola/edge50-4.webp"
+      "motorola/edge50-1.webp",
+      "motorola/edge50-2.webp",
+      "motorola/edge50-3.webp",
+      "motorola/edge50-4.webp"
     ]
   },
   {
@@ -1138,7 +1138,7 @@
     "brand": "Motorola",
     "name": "EDGE 60 5G FUSION",
     "highlight": false,
-    "image": "Motorola/edge60-1.webp",
+    "image": "motorola/edge60-1.webp",
     "price": "A partir de R$ 2.299",
     "description": "O Moto Edge 60 5G Fusion é um smartphone de alto desempenho com design moderno e tela P-OLED de alta resolução.",
     "specs": [
@@ -1190,10 +1190,10 @@
       }
     ],
     "gallery": [
-      "Motorola/edge60-1.webp",
-      "Motorola/edge60-2.webp",
-      "Motorola/edge60-3.webp",
-      "Motorola/edge60-4.webp"
+      "motorola/edge60-1.webp",
+      "motorola/edge60-2.webp",
+      "motorola/edge60-3.webp",
+      "motorola/edge60-4.webp"
     ]
   },
   {
@@ -1201,7 +1201,7 @@
     "brand": "Redmi",
     "name": "REDMI A5",
     "highlight": false,
-    "image": "Redmi/a5-1.webp",
+    "image": "redmi/a5-1.webp",
     "price": "A partir de R$ 899",
     "description": "O Redmi A5 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, ideal para uso diário.",
     "specs": [
@@ -1253,10 +1253,10 @@
       }
     ],
     "gallery": [
-      "Redmi/a5-1.webp",
-      "Redmi/a5-2.webp",
-      "Redmi/a5-3.webp",
-      "Redmi/a5-4.webp"
+      "redmi/a5-1.webp",
+      "redmi/a5-2.webp",
+      "redmi/a5-3.webp",
+      "redmi/a5-4.webp"
     ]
   },
   {
@@ -1264,7 +1264,7 @@
     "brand": "Redmi",
     "name": "NOTE 14 PRO 5G",
     "highlight": false,
-    "image": "Redmi/note14pro-1.webp",
+    "image": "redmi/note14pro-1.webp",
     "price": "A partir de R$ 2.399",
     "description": "O Redmi Note 14 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.",
     "specs": [
@@ -1316,10 +1316,10 @@
       }
     ],
     "gallery": [
-      "Redmi/note14pro-1.webp",
-      "Redmi/note14pro-2.webp",
-      "Redmi/note14pro-3.webp",
-      "Redmi/note14pro-4.webp"
+      "redmi/note14pro-1.webp",
+      "redmi/note14pro-2.webp",
+      "redmi/note14pro-3.webp",
+      "redmi/note14pro-4.webp"
     ]
   },
   {
@@ -1327,7 +1327,7 @@
     "brand": "Redmi",
     "name": "NOTE 15 5G",
     "highlight": false,
-    "image": "Redmi/note15-1.webp",
+    "image": "redmi/note15-1.webp",
     "price": "A partir de R$ 2.099",
     "description": "O Redmi Note 15 é um smartphone intermediário com design moderno e tela AMOLED de alta resolução.",
     "specs": [
@@ -1379,10 +1379,10 @@
       }
     ],
     "gallery": [
-      "Redmi/note15-1.webp",
-      "Redmi/note15-2.webp",
-      "Redmi/note15-3.webp",
-      "Redmi/note15-4.webp"
+      "redmi/note15-1.webp",
+      "redmi/note15-2.webp",
+      "redmi/note15-3.webp",
+      "redmi/note15-4.webp"
     ]
   },
   {
@@ -1390,7 +1390,7 @@
     "brand": "Redmi",
     "name": "NOTE 15 PRO 4G",
     "highlight": false,
-    "image": "Redmi/note15pro-1.webp",
+    "image": "redmi/note15pro-1.webp",
     "price": "A partir de R$ 2.199",
     "description": "O Redmi Note 15 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução.",
     "specs": [
@@ -1442,10 +1442,10 @@
       }
     ],
     "gallery": [
-      "Redmi/note15pro-1.webp",
-      "Redmi/note15pro-2.webp",
-      "Redmi/note15pro-3.webp",
-      "Redmi/note15pro-4.webp"
+      "redmi/note15pro-1.webp",
+      "redmi/note15pro-2.webp",
+      "redmi/note15pro-3.webp",
+      "redmi/note15pro-4.webp"
     ]
   },
   {
@@ -1453,7 +1453,7 @@
     "brand": "Poco",
     "name": "POCO X7 5G",
     "highlight": false,
-    "image": "Poco/x7-1.webp",
+    "image": "poco/x7-1.webp",
     "price": "A partir de R$ 1.899",
     "description": "O POCO X7 5G é um smartphone de alto desempenho que se destaca pela sua conectividade 5G, bateria, design resistente, ideal para uso gamer e streaming.",
     "specs": [
@@ -1505,10 +1505,10 @@
       }
     ],
     "gallery": [
-      "Poco/x7-1.webp",
-      "Poco/x7-2.webp",
-      "Poco/x7-3.webp",
-      "Poco/x7-4.webp"
+      "poco/x7-1.webp",
+      "poco/x7-2.webp",
+      "poco/x7-3.webp",
+      "poco/x7-4.webp"
     ]
   },
   {
@@ -1516,7 +1516,7 @@
     "brand": "Poco",
     "name": "POCO X7 PRO",
     "highlight": false,
-    "image": "Poco/x7pro-1.webp",
+    "image": "poco/x7pro-1.webp",
     "price": "A partir de R$ 2.799",
     "description": "O POCO X7 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução. Ideal para uso gamer e streaming.",
     "specs": [
@@ -1568,10 +1568,10 @@
       }
     ],
     "gallery": [
-      "Poco/x7pro-1.webp",
-      "Poco/x7pro-2.webp",
-      "Poco/x7pro-3.webp",
-      "Poco/x7pro-4.webp"
+      "poco/x7pro-1.webp",
+      "poco/x7pro-2.webp",
+      "poco/x7pro-3.webp",
+      "poco/x7pro-4.webp"
     ]
   },
   {
@@ -1579,7 +1579,7 @@
     "brand": "Poco",
     "name": "POCO X8 PRO",
     "highlight": false,
-    "image": "Poco/x8pro-1.webp",
+    "image": "poco/x8pro-1.webp",
     "price": "A partir de R$ 3.000",
     "description": "O POCO X8 Pro é um smartphone de alto desempenho com design moderno e tela AMOLED de alta resolução. Ideal para uso gamer e streaming.",
     "specs": [
@@ -1631,10 +1631,10 @@
       }
     ],
     "gallery": [
-      "Poco/x8pro-1.webp",
-      "Poco/x8pro-2.webp",
-      "Poco/x8pro-3.webp",
-      "Poco/x8pro-4.webp"
+      "poco/x8pro-1.webp",
+      "poco/x8pro-2.webp",
+      "poco/x8pro-3.webp",
+      "poco/x8pro-4.webp"
     ]
   },
   {
@@ -1643,7 +1643,7 @@
     "name": "IPHONE 13/14/15/16/17",
     "highlight": false,
     "specialPrice": "Sob Consulta",
-    "image": "Iphone/iphone-1.webp",
+    "image": "iphone/iphone-1.webp",
     "price": "A partir de R$ 3.899",
     "description": "A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.",
     "specs": [
@@ -1695,10 +1695,10 @@
       }
     ],
     "gallery": [
-      "Iphone/iphone-1.webp",
-      "Iphone/iphone-2.webp",
-      "Iphone/iphone-3.webp",
-      "Iphone/iphone-4.webp"
+      "iphone/iphone-1.webp",
+      "iphone/iphone-2.webp",
+      "iphone/iphone-3.webp",
+      "iphone/iphone-4.webp"
     ]
   }
 ]
