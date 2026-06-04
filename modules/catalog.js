@@ -142,11 +142,11 @@
             return `
             <div class="${gridClass} group flex flex-col justify-between h-full stagger-item" style="border-bottom:1px solid rgba(28,25,23,0.2); animation-delay: ${index * 0.05}s;">
                 <div>
-                    <div class="w-full aspect-video flex items-center justify-center mb-6 img-zoom-container card-shimmer relative cursor-pointer overflow-hidden" style="background-color:#eaeaeb;" data-open-product="${p.id}">
-                        ${p.highlight ? '<span class="absolute top-4 left-4 text-[10px] uppercase tracking-widest px-3 py-1.5 z-10" style="background-color:#1c1917;color:#f4f4f0;">Destaque</span>' : ''}
-                        ${imageContent}
-                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 flex items-center justify-center pointer-events-none" style="background-color:rgba(28,25,23,0.4); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);">
-                            <span class="font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500" style="color:#f4f4f0; border:1px solid #f4f4f0; background-color:rgba(28,25,23,0.5);">Ver Detalhes</span>
+                    <div class="product-img-wrap w-full aspect-video flex items-center justify-center mb-6 img-zoom-container card-shimmer relative cursor-pointer overflow-hidden" style="background-color:#eaeaeb;" data-open-product="${p.id}">
+                        ${p.highlight ? '<span class="absolute top-4 left-4 text-[10px] uppercase tracking-widest px-3 py-1.5" style="background-color:#1c1917;color:#f4f4f0;z-index:30;">Destaque</span>' : ''}
+                        <div class="w-full h-full relative" style="z-index:0;">${imageContent}</div>
+                        <div class="ver-detalhes-overlay absolute inset-0 flex items-center justify-center" style="background-color:rgba(28,25,23,0.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); z-index:20;">
+                            <span class="ver-detalhes-label font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3" style="color:#f4f4f0; border:1px solid #f4f4f0; background-color:rgba(28,25,23,0.55);">Ver Detalhes</span>
                         </div>
                         <button type="button" data-wishlist-toggle="${p.id}" data-wishlist-source="card" aria-pressed="${wishlistActive ? 'true' : 'false'}" aria-label="${wishlistActive ? 'Remover' : 'Adicionar'} ${escapeHTML(p.name)} ${wishlistActive ? 'dos' : 'aos'} favoritos" class="wishlist-btn ${wishlistActive ? 'is-active' : ''}">
                             <i class="fa-regular fa-heart heart-outline" aria-hidden="true"></i>
