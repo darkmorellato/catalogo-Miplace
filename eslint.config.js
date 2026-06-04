@@ -1,0 +1,123 @@
+// ESLint v9+ flat config (substitui .eslintrc.json)
+// Mantém as regras e ignores originais.
+const browserGlobals = {
+    window: 'readonly',
+    document: 'readonly',
+    navigator: 'readonly',
+    localStorage: 'readonly',
+    sessionStorage: 'readonly',
+    IntersectionObserver: 'readonly',
+    MutationObserver: 'readonly',
+    AudioContext: 'readonly',
+    webkitAudioContext: 'readonly',
+    requestAnimationFrame: 'readonly',
+    cancelAnimationFrame: 'readonly',
+    performance: 'readonly',
+    setTimeout: 'readonly',
+    clearTimeout: 'readonly',
+    setInterval: 'readonly',
+    clearInterval: 'readonly',
+    console: 'readonly',
+    JSON: 'readonly',
+    fetch: 'readonly',
+    URL: 'readonly',
+    URLSearchParams: 'readonly',
+    self: 'readonly',
+    caches: 'readonly',
+    crypto: 'readonly',
+    AbortController: 'readonly',
+    confirm: 'readonly',
+    prompt: 'readonly',
+    alert: 'readonly',
+    Image: 'readonly',
+    URLSearchParams: 'readonly',
+    FormData: 'readonly',
+    Headers: 'readonly',
+    Response: 'readonly',
+    Request: 'readonly',
+    ServiceWorkerRegistration: 'readonly',
+    PushManager: 'readonly',
+    Notification: 'readonly',
+    HTMLElement: 'readonly',
+    HTMLInputElement: 'readonly',
+    HTMLImageElement: 'readonly',
+    AudioContext: 'readonly',
+    Event: 'readonly',
+    EventTarget: 'readonly',
+    KeyboardEvent: 'readonly',
+    MouseEvent: 'readonly',
+    TouchEvent: 'readonly',
+    CustomEvent: 'readonly',
+    DOMRect: 'readonly',
+    DOMHighResTimeStamp: 'readonly',
+    Element: 'readonly',
+    Node: 'readonly',
+    NodeListOf: 'readonly',
+    Document: 'readonly',
+    Window: 'readonly',
+    FrameRequestCallback: 'readonly',
+    EventListener: 'readonly',
+    IntersectionObserverEntry: 'readonly',
+    Set: 'readonly',
+    Map: 'readonly',
+    SetConstructor: 'readonly',
+    MapConstructor: 'readonly',
+    Promise: 'readonly',
+    Date: 'readonly',
+    Math: 'readonly',
+    Object: 'readonly',
+    Array: 'readonly',
+    String: 'readonly',
+    Number: 'readonly',
+    Boolean: 'readonly',
+    Symbol: 'readonly',
+    JSON: 'readonly',
+    RegExp: 'readonly',
+    Error: 'readonly',
+    TypeError: 'readonly',
+    SyntaxError: 'readonly',
+    RangeError: 'readonly',
+    ReferenceError: 'readonly',
+    EvalError: 'readonly',
+    URIError: 'readonly',
+    NaN: 'readonly',
+    Infinity: 'readonly',
+    undefined: 'readonly',
+    globalThis: 'readonly'
+};
+
+const sharedRules = {
+    'no-var': 'error',
+    'prefer-const': 'warn',
+    'eqeqeq': ['error', 'smart'],
+    'no-multi-spaces': ['warn', { ignoreEOLComments: true }],
+    'no-trailing-spaces': 'warn',
+    'quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+    'semi': ['error', 'always'],
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' }],
+    'no-console': 'off'
+};
+
+module.exports = [
+    {
+        ignores: ['node_modules/**', 'tailwind.css', 'dist/**', 'sw.js', 'types/**']
+    },
+    {
+        files: ['app.js', 'stores.js', 'modules/**/*.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'script',
+            globals: browserGlobals
+        },
+        rules: sharedRules
+    },
+    {
+        files: ['scripts/**/*.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'script',
+            globals: { ...browserGlobals, require: 'readonly', module: 'readonly', __dirname: 'readonly', process: 'readonly', console: 'readonly' }
+        },
+        rules: sharedRules
+    }
+];

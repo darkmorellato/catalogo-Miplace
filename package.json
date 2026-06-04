@@ -1,0 +1,33 @@
+{
+  "name": "catalogo-miplace",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Catálogo digital Miplace Magazine — smartphones premium",
+  "type": "commonjs",
+  "scripts": {
+    "validate:products": "node scripts/validate-products.js",
+    "typecheck": "tsc -p jsconfig.json --noEmit",
+    "build:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --watch",
+    "dev": "npm run watch:css",
+    "lint": "eslint app.js stores.js modules/ scripts/",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "npm run validate:products && npm run lint && npm run typecheck && npm run build:css",
+    "test": "node scripts/validate-products.js"
+  },
+  "keywords": [
+    "catalog",
+    "smartphones",
+    "pwa",
+    "tailwindcss"
+  ],
+  "author": "Miplace Magazine",
+  "license": "ISC",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "eslint": "^9.13.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
+  }
+}
