@@ -85,7 +85,7 @@
                 </div>`;
             }).join('');
             return `
-            <div id="${id}" data-contacts-panel style="display:none; background-color:#f4f4f0; color:#1c1917;" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-fade-in p-6 border z-50 max-h-[50vh] overflow-y-auto">
+            <div id="${id}" data-contacts-panel style="display:none; background-color:#f4f4f0; color:#1c1917;" class="absolute top-full left-0 w-full mt-4 flex-col gap-4 animate-slide-up p-6 border z-50 max-h-[50vh] overflow-y-auto">
                 <div class="flex justify-between items-center mb-2 pb-2" style="border-bottom:1px solid rgba(28,25,23,0.2);">
                     <span class="font-sans text-[10px] font-bold uppercase tracking-widest" style="color:#44403c;">Lojas em ${escapeHTML(city)}</span>
                     <button type="button" data-contacts-close style="color:#1c1917;" title="Fechar" aria-label="Fechar lojas de ${escapeHTML(city)}"><i class="fa-solid fa-xmark"></i></button>
