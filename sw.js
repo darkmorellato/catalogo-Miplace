@@ -5,7 +5,7 @@
 // IMPORTANTE: bump CACHE_NAME a cada release para invalidar caches antigos
 // ============================================================
 
-const BUILD_TIMESTAMP = '1.1.2';
+const BUILD_TIMESTAMP = '1.1.3';
 const CACHE_NAME = `miplace-v${BUILD_TIMESTAMP}`;
 
 // Apenas assets locais — CDN externos não podem ser pré-cacheados via addAll (CORS)
@@ -64,8 +64,11 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Network First para produtos.json (dados dinâmicos)
-    if (url.pathname.endsWith('produtos.json')) {
+    // Network First para navegação (HTML) e dados dinâmicos — garante que
+    // atualizações do index.html e produtos.json sejam vistas imediatamente,
+    // sem o usuário precisar hard-refresh.
+    const isNav = request.mode === 'navigate' || request.destination === 'document';
+    if (url.pathname.endsWith('produtos.json') || isNav) {
         event.respondWith(
             fetch(request)
                 .then(response => {
@@ -73,7 +76,7 @@ self.addEventListener('fetch', (event) => {
                     caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
                     return response;
                 })
-                .catch(() => caches.match(request).then(cached => cached || new Response('', { status: 504, statusText: 'Offline' })))
+                .catch(() => caches.match(request).then(cached => cached || caches.match('/offline.html').then(p => p || new Response('Offline', { status: 503, statusText: 'Service Unavailable' }))))
         );
         return;
     }
