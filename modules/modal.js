@@ -167,14 +167,14 @@
                 <div class="w-full md:w-5/12 overflow-y-auto modal-scroll-pane" style="background-color:#eaeaeb; border-right:1px solid rgba(28,25,23,0.1); max-height:95vh;">
                     <div class="w-full">${galleryHTML}</div>
                 </div>
-                <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col overflow-y-auto modal-scroll-pane" style="background-color:#f4f4f0; color:#1c1917; max-height:95vh;">
-                    <div class="mb-2"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${escapeHTML(product.brand)}</span></div>
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 leading-none" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
-                    ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-6 inline-block w-max" style="color:#1c1917; border-bottom:2px solid #1c1917;">${escapeHTML(product.price)}</p>` : ''}
-                    <p class="font-sans text-sm md:text-base leading-relaxed mb-6" style="color:#44403c;">${escapeHTML(product.description)}</p>
+                <div class="w-full md:w-7/12 px-8 py-10 md:px-14 md:py-12 flex flex-col overflow-y-auto modal-scroll-pane" style="background-color:#f4f4f0; color:#1c1917; max-height:95vh;">
+                    <div class="mb-3"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${escapeHTML(product.brand)}</span></div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-5 leading-none" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
+                    ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-8 inline-block w-max" style="color:#1c1917; border-bottom:2px solid #1c1917;">${escapeHTML(product.price)}</p>` : ''}
+                    <p class="font-sans text-sm md:text-base leading-relaxed mb-8" style="color:#44403c;">${escapeHTML(product.description)}</p>
                     ${highlightsHTML}${specsHTML}
-                    <div class="mt-10 pt-8 w-full relative" style="border-top:1px solid #1c1917;">
-                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4" style="color:#1c1917;">Escolha a cidade para comprar</h4>
+                    <div class="mt-12 pt-10 w-full relative" style="border-top:1px solid #1c1917;">
+                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-5" style="color:#1c1917;">Escolha a cidade para comprar</h4>
                         <div class="relative w-full">${contactsHTML}</div>
                     </div>
                 </div>
