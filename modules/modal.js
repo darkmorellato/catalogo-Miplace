@@ -7,6 +7,9 @@
 (() => {
     'use strict';
 
+    // Reutiliza a implementação centralizada em modules/ui.js (DRY)
+    const escapeHTML = /** @type {(s: unknown) => string} */ (window.escapeHTML);
+
     /**
      * @type {ModalDOMRefs}
      */
@@ -19,25 +22,14 @@
         lightboxCounter: /** @type {HTMLElement | null} */ (null)
     };
 
-    /** @type {{ lightboxImages: string[]; lightboxCurrentIdx: number; touchStartX: number; }} */
+    /** @type {ModalState} */
     const state = {
         lightboxImages: [],
         lightboxCurrentIdx: 0,
-        touchStartX: 0
+        touchStartX: 0,
+        releaseFocusTrap: null,
+        releaseScrollLock: null
     };
-
-    /**
-     * @param {unknown} str
-     * @returns {string}
-     */
-    function escapeHTML(str) {
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
 
     /**
      * @param {FrameRequestCallback} cb
@@ -203,7 +195,8 @@
             dom.modal?.classList.remove('opacity-0');
             dom.modalContainer?.classList.remove('scale-95');
         });
-        trapFocus(dom.modal);
+        if (state.releaseFocusTrap) state.releaseFocusTrap();
+        state.releaseFocusTrap = window.trapFocus(dom.modal);
         setTimeout(() => {
             const focusable = dom.modal?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
             if (focusable && focusable.length) {
@@ -211,20 +204,27 @@
                 if (first instanceof HTMLElement) first.focus();
             }
         }, 50);
-        document.body.style.overflow = 'hidden';
+        state.releaseScrollLock = window.lockBodyScroll();
     }
 
     /** @returns {void} */
     function closeModal() {
         if (!dom.modal || !dom.modalContainer || !dom.modalContent) return;
         window.playUIClick?.();
+        if (state.releaseFocusTrap) {
+            state.releaseFocusTrap();
+            state.releaseFocusTrap = null;
+        }
+        if (state.releaseScrollLock) {
+            state.releaseScrollLock();
+            state.releaseScrollLock = null;
+        }
         dom.modal.classList.add('opacity-0');
         dom.modalContainer.classList.add('scale-95');
         setTimeout(() => {
             dom.modal?.classList.add('hidden');
             dom.modal?.classList.remove('flex');
             if (dom.modalContent) dom.modalContent.innerHTML = '';
-            document.body.style.overflow = 'auto';
             document.title = 'MIPLACE MAGAZINE | Catálogo Exclusivo';
         }, 300);
     }
@@ -291,29 +291,6 @@
             dom.lightbox?.classList.add('hidden');
             dom.lightbox?.classList.remove('flex');
         }, 300);
-    }
-
-    /**
-     * @param {Element} modalEl
-     * @returns {void}
-     */
-    function trapFocus(modalEl) {
-        const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        const first = /** @type {HTMLElement} */ (focusable[0]);
-        const last = /** @type {HTMLElement} */ (focusable[focusable.length - 1]);
-        modalEl.addEventListener('keydown', /** @type {EventListener} */ (function handler(/** @type {Event} */ _e) {
-            const e = /** @type {KeyboardEvent} */ (_e);
-            if (e.key !== 'Tab') return;
-            if (e.shiftKey) {
-                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-            } else {
-                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-            }
-        }));
-    }
-
-    /** @returns {void} */
-    function initModal() {
         dom.modal = document.getElementById('product-modal');
         dom.modalContainer = document.getElementById('modal-container');
         dom.modalContent = document.getElementById('modal-content');
@@ -405,10 +382,108 @@
         });
     }
 
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-    window.openLightbox = openLightbox;
-    window.lightboxNavigate = lightboxNavigate;
     window.closeLightbox = closeLightbox;
-    window.initModal = initModal;
+
+    /** @returns {void} */
+    function initModal() {
+        dom.modal = document.getElementById('product-modal');
+        dom.modalContainer = document.getElementById('modal-container');
+        dom.modalContent = document.getElementById('modal-content');
+        dom.lightbox = document.getElementById('lightbox');
+        dom.lightboxImg = /** @type {HTMLImageElement | null} */ (document.getElementById('lightbox-img'));
+        dom.lightboxCounter = document.getElementById('lightbox-counter');
+        if (!dom.modal || !dom.lightbox || !dom.modalContent) return;
+
+        dom.lightbox.addEventListener('touchstart', e => { state.touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        dom.lightbox.addEventListener('touchend', e => {
+            const diff = state.touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) lightboxNavigate(diff > 0 ? 1 : -1);
+        }, { passive: true });
+
+        // Delegation: lightbox open + wishlist toggle
+        dom.modalContent.addEventListener('click', e => {
+            const target = /** @type {Element} */ (/** @type {unknown} */ (e.target));
+            const wishlistBtn = target.closest('[data-wishlist-toggle]');
+            if (wishlistBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = parseInt(wishlistBtn.getAttribute('data-wishlist-toggle') || '0', 10);
+                if (Number.isFinite(id) && window.MiplaceWishlist) {
+                    window.MiplaceWishlist.toggle(id);
+                }
+                return;
+            }
+            const galleryTrigger = target.closest('[data-lightbox-open]');
+            if (galleryTrigger) {
+                const idx = parseInt(galleryTrigger.getAttribute('data-lightbox-open') || '0', 10);
+                const img = galleryTrigger.querySelector('img');
+                if (img) openLightbox(/** @type {HTMLImageElement} */ (img).getAttribute('src') || '', Number.isFinite(idx) ? idx : 0);
+                return;
+            }
+            const closeBtn = target.closest('[data-modal-close]');
+            if (closeBtn) closeModal();
+        });
+
+        // Delegation: contacts panel toggle
+        dom.modalContent.addEventListener('click', e => {
+            const target = /** @type {Element} */ (/** @type {unknown} */ (e.target));
+            const toggle = target.closest('[data-contacts-toggle]');
+            if (toggle) {
+                const panelId = toggle.getAttribute('data-contacts-toggle');
+                const panelEl = panelId && dom.modalContent?.querySelector('#' + panelId);
+                if (!(panelEl instanceof HTMLElement)) return;
+                const willOpen = panelEl.style.display !== 'flex';
+                dom.modalContent?.querySelectorAll('[data-contacts-panel]').forEach(p => { if (p instanceof HTMLElement) p.style.display = 'none'; });
+                if (willOpen) {
+                    panelEl.style.display = 'flex';
+                    setTimeout(() => {
+                        const scrollPanes = dom.modalContent?.querySelectorAll('.modal-scroll-pane');
+                        const rightPane = scrollPanes && scrollPanes[scrollPanes.length - 1];
+                        if (rightPane instanceof HTMLElement) {
+                            rightPane.scrollTo({ top: rightPane.scrollHeight, behavior: 'smooth' });
+                        }
+                    }, 60);
+                }
+                return;
+            }
+            const close = target.closest('[data-contacts-close]');
+            if (close) {
+                const panel = close.closest('[data-contacts-panel]');
+                if (panel instanceof HTMLElement) panel.style.display = 'none';
+            }
+        });
+
+        // Delegation: lightbox navigate
+        dom.lightbox.addEventListener('click', e => {
+            const target = /** @type {Element} */ (/** @type {unknown} */ (e.target));
+            if (target.closest('[data-lightbox-close]')) { closeLightbox(); return; }
+            if (target.closest('[data-lightbox-prev]')) { lightboxNavigate(-1); return; }
+            if (target.closest('[data-lightbox-next]')) { lightboxNavigate(1); return; }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (!dom.lightbox || !dom.modal) return;
+            const lightboxOpen = !dom.lightbox.classList.contains('hidden');
+            if (e.key === 'Escape') {
+                if (lightboxOpen) { closeLightbox(); return; }
+                if (!dom.modal.classList.contains('hidden')) closeModal();
+            }
+            if (lightboxOpen) {
+                if (e.key === 'ArrowRight') lightboxNavigate(1);
+                if (e.key === 'ArrowLeft') lightboxNavigate(-1);
+            }
+        });
+    }
+
+    // Expor API pública usada por app.js e pelo HTML inline.
+    // O Object.assign silencia os avisos de `no-unused-vars` do ESLint
+    // (variáveis que só são usadas via window.* não são detectadas).
+    Object.assign(window, {
+        openModal,
+        closeModal,
+        openLightbox,
+        lightboxNavigate,
+        closeLightbox,
+        initModal
+    });
 })();

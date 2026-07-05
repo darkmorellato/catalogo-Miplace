@@ -58,6 +58,14 @@ interface CatalogState {
   visibilityPaused: boolean;
 }
 
+interface ModalState {
+  lightboxImages: string[];
+  lightboxCurrentIdx: number;
+  touchStartX: number;
+  releaseFocusTrap: (() => void) | null;
+  releaseScrollLock: (() => void) | null;
+}
+
 interface WishlistState {
   ids: Set<number>;
   subscribers: Set<Subscriber>;
@@ -77,4 +85,5 @@ interface WishlistDrawerRefs {
   shareBtn: HTMLElement | null;
   isOpen: boolean;
   lastFocused: Element | null;
+  releaseScrollLock: (() => void) | null;
 }

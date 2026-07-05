@@ -8,3 +8,6 @@ dist/
 tailwind.css
 .vercel/
 *.tsbuildinfo
+# Snapshot auto-gerado é preferencialmente commitado para detectar regressões,
+# mas pode ser ignorado em fork/dev pessoal.
+# scripts/.products-snapshot.json

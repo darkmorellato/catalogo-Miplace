@@ -172,6 +172,7 @@ function renderStoreCards(containerId) {
 function injectSchemaOrg() {
     const el = document.getElementById('schema-org');
     if (!el) return;
+    /* eslint-disable quotes -- Schema.org exige aspas duplas em todas as chaves/valores */
     const schema = {
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -198,7 +199,15 @@ function injectSchemaOrg() {
             ]
         }))
     };
+    /* eslint-enable quotes */
     el.textContent = JSON.stringify(schema);
 }
 
+// Expor constantes e helpers no objeto global de uma só vez (silencia
+// `no-unused-vars` do ESLint, já que algumas funções públicas são consumidas
+// via `window.*` pelo app.js / HTML inline).
 window.STORES = STORES;
+window.getStoresByCity = getStoresByCity;
+window.renderContactDropdown = renderContactDropdown;
+window.renderStoreCards = renderStoreCards;
+window.injectSchemaOrg = injectSchemaOrg;

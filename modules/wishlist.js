@@ -209,7 +209,8 @@
         clearBtn: null,
         shareBtn: null,
         isOpen: false,
-        lastFocused: null
+        lastFocused: null,
+        releaseScrollLock: null
     };
 
     function setupDrawer() {
@@ -298,7 +299,7 @@
         drawer.panel.setAttribute('aria-hidden', 'false');
         drawer.fab.setAttribute('aria-expanded', 'true');
         requestAnimationFrame(() => drawer.closeBtn?.focus());
-        document.body.style.overflow = 'hidden';
+        drawer.releaseScrollLock = window.lockBodyScroll();
     }
 
     /** @returns {void} */
@@ -310,7 +311,10 @@
         drawer.panel.classList.remove('open');
         drawer.panel.setAttribute('aria-hidden', 'true');
         drawer.fab.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        if (drawer.releaseScrollLock) {
+            drawer.releaseScrollLock();
+            drawer.releaseScrollLock = null;
+        }
         const lastFocused = drawer.lastFocused;
         if (lastFocused) {
             try { (/** @type {HTMLElement} */ (lastFocused)).focus(); } catch {}

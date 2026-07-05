@@ -23,7 +23,9 @@ declare global {
     startGridCarousel: () => void;
     setFilter: (brand: string) => void;
     clearSearch: () => void;
-    trapFocus: (el: Element) => void;
+    trapFocus: (el: Element) => () => void;
+    escapeHTML: (str: unknown) => string;
+    lockBodyScroll: () => () => void;
     debounce: <F extends (...args: any[]) => any>(fn: F, delay: number) => (...args: Parameters<F>) => void;
     trackEvent: (name: string, params?: Record<string, any>) => void;
     playUIClick: () => void;

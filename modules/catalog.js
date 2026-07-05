@@ -7,6 +7,12 @@
 (() => {
     'use strict';
 
+    // Reutiliza a implementação centralizada em modules/ui.js (DRY)
+    const escapeHTML = /** @type {(s: unknown) => string} */ (window.escapeHTML);
+
+    /** @returns {CatalogState} */
+    function getStore() { return state; }
+
     const productsData = () => window.MiplaceProducts || [];
 
     /** @type {CatalogState} */
@@ -23,21 +29,7 @@
     /** @type {('Todos' | ProductBrand)[]} */
     const brands = ['Todos', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone'];
 
-    /**
-     * @param {unknown} str
-     * @returns {string}
-     */
-    function escapeHTML(str) {
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
 
-    /** @returns {typeof state} */
-    function getStore() { return state; }
 
     /** @returns {void} */
     function renderFilters() {
@@ -128,8 +120,8 @@
         }
         container.innerHTML = filtered.map(/** @param {Product} p, @param {number} index */ (p, index) => {
             const isFeatured = index === 0;
-            const gridClass = isFeatured ? "md:col-span-2 lg:col-span-2 pb-8 md:pb-0 md:pr-8" : "pb-8";
-            const titleSize = isFeatured ? "text-4xl md:text-5xl" : "text-2xl";
+            const gridClass = isFeatured ? 'md:col-span-2 lg:col-span-2 pb-8 md:pb-0 md:pr-8' : 'pb-8';
+            const titleSize = isFeatured ? 'text-4xl md:text-5xl' : 'text-2xl';
             const imageContent = p.gallery && p.gallery.length > 1
                 ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
                 : (p.image

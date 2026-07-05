@@ -38,17 +38,75 @@
     /** @type {Product[]} */
     const productsData = [];
 
-    /** @returns {Promise<void>} */
-    async function loadPrecosFromJSON() {
+    /**
+     * Backoff exponencial simples: 500ms, 1500ms, 4500ms.
+     * @param {number} attempt
+     * @returns {number}
+     */
+    function backoffMs(attempt) { return 500 * Math.pow(3, attempt); }
+
+    /**
+     * Carrega produtos.json com até MAX_RETRIES tentativas, exibindo uma
+     * mensagem de erro inline caso todas falhem (em vez de silenciar).
+     * @param {{ attempt?: number, maxRetries?: number, signal?: AbortSignal }} [opts]
+     * @returns {Promise<boolean>} true se carregou com sucesso
+     */
+    async function loadPrecosFromJSON(opts = {}) {
+        const { attempt = 0, maxRetries = 2, signal } = opts;
+        const url = 'produtos.json';
         try {
-            const response = await fetch('produtos.json');
-            if (!response.ok) throw new Error('Falha ao carregar produtos.json');
-            productsData.length = 0;
+            if (signal && signal.aborted) return false;
+            const response = await fetch(url, { cache: 'no-cache', signal });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
+            productsData.length = 0;
             productsData.push(...data);
+            return true;
         } catch (/** @type {unknown} */ err) {
-            console.error('[Miplace] Erro ao carregar produtos.json:', /** @type {Error} */ (err).message);
+            const aborted = signal?.aborted === true;
+            const msg = /** @type {Error} */ (err).message;
+            if (aborted) return false;
+            console.warn(`[Miplace] produtos.json tentativa ${attempt + 1} falhou: ${msg}`);
+            if (attempt < maxRetries) {
+                await new Promise(r => setTimeout(r, backoffMs(attempt)));
+                return loadPrecosFromJSON({ ...opts, attempt: attempt + 1 });
+            }
+            showProdutosLoadError();
+            return false;
         }
+    }
+
+    /**
+     * Exibe uma notificação inline no topo do grid com botão de retry manual.
+     * @returns {void}
+     */
+    function showProdutosLoadError() {
+        const grid = document.getElementById('products-grid');
+        if (!grid) return;
+        // Evita duplicar a mensagem se o usuário já viu o erro
+        if (document.getElementById('produtos-error-banner')) return;
+        const banner = document.createElement('div');
+        banner.id = 'produtos-error-banner';
+        banner.className = 'col-span-full flex flex-col items-center justify-center py-16 px-6 text-center mb-8';
+        banner.style.cssText = 'background-color:#fef2f2;border:1px solid #991b1b;color:#1c1917;';
+        banner.innerHTML = `
+            <i class="fa-solid fa-triangle-exclamation text-3xl mb-4" style="color:#991b1b;" aria-hidden="true"></i>
+            <h3 class="font-serif text-xl mb-2" style="color:#991b1b;">Não conseguimos carregar o catálogo</h3>
+            <p class="font-sans text-xs mb-4" style="color:#44403c;">Verifique sua conexão e tente novamente.</p>
+            <button type="button" id="produtos-retry-btn" class="font-sans uppercase tracking-widest text-xs font-bold px-6 py-2" style="background-color:#1c1917;color:#f4f4f0;">Tentar novamente</button>
+        `;
+        grid.prepend(banner);
+        const btn = /** @type {HTMLButtonElement | null} */ (document.getElementById('produtos-retry-btn'));
+        btn?.addEventListener('click', async () => {
+            banner.remove();
+            const ok = await loadPrecosFromJSON();
+            if (ok) {
+                window.renderFilters();
+                window.renderProducts();
+                if (typeof window.startGridCarousel === 'function') window.startGridCarousel();
+                if (window.MiplaceWishlist) window.MiplaceWishlist.refresh();
+            }
+        }, { once: true });
     }
 
     /** @returns {void} */
@@ -139,8 +197,8 @@
             ripple.className = 'ripple-effect';
             ripple.style.cssText = `
                 width: ${size}px; height: ${size}px;
-                left: ${e.clientX - rect.left - size/2}px;
-                top:  ${e.clientY - rect.top  - size/2}px;
+                left: ${e.clientX - rect.left - size / 2}px;
+                top:  ${e.clientY - rect.top - size / 2}px;
             `;
             card.appendChild(ripple);
             ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
@@ -311,7 +369,8 @@
         if (typeof window.initModal === 'function') window.initModal();
         if (typeof window.initSearch === 'function') window.initSearch();
         if (typeof window.initScrollReveal === 'function') window.initScrollReveal();
-        loadPrecosFromJSON().then(() => {
+        loadPrecosFromJSON().then(ok => {
+            if (!ok) return;  // erro já exibido por showProdutosLoadError
             window.renderFilters();
             window.renderProducts();
             if (typeof window.startGridCarousel === 'function') window.startGridCarousel();

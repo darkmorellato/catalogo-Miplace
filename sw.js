@@ -5,7 +5,7 @@
 // IMPORTANTE: bump CACHE_NAME a cada release para invalidar caches antigos
 // ============================================================
 
-const BUILD_TIMESTAMP = '1.1.3';
+const BUILD_TIMESTAMP = '1.1.4';
 const CACHE_NAME = `miplace-v${BUILD_TIMESTAMP}`;
 
 // Apenas assets locais — CDN externos não podem ser pré-cacheados via addAll (CORS)
@@ -19,7 +19,9 @@ const ASSETS_TO_CACHE = [
     '/modules/ui.js',
     '/modules/catalog.js',
     '/modules/modal.js',
+    '/modules/wishlist.js',
     '/app.js',
+    '/youtube-lazy.js',
     '/offline.html'
 ];
 

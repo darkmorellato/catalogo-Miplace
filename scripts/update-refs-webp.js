@@ -23,6 +23,7 @@ for (const rel of files) {
     let src = fs.readFileSync(fp, 'utf8');
     const before = (src.match(IMG_RE) || []).length;
     src = src.replace(IMG_RE, '$1.webp');
+    // eslint-disable-next-line no-unused-vars
     const after = (src.match(/\.(png|jpg|jpeg)/gi) || []).filter(m =>
         src.substring(src.lastIndexOf('\n', src.indexOf(m)), src.indexOf(m)).match(/Realme|Honor|Motorola|Redmi|Poco|Iphone|logo/)
     ).length;

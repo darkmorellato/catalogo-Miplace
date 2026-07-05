@@ -8,40 +8,44 @@
 ## 1. Visão geral
 
 - **Tipo**: Site estático (HTML/CSS/JS puro) hospedado em **Vercel**.
-- **Entry point**: `index.html` carrega 6 scripts `<script defer>` em ordem:
-  1. `stores.js` — dados das lojas + `STORES` global
-  2. `modules/ui.js` — utilitários (focus trap, debounce, áudio, scroll reveal)
-  3. `modules/catalog.js` — filtros, busca, render de produtos, carrossel
-  4. `modules/modal.js` — modal de produto, lightbox
-  5. `modules/wishlist.js` — store reativo de favoritos com `localStorage`
-  6. `app.js` — orquestrador (init, parallax, scroll, ripple, audio, SW)
-- **Dados**: `produtos.json` é a fonte canônica; carregado por `app.js` via `fetch()`.
-- **PWA**: Service Worker (`sw.js`) com cache-first para assets, network-first para `produtos.json`.
+- **Entry point**: `index.html` carrega 7 scripts `<script defer>` em ordem (versão atual `?v=1.1.3`):
+  1. `youtube-lazy.js` — YouTube IFrame API carregada sob demanda (scroll OU 3s timeout)
+  2. `stores.js` — dados das lojas + `STORES` global + schema.org JSON-LD
+  3. `modules/ui.js` — utilitários compartilhados: `window.escapeHTML`, `window.trapFocus` (com cleanup), `window.lockBodyScroll`, debounce, áudios, menus, scroll reveal
+  4. `modules/catalog.js` — filtros, busca, render de produtos, carrossel; usa `window.escapeHTML`
+  5. `modules/modal.js` — modal de produto, lightbox; usa `window.escapeHTML`, `window.trapFocus`, `window.lockBodyScroll`
+  6. `modules/wishlist.js` — store reativo de favoritos com `localStorage`; usa `window.lockBodyScroll`
+  7. `app.js` — orquestrador (init, parallax, scroll, ripple, audio, SW, produtos load com retry)
+- **Dados**: `produtos.json` é a fonte canônica; carregado por `app.js` via `fetch()` com retry exponencial e banner de erro inline.
+- **PWA**: Service Worker (`sw.js`, `BUILD_TIMESTAMP = '1.1.4'`) com cache-first para assets, network-first para `produtos.json` e navegações.
 - **CSP**: definida via header em `vercel.json` (não usar `<meta>` per spec).
 - **Headers de segurança**: HSTS, Permissions-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy.
 
 ## 2. Comandos
 
-| Comando             | O que faz                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------- |
-| `npm run dev`       | Watch do Tailwind (modo desenvolvimento)                                          |
-| `npm run build:css` | Build minificado do Tailwind → `tailwind.css`                                      |
-| `npm run lint`      | ESLint v9 flat config (`eslint.config.js`) em todos JS                             |
-| `npm run typecheck` | `tsc --noEmit` em modo **strict** usando `jsconfig.json`                           |
-| `npm run validate:products` | Valida schema de `produtos.json` (id, brand, image, gallery)               |
-| `npm run build`     | **Pipeline completo**: `validate:products` → `lint` → `typecheck` → `build:css`    |
-| `npm test`          | Alias para `validate:products`                                                     |
+| Comando                    | O que faz                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------- |
+| `npm run dev`              | Watch do Tailwind (modo desenvolvimento)                                          |
+| `npm run build:css`        | Build minificado do Tailwind → `tailwind.css`                                      |
+| `npm run lint`             | ESLint v9 flat config (`eslint.config.js`) em todos JS                             |
+| `npm run lint:fix`         | ESLint com `--fix` (auto-correção de warnings triviais)                           |
+| `npm run typecheck`        | `tsc --noEmit` em modo **strict** usando `jsconfig.json`                           |
+| `npm run validate:products`| Valida schema de `produtos.json` (id, brand, image, gallery)                       |
+| `npm run test:snapshot`    | Roda snapshot test do catálogo (IDs/marcas/whatsapp/gallery/image)                 |
+| `npm run build`            | **Pipeline completo**: `validate:products` → `lint:fix` → `typecheck` → `build:css` |
+| `npm test`                 | `validate:products` + `test:snapshot`                                             |
 
 > **NÃO** commitar sem antes rodar `npm run build`. O CI deve falhar se typecheck/lint falharem.
 
 ## 3. Type safety (TypeScript via JSDoc)
 
 - **Setup**: `jsconfig.json` (não `tsconfig.json`) com `checkJs: true`, `strict: true`, `noImplicitAny: true`.
-- **Cobertura**: 100% dos 6 arquivos JS têm `// @ts-check` no topo.
+- **Cobertura**: 100% dos arquivos JS têm `// @ts-check` no topo.
+- **Utils compartilhados**: `escapeHTML` e `lockBodyScroll` vivem em `modules/ui.js` como `window.escapeHTML` / `window.lockBodyScroll`. Não duplique localmente.
 - **Tipos**: declarados em `types/*.d.ts` como **interfaces globais** (sem `import`/`export` para que sejam ambient).
   - `types/product.d.ts` → `Product`, `ProductSpec`, `ProductHighlight`, `ProductBrand`
   - `types/store.d.ts` → `Store`, `StoreAddress`, `StoreLogo`, `StoresByCity`, etc.
-  - `types/dom.d.ts` → `AppState`, `AudioState`, `ModalDOMRefs`, `CatalogState`, `WishlistAPI`, `Subscriber`, `WishlistDrawerRefs`
+  - `types/dom.d.ts` → `AppState`, `ModalState`, `AudioState`, `ModalDOMRefs`, `CatalogState`, `WishlistAPI`, `Subscriber`, `WishlistDrawerRefs`
   - `types/global.d.ts` → `declare global { interface Window { ... } }` (a única com `export {};`)
 - **JSDoc rules**:
   - Toda função pública tem `@param` e `@returns`.

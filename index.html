@@ -83,42 +83,18 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap&subset=latin" rel="stylesheet">
 
-    <!-- YouTube IFrame API — lazy load -->
-    <script>
-        var ytPlayer;
-        function onYouTubeIframeAPIReady() {
-            ytPlayer = new YT.Player('yt-player', {
-                videoId: 'gwBz0OCk_hA',
-                playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: 'gwBz0OCk_hA', controls: 0, playsinline: 1, modestbranding: 1, rel: 0, disablekb: 1, fs: 0 },
-                events: {
-                    onReady: function(e) { e.target.mute(); e.target.playVideo(); },
-                    onStateChange: function(e) { if (e.data === YT.PlayerState.ENDED) e.target.playVideo(); }
-                }
-            });
-        }
-        function loadYouTubeAPI() {
-            if (document.getElementById('yt-api-script')) return;
-            var tag = document.createElement('script');
-            tag.id = 'yt-api-script';
-            tag.src = 'https://www.youtube.com/iframe_api';
-            document.head.appendChild(tag);
-        }
-        window.addEventListener('scroll', function ytLazy() {
-            loadYouTubeAPI();
-            window.removeEventListener('scroll', ytLazy);
-        }, { once: true, passive: true });
-        setTimeout(loadYouTubeAPI, 3000);
-    </script>
+    <!-- YouTube IFrame API — lazy load (script externo, sem 'unsafe-inline') -->
+    <script src="youtube-lazy.js?v=1.1.3" defer></script>
     <!-- Schema.org JSON-LD gerado dinamicamente por stores.js -->
     <script id="schema-org" type="application/ld+json"></script>
 
     <link rel="stylesheet" href="styles.css">
-    <script src="stores.js?v=1.1.2" defer></script>
-    <script src="modules/ui.js?v=1.1.2" defer></script>
-    <script src="modules/catalog.js?v=1.1.2" defer></script>
-    <script src="modules/modal.js?v=1.1.2" defer></script>
-    <script src="modules/wishlist.js?v=1.1.2" defer></script>
-    <script src="app.js?v=1.1.2" defer></script>
+    <script src="stores.js?v=1.1.3" defer></script>
+    <script src="modules/ui.js?v=1.1.3" defer></script>
+    <script src="modules/catalog.js?v=1.1.3" defer></script>
+    <script src="modules/modal.js?v=1.1.3" defer></script>
+    <script src="modules/wishlist.js?v=1.1.3" defer></script>
+    <script src="app.js?v=1.1.3" defer></script>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative" style="background-color:#f4f4f0; color:#1c1917;">
 

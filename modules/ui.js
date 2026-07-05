@@ -1,6 +1,6 @@
 // ============================================================
 // MIPLACE MAGAZINE — ui.js
-// Utilitários: trapFocus, debounce, áudio, menus, scroll reveal
+// Utilitários: trapFocus, debounce, escapeHTML, áudio, menus, scroll reveal
 // @ts-check
 // ============================================================
 
@@ -8,14 +8,59 @@
     'use strict';
 
     /**
+     * Funcao compartilhada de escape HTML usada por catalog.js e modal.js.
+     * Centralizada aqui para evitar duplicação e manter o JSDoc consistente.
+     * @param {unknown} str
+     * @returns {string}
+     */
+    function escapeHTML(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    /**
+     * Bloqueia a rolagem do body com técnica iOS-safe (position: fixed + scrollY).
+     * @returns {() => void}
+     */
+    function lockBodyScroll() {
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        const orig = {
+            overflow: document.body.style.overflow,
+            position: document.body.style.position,
+            top: document.body.style.top,
+            width: document.body.style.width
+        };
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        return () => {
+            document.body.style.overflow = orig.overflow;
+            document.body.style.position = orig.position;
+            document.body.style.top = orig.top;
+            document.body.style.width = orig.width;
+            window.scrollTo(0, scrollY);
+        };
+    }
+
+
+    /**
+     * Registra o focus trap em um modal e retorna uma função para removê-lo.
+     * Evita memory leak quando openModal/closeModal são chamados várias vezes.
      * @param {Element} modalEl
-     * @returns {void}
+     * @returns {() => void}
      */
     function trapFocus(modalEl) {
         const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         const first = /** @type {HTMLElement} */ (focusable[0]);
         const last = /** @type {HTMLElement} */ (focusable[focusable.length - 1]);
-        modalEl.addEventListener('keydown', /** @type {EventListener} */ (function handler(/** @type {Event} */ _e) {
+
+        /** @type {EventListener} */
+        const handler = function(/** @type {Event} */ _e) {
             const e = /** @type {KeyboardEvent} */ (_e);
             if (e.key !== 'Tab') return;
             if (e.shiftKey) {
@@ -23,7 +68,9 @@
             } else {
                 if (document.activeElement === last) { e.preventDefault(); first.focus(); }
             }
-        }));
+        };
+        modalEl.addEventListener('keydown', handler);
+        return () => modalEl.removeEventListener('keydown', handler);
     }
 
     /**
@@ -132,6 +179,7 @@
     }
 
     // Expor API usada por app.js e HTML inline
+    window.escapeHTML = escapeHTML;
     window.trapFocus = trapFocus;
     window.debounce = debounce;
     window.trackEvent = trackEvent;
@@ -140,4 +188,5 @@
     window.closeMobileMenu = closeMobileMenu;
     window.toggleContato = toggleContato;
     window.initScrollReveal = initScrollReveal;
+    window.lockBodyScroll = lockBodyScroll;
 })();
