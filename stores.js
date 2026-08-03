@@ -7,19 +7,19 @@
 const STORES = [
     {
         id: 'xv',
-        name: 'Miplace XV de Novembro',
+        name: 'Miplace XV Prime',
         city: 'Piracicaba',
         logo: { jpg: 'logo/xv (1).webp', png: 'logo/xv (1).webp' },
         address: {
-            street: 'R. Quinze de Novembro, 910 - Centro',
+            street: 'R. Quinze de Novembro, 936 - Centro',
             cep: '13400-370',
-            mapsQuery: 'R.+Quinze+de+Novembro,+910+-+Centro,+Piracicaba+-+SP'
+            mapsQuery: 'R.+Quinze+de+Novembro,+936+-+Centro,+Piracicaba+-+SP'
         },
         phone: '+55-19-98960-5504',
         phoneDisplay: '(19) 98960-5504',
         whatsapp: '5519989605504',
         instagram: { handle: '@miplace.xvdenovembro', url: 'https://instagram.com/miplace.xvdenovembro' },
-        facebook: { name: 'Miplace XV de Novembro', url: 'https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr' },
+        facebook: { name: 'Miplace XV Prime', url: 'https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr' },
         geo: { lat: -22.7253, lng: -47.6476 }
     },
     {
