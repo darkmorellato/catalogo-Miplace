@@ -19,7 +19,7 @@ const STORES = [
         phoneDisplay: '(19) 98960-5504',
         whatsapp: '5519989605504',
         instagram: { handle: '@miplace.xvdenovembro', url: 'https://instagram.com/miplace.xvdenovembro' },
-        facebook: { name: 'Miplace XV Prime', url: 'https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr' },
+        facebook: { name: 'Miplace XV de Novembro', url: 'https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr' },
         geo: { lat: -22.7253, lng: -47.6476 }
     },
     {
