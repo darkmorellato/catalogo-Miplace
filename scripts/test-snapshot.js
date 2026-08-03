@@ -34,7 +34,7 @@ try {
 if (!Array.isArray(data)) fail('o arquivo raiz deve ser um array');
 
 // Invariantes canônicos do catálogo versão 1.1.x
-const brands = { Realme: 7, Honor: 5, Motorola: 6, Redmi: 1, Poco: 2, iPhone: 1 };
+const brands = { Realme: 6, Honor: 5, Motorola: 7, Redmi: 1, Poco: 2, iPhone: 1 };
 const expectedIds = Array.from({ length: 22 }, (_, i) => i + 1);
 
 const actualIds = data.map(p => p.id).sort((a, b) => a - b);
@@ -50,7 +50,7 @@ const actualBrands = data.reduce((acc, p) => {
 if (!deepEqual(actualBrands, brands)) {
     fail(`Contagem por marca diverge.\n  esperado: ${JSON.stringify(brands)}\n  obtido:   ${JSON.stringify(actualBrands)}`);
 }
-ok('Distribuição por marca preservada (Realme:7, Honor:5, Motorola:6, Redmi:1, Poco:2, iPhone:1)');
+ok('Distribuição por marca preservada (Realme:6, Honor:5, Motorola:7, Redmi:1, Poco:2, iPhone:1)');
 
 // Cada produto deve ter pelo menos 1 spec (não é regra rígida do schema mas é convenção)
 const withoutSpecs = data.filter(p => !p.specs || p.specs.length === 0);

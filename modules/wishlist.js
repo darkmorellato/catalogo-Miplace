@@ -267,18 +267,8 @@
         renderDrawer(ids);
     }
 
-    /**
-     * @param {unknown} str
-     * @returns {string}
-     */
-    function escapeHTML(str) {
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
+    /** @type {(s: unknown) => string} */
+    const escapeHTML = window.escapeHTML;
 
     /**
      * @param {number} id

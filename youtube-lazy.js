@@ -57,7 +57,7 @@
                     e.target.playVideo();
                 },
                 onStateChange: function(/** @type {{data:number}} */ e) {
-                    if (e.data === 1 /* ENDED */) {
+                    if (e.data === 1 /* PLAYING */) {
                         e.target.playVideo();
                     }
                 }

@@ -224,6 +224,9 @@
             });
         };
         window.addEventListener('scroll', onScroll, { passive: true });
+        if (state.backToTop) {
+            state.backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        }
     }
 
     /** @returns {void} */
@@ -317,6 +320,7 @@
             if (!img.dataset.fallback) { img.dataset.fallback = 'lower'; img.src = originalSrc.toLowerCase(); }
             else if (img.dataset.fallback === 'lower') { img.dataset.fallback = 'jpg'; img.src = originalSrc.toLowerCase().replace('.png', '.jpg'); }
             else if (img.dataset.fallback === 'jpg') { img.dataset.fallback = 'upper'; img.src = originalSrc.replace('.png', '.PNG').replace('.jpg', '.JPG'); }
+            else { img.onerror = null; }
         }, false);
     }
 
@@ -324,6 +328,7 @@
     function setupHeroTitleSplit() {
         const h1 = document.querySelector('h1.font-serif');
         if (!(h1 instanceof HTMLElement) || h1.dataset.splitDone) return;
+        h1.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         const text = h1.textContent?.trim() || '';
         h1.innerHTML = text.split('').map((ch, i) =>
             ch === ' '
@@ -346,6 +351,29 @@
                     menu.classList.remove('opacity-100', 'visible');
                     if (icon) icon.style.transform = 'scale(1)';
                 }
+            }
+        });
+    }
+
+    /** @returns {void} */
+    function setupInlineDelegation() {
+        document.addEventListener('click', e => {
+            const target = /** @type {Element} */ (/** @type {unknown} */ (e.target));
+            if (target.closest('[data-toggle-contato]')) {
+                window.toggleContato();
+                return;
+            }
+            if (target.closest('#hamburger-btn')) {
+                window.toggleMobileMenu();
+                return;
+            }
+            if (target.closest('[data-close-mobile-menu]')) {
+                window.closeMobileMenu();
+                return;
+            }
+            if (target.closest('[data-clear-search]')) {
+                window.clearSearch();
+                return;
             }
         });
     }
@@ -381,6 +409,7 @@
         document.querySelectorAll('#stores-grid .reveal').forEach(el => el.classList.add('active'));
 
         setupContactDropdown();
+        setupInlineDelegation();
         registerServiceWorker();
         setupScroll();
         setupAudio();

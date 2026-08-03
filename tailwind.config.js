@@ -4,6 +4,7 @@ module.exports = {
         './index.html',
         './app.js',
         './stores.js',
+        './modules/**/*.js',
     ],
     darkMode: 'media',
     theme: {

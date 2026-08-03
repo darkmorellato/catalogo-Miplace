@@ -109,17 +109,19 @@ function getStoresByCity() {
 function renderContactDropdown(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+    /** @type {(s: unknown) => string} */
+    const esc = window.escapeHTML;
     const grouped = getStoresByCity();
     let html = `<div class="border shadow-2xl flex flex-col py-2" style="background-color:#f4f4f0; border-color:#1c1917;">`;
     const cities = Object.keys(grouped);
     cities.forEach((city, ci) => {
-        html += `<span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#44403c; background-color:#eaeaeb;">${city}, SP</span>`;
+        html += `<span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#44403c; background-color:#eaeaeb;">${esc(city)}, SP</span>`;
         grouped[city].forEach((store, si) => {
             const isLast = ci === cities.length - 1 && si === grouped[city].length - 1;
             const borderBottom = !isLast && si === grouped[city].length - 1 ? 'border-bottom:1px solid #e5e5e5;' : '';
             html += `
                 <a href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-bold flex items-center gap-3 btn-hover-ink" style="${borderBottom}">
-                    <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="${store.name}" width="24" height="24" class="w-6 h-6 rounded-full object-cover"> ${store.name}
+                    <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="${esc(store.name)}" width="24" height="24" class="w-6 h-6 rounded-full object-cover"> ${esc(store.name)}
                 </a>`;
         });
     });
@@ -134,28 +136,30 @@ function renderContactDropdown(containerId) {
 function renderStoreCards(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+    /** @type {(s: unknown) => string} */
+    const esc = window.escapeHTML;
     const grouped = getStoresByCity();
     let html = '';
     const cities = Object.keys(grouped);
     cities.forEach(city => {
         html += `
             <div class="lg:col-span-6 reveal">
-                <h3 class="font-sans uppercase tracking-[0.3em] text-lg font-bold pb-4 mb-8" style="color:#1c1917; border-bottom: 1px solid #1c1917;">${city}, SP</h3>
+                <h3 class="font-sans uppercase tracking-[0.3em] text-lg font-bold pb-4 mb-8" style="color:#1c1917; border-bottom: 1px solid #1c1917;">${esc(city)}, SP</h3>
                 <div class="space-y-8">`;
         grouped[city].forEach(store => {
             html += `
                     <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
                         <div class="flex items-center gap-4">
-                            <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="Logo ${store.name}" width="64" height="64" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
+                            <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="Logo ${esc(store.name)}" width="64" height="64" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
                             <div>
-                                <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917;">${store.name}</h4>
-                                <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot mr-1"></i> ${store.address.street}<br>CEP: ${store.address.cep}</a>
+                                <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917;">${esc(store.name)}</h4>
+                                <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot mr-1"></i> ${esc(store.address.street)}<br>CEP: ${esc(store.address.cep)}</a>
                             </div>
                         </div>
                         <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                            <a href="${store.instagram.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917;"><i class="fa-brands fa-instagram text-lg"></i> ${store.instagram.handle}</a>
-                            <a href="${store.facebook.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917;"><i class="fa-brands fa-facebook text-lg"></i> ${store.facebook.name}</a>
-                            <a href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> ${store.phoneDisplay}</a>
+                            <a href="${store.instagram.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917;"><i class="fa-brands fa-instagram text-lg"></i> ${esc(store.instagram.handle)}</a>
+                            <a href="${store.facebook.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917;"><i class="fa-brands fa-facebook text-lg"></i> ${esc(store.facebook.name)}</a>
+                            <a href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> ${esc(store.phoneDisplay)}</a>
                         </div>
                     </div>`;
         });

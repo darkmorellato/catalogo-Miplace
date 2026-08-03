@@ -9,6 +9,7 @@
 
     // Reutiliza a implementação centralizada em modules/ui.js (DRY)
     const escapeHTML = /** @type {(s: unknown) => string} */ (window.escapeHTML);
+    const debounce = /** @type {<F extends (...args: any[]) => any>(fn: F, delay: number) => (...args: Parameters<F>) => void} */ (window.debounce);
 
     /** @returns {CatalogState} */
     function getStore() { return state; }
@@ -140,7 +141,7 @@
                         <div class="ver-detalhes-overlay absolute inset-0 flex items-center justify-center" style="background-color:rgba(28,25,23,0.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); z-index:20;">
                             <span class="ver-detalhes-label font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3" style="color:#f4f4f0; border:1px solid #f4f4f0; background-color:rgba(28,25,23,0.55);">Ver Detalhes</span>
                         </div>
-                        <button type="button" data-wishlist-toggle="${p.id}" data-wishlist-source="card" aria-pressed="${wishlistActive ? 'true' : 'false'}" aria-label="${wishlistActive ? 'Remover' : 'Adicionar'} ${escapeHTML(p.name)} ${wishlistActive ? 'dos' : 'aos'} favoritos" class="wishlist-btn ${wishlistActive ? 'is-active' : ''}">
+                        <button type="button" data-wishlist-toggle="${p.id}" data-wishlist-source="card" data-wishlist-name="${escapeHTML(p.name)}" aria-pressed="${wishlistActive ? 'true' : 'false'}" aria-label="${wishlistActive ? 'Remover' : 'Adicionar'} ${escapeHTML(p.name)} ${wishlistActive ? 'dos' : 'aos'} favoritos" class="wishlist-btn ${wishlistActive ? 'is-active' : ''}">
                             <i class="fa-regular fa-heart heart-outline" aria-hidden="true"></i>
                             <i class="fa-solid fa-heart heart-filled" aria-hidden="true"></i>
                         </button>
@@ -167,23 +168,6 @@
                 </div>
             </div>`;
         }).join('');
-    }
-
-    /**
-     * @template {(...args: any[]) => any} F
-     * @param {F} fn
-     * @param {number} delay
-     * @returns {(...args: Parameters<F>) => void}
-     */
-    function debounce(fn, delay) {
-        /** @type {ReturnType<typeof setTimeout> | undefined} */
-        let timer;
-        return function(/** @type {any[]} */ ...args) {
-            // @ts-ignore — `this` é dinâmico, intencional
-            const self = this;
-            if (timer) clearTimeout(timer);
-            timer = setTimeout(() => fn.apply(self, args), delay);
-        };
     }
 
     /** @returns {void} */

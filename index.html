@@ -68,19 +68,18 @@
     <link rel="dns-prefetch" href="https://www.youtube.com">
 
     <!-- Preload recursos críticos -->
-    <link rel="preload" href="tailwind.css" as="style">
+    <link rel="preload" href="tailwind.css?v=1.1.5" as="style">
     <link rel="preload" href="moldura-celular.webp" as="image" type="image/webp">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" as="style">
 
     <!-- Tailwind CSS (build local — apenas classes usadas) -->
-    <link rel="stylesheet" href="tailwind.css">
+    <link rel="stylesheet" href="tailwind.css?v=1.1.5">
 
     <!-- Font Awesome (apenas solid + brands — os únicos estilos usados) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha384-bGIKHDMAvn+yR8S/yTRi+6S++WqBdA+TaJ1nOZf079H6r492oh7V6uAqq739oSZC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha384-o96F2rFLAgwGpsvjLInkYtEFanaHuHeDtH47SxRhOsBCB2GOvUZke4yVjULPMFnv" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha384-2ExAXhxetFPlyL5ZypKQbz0ZrD6S0xW1jF2n+bGda67tIfsjcfHQy3FkuA1IjuxK" crossorigin="anonymous">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (carregamento assíncrono) -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap&subset=latin" rel="stylesheet">
 
     <!-- YouTube IFrame API — lazy load (script externo, sem 'unsafe-inline') -->
@@ -113,7 +112,7 @@
     </audio>
 
     <!-- Botão Voltar ao Topo -->
-    <button id="back-to-top" aria-label="Voltar ao topo da página" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:scale-110" style="background-color:#1c1917; color:#f4f4f0;" title="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <button id="back-to-top" aria-label="Voltar ao topo da página" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:scale-110" style="background-color:#1c1917; color:#f4f4f0;" title="Voltar ao topo">
         <i class="fa-solid fa-arrow-up text-sm"></i>
     </button>
 
@@ -130,7 +129,7 @@
                 <span>Edição Especial 2026 by Dark Morellato</span>
                 <span class="hidden md:block">Piracicaba & Amparo — SP</span>
                 <div class="relative z-50 dropdown-container">
-                    <button onclick="toggleContato()" aria-label="Abrir contatos das lojas via WhatsApp" title="Contato via WhatsApp" class="flex items-center gap-2 cursor-pointer hover:scale-110 transition-transform" style="color:#44403c;">
+                    <button data-toggle-contato aria-label="Abrir contatos das lojas via WhatsApp" title="Contato via WhatsApp" class="flex items-center gap-2 cursor-pointer hover:scale-110 transition-transform" style="color:#44403c;">
                         <i class="fa-brands fa-whatsapp text-2xl transition-transform duration-300" id="contato-icon" style="color:#16a34a;"></i>
                         <span class="font-sans font-bold text-xs uppercase tracking-widest hidden sm:inline" style="color:#1c1917;">Fale na Miplace</span>
                     </button>
@@ -141,7 +140,7 @@
             </div>
 
             <div class="text-center">
-                <h1 class="font-serif text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none cursor-pointer" style="color:#1c1917;" onclick="window.scrollTo({top:0,behavior:'smooth'})">Miplace</h1>
+                <h1 class="font-serif text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none cursor-pointer" style="color:#1c1917;">Miplace</h1>
                 <p class="font-sans text-sm md:text-base uppercase tracking-[0.3em] md:tracking-[0.5em] mt-4 font-medium" style="color:#1c1917;">Tecnologia & Estilo de Vida</p>
             </div>
 
@@ -154,7 +153,7 @@
                 </div>
                 <div class="flex md:hidden justify-between items-center">
                     <span class="text-[10px] tracking-[0.3em]" style="color:#44403c;">Navegar</span>
-                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" onclick="toggleMobileMenu()" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none">
+                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -162,10 +161,10 @@
                 </div>
                 <div id="mobile-menu" role="navigation" aria-label="Menu principal mobile">
                     <div class="flex flex-col gap-0 pt-4 pb-2">
-                        <a href="#inicio" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Capa <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
-                        <a href="#editorial-boleto" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Destaque <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
-                        <a href="#catalogo" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">A Coleção <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
-                        <a href="#enderecos" onclick="closeMobileMenu()" class="py-3 flex items-center justify-between" style="color:#1c1917;">Endereços <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#inicio" data-close-mobile-menu class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Capa <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#editorial-boleto" data-close-mobile-menu class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">Destaque <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#catalogo" data-close-mobile-menu class="py-3 flex items-center justify-between" style="color:#1c1917; border-bottom:1px solid #e5e5e5;">A Coleção <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
+                        <a href="#enderecos" data-close-mobile-menu class="py-3 flex items-center justify-between" style="color:#1c1917;">Endereços <i class="fa-solid fa-arrow-right text-[10px]" style="color:#44403c;"></i></a>
                     </div>
                 </div>
             </nav>
@@ -253,7 +252,7 @@
                     class="w-full font-sans text-sm bg-transparent outline-none py-3 pr-10 pl-0 uppercase tracking-widest"
                     style="border-bottom: 2px solid rgba(28,25,23,0.3); color:#1c1917; background-color:transparent;">
                 <i class="fa-solid fa-magnifying-glass absolute right-2 top-1/2 -translate-y-1/2 text-sm pointer-events-none" id="search-icon" style="color:rgba(28,25,23,0.3);"></i>
-                <button id="search-clear" onclick="clearSearch()" aria-label="Limpar busca" class="absolute right-2 top-1/2 -translate-y-1/2 transition-colors hidden" style="color:rgba(28,25,23,0.5);">
+                <button id="search-clear" data-clear-search aria-label="Limpar busca" class="absolute right-2 top-1/2 -translate-y-1/2 transition-colors hidden" style="color:rgba(28,25,23,0.5);">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
@@ -308,27 +307,27 @@
 
     <!-- Lightbox -->
     <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de imagem" class="fixed inset-0 z-[200] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 backdrop-blur-md cursor-zoom-out" style="background-color:rgba(28,25,23,0.95);" onclick="closeLightbox()"></div>
-        <button onclick="lightboxNavigate(-1)" aria-label="Imagem anterior" class="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
+        <div class="absolute inset-0 backdrop-blur-md cursor-zoom-out" style="background-color:rgba(28,25,23,0.95);" data-lightbox-close></div>
+        <button data-lightbox-prev aria-label="Imagem anterior" class="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
             <i class="fa-solid fa-chevron-left text-lg"></i>
         </button>
-        <img id="lightbox-img" src="" alt="Imagem ampliada do produto" class="relative z-10 max-w-[85vw] max-h-[90vh] object-contain transform scale-95 transition-all duration-300 cursor-zoom-out" onclick="closeLightbox()">
-        <button onclick="lightboxNavigate(1)" aria-label="Próxima imagem" class="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
+        <img id="lightbox-img" src="" alt="Imagem ampliada do produto" class="relative z-10 max-w-[85vw] max-h-[90vh] object-contain transform scale-95 transition-all duration-300 cursor-zoom-out" data-lightbox-close>
+        <button data-lightbox-next aria-label="Próxima imagem" class="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
             <i class="fa-solid fa-chevron-right text-lg"></i>
         </button>
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 font-sans text-[10px] uppercase tracking-widest" style="color:rgba(244,244,240,0.6);">
             <span id="lightbox-counter"></span>
         </div>
-        <button onclick="closeLightbox()" aria-label="Fechar visualização de imagem" class="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-2xl" style="background-color:#f4f4f0; color:#1c1917;">
+        <button data-lightbox-close aria-label="Fechar visualização de imagem" class="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-2xl" style="background-color:#f4f4f0; color:#1c1917;">
             <i class="fa-solid fa-xmark text-xl"></i>
         </button>
     </div>
 
     <!-- Modal — scroll unificado no painel direito -->
     <div id="product-modal" role="dialog" aria-modal="true" aria-label="Detalhes do produto" class="fixed inset-0 z-[100] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 backdrop-blur-sm cursor-pointer" style="background-color:rgba(28,25,23,0.9);" onclick="closeModal()"></div>
+        <div class="absolute inset-0 backdrop-blur-sm cursor-pointer" style="background-color:rgba(28,25,23,0.9);" data-modal-close></div>
         <div class="relative z-10 w-full max-w-7xl max-h-[95vh] flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300 overflow-hidden" id="modal-container" style="background-color:#f4f4f0;">
-            <button onclick="closeModal()" aria-label="Fechar detalhes do produto" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-lg" style="background-color:#1c1917; color:#f4f4f0;">
+            <button data-modal-close aria-label="Fechar detalhes do produto" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-lg" style="background-color:#1c1917; color:#f4f4f0;">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="w-full flex flex-col md:flex-row h-full"></div>
