@@ -1,3 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source(none);
+
+@source "../index.html";
+@source "../app.js";
+@source "../stores.js";
+@source "../modules";
+
+@theme {
+    --font-sans: "DM Sans", sans-serif;
+    --font-serif: "Playfair Display", serif;
+
+    --color-paper: #f4f4f0;
+    --color-paper-dark: #eaeaeb;
+    --color-ink: #1c1917;
+    --color-ink-light: #44403c;
+    --color-accent: #991b1b;
+}

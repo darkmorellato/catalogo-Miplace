@@ -48,8 +48,10 @@ interface ModalDOMRefs {
   lightboxCounter: HTMLElement | null;
 }
 
+type CatalogFilter = 'Todos' | 'Tablets' | ProductBrand;
+
 interface CatalogState {
-  currentFilter: 'Todos' | ProductBrand;
+  currentFilter: CatalogFilter;
   currentSearch: string;
   gridCarouselInterval: number | null;
   kbToggle: boolean;
@@ -62,6 +64,10 @@ interface ModalState {
   lightboxImages: string[];
   lightboxCurrentIdx: number;
   touchStartX: number;
+  /** Galeria do produto aberto (alimenta lightbox e thumbs) */
+  modalGallery: string[];
+  /** Imagem de origem do morph FLIP (card/wishlist -> modal) */
+  morphSource: HTMLImageElement | null;
   releaseFocusTrap: (() => void) | null;
   releaseScrollLock: (() => void) | null;
 }

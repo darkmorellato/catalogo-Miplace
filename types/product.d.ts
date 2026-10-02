@@ -14,13 +14,16 @@ interface ProductHighlight {
   text: string;
 }
 
-type ProductBrand = 'Realme' | 'Honor' | 'Motorola' | 'Redmi' | 'Poco' | 'iPhone';
+type ProductBrand = 'Realme' | 'Honor' | 'Motorola' | 'Redmi' | 'Poco' | 'iPhone' | 'Samsung' | 'Infinix' | 'Tecno';
+
+type ProductCategory = 'Celular' | 'Tablet';
 
 interface Product {
   id: number;
   brand: ProductBrand;
   name: string;
   image: string;
+  category?: ProductCategory;
   price?: string;
   specialPrice?: string;
   description?: string;

@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const DIRS = ['Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'Iphone', 'logo'];
+const DIRS = ['realme', 'honor', 'motorola', 'redmi', 'poco', 'iphone', 'infinix', 'samsung', 'tecno', 'logo'];
 const EXTS = ['.jpg', '.jpeg', '.png'];
 
 let total = 0, converted = 0, skipped = 0;

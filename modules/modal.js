@@ -27,9 +27,109 @@
         lightboxImages: [],
         lightboxCurrentIdx: 0,
         touchStartX: 0,
+        modalGallery: [],
+        morphSource: null,
         releaseFocusTrap: null,
         releaseScrollLock: null
     };
+
+    /** @returns {boolean} */
+    function reducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    /**
+     * FLIP shared-element: anima a imagem do modal a partir do retângulo da
+     * imagem de origem (card/wishlist) — e vice-versa com `reverse`.
+     * @param {HTMLImageElement | null} source
+     * @param {HTMLImageElement | null} target
+     * @param {number} duration
+     * @param {boolean} [reverse]
+     * @returns {void}
+     */
+    function flipMorph(source, target, duration, reverse) {
+        if (!source || !target || typeof target.animate !== 'function') return;
+        if (reducedMotion()) return;
+        const from = source.getBoundingClientRect();
+        const to = target.getBoundingClientRect();
+        if (from.width < 2 || to.width < 2) return;
+        const sx = from.width / to.width;
+        const sy = from.height / to.height;
+        const dx = from.left - to.left;
+        const dy = from.top - to.top;
+        const morphed = 'translate(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px) scale(' + sx.toFixed(4) + ', ' + sy.toFixed(4) + ')';
+        target.style.transformOrigin = 'top left';
+        target.animate(
+            reverse
+                ? [{ transform: 'none' }, { transform: morphed }]
+                : [{ transform: morphed }, { transform: 'none' }],
+            { duration, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+        );
+    }
+
+    // ---- Zoom dinâmico do lightbox (state module-level) ----
+    let zoomScale = 1;
+    let panX = 0;
+    let panY = 0;
+
+    /** @returns {void} */
+    function applyZoom() {
+        const img = dom.lightboxImg;
+        if (!img) return;
+        if (zoomScale <= 1) {
+            img.classList.remove('is-zoomed');
+            img.style.transform = '';
+            img.style.transformOrigin = '';
+            return;
+        }
+        img.classList.add('is-zoomed');
+        img.style.transform = 'translate(' + panX.toFixed(1) + 'px, ' + panY.toFixed(1) + 'px) scale(' + zoomScale + ')';
+    }
+
+    /**
+     * @param {number} [cx]
+     * @param {number} [cy]
+     * @returns {void}
+     */
+    function toggleZoom(cx, cy) {
+        const img = dom.lightboxImg;
+        if (!img) return;
+        if (zoomScale > 1) {
+            zoomScale = 1; panX = 0; panY = 0;
+            applyZoom();
+            return;
+        }
+        const rect = img.getBoundingClientRect();
+        const px = typeof cx === 'number' ? ((cx - rect.left) / rect.width) * 100 : 50;
+        const py = typeof cy === 'number' ? ((cy - rect.top) / rect.height) * 100 : 50;
+        img.style.transformOrigin = px.toFixed(1) + '% ' + py.toFixed(1) + '%';
+        zoomScale = 2;
+        panX = 0; panY = 0;
+        applyZoom();
+    }
+
+    /** @returns {void} */
+    function resetZoom() {
+        zoomScale = 1; panX = 0; panY = 0;
+        applyZoom();
+    }
+
+    /**
+     * Pan do zoom (limitado aos limites da imagem ampliada).
+     * @param {number} dx
+     * @param {number} dy
+     * @returns {void}
+     */
+    function panBy(dx, dy) {
+        const img = dom.lightboxImg;
+        if (!img || zoomScale <= 1) return;
+        const rect = img.getBoundingClientRect();
+        const maxX = (rect.width * (zoomScale - 1)) / 2;
+        const maxY = (rect.height * (zoomScale - 1)) / 2;
+        panX = Math.max(-maxX, Math.min(maxX, panX + dx));
+        panY = Math.max(-maxY, Math.min(maxY, panY + dy));
+        applyZoom();
+    }
 
     /**
      * @param {FrameRequestCallback} cb
@@ -108,7 +208,7 @@
         if (galleryImages.length === 0) {
             return `<div class="w-full flex items-center justify-center h-full"><i class="fa-solid fa-mobile-screen text-8xl" style="color:rgba(28,25,23,0.2);"></i></div>`;
         }
-        return `<div class="w-full flex flex-col gap-3 p-3">${galleryImages.map((img, i) => `<div class="w-full aspect-video rounded overflow-hidden relative cursor-zoom-in group transition-all duration-300" style="background-color:#f4f4f0; border:1px solid rgba(28,25,23,0.1);" data-lightbox-open="${i}" title="Clique para ampliar"><img src="${escapeHTML(img)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background-color:rgba(28,25,23,0.1);"><span class="text-[9px] font-sans uppercase tracking-widest px-2 py-1 rounded" style="background-color:#1c1917; color:#f4f4f0;">Ampliar</span></div></div>`).join('')}</div>`;
+        return `<div class="w-full flex flex-col gap-3 p-3">${galleryImages.map((img, i) => `<div class="w-full aspect-video rounded-sm overflow-hidden relative cursor-zoom-in group transition-all duration-300 modal-thumb" style="background-color:#f4f4f0; border:1px solid rgba(28,25,23,0.1); --thumb-delay: ${Math.min(i, 6) * 80}ms;" data-lightbox-open="${i}" title="Clique para ampliar"><img ${i === 0 ? 'id="modal-hero-img" ' : ''}src="${escapeHTML(img)}" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background-color:rgba(28,25,23,0.1);"><span class="text-[9px] font-sans uppercase tracking-widest px-2 py-1 rounded-sm" style="background-color:#1c1917; color:#f4f4f0;">Ampliar</span></div></div>`).join('')}</div>`;
     }
 
     /**
@@ -131,17 +231,20 @@
 
     /**
      * @param {number} id
+     * @param {HTMLImageElement | null} [sourceImg]
      * @returns {void}
      */
-    function openModal(id) {
+    function openModal(id, sourceImg) {
         if (!dom.modal || !dom.modalContainer || !dom.modalContent) return;
         window.playUIClick?.();
         const product = getProducts().find(p => p.id === id);
         if (!product) return;
+        state.morphSource = sourceImg || null;
         document.title = `${product.name} | Miplace Magazine`;
         window.trackEvent?.('view_item', { item_id: String(product.id), item_name: product.name, item_brand: product.brand });
 
         const galleryImages = product.gallery && product.gallery.length > 0 ? product.gallery : (product.image ? [product.image] : []);
+        state.modalGallery = galleryImages.slice();
         const productNameEncoded = encodeURIComponent('Olá! Gostaria de saber mais sobre o ' + product.name + '.');
 
         const galleryHTML = buildGalleryHTML(galleryImages);
@@ -159,7 +262,7 @@
                 <div class="w-full md:w-5/12 overflow-y-auto modal-scroll-pane" style="background-color:#eaeaeb; border-right:1px solid rgba(28,25,23,0.1); max-height:95vh;">
                     <div class="w-full">${galleryHTML}</div>
                 </div>
-                <div class="w-full md:w-7/12 px-8 py-10 md:px-14 md:py-12 flex flex-col overflow-y-auto modal-scroll-pane" style="background-color:#f4f4f0; color:#1c1917; max-height:95vh;">
+                <div class="w-full md:w-7/12 px-8 py-10 md:px-14 md:py-12 flex flex-col overflow-y-auto modal-scroll-pane modal-cascade" style="background-color:#f4f4f0; color:#1c1917; max-height:95vh;">
                     <div class="mb-3"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${escapeHTML(product.brand)}</span></div>
                     <h2 class="font-serif text-4xl md:text-5xl font-bold mb-5 leading-none" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
                     ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-8 inline-block w-max" style="color:#1c1917; border-bottom:2px solid #1c1917;">${escapeHTML(product.price)}</p>` : ''}
@@ -175,7 +278,7 @@
             dom.modalContent.innerHTML = `
                 <div class="w-full p-12 flex flex-col items-center justify-center min-h-[40vh] text-center" style="background-color:#f4f4f0;">
                     <div class="w-32 h-32 rounded-full flex items-center justify-center mb-6" style="background-color:#eaeaeb;">
-                        ${product.image ? `<img src="${escapeHTML(product.image)}" class="w-20 h-20 object-contain" alt="${escapeHTML(product.name)}">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(28,25,23,0.2);"></i>`}
+                        ${product.image ? `<img src="${escapeHTML(product.image)}" class="w-20 h-20 object-contain" decoding="async" alt="${escapeHTML(product.name)}">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(28,25,23,0.2);"></i>`}
                     </div>
                     <h2 class="font-serif text-3xl font-bold mb-4" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
                     <p class="font-sans mb-8" style="color:#44403c;">Ainda estamos preparando os detalhes deste editorial.</p>
@@ -189,12 +292,34 @@
 
         dom.modal.classList.remove('hidden');
         dom.modal.classList.add('flex');
-        dom.modalContainer.classList.add('scale-95');
-        dom.modal.classList.add('opacity-0');
-        nextFrame(() => {
-            dom.modal?.classList.remove('opacity-0');
-            dom.modalContainer?.classList.remove('scale-95');
-        });
+        // As classes base trazem opacity-0/scale-95 (estado fechado); removê-las
+        // é o que torna o modal visível — o WAAPI entra por cima.
+        dom.modal.classList.remove('opacity-0');
+        dom.modalContainer.classList.remove('scale-95');
+
+        // Véu gradual (blur + opacidade em camadas)
+        const veil = dom.modal.querySelector('.modal-veil');
+        if (veil instanceof HTMLElement) {
+            nextFrame(() => veil.classList.add('is-on'));
+        }
+
+        // FLIP shared-element: a imagem do card expande até o hero do modal
+        // (medida ANTES do movimento do painel, para o cálculo ficar exato).
+        const heroImg = /** @type {HTMLImageElement | null} */ (document.getElementById('modal-hero-img'));
+        flipMorph(state.morphSource, heroImg, 620, false);
+
+        // Entrada do painel (WAAPI) mantendo o contexto visível sob o véu
+        if (dom.modalContainer && typeof dom.modalContainer.animate === 'function' && !reducedMotion()) {
+            dom.modalContainer.animate(
+                [
+                    { opacity: 0, transform: 'translateY(26px) scale(0.97)' },
+                    { opacity: 1, transform: 'none' }
+                ],
+                // fill:forwards encadeia com a animação de fechamento (evita
+                // que o estado persistido do fechar reaplique na reabertura)
+                { duration: 520, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
+            );
+        }
         if (state.releaseFocusTrap) state.releaseFocusTrap();
         state.releaseFocusTrap = window.trapFocus(dom.modal);
         setTimeout(() => {
@@ -219,14 +344,33 @@
             state.releaseScrollLock();
             state.releaseScrollLock = null;
         }
-        dom.modal.classList.add('opacity-0');
-        dom.modalContainer.classList.add('scale-95');
+
+        // Véu recolhe e a imagem devolve-se à posição do card (FLIP reverso)
+        const veil = dom.modal.querySelector('.modal-veil');
+        if (veil instanceof HTMLElement) veil.classList.remove('is-on');
+        const heroImg = /** @type {HTMLImageElement | null} */ (document.getElementById('modal-hero-img'));
+        flipMorph(state.morphSource, heroImg, 430, true);
+        if (dom.modalContainer && typeof dom.modalContainer.animate === 'function' && !reducedMotion()) {
+            dom.modalContainer.animate(
+                [
+                    { opacity: 1, transform: 'none' },
+                    { opacity: 0, transform: 'translateY(20px) scale(0.97)' }
+                ],
+                { duration: 320, easing: 'cubic-bezier(0.4, 0, 1, 1)', fill: 'forwards' }
+            );
+        }
+
         setTimeout(() => {
             dom.modal?.classList.add('hidden');
             dom.modal?.classList.remove('flex');
+            // Devolve o estado fechado (classes base) para a próxima abertura
+            dom.modal?.classList.add('opacity-0');
+            dom.modalContainer?.classList.add('scale-95');
             if (dom.modalContent) dom.modalContent.innerHTML = '';
+            state.modalGallery = [];
+            state.morphSource = null;
             document.title = 'MIPLACE MAGAZINE | Catálogo Exclusivo';
-        }, 300);
+        }, 330);
     }
 
     /**
@@ -237,8 +381,9 @@
     function openLightbox(src, idx) {
         if (!dom.modalContent || !dom.lightbox || !dom.lightboxImg) return;
         window.playUIClick?.();
-        const modalImgs = Array.from(dom.modalContent.querySelectorAll('.aspect-video img'));
-        state.lightboxImages = modalImgs.map(/** @param {Element} i */ i => /** @type {HTMLImageElement} */ (i).getAttribute('src') || '');
+        state.lightboxImages = state.modalGallery.length
+            ? state.modalGallery.slice()
+            : Array.from(dom.modalContent.querySelectorAll('.aspect-video img')).map(/** @param {Element} i */ i => /** @type {HTMLImageElement} */ (i).getAttribute('src') || '');
         state.lightboxCurrentIdx = (idx !== undefined && idx >= 0) ? idx : state.lightboxImages.indexOf(src);
         if (state.lightboxCurrentIdx < 0) state.lightboxCurrentIdx = 0;
         delete dom.lightboxImg.dataset.fallback;
@@ -248,45 +393,78 @@
         dom.lightbox.classList.add('flex');
         nextFrame(() => {
             dom.lightbox?.classList.remove('opacity-0');
-            dom.lightboxImg?.classList.remove('scale-95');
-            dom.lightboxImg?.classList.add('scale-100');
+            if (dom.lightboxImg && typeof dom.lightboxImg.animate === 'function' && !reducedMotion()) {
+                dom.lightboxImg.animate(
+                    [{ opacity: 0, transform: 'scale(0.94)' }, { opacity: 1, transform: 'none' }],
+                    { duration: 380, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+                );
+            }
         });
         if (dom.lightboxCounter && state.lightboxImages.length > 1) {
             dom.lightboxCounter.textContent = `${state.lightboxCurrentIdx + 1} / ${state.lightboxImages.length}`;
         }
     }
 
+    // Guarda do crossfade/slide do lightbox: cliques rápidos não embaralham
+    let lightboxSwapTimer = 0;
+    let lightboxAnim = /** @type {Animation | null} */ (null);
+
     /**
      * @param {number} dir
      * @returns {void}
      */
     function lightboxNavigate(dir) {
-        if (!dom.lightboxImg) return;
+        const img = dom.lightboxImg;
+        if (!img) return;
         if (state.lightboxImages.length <= 1) return;
         window.playUIClick?.();
+        resetZoom();
         state.lightboxCurrentIdx = (state.lightboxCurrentIdx + dir + state.lightboxImages.length) % state.lightboxImages.length;
-        dom.lightboxImg.style.opacity = '0';
-        dom.lightboxImg.style.transform = 'scale(0.95)';
-        setTimeout(() => {
+
+        /** @returns {void} */
+        const update = () => {
             if (!dom.lightboxImg) return;
             delete dom.lightboxImg.dataset.fallback;
             delete dom.lightboxImg.dataset.originalSrc;
             dom.lightboxImg.src = state.lightboxImages[state.lightboxCurrentIdx];
-            dom.lightboxImg.style.opacity = '1';
-            dom.lightboxImg.style.transform = 'scale(1)';
             if (dom.lightboxCounter && state.lightboxImages.length > 1) {
                 dom.lightboxCounter.textContent = `${state.lightboxCurrentIdx + 1} / ${state.lightboxImages.length}`;
             }
-        }, 200);
+        };
+
+        if (typeof img.animate !== 'function' || reducedMotion()) {
+            clearTimeout(lightboxSwapTimer);
+            lightboxSwapTimer = setTimeout(update, 120);
+            return;
+        }
+
+        if (lightboxAnim) { lightboxAnim.cancel(); lightboxAnim = null; }
+        clearTimeout(lightboxSwapTimer);
+        const out = img.animate(
+            [
+                { transform: 'translateX(0) scale(1)', opacity: 1 },
+                { transform: 'translateX(' + (-dir * 18) + '%) scale(0.96)', opacity: 0 }
+            ],
+            { duration: 200, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' }
+        );
+        out.onfinish = () => {
+            update();
+            lightboxAnim = img.animate(
+                [
+                    { transform: 'translateX(' + (dir * 18) + '%) scale(0.96)', opacity: 0 },
+                    { transform: 'translateX(0) scale(1)', opacity: 1 }
+                ],
+                { duration: 340, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
+            );
+        };
     }
 
     /** @returns {void} */
     function closeLightbox() {
         if (!dom.lightbox || !dom.lightboxImg) return;
         window.playUIClick?.();
+        resetZoom();
         dom.lightbox.classList.add('opacity-0');
-        dom.lightboxImg.classList.remove('scale-100');
-        dom.lightboxImg.classList.add('scale-95');
         setTimeout(() => {
             dom.lightbox?.classList.add('hidden');
             dom.lightbox?.classList.remove('flex');
@@ -303,11 +481,83 @@
         dom.lightboxCounter = document.getElementById('lightbox-counter');
         if (!dom.modal || !dom.lightbox || !dom.modalContent) return;
 
-        dom.lightbox.addEventListener('touchstart', e => { state.touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-        dom.lightbox.addEventListener('touchend', e => {
-            const diff = state.touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) lightboxNavigate(diff > 0 ? 1 : -1);
-        }, { passive: true });
+        // Arrasto com inércia + pan de zoom + duplo-toque (pointer events cobrem touch)
+        const lbImg = dom.lightboxImg;
+        if (lbImg) {
+            let dragging = false;
+            let dragMoved = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let dragTime = 0;
+            let lastTapTime = 0;
+
+            lbImg.addEventListener('pointerdown', (e) => {
+                const evt = /** @type {PointerEvent} */ (/** @type {unknown} */ (e));
+                dragging = true;
+                dragMoved = false;
+                dragStartX = evt.clientX;
+                dragStartY = evt.clientY;
+                dragTime = performance.now();
+                if (typeof lbImg.setPointerCapture === 'function') lbImg.setPointerCapture(evt.pointerId);
+            });
+
+            lbImg.addEventListener('pointermove', (e) => {
+                if (!dragging) return;
+                const evt = /** @type {PointerEvent} */ (/** @type {unknown} */ (e));
+                const dx = evt.clientX - dragStartX;
+                const dy = evt.clientY - dragStartY;
+                if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragMoved = true;
+                if (zoomScale > 1) {
+                    panBy(dx, dy);
+                    dragStartX = evt.clientX;
+                    dragStartY = evt.clientY;
+                } else if (state.lightboxImages.length > 1) {
+                    lbImg.style.transform = 'translateX(' + dx.toFixed(1) + 'px)';
+                }
+            });
+
+            lbImg.addEventListener('pointerup', (e) => {
+                if (!dragging) return;
+                dragging = false;
+                const evt = /** @type {PointerEvent} */ (/** @type {unknown} */ (e));
+                const dx = evt.clientX - dragStartX;
+                const dt = performance.now() - dragTime;
+                const velocity = dt > 0 ? dx / dt : 0;
+
+                if (zoomScale > 1) return;
+
+                if ((Math.abs(dx) > 70 || Math.abs(velocity) > 0.45) && state.lightboxImages.length > 1) {
+                    lbImg.style.transform = '';
+                    lightboxNavigate(dx < 0 ? 1 : -1);
+                } else if (dragMoved) {
+                    const from = lbImg.style.transform || 'none';
+                    lbImg.style.transform = '';
+                    if (typeof lbImg.animate === 'function') {
+                        lbImg.animate(
+                            [{ transform: from }, { transform: 'none' }],
+                            { duration: 380, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+                        );
+                    }
+                }
+
+                // Duplo-toque em telas de toque = zoom dinâmico
+                const now = performance.now();
+                if (!dragMoved && evt.pointerType === 'touch') {
+                    if (now - lastTapTime < 320) toggleZoom(evt.clientX, evt.clientY);
+                    lastTapTime = now;
+                }
+            });
+
+            lbImg.addEventListener('pointercancel', () => {
+                dragging = false;
+                lbImg.style.transform = '';
+            });
+
+            lbImg.addEventListener('dblclick', (e) => {
+                const evt = /** @type {MouseEvent} */ (/** @type {unknown} */ (e));
+                toggleZoom(evt.clientX, evt.clientY);
+            });
+        }
 
         // Delegation: lightbox open + wishlist toggle
         dom.modalContent.addEventListener('click', e => {
@@ -329,8 +579,13 @@
                 if (img) openLightbox(/** @type {HTMLImageElement} */ (img).getAttribute('src') || '', Number.isFinite(idx) ? idx : 0);
                 return;
             }
-            const closeBtn = target.closest('[data-modal-close]');
-            if (closeBtn) closeModal();
+        });
+
+        // Delegation: close — o X e o backdrop ficam FORA de #modal-content
+        // (irmãos em #product-modal), então o listener precisa estar no ancestral comum.
+        dom.modal.addEventListener('click', e => {
+            const target = /** @type {Element} */ (/** @type {unknown} */ (e.target));
+            if (target.closest('[data-modal-close]')) closeModal();
         });
 
         // Delegation: contacts panel toggle
@@ -374,7 +629,12 @@
             if (!dom.lightbox || !dom.modal) return;
             const lightboxOpen = !dom.lightbox.classList.contains('hidden');
             if (e.key === 'Escape') {
-                if (lightboxOpen) { closeLightbox(); return; }
+                if (lightboxOpen) {
+                    // Zoom ativo: o primeiro ESC só desfaz o zoom
+                    if (zoomScale > 1) { resetZoom(); return; }
+                    closeLightbox();
+                    return;
+                }
                 if (!dom.modal.classList.contains('hidden')) closeModal();
             }
             if (lightboxOpen) {

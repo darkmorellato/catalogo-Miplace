@@ -116,5 +116,15 @@ module.exports = [
             globals: { ...browserGlobals, require: 'readonly', module: 'readonly', __dirname: 'readonly', process: 'readonly', console: 'readonly' }
         },
         rules: sharedRules
+    },
+    {
+        // Módulo ES (Three.js) — import/export nativos
+        files: ['modules/three-hero.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+            globals: browserGlobals
+        },
+        rules: sharedRules
     }
 ];

@@ -9,7 +9,9 @@ const fs = require('fs');
 const path = require('path');
 
 const PRODUCT_PATH = path.join(__dirname, '..', 'produtos.json');
-const ALLOWED_BRANDS = new Set(['Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone']);
+const ROOT = path.join(__dirname, '..');
+const ALLOWED_BRANDS = new Set(['Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone', 'Samsung', 'Infinix', 'Tecno']);
+const ALLOWED_CATEGORIES = new Set(['Celular', 'Tablet']);
 const REQUIRED_FIELDS = ['id', 'brand', 'name', 'image'];
 
 function fail(msg) {
@@ -52,6 +54,14 @@ data.forEach((p, i) => {
 
     if (!ALLOWED_BRANDS.has(p.brand)) {
         fail(`${ctx} .brand "${p.brand}" não está em [${[...ALLOWED_BRANDS].join(', ')}]`);
+    }
+
+    if ('category' in p && p.category !== undefined && !ALLOWED_CATEGORIES.has(p.category)) {
+        fail(`${ctx} .category "${p.category}" não está em [${[...ALLOWED_CATEGORIES].join(', ')}]`);
+    }
+
+    if (!fs.existsSync(path.join(ROOT, p.image))) {
+        fail(`${ctx} .image "${p.image}" não existe no disco`);
     }
 
     if (typeof p.name !== 'string' || p.name.trim() === '') {
@@ -102,6 +112,9 @@ data.forEach((p, i) => {
                 console.warn(`! ${ctx} .gallery[${gi}] duplica referência "${g}" (não fatal)`);
             }
             seenRefs.add(g);
+            if (!fs.existsSync(path.join(ROOT, g))) {
+                fail(`${ctx} .gallery[${gi}] "${g}" não existe no disco`);
+            }
         });
         if (p.gallery && !p.gallery.includes(p.image)) {
             fail(`${ctx} .image ("${p.image}") não está presente em .gallery — adicione para o carrossel funcionar`);

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIPLACE MAGAZINE | Catálogo Exclusivo</title>
-    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones premium: Apple, Realme, Honor, Motorola, Redmi e Poco. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
-    <meta name="keywords" content="Miplace, smartphones, celulares, parcelamento boleto, sem consulta, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Piracicaba, Amparo, crediário, tecnologia">
+    <meta name="description" content="Miplace Magazine — Catálogo exclusivo de smartphones e tablets premium: Apple, Realme, Honor, Motorola, Redmi, Poco, Samsung, Infinix e Tecno. Parcelamos em até 24x no boleto, sem consulta. Piracicaba & Amparo, SP.">
+    <meta name="keywords" content="Miplace, smartphones, tablets, celulares, parcelamento boleto, sem consulta, Apple, iPhone, Realme, Honor, Motorola, Redmi, Poco, Samsung, Infinix, Tecno, Piracicaba, Amparo, crediário, tecnologia">
     <meta name="author" content="Miplace Magazine">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f4f4f0">
@@ -36,7 +36,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://miplacemagazine.com.br/">
     <meta property="og:title" content="MIPLACE MAGAZINE | Catálogo Exclusivo de Smartphones">
-    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Apple, Realme, Honor, Motorola, Redmi e muito mais. Piracicaba & Amparo, SP.">
+    <meta property="og:description" content="Tecnologia premium parcelada em até 24x no boleto sem consulta. Apple, Realme, Honor, Motorola, Redmi, Poco, Samsung, Infinix e muito mais. Piracicaba & Amparo, SP.">
     <meta property="og:image" content="https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
@@ -65,14 +65,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://www.youtube.com">
 
     <!-- Preload recursos críticos -->
-    <link rel="preload" href="tailwind.css?v=1.1.5" as="style">
+    <link rel="preload" href="tailwind.css?v=1.2.0" as="style">
     <link rel="preload" href="moldura-celular.webp" as="image" type="image/webp">
 
     <!-- Tailwind CSS (build local — apenas classes usadas) -->
-    <link rel="stylesheet" href="tailwind.css?v=1.1.5">
+    <link rel="stylesheet" href="tailwind.css?v=1.2.0">
 
     <!-- Font Awesome (apenas solid + brands — os únicos estilos usados) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha384-bGIKHDMAvn+yR8S/yTRi+6S++WqBdA+TaJ1nOZf079H6r492oh7V6uAqq739oSZC" crossorigin="anonymous">
@@ -82,18 +81,24 @@
     <!-- Google Fonts (carregamento assíncrono) -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap&subset=latin" rel="stylesheet">
 
-    <!-- YouTube IFrame API — lazy load (script externo, sem 'unsafe-inline') -->
-    <script src="youtube-lazy.js?v=1.1.3" defer></script>
+    <!-- Vídeo institucional local (substitui o player do YouTube) -->
+    <link rel="preload" href="videos/hero-poster.webp" as="image" type="image/webp">
     <!-- Schema.org JSON-LD gerado dinamicamente por stores.js -->
     <script id="schema-org" type="application/ld+json"></script>
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="stores.js?v=1.1.6" defer></script>
-    <script src="modules/ui.js?v=1.1.3" defer></script>
-    <script src="modules/catalog.js?v=1.1.3" defer></script>
-    <script src="modules/modal.js?v=1.1.3" defer></script>
-    <script src="modules/wishlist.js?v=1.1.3" defer></script>
-    <script src="app.js?v=1.1.3" defer></script>
+    <!-- Three.js (experiências 3D) — import map + módulo lazy (idle) -->
+    <script type="importmap">
+        { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+    <script type="module" src="modules/three-hero.js"></script>
+
+    <link rel="stylesheet" href="styles.css?v=1.2.0">
+    <script src="stores.js?v=1.2.0" defer></script>
+    <script src="modules/ui.js?v=1.2.0" defer></script>
+    <script src="modules/catalog.js?v=1.2.0" defer></script>
+    <script src="modules/modal.js?v=1.2.0" defer></script>
+    <script src="modules/wishlist.js?v=1.2.0" defer></script>
+    <script src="app.js?v=1.2.0" defer></script>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative" style="background-color:#f4f4f0; color:#1c1917;">
 
@@ -153,7 +158,7 @@
                 </div>
                 <div class="flex md:hidden justify-between items-center">
                     <span class="text-[10px] tracking-[0.3em]" style="color:#44403c;">Navegar</span>
-                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none">
+                    <button id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" class="flex flex-col gap-[5px] p-2 -mr-2 focus:outline-hidden">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -185,12 +190,11 @@
                 <div class="w-full h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-center items-center relative group p-0 md:p-4">
                     <div class="relative w-full max-w-[700px] transition-transform duration-1000 group-hover:scale-105" id="hero-parallax">
                         <div class="absolute z-0 overflow-hidden" style="top:5%;left:2%;width:95%;height:80%;border-radius:6px;background:#000;">
-                            <div id="yt-player"></div>
+                            <video id="hero-video" class="w-full h-full object-contain" autoplay muted loop playsinline preload="auto" poster="videos/hero-poster.webp" aria-label="Vídeo de apresentação dos produtos Miplace">
+                                <source src="videos/hero.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <picture>
-                            <source srcset="moldura-celular.webp" type="image/webp">
-                            <img src="moldura-celular.png" alt="Mão segurando Smartphone" width="700" height="950" fetchpriority="high" loading="eager" class="relative z-10 w-full h-auto pointer-events-none" style="filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));">
-                        </picture>
+                        <img src="moldura-celular.webp" alt="Mão segurando Smartphone" width="700" height="950" fetchpriority="high" loading="eager" class="relative z-10 w-full h-auto pointer-events-none" style="filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));">
                     </div>
                 </div>
             </div>
@@ -204,7 +208,7 @@
                         Redefinindo o acesso à <br><span class="font-light italic tracking-normal" style="color:#44403c;">alta tecnologia</span>
                     </h2>
                     <p class="font-sans text-base leading-relaxed mb-6 drop-cap" style="color:#44403c;">
-                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong style="color:#1c1917;">Apple, Realme, Honor, Motorola, Redmi e Poco</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
+                        Uma curadoria exclusiva com as melhores marcas do mercado: <strong style="color:#1c1917;">Apple, Realme, Honor, Motorola, Redmi, Poco, Samsung, Infinix e Tecno</strong>. Além da nossa linha premium de acessórios e a renomada proteção Rockspace.
                     </p>
                     <p class="font-sans text-base leading-relaxed pl-4 italic" style="color:#44403c; border-left: 2px solid #1c1917;">
                         Esqueça a burocracia. A Miplace revoluciona a forma como você adquire seu próximo smartphone.
@@ -249,7 +253,7 @@
         <div class="mb-10 reveal">
             <div class="relative max-w-md">
                 <input type="search" id="search-input" placeholder="Buscar produto... ex: Redmi, AMOLED, 5G" autocomplete="off" aria-label="Buscar produtos no catálogo"
-                    class="w-full font-sans text-sm bg-transparent outline-none py-3 pr-10 pl-0 uppercase tracking-widest"
+                    class="w-full font-sans text-sm bg-transparent outline-hidden py-3 pr-10 pl-0 uppercase tracking-widest"
                     style="border-bottom: 2px solid rgba(28,25,23,0.3); color:#1c1917; background-color:transparent;">
                 <i class="fa-solid fa-magnifying-glass absolute right-2 top-1/2 -translate-y-1/2 text-sm pointer-events-none" id="search-icon" style="color:rgba(28,25,23,0.3);"></i>
                 <button id="search-clear" data-clear-search aria-label="Limpar busca" class="absolute right-2 top-1/2 -translate-y-1/2 transition-colors hidden" style="color:rgba(28,25,23,0.5);">
@@ -311,7 +315,7 @@
         <button data-lightbox-prev aria-label="Imagem anterior" class="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
             <i class="fa-solid fa-chevron-left text-lg"></i>
         </button>
-        <img id="lightbox-img" src="" alt="Imagem ampliada do produto" class="relative z-10 max-w-[85vw] max-h-[90vh] object-contain transform scale-95 transition-all duration-300 cursor-zoom-out" data-lightbox-close>
+        <img id="lightbox-img" src="" alt="Imagem ampliada do produto" class="lb-img relative z-10 max-w-[85vw] max-h-[90vh] object-contain">
         <button data-lightbox-next aria-label="Próxima imagem" class="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl" style="background-color:rgba(244,244,240,0.2); color:#f4f4f0;">
             <i class="fa-solid fa-chevron-right text-lg"></i>
         </button>
@@ -325,7 +329,7 @@
 
     <!-- Modal — scroll unificado no painel direito -->
     <div id="product-modal" role="dialog" aria-modal="true" aria-label="Detalhes do produto" class="fixed inset-0 z-[100] hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 backdrop-blur-sm cursor-pointer" style="background-color:rgba(28,25,23,0.9);" data-modal-close></div>
+        <div class="modal-veil absolute inset-0 cursor-pointer" data-modal-close></div>
         <div class="relative z-10 w-full max-w-7xl max-h-[95vh] flex flex-col md:flex-row shadow-2xl m-4 transform scale-95 transition-transform duration-300 overflow-hidden" id="modal-container" style="background-color:#f4f4f0;">
             <button data-modal-close aria-label="Fechar detalhes do produto" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-20 shadow-lg" style="background-color:#1c1917; color:#f4f4f0;">
                 <i class="fa-solid fa-xmark"></i>

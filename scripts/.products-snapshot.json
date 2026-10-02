@@ -1,13 +1,16 @@
 {
-  "generated": "2026-08-03T16:52:56.023Z",
-  "count": 22,
+  "generated": "2026-10-02T16:08:39.405Z",
+  "count": 26,
   "brands": {
-    "Realme": 6,
+    "Realme": 7,
     "Honor": 5,
-    "Motorola": 7,
-    "Redmi": 1,
+    "Motorola": 5,
+    "Redmi": 2,
     "Poco": 2,
-    "iPhone": 1
+    "iPhone": 1,
+    "Infinix": 1,
+    "Samsung": 2,
+    "Tecno": 1
   },
   "ids": [
     1,
@@ -22,15 +25,19 @@
     10,
     11,
     12,
-    13,
     14,
-    15,
-    16,
     17,
     18,
     19,
     20,
     21,
-    22
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
   ]
 }

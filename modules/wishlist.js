@@ -251,7 +251,8 @@
                 const id = parseInt(item.getAttribute('data-open-product') || '0', 10);
                 if (Number.isFinite(id) && typeof window.openModal === 'function') {
                     closeDrawer();
-                    window.openModal(id);
+                    const srcImg = item.querySelector('img');
+                    window.openModal(id, srcImg instanceof HTMLImageElement ? srcImg : null);
                 }
             }
         });
@@ -349,7 +350,7 @@
             return `
             <div class="wishlist-item" data-open-product="${p.id}">
                 <div class="wishlist-item-image">
-                    ${p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy">` : `<i class="fa-solid fa-mobile-screen" style="color:rgba(28,25,23,0.2);"></i>`}
+                    ${p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async">` : `<i class="fa-solid fa-mobile-screen" style="color:rgba(28,25,23,0.2);"></i>`}
                 </div>
                 <div class="wishlist-item-info">
                     <div class="wishlist-item-brand">${escapeHTML(p.brand)}</div>

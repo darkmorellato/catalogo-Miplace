@@ -3,7 +3,7 @@
     "id": 1,
     "brand": "Realme",
     "name": "REALME P4 LITE",
-    "highlight": true,
+    "highlight": false,
     "image": "realme/p4lite-1.webp",
     "price": "A partir de R$ 1.499",
     "description": "O Realme P4 Lite é um smartphone de entrada que se destaca pela bateria de 6.600 mAh com ótima autonomia, tela de 6,8\" com 120 Hz e suporte a NFC, sendo ideal para o uso diário.",
@@ -131,7 +131,7 @@
     "name": "REALME C71",
     "highlight": false,
     "image": "realme/c71-1.webp",
-    "price": "A partir de R$ 1599",
+    "price": "A partir de R$ 1.599",
     "description": "O Realme C71 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação.",
     "specs": [
       {
@@ -507,7 +507,7 @@
     "id": 9,
     "brand": "Honor",
     "name": "HONOR X7D",
-    "highlight": false,
+    "highlight": true,
     "image": "honor/x7d-1.webp",
     "price": "A partir de R$ 1.899",
     "description": "O Honor X7D é um smartphone intermediário com design elegante, certificação IP65 e câmera de 108 MP.",
@@ -698,7 +698,7 @@
     "name": "MOTO G06",
     "highlight": false,
     "image": "motorola/g06-1.webp",
-    "price": "A partir de R$ 1299",
+    "price": "A partir de R$ 1.299",
     "description": "O Moto G06 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.",
     "specs": [
       {
@@ -753,69 +753,6 @@
       "motorola/g06-2.webp",
       "motorola/g06-3.webp",
       "motorola/g06-4.webp"
-    ]
-  },
-  {
-    "id": 13,
-    "brand": "Motorola",
-    "name": "MOTO G15",
-    "highlight": false,
-    "image": "motorola/g15-1.webp",
-    "price": "A partir de R$ 1.299",
-    "description": "O Moto G15 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh, design resistente e NFC, ideal para uso diário.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Mediatek Helio G81 Extreme"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "4 GB, 6 GB ou 8 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,72\" IPS LCD, FHD+, 90 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 5 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "5.200 mAh (Carregamento 18W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (My UX)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP54, NFC"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Resistência",
-        "text": "Projetado para ser robusto, com boa resistência a quedas."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo fino (8,2 mm) e disponível nas cores Cinza, Verde, Laranja e Azul."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
-      }
-    ],
-    "gallery": [
-      "motorola/g15-1.webp",
-      "motorola/g15-2.webp",
-      "motorola/g15-3.webp",
-      "motorola/g15-4.webp"
     ]
   },
   {
@@ -879,132 +816,6 @@
       "motorola/g56-2.webp",
       "motorola/g56-3.webp",
       "motorola/g56-4.webp"
-    ]
-  },
-  {
-    "id": 15,
-    "brand": "Motorola",
-    "name": "MOTO G86 5G",
-    "highlight": false,
-    "image": "motorola/g86-1.webp",
-    "price": "A partir de R$ 2.199",
-    "description": "O Moto G86 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 6.000 mAh e design resistente, ideal para uso diário e streaming.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Mediatek Dimensity 7300"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "8 GB ou 12 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "256 GB ou 512 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,72\" IPS LCD, FHD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 32 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "5.200 mAh (Carregamento 30W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (My UX)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Conectividade",
-        "text": "Suporte a redes 5G para internet mais rápida."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias e streaming, jogos e multitarefa."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo fino (7,8 mm) e disponível nas cores Verde, Vermelho e Azul."
-      }
-    ],
-    "gallery": [
-      "motorola/g86-1.webp",
-      "motorola/g86-2.webp",
-      "motorola/g86-3.webp",
-      "motorola/g86-4.webp"
-    ]
-  },
-  {
-    "id": 16,
-    "brand": "Motorola",
-    "name": "EDGE 50 5G FUSION",
-    "highlight": false,
-    "image": "motorola/edge50-1.webp",
-    "price": "A partir de R$ 1.999",
-    "description": "O Moto Edge 50 5G Fusion é um smartphone linha Pro que se destaca pela sua conectividade 5G, bateria, design, tela e performance em câmera.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Snapdragon 7s Gen 2 ou Snapdragon 6 Gen 1"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "8 GB ou 12 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB, 256 GB ou 512 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,7\" P-OLED, FHD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 32 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "5.000 mAh (Carregamento 68W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 14 (My UX)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP68, NFC, Conectividade 5G"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Conectividade",
-        "text": "Suporte a redes 5G para internet mais rápida."
-      },
-      {
-        "title": "Resistência e Performance",
-        "text": "Projetado para ser robusto, com boa resistência a quedas, jogo de câmeras incrível e performance."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo fino (7,9 mm) com acabamento premium, disponível nas cores Rosa, Azul Escuro e Azul Claro."
-      }
-    ],
-    "gallery": [
-      "motorola/edge50-1.webp",
-      "motorola/edge50-2.webp",
-      "motorola/edge50-3.webp",
-      "motorola/edge50-4.webp"
     ]
   },
   {
@@ -1384,6 +1195,448 @@
       "iphone/iphone-2.webp",
       "iphone/iphone-3.webp",
       "iphone/iphone-4.webp"
+    ]
+  },
+  {
+    "id": 23,
+    "brand": "Infinix",
+    "name": "INFINIX SMART 20 4G",
+    "highlight": false,
+    "image": "infinix/smart20-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Infinix Smart 20 é um smartphone de entrada que se destaca pela bateria de 5.200 mAh, tela de 6,78\" com 120 Hz e 700 nits, além de NFC e infravermelho — recursos raros na faixa de preço. O processador Helio G81 Ultimate entrega desempenho fluido para o uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G81 Ultimate"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB ou 128 GB (microSD)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,78\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 8 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (XOS 16)"
+      },
+      {
+        "label": "Recursos",
+        "value": "NFC, infravermelho, IP64, leitor digital lateral, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Bateria",
+        "text": "Bateria de 5.200 mAh com carregamento de 15W e carga reversa de 5W."
+      },
+      {
+        "title": "Tela",
+        "text": "Display de 6,78\" com 120 Hz e até 700 nits para uso confortável ao sol."
+      },
+      {
+        "title": "Recursos",
+        "text": "NFC, infravermelho e proteção IP64 contra poeira e respingos."
+      }
+    ],
+    "gallery": [
+      "infinix/smart20-1.webp",
+      "infinix/smart20-2.webp",
+      "infinix/smart20-3.webp",
+      "infinix/smart20-4.webp"
+    ]
+  },
+  {
+    "id": 24,
+    "brand": "Motorola",
+    "name": "MOTO G17 4G",
+    "highlight": false,
+    "image": "motorola/g17-1.webp",
+    "price": "A partir de R$ 1.599",
+    "description": "O Moto G17 é um intermediário completo com tela FHD+ de 6,72\", câmera principal de 50 MP com sensor Sony LYTIA 600 e selfie de 32 MP. Bateria de 5.200 mAh com TurboPower 20W, som estéreo Dolby Atmos e proteção IP64.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G81 Extreme"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ até 8 GB de RAM Boost)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB (microSD até 1 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 60 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP (Sony LYTIA 600) + 5 MP ultra-wide | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (TurboPower 20W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, Dolby Atmos, NFC, Gorilla Glass 3, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Câmeras",
+        "text": "Sensor Sony LYTIA 600 de 50 MP e selfie de 32 MP para fotos nítidas."
+      },
+      {
+        "title": "Tela",
+        "text": "Painel FHD+ de 6,72\" com até 1.050 nits de brilho e Gorilla Glass 3."
+      },
+      {
+        "title": "Áudio",
+        "text": "Alto-falantes estéreo com Dolby Atmos para séries e músicas."
+      }
+    ],
+    "gallery": [
+      "motorola/g17-1.webp",
+      "motorola/g17-2.webp",
+      "motorola/g17-3.webp",
+      "motorola/g17-4.webp"
+    ]
+  },
+  {
+    "id": 25,
+    "brand": "Realme",
+    "name": "REALME C100X 4G",
+    "highlight": false,
+    "image": "realme/c100x-1.webp",
+    "price": "A partir de R$ 1.899",
+    "description": "O Realme C100x é um smartphone focado em bateria e resistência: 8.000 mAh com carregamento SUPERVOOC de 45W, tela de 6,8\" com 120 Hz e certificação MIL-STD-810H com IP64. Ideal para quem não quer se preocupar com tomada no meio do dia.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB a 256 GB (microSD até 2 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,8\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "8.000 mAh (SUPERVOOC 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (Realme UI 7)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, MIL-STD-810H, luz RGB traseira, leitor digital lateral, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Bateria",
+        "text": "Bateria Titan de 8.000 mAh com carregamento rápido de 45W e carga reversa."
+      },
+      {
+        "title": "Durabilidade",
+        "text": "Certificação MIL-STD-810H com resistência a quedas de 2 metros e IP64."
+      },
+      {
+        "title": "Tela",
+        "text": "Display de 6,8\" com 120 Hz e até 900 nits de brilho."
+      }
+    ],
+    "gallery": [
+      "realme/c100x-1.webp",
+      "realme/c100x-2.webp",
+      "realme/c100x-3.webp",
+      "realme/c100x-4.webp"
+    ]
+  },
+  {
+    "id": 26,
+    "brand": "Redmi",
+    "name": "TABLET REDMI PAD 2 4G",
+    "highlight": false,
+    "image": "redmi/pad2-1.webp",
+    "category": "Tablet",
+    "price": "A partir de R$ 2.099",
+    "description": "O Redmi Pad 2 4G é um tablet com tela de 11 polegadas em 2.5K, bateria de 9.000 mAh e conectividade 4G para usar internet móvel em qualquer lugar. Processador Helio G100 Ultra, quatro alto-falantes Dolby Atmos e corpo em metal unibody.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G100 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB UFS 2.2 (microSD até 2 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "11\" IPS LCD, 2.5K, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 8 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "9.000 mAh (Carregamento 18W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (HyperOS 2)"
+      },
+      {
+        "label": "Recursos",
+        "value": "4G dual SIM, 4 alto-falantes Dolby Atmos, Wi-Fi 5, P2, stylus"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Tela",
+        "text": "Display de 11\" em 2.5K com 90 Hz e certificação TÜV Rheinland para os olhos."
+      },
+      {
+        "title": "Conectividade",
+        "text": "Versão 4G com chip dual SIM para internet móvel fora do Wi-Fi."
+      },
+      {
+        "title": "Multimídia",
+        "text": "Quatro alto-falantes com Dolby Atmos e bateria de 9.000 mAh."
+      }
+    ],
+    "gallery": [
+      "redmi/pad2-1.webp",
+      "redmi/pad2-2.webp",
+      "redmi/pad2-3.webp",
+      "redmi/pad2-4.webp"
+    ]
+  },
+  {
+    "id": 27,
+    "brand": "Samsung",
+    "name": "SAMSUNG A17 4G/5G",
+    "highlight": false,
+    "image": "samsung/a17-1.webp",
+    "price": "A partir de R$ 1.599",
+    "description": "O Galaxy A17 combina tela Super AMOLED de 6,7\" com 90 Hz e câmera principal de 50 MP com estabilização óptica (OIS). Disponível nas versões 4G (Helio G99) e 5G (Exynos 1330), com 6 anos de atualizações de sistema e segurança.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G99 (4G) | Samsung Exynos 1330 (5G)"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB (microSD até 2 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,7\" Super AMOLED, FHD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP (OIS) + 5 MP ultra-wide + 2 MP macro | Frontal 13 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 25W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (One UI 7)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC, Gorilla Glass Victus+, 5G (versão 5G), leitor digital lateral"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Tela",
+        "text": "Painel Super AMOLED de 6,7\" em FHD+ com 90 Hz e Gorilla Glass Victus+."
+      },
+      {
+        "title": "Câmera",
+        "text": "Principal de 50 MP com OIS e frontal de 13 MP para selfies nítidas."
+      },
+      {
+        "title": "Atualizações",
+        "text": "6 anos de atualizações de sistema e de segurança garantidos pela Samsung."
+      }
+    ],
+    "gallery": [
+      "samsung/a17-1.webp",
+      "samsung/a17-2.webp",
+      "samsung/a17-3.webp",
+      "samsung/a17-4.webp"
+    ]
+  },
+  {
+    "id": 28,
+    "brand": "Samsung",
+    "name": "SAMSUNG A07 4G",
+    "highlight": false,
+    "image": "samsung/a07-1.webp",
+    "price": "A partir de R$ 1.199",
+    "description": "O Galaxy A07 é o smartphone mais acessível da Samsung com tela de 6,7\" HD+ a 90 Hz, câmera principal de 50 MP e 6 anos de atualizações de sistema. Bateria de 5.000 mAh com carregamento de 25W e certificação IP54.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G99"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB (RAM Plus)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB a 256 GB (microSD até 2 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,7\" PLS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP + 2 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 25W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (One UI 7)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, P2, leitor digital lateral, RAM Plus"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Atualizações",
+        "text": "6 anos de atualizações de sistema e segurança — o mesmo nível dos aparelhos intermediários."
+      },
+      {
+        "title": "Câmera",
+        "text": "Câmera principal de 50 MP com f/1.8 para fotos com mais detalhe."
+      },
+      {
+        "title": "Tela",
+        "text": "Display de 6,7\" HD+ com taxa de atualização de 90 Hz."
+      }
+    ],
+    "gallery": [
+      "samsung/a07-1.webp",
+      "samsung/a07-2.webp",
+      "samsung/a07-3.webp",
+      "samsung/a07-4.webp"
+    ]
+  },
+  {
+    "id": 29,
+    "brand": "Tecno",
+    "name": "TECNO SPARK GO 3 4G",
+    "highlight": false,
+    "image": "tecno/sparkgo3-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Tecno Spark Go 3 é um smartphone de entrada com tela de 6,74\" a 120 Hz, câmera de 13 MP e bateria de 5.000 mAh. Destaca-se pela certificação IP64 com resistência a quedas de 1,2 metro e pelo recurso FreeLink, que permite mensagens de até 1 km sem Wi-Fi ou rede móvel.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ 4 GB virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB ou 128 GB (microSD até 1 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,74\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 13 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (HiOS 15)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, infravermelho, FreeLink, leitor digital lateral, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Certificação IP64 com resistência a quedas de até 1,2 metro."
+      },
+      {
+        "title": "FreeLink",
+        "text": "Mensagens e chamadas de até 1 km sem Wi-Fi ou rede móvel."
+      },
+      {
+        "title": "Tela",
+        "text": "Display de 6,74\" com 120 Hz para navegação fluida."
+      }
+    ],
+    "gallery": [
+      "tecno/sparkgo3-1.webp",
+      "tecno/sparkgo3-2.webp",
+      "tecno/sparkgo3-3.webp",
+      "tecno/sparkgo3-4.webp"
     ]
   }
 ]

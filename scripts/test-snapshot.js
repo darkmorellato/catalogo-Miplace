@@ -16,6 +16,15 @@ function deepEqual(a, b) {
     return JSON.stringify(a) === JSON.stringify(b);
 }
 
+/**
+ * Compara objetos como pares chave-valor ordenados (insensível à ordem de chaves).
+ * @param {Record<string, number>} obj
+ * @returns {string}
+ */
+function canonCounts(obj) {
+    return JSON.stringify(Object.keys(obj).sort().map(k => [k, obj[k]]));
+}
+
 function fail(msg) {
     console.error(`\n✗ Snapshot test falhou: ${msg}`);
     process.exit(1);
@@ -33,24 +42,32 @@ try {
 }
 if (!Array.isArray(data)) fail('o arquivo raiz deve ser um array');
 
-// Invariantes canônicos do catálogo versão 1.1.x
-const brands = { Realme: 6, Honor: 5, Motorola: 7, Redmi: 1, Poco: 2, iPhone: 1 };
-const expectedIds = Array.from({ length: 22 }, (_, i) => i + 1);
+// Invariantes canônicos do catálogo versão 1.2.x
+const brands = { Realme: 7, Honor: 5, Motorola: 5, Redmi: 2, Poco: 2, iPhone: 1, Samsung: 2, Infinix: 1, Tecno: 1 };
+// IDs estáveis: 13 (MOTO G15), 15 (MOTO G86 5G) e 16 (EDGE 50 FUSION) foram removidos da coleção
+const expectedIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
 
 const actualIds = data.map(p => p.id).sort((a, b) => a - b);
 if (!deepEqual(actualIds, expectedIds)) {
     fail(`IDs divergem do esperado.\n  esperado: [${expectedIds.join(',')}]\n  obtido:   [${actualIds.join(',')}]`);
 }
-ok('IDs 1..22 sequenciais sem duplicados');
+ok('IDs canônicos (1..29 sem 13, 15 e 16) sem duplicados');
 
 const actualBrands = data.reduce((acc, p) => {
     acc[p.brand] = (acc[p.brand] || 0) + 1;
     return acc;
 }, {});
-if (!deepEqual(actualBrands, brands)) {
+if (canonCounts(actualBrands) !== canonCounts(brands)) {
     fail(`Contagem por marca diverge.\n  esperado: ${JSON.stringify(brands)}\n  obtido:   ${JSON.stringify(actualBrands)}`);
 }
-ok('Distribuição por marca preservada (Realme:6, Honor:5, Motorola:7, Redmi:1, Poco:2, iPhone:1)');
+ok('Distribuição por marca preservada (Realme:7, Honor:5, Motorola:5, Redmi:2, Poco:2, iPhone:1, Samsung:2, Infinix:1, Tecno:1)');
+
+// Categoria: exatamente 1 Tablet (Redmi Pad 2), demais ausência = Celular
+const tablets = data.filter(p => p.category === 'Tablet');
+if (tablets.length !== 1 || tablets[0].id !== 26) {
+    fail(`Esperado exatamente 1 Tablet (id 26), obtido: [${tablets.map(p => p.id).join(',')}]`);
+}
+ok('Categoria: 1 Tablet (Redmi Pad 2), demais são Celular (implícito)');
 
 // Cada produto deve ter pelo menos 1 spec (não é regra rígida do schema mas é convenção)
 const withoutSpecs = data.filter(p => !p.specs || p.specs.length === 0);

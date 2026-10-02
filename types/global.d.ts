@@ -12,9 +12,11 @@ declare global {
     MiplaceProducts: Product[];
     STORES: Store[];
     MiplaceWishlist: WishlistAPI;
-    MiplaceCatalog: { getStore: () => CatalogState; brands: ('Todos' | ProductBrand)[] };
+    MiplaceCatalog: { getStore: () => CatalogState; brands: CatalogFilter[] };
 
     initScrollReveal: () => void;
+    initRevealIn: (container: ParentNode) => void;
+    initCardEffects: (container: ParentNode) => void;
     initSearch: () => void;
     initModal: () => void;
     initCatalog: () => void;
@@ -32,7 +34,7 @@ declare global {
     toggleMobileMenu: () => void;
     closeMobileMenu: () => void;
     toggleContato: () => void;
-    openModal: (id: number) => void;
+    openModal: (id: number, sourceImg?: HTMLImageElement | null) => void;
     closeModal: () => void;
     openLightbox: (src: string, idx?: number) => void;
     lightboxNavigate: (dir: number) => void;

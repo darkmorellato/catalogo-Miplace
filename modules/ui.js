@@ -168,14 +168,120 @@
         }
     }
 
+    // Observador compartilhado de scroll reveal: dispara a entrada dos elementos
+    // quando ficam visíveis na viewport (uma única vez, sem scroll listeners).
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            el.classList.add(el.hasAttribute('data-reveal') ? 'reveal-in' : 'active');
+            revealObserver.unobserve(el);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
     /** @returns {void} */
     function initScrollReveal() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, [data-reveal]').forEach(el => revealObserver.observe(el));
+    }
+
+    /**
+     * Observa elementos de revelação dentro de um container recém-renderizado.
+     * @param {ParentNode} container
+     * @returns {void}
+     */
+    function initRevealIn(container) {
+        if (!container) return;
+        container.querySelectorAll('.reveal, [data-reveal]').forEach(el => revealObserver.observe(el));
+    }
+
+    /** @returns {boolean} */
+    function prefersReducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    // ------------------------------------------------------------------
+    // Parallax editorial dos renders (Fase 2 do plano de animação):
+    // camadas de imagem deslizam via `translate` (propriedade independente),
+    // somente enquanto visíveis, num único loop de rAF.
+    // ------------------------------------------------------------------
+    /** @type {HTMLElement[]} */
+    let parallaxEls = [];
+    let parallaxQueued = false;
+
+    /** @returns {void} */
+    function updateParallax() {
+        parallaxQueued = false;
+        const vh = window.innerHeight;
+        for (const el of parallaxEls) {
+            const rect = el.getBoundingClientRect();
+            if (rect.bottom < -80 || rect.top > vh + 80) continue;
+            const speed = parseFloat(el.getAttribute('data-speed') || '0.05');
+            const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+            el.style.translate = '0 ' + (-progress * speed * 100).toFixed(2) + '%';
+        }
+    }
+
+    /** @returns {void} */
+    function queueParallax() {
+        if (parallaxQueued) return;
+        parallaxQueued = true;
+        window.requestAnimationFrame(updateParallax);
+    }
+
+    /**
+     * Tilt magnético 3D + reflexo especular seguidor de cursor.
+     * @param {HTMLElement} card
+     * @returns {void}
+     */
+    function bindTilt(card) {
+        card.addEventListener('pointermove', (e) => {
+            const evt = /** @type {PointerEvent} */ (/** @type {unknown} */ (e));
+            const rect = card.getBoundingClientRect();
+            const px = (evt.clientX - rect.left) / rect.width;
+            const py = (evt.clientY - rect.top) / rect.height;
+            const rx = (0.5 - py) * 7;
+            const ry = (px - 0.5) * 9;
+            card.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+            card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        });
+        card.addEventListener('pointerleave', () => {
+            const from = card.style.transform || 'none';
+            card.style.transform = '';
+            if (typeof card.animate === 'function') {
+                card.animate(
+                    [{ transform: from }, { transform: 'none' }],
+                    { duration: 650, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+                );
+            }
+        });
+    }
+
+    let parallaxBound = false;
+
+    /**
+     * Liga tilt/specular nos cards e registra as camadas de parallax.
+     * @param {ParentNode} container
+     * @returns {void}
+     */
+    function initCardEffects(container) {
+        if (!container) return;
+        const reduced = prefersReducedMotion();
+        const finePointer = window.matchMedia('(pointer: fine)').matches;
+        if (!reduced && finePointer) {
+            container.querySelectorAll('[data-tilt]').forEach(el => bindTilt(/** @type {HTMLElement} */ (el)));
+        }
+        parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+        if (reduced) {
+            parallaxEls.forEach(el => { el.style.translate = ''; });
+            return;
+        }
+        if (!parallaxBound) {
+            parallaxBound = true;
+            window.addEventListener('scroll', queueParallax, { passive: true });
+            window.addEventListener('resize', queueParallax, { passive: true });
+        }
+        queueParallax();
     }
 
     // Expor API usada por app.js e HTML inline
@@ -188,5 +294,7 @@
     window.closeMobileMenu = closeMobileMenu;
     window.toggleContato = toggleContato;
     window.initScrollReveal = initScrollReveal;
+    window.initRevealIn = initRevealIn;
+    window.initCardEffects = initCardEffects;
     window.lockBodyScroll = lockBodyScroll;
 })();

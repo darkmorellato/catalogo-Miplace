@@ -27,8 +27,12 @@
         visibilityPaused: false
     };
 
-    /** @type {('Todos' | ProductBrand)[]} */
-    const brands = ['Todos', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone'];
+    /** @type {CatalogFilter[]} */
+    const brands = ['Todos', 'Tablets', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone', 'Samsung', 'Infinix', 'Tecno'];
+
+    // Ordenação alfabética da coleção: A→Z, sem diferenciar maiúsculas e com
+    // números naturais (G6 < G15). pt-BR para corretor de acentos.
+    const nameCollator = new Intl.Collator('pt-BR', { numeric: true, sensitivity: 'base' });
 
 
 
@@ -55,10 +59,10 @@
         if (grid) {
             grid.innerHTML = Array.from({ length: 6 }).map(() => `
                 <div class="pb-8 flex flex-col gap-4" style="border-bottom:1px solid rgba(28,25,23,0.2);">
-                    <div class="w-full aspect-video rounded animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-3 rounded w-1/3 animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-6 rounded w-3/4 animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-3 rounded w-1/2 animate-pulse" style="background-color:#eaeaeb;"></div>
+                    <div class="w-full aspect-video rounded-sm animate-pulse" style="background-color:#eaeaeb;"></div>
+                    <div class="h-3 rounded-sm w-1/3 animate-pulse" style="background-color:#eaeaeb;"></div>
+                    <div class="h-6 rounded-sm w-3/4 animate-pulse" style="background-color:#eaeaeb;"></div>
+                    <div class="h-3 rounded-sm w-1/2 animate-pulse" style="background-color:#eaeaeb;"></div>
                 </div>`).join('');
         }
         requestAnimationFrame(() => {
@@ -102,14 +106,25 @@
         const searchCount = document.getElementById('search-count');
         const data = productsData();
         /** @type {Product[]} */
-        let filtered = state.currentFilter === 'Todos' ? data : data.filter(/** @param {Product} p */ p => p.brand === state.currentFilter);
+        let filtered = state.currentFilter === 'Todos'
+            ? data
+            : state.currentFilter === 'Tablets'
+                ? data.filter(/** @param {Product} p */ p => p.category === 'Tablet')
+                : data.filter(/** @param {Product} p */ p => p.brand === state.currentFilter);
         if (state.currentSearch.length > 0) {
             const q = state.currentSearch;
             filtered = filtered.filter(/** @param {Product} p */ p => {
-                const searchableText = [p.name, p.brand, p.description || '', ...(p.specs || []).map(/** @param {ProductSpec} s */ s => s.value), p.price || ''].join(' ').toLowerCase();
+                const searchableText = [p.name, p.brand, p.category || 'Celular', p.description || '', ...(p.specs || []).map(/** @param {ProductSpec} s */ s => s.value), p.price || ''].join(' ').toLowerCase();
                 return searchableText.includes(q);
             });
         }
+        // Coleção em ordem alfabética (A→Z). Produtos com highlight ficam no
+        // topo: a posição 0 renderiza o card em destaque (md:col-span-2).
+        // Copia antes de ordenar para não mutar window.MiplaceProducts.
+        filtered = filtered.slice().sort((a, b) => {
+            const pinned = (a.highlight ? 0 : 1) - (b.highlight ? 0 : 1);
+            return pinned !== 0 ? pinned : nameCollator.compare(a.name, b.name);
+        });
         if (searchCount) {
             searchCount.textContent = state.currentSearch.length > 0
                 ? `${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`
@@ -124,20 +139,21 @@
             const gridClass = isFeatured ? 'md:col-span-2 lg:col-span-2 pb-8 md:pb-0 md:pr-8' : 'pb-8';
             const titleSize = isFeatured ? 'text-4xl md:text-5xl' : 'text-2xl';
             const imageContent = p.gallery && p.gallery.length > 1
-                ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
+                ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
                 : (p.image
-                    ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" class="w-full h-full object-cover img-zoom">`
+                    ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover img-zoom">`
                     : `<i class="fa-solid fa-mobile-screen text-5xl img-zoom" style="color:rgba(28,25,23,0.2);"></i>`);
             const microSpecs = p.specs && p.specs.length > 0
                 ? p.specs.slice(0, 2).map(/** @param {ProductSpec} s */ s => s.value.split(' ')[0] + ' ' + (s.value.split(' ')[1] || '')).join(' • ')
                 : '';
             const wishlistActive = window.MiplaceWishlist?.has(p.id);
             return `
-            <div class="${gridClass} group flex flex-col justify-between h-full stagger-item" style="border-bottom:1px solid rgba(28,25,23,0.2); animation-delay: ${index * 0.05}s;">
+            <div class="${gridClass} group flex flex-col justify-between h-full" data-reveal data-tilt data-id="${p.id}" style="border-bottom:1px solid rgba(28,25,23,0.2); --reveal-delay: ${(index % 4) * 90}ms;">
                 <div>
                     <div class="product-img-wrap w-full aspect-video flex items-center justify-center mb-6 img-zoom-container card-shimmer relative cursor-pointer overflow-hidden" style="background-color:#eaeaeb;" data-open-product="${p.id}">
                         ${p.highlight ? '<span class="absolute top-4 left-4 text-[10px] uppercase tracking-widest px-3 py-1.5" style="background-color:#1c1917;color:#f4f4f0;z-index:30;">Destaque</span>' : ''}
-                        <div class="w-full h-full relative" style="z-index:0;">${imageContent}</div>
+                        <div class="w-full h-full relative reveal-img" data-parallax data-speed="${index % 2 === 0 ? '0.05' : '0.07'}" style="z-index:0;">${imageContent}</div>
+                        <div class="specular" aria-hidden="true"></div>
                         <div class="ver-detalhes-overlay absolute inset-0 flex items-center justify-center" style="background-color:rgba(28,25,23,0.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); z-index:20;">
                             <span class="ver-detalhes-label font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3" style="color:#f4f4f0; border:1px solid #f4f4f0; background-color:rgba(28,25,23,0.55);">Ver Detalhes</span>
                         </div>
@@ -168,6 +184,9 @@
                 </div>
             </div>`;
         }).join('');
+        // Recém-renderizados precisam (re)entrar no scroll reveal e nos efeitos 3D
+        if (window.initRevealIn) window.initRevealIn(container);
+        if (window.initCardEffects) window.initCardEffects(container);
     }
 
     /** @returns {void} */
@@ -300,7 +319,12 @@
             if (!(trigger instanceof HTMLElement)) return;
             const id = parseInt(trigger.getAttribute('data-open-product') || '0', 10);
             if (!Number.isFinite(id)) return;
-            if (typeof window.openModal === 'function') window.openModal(id);
+            // Imagem de origem alimenta o morph FLIP (card -> modal)
+            const holder = trigger.closest('.group') || trigger;
+            const srcImg = holder.querySelector('img');
+            if (typeof window.openModal === 'function') {
+                window.openModal(id, srcImg instanceof HTMLImageElement ? srcImg : null);
+            }
         });
 
         const filters = document.getElementById('category-filters');
