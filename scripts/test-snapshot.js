@@ -43,15 +43,15 @@ try {
 if (!Array.isArray(data)) fail('o arquivo raiz deve ser um array');
 
 // Invariantes canônicos do catálogo versão 1.2.x
-const brands = { Realme: 7, Honor: 5, Motorola: 5, Redmi: 2, Poco: 2, iPhone: 1, Samsung: 2, Infinix: 1, Tecno: 1 };
+const brands = { Realme: 7, Honor: 5, Motorola: 5, Redmi: 3, Poco: 2, iPhone: 1, Samsung: 2, Infinix: 1, Tecno: 1 };
 // IDs estáveis: 13 (MOTO G15), 15 (MOTO G86 5G) e 16 (EDGE 50 FUSION) foram removidos da coleção
-const expectedIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
+const expectedIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
 const actualIds = data.map(p => p.id).sort((a, b) => a - b);
 if (!deepEqual(actualIds, expectedIds)) {
     fail(`IDs divergem do esperado.\n  esperado: [${expectedIds.join(',')}]\n  obtido:   [${actualIds.join(',')}]`);
 }
-ok('IDs canônicos (1..29 sem 13, 15 e 16) sem duplicados');
+ok('IDs canônicos (1..30 sem 13, 15 e 16) sem duplicados');
 
 const actualBrands = data.reduce((acc, p) => {
     acc[p.brand] = (acc[p.brand] || 0) + 1;
@@ -60,7 +60,7 @@ const actualBrands = data.reduce((acc, p) => {
 if (canonCounts(actualBrands) !== canonCounts(brands)) {
     fail(`Contagem por marca diverge.\n  esperado: ${JSON.stringify(brands)}\n  obtido:   ${JSON.stringify(actualBrands)}`);
 }
-ok('Distribuição por marca preservada (Realme:7, Honor:5, Motorola:5, Redmi:2, Poco:2, iPhone:1, Samsung:2, Infinix:1, Tecno:1)');
+ok('Distribuição por marca preservada (' + Object.entries(brands).map(([k, v]) => `${k}:${v}`).join(', ') + ')');
 
 // Categoria: exatamente 1 Tablet (Redmi Pad 2), demais ausência = Celular
 const tablets = data.filter(p => p.category === 'Tablet');
@@ -107,10 +107,13 @@ if (!storesMatch) {
 }
 
 // Persistir/atualizar snapshot
+// O campo `generated` é só metadado: comparar sem ele para que um `npm test`
+// sem mudança real de dados não reescreva o arquivo e suje o working tree.
 const newSnapshot = { generated: new Date().toISOString(), count: data.length, brands: actualBrands, ids: actualIds };
+const stablePart = (/** @type {Record<string, unknown>} */ s) => ({ count: s.count, brands: s.brands, ids: s.ids });
 if (fs.existsSync(SNAPSHOT_PATH)) {
     const old = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8'));
-    if (deepEqual(old, newSnapshot)) {
+    if (deepEqual(stablePart(old), stablePart(newSnapshot))) {
         ok('Snapshot inalterado desde ' + old.generated);
     } else {
         fs.writeFileSync(SNAPSHOT_PATH, JSON.stringify(newSnapshot, null, 2));

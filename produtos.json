@@ -1638,5 +1638,68 @@
       "tecno/sparkgo3-3.webp",
       "tecno/sparkgo3-4.webp"
     ]
+  },
+  {
+    "id": 30,
+    "brand": "Redmi",
+    "name": "REDMI A7 PRO 4G",
+    "highlight": false,
+    "image": "redmi/a7pro-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Redmi A7 Pro 4G é um smartphone de entrada que se destaca pela tela de 6,9\" com 120 Hz, pela bateria de 6.000 mAh com ótima autonomia e pelo Android 16 com HyperOS 3, sendo ideal para o uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250 (12 nm)"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB ou 128 GB UFS 2.2 (microSD dedicado)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,9\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 13 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (HyperOS 3)"
+      },
+      {
+        "label": "Recursos",
+        "value": "NFC (variável por região), Impressão digital lateral, P2, FM, USB Type-C, Resistente a poeira e respingos"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Tela",
+        "text": "Display de 6,9\" IPS LCD com 120 Hz e 800 nits no modo de alta luminosidade."
+      },
+      {
+        "title": "Bateria",
+        "text": "Bateria de 6.000 mAh para até 2,5 dias de uso regular e carregamento de 15W."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo de 8,2 mm e 208 g, nas cores Preto, Azul Névoa, Verde Palmeira e Laranja Poente."
+      }
+    ],
+    "gallery": [
+      "redmi/a7pro-1.webp",
+      "redmi/a7pro-2.webp",
+      "redmi/a7pro-3.webp",
+      "redmi/a7pro-4.webp"
+    ]
   }
 ]
