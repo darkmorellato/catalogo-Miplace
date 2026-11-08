@@ -47,7 +47,7 @@ Todas as respostas são JSON, com `Content-Type: application/json; charset=utf-8
 | 405 | `METHOD_NOT_ALLOWED` | Método diferente de `POST`; envia `Allow: POST` |
 | 413 | `PAYLOAD_TOO_LARGE` | Corpo acima de 20 KB |
 | 415 | `UNSUPPORTED_MEDIA_TYPE` | Content-Type diferente de JSON |
-| 429 | `RATE_LIMITED` | Mais de 5 requisições por IP em 10 minutos; envia `Retry-After` |
+| 429 | `RATE_LIMITED` | Mais de 20 requisições por IP em 10 minutos; envia `Retry-After` |
 | 502 | `EMAIL_SEND_FAILED` | Resend recusou ou falhou de rede |
 | 503 | `EMAIL_NOT_CONFIGURED` | Faltam variáveis de ambiente |
 | 504 | `EMAIL_TIMEOUT` | Resend não respondeu em 10 s |
@@ -143,7 +143,7 @@ curl -i -X POST http://localhost:3000/api/contact \
 
 ## 5. Limites e comportamento
 
-- **Rate limit em memória:** 5 requisições por IP a cada 10 minutos. O estado é por instância serverless; reinícios e múltiplas instâncias podem permitir mais tentativas. Para limite global, usar Redis/KV (Upstash, Vercel KV) com chave por IP.
+- **Rate limit em memória:** 20 requisições por IP a cada 10 minutos. O estado é por instância serverless; reinícios e múltiplas instâncias podem permitir mais tentativas. Para limite global, usar Redis/KV (Upstash, Vercel KV) com chave por IP.
 - **IP:** lido de `x-forwarded-for` (primeiro valor) ou `x-real-ip`; em último caso, `req.socket.remoteAddress`.
 - **Timeout do Resend:** 10 segundos. Não há retry automático para evitar e-mail duplicado; o front pode tentar novamente após erro.
 - **Sem CORS:** o endpoint é same-origin. Não é necessário liberar cabeçalhos para o site.

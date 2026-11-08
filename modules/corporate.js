@@ -552,7 +552,7 @@
                             && body.errors[0]
                             && typeof body.errors[0].message === 'string'
                             ? body.errors[0].message
-                            : '';
+                            : (body && typeof body.message === 'string' ? body.message : '');
                         if (fieldMessage) throw new ContactValidationError(fieldMessage);
                         throw new Error(`HTTP ${response.status}`);
                     }

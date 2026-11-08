@@ -1,9 +1,9 @@
 # Miplace Group — site corporativo e catálogo
 
-Site institucional e catálogo digital da Miplace Group, grupo de varejo de tecnologia com operação em Piracicaba e Amparo (SP). A versão 2.0.12 mantém o reposicionamento corporativo, o scroll editorial reversível, o áudio com início no primeiro clique e o formulário com fallback de envio, telefone mascarado e validação de e-mail real, sem objeto 3D, sem remover o catálogo, a busca, os filtros e a experiência de compra assistida.
+Site institucional e catálogo digital da Miplace Group, grupo de varejo de tecnologia com operação em Piracicaba e Amparo (SP). A versão 2.0.13 mantém o reposicionamento corporativo, o scroll editorial reversível, o áudio com início no primeiro clique e o formulário com fallback de envio, telefone mascarado, validação de e-mail real e limite de tentativas mais claro, sem objeto 3D, sem remover o catálogo, a busca, os filtros e a experiência de compra assistida.
 
 - **Produção:** https://miplacemagazine.com.br/
-- **Versão de entrega:** 2.0.12 (8 de novembro de 2026)
+- **Versão de entrega:** 2.0.13 (8 de novembro de 2026)
 - **Stack:** HTML, CSS e JavaScript vanilla, Tailwind CSS v4, PWA e Vercel
 - **Idioma padrão:** português (Brasil), com camada corporativa em inglês e espanhol
 

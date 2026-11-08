@@ -14,7 +14,7 @@
 
 const MAX_BODY_BYTES = 20 * 1024;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_MAX = 20;
 const RATE_LIMIT_MAX_KEYS = 10000;
 const EMAIL_TIMEOUT_MS = 10000;
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
@@ -263,7 +263,7 @@ function getClientIp(req) {
 }
 
 /**
- * Rate limit em memória: 5 requisições por IP a cada 10 minutos.
+ * Rate limit em memória: 20 requisições por IP a cada 10 minutos.
  * Em serverless o estado é por instância; ver limitações na documentação.
  * @param {string} ip
  * @returns {{ allowed: boolean, retryAfter?: number }}

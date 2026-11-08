@@ -170,3 +170,4 @@ catalogo-Miplace-main/
 - **CSP:** `connect-src` inclui `https://formsubmit.co`; a política de privacidade registra o operador de contingência.
 - **Teste local:** funciona em servidor estático porque o fallback é chamado direto pelo navegador.
 - **Validação:** o campo Mensagem tem `minlength="10"`; o Telefone usa máscara `(19) 98935-4849` e exige 11 dígitos; o E-mail usa regex estrita e bloqueia domínios de exemplo/descartáveis, com a mesma regra no front-end e na API.
+- **Limite:** 20 requisições por IP a cada 10 minutos; o front-end exibe a mensagem real do 429 e não chama o fallback nesse caso.

@@ -2,7 +2,18 @@
 
 Todas as mudanças relevantes deste site são registradas aqui. O formato segue, como referência, o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); o versionamento segue SemVer.
 
-> Registro da versão 2.0.12 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+> Registro da versão 2.0.13 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+
+## [2.0.13] - 2026-11-08
+
+### Corrigido
+
+- O erro `429 RATE_LIMITED` agora aparece com a mensagem real (“Muitas tentativas. Aguarde alguns minutos e tente novamente.”), em vez do aviso genérico de falha.
+- Limite de envio elevado de 5 para 20 requisições por IP a cada 10 minutos, reduzindo bloqueios durante testes e retentativas legítimas.
+
+### Alterado
+
+- Versão dos assets para `?v=2.0.13`, `package.json` para `2.0.13` e `BUILD_TIMESTAMP` para `2026-11-08.15`.
 
 ## [2.0.12] - 2026-11-08
 
