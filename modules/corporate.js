@@ -16,12 +16,41 @@
     // no e-mail de destino antes do primeiro envio.
     const CONTACT_FALLBACK_ENDPOINT = 'https://formsubmit.co/ajax/contasgeraljack@gmail.com';
 
+    // Espelha a validação de api/contact.js para o fallback também bloquear
+    // domínios de exemplo e descartáveis quando a API não está rodando.
+    const CONTACT_EMAIL_RE = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+    const CONTACT_BLOCKED_EMAIL_RE = /(^|\.)(example|test|teste|invalid|localhost|local|10minutemail|guerrillamail|mailinator|tempmail|temp-mail|yopmail|maildrop|throwawaymail|getnada|sharklasers|trashmail|fakeinbox|dispostable|mailnesia|moakt|mintemail|emailondeck)(\.|$)/i;
+
     /**
      * @param {string} key
      * @returns {string}
      */
     function t(key) {
         return window.MiplaceI18n ? window.MiplaceI18n.t(key) : key;
+    }
+
+    /**
+     * Valida o formato e bloqueia domínios reservados ou descartáveis.
+     * @param {string} value
+     * @returns {boolean}
+     */
+    function isValidContactEmail(value) {
+        const email = String(value || '').trim();
+        if (!email || email.length > 254 || !CONTACT_EMAIL_RE.test(email)) return false;
+
+        const at = email.lastIndexOf('@');
+        if (at <= 0 || at === email.length - 1) return false;
+
+        const local = email.slice(0, at);
+        const domain = email.slice(at + 1).toLowerCase();
+
+        if (local.length > 64) return false;
+        if (local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
+        if (domain.length > 253) return false;
+        if (CONTACT_BLOCKED_EMAIL_RE.test(domain)) return false;
+
+        const tld = domain.slice(domain.lastIndexOf('.') + 1);
+        return /^[a-z]{2,24}$/.test(tld);
     }
 
     /**
@@ -387,6 +416,7 @@
         if (!form) return;
         const submit = /** @type {HTMLButtonElement | null} */ (form.querySelector('button[type="submit"]'));
         const fallback = document.getElementById('contact-fallback');
+        const emailInput = /** @type {HTMLInputElement | null} */ (form.querySelector('input[name="email"]'));
         const whatsappLinks = Array.from(document.querySelectorAll('[data-whatsapp-link]'));
 
         class ContactValidationError extends Error {
@@ -427,9 +457,38 @@
             });
         });
 
+        // Telefone brasileiro: DDD (2) + 9 dígitos, exibido como (19) 98935-4849.
+        const phoneInput = /** @type {HTMLInputElement | null} */ (form.querySelector('input[name="phone"]'));
+        if (phoneInput) {
+            const formatPhone = () => {
+                let digits = phoneInput.value.replace(/\D/g, '');
+                // Aceita colagem com código do país (+55) sem perder o DDD.
+                if (digits.length > 11 && digits.startsWith('55')) digits = digits.slice(2);
+                digits = digits.slice(0, 11);
+
+                let formatted = '';
+                if (digits.length > 0) formatted = `(${digits.slice(0, 2)}`;
+                if (digits.length >= 3) formatted += `) ${digits.slice(2, 7)}`;
+                if (digits.length >= 8) formatted += `-${digits.slice(7, 11)}`;
+                phoneInput.value = formatted;
+            };
+
+            phoneInput.addEventListener('input', formatPhone);
+            phoneInput.addEventListener('blur', formatPhone);
+            if (phoneInput.value) formatPhone();
+        }
+
         form.addEventListener('submit', async event => {
             event.preventDefault();
             if (!form.reportValidity()) return;
+
+            if (emailInput && !isValidContactEmail(emailInput.value)) {
+                const message = window.MiplaceI18n?.t('contact.emailInvalid')
+                    || 'Informe um e-mail válido, como nome@gmail.com.';
+                showValidationMessage(message);
+                emailInput.focus();
+                return;
+            }
 
             const data = new FormData(form);
             const payload = {

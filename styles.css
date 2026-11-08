@@ -2125,6 +2125,15 @@ body {
     resize: vertical;
 }
 
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -3091,7 +3100,7 @@ main > section {
 }
 
 /* ============================================================
-   SCROLL GLOBAL — continuum editorial (v2.0.11)
+   SCROLL GLOBAL — continuum editorial (v2.0.12)
    --p  = progresso da seção (hero, pin, cover)
    --pe = progresso de entrada, reversível ao subir
    Só camadas decorativas usam as variáveis; o conteúdo é one-shot.

@@ -2,7 +2,20 @@
 
 Todas as mudanças relevantes deste site são registradas aqui. O formato segue, como referência, o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); o versionamento segue SemVer.
 
-> Registro da versão 2.0.11 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+> Registro da versão 2.0.12 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+
+## [2.0.12] - 2026-11-08
+
+### Adicionado
+
+- Máscara de telefone no padrão brasileiro `(19) 98935-4849`, com DDD de 2 dígitos e 9 dígitos no número; colagens com `+55` são normalizadas.
+- Validação de e-mail mais rígida, bloqueando domínios reservados (`example`, `test`, `teste`, `invalid`, `localhost`) e descartáveis comuns (`mailinator`, `yopmail`, `tempmail` etc.).
+- A mesma validação de e-mail foi espelhada no front-end para proteger o fallback quando a API não está rodando.
+
+### Alterado
+
+- O campo Telefone exige 11 dígitos, DDD entre 11 e 99 e número iniciado por 9; a API valida o mesmo formato.
+- Versão dos assets para `?v=2.0.12`, `package.json` para `2.0.12` e `BUILD_TIMESTAMP` para `2026-11-08.14`.
 
 ## [2.0.11] - 2026-11-08
 

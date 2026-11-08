@@ -19,7 +19,8 @@ const RATE_LIMIT_MAX_KEYS = 10000;
 const EMAIL_TIMEOUT_MS = 10000;
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const EMAIL_RE = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+const BLOCKED_EMAIL_DOMAIN_RE = /(^|\.)(example|test|teste|invalid|localhost|local|10minutemail|guerrillamail|mailinator|tempmail|temp-mail|yopmail|maildrop|throwawaymail|getnada|sharklasers|trashmail|fakeinbox|dispostable|mailnesia|moakt|mintemail|emailondeck)(\.|$)/i;
 
 /** @type {Map<string, number[]>} */
 const rateLimitBuckets = new Map();
@@ -83,7 +84,22 @@ function normalizeAddress(value) {
  * @returns {boolean}
  */
 function isValidEmail(value) {
-    return value.length > 0 && value.length <= 254 && EMAIL_RE.test(value);
+    const email = String(value || '').trim();
+    if (!email || email.length > 254 || !EMAIL_RE.test(email)) return false;
+
+    const at = email.lastIndexOf('@');
+    if (at <= 0 || at === email.length - 1) return false;
+
+    const local = email.slice(0, at);
+    const domain = email.slice(at + 1).toLowerCase();
+
+    if (local.length > 64) return false;
+    if (local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
+    if (domain.length > 253) return false;
+    if (BLOCKED_EMAIL_DOMAIN_RE.test(domain)) return false;
+
+    const tld = domain.slice(domain.lastIndexOf('.') + 1);
+    return /^[a-z]{2,24}$/.test(tld);
 }
 
 /**
@@ -91,12 +107,14 @@ function isValidEmail(value) {
  * @returns {boolean}
  */
 function isValidPhone(value) {
-    const digits = value.replace(/\D/g, '');
-    return (
-        digits.length >= 8 &&
-        digits.length <= 15 &&
-        /^[+\d(][\d\s().-]*$/.test(value)
-    );
+    const phone = String(value || '').trim();
+    if (!/^\(\d{2}\) 9\d{4}-\d{4}$/.test(phone)) return false;
+
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length !== 11) return false;
+
+    const ddd = Number(digits.slice(0, 2));
+    return Number.isInteger(ddd) && ddd >= 11 && ddd <= 99;
 }
 
 /**

@@ -197,18 +197,18 @@ Não há baseline histórico neste projeto. As faixas abaixo são **hipóteses p
 Inserir **depois** de `modules/ui.js` e **antes** de `modules/catalog.js`:
 
 ```html
-<script src="modules/analytics.js?v=2.0.11" defer></script>
+<script src="modules/analytics.js?v=2.0.12" defer></script>
 ```
 
 Ordem completa recomendada em `docs/olimpo/INTEGRACAO.md`:
 
 ```html
-<script src="stores.js?v=2.0.11" defer></script>
-<script src="modules/ui.js?v=2.0.11" defer></script>
-<script src="modules/i18n.js?v=2.0.11" defer></script>
-<script src="modules/analytics.js?v=2.0.11" defer></script>
-<script src="modules/catalog.js?v=2.0.11" defer></script>
-<script src="modules/modal.js?v=2.0.11" defer></script>
+<script src="stores.js?v=2.0.12" defer></script>
+<script src="modules/ui.js?v=2.0.12" defer></script>
+<script src="modules/i18n.js?v=2.0.12" defer></script>
+<script src="modules/analytics.js?v=2.0.12" defer></script>
+<script src="modules/catalog.js?v=2.0.12" defer></script>
+<script src="modules/modal.js?v=2.0.12" defer></script>
 ```
 
 ### 7.2 Page view inicial e por seção

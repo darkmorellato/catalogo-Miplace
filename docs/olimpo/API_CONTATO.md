@@ -12,8 +12,8 @@
 | Campo | Tipo | Obrigatório | Limite | Regra |
 |---|---|---|---|---|
 | `name` | string | sim | 2–100 | Texto aparado; não vazio |
-| `email` | string | sim | 5–254 | Formato `usuario@dominio.tld` |
-| `phone` | string | não | 30 | 8–15 dígitos; aceita `+`, espaços, `()`, `.` e `-` |
+| `email` | string | sim | 5–254 | Formato válido; bloqueia domínios reservados/de exemplo e descartáveis |
+| `phone` | string | não | 15 | Exatamente 11 dígitos no formato `(19) 98935-4849`; DDD 11–99 e número iniciado por 9 |
 | `subject` | string | não | 120 | Padrão: `Contato pelo site` |
 | `message` | string | sim | 10–5.000 | Texto aparado; quebras de linha preservadas |
 | `consent` | boolean | sim | — | Precisa ser exatamente `true` |
@@ -105,8 +105,8 @@ curl -i -X POST https://miplacemagazine.com.br/api/contact \
   -H 'Content-Type: application/json' \
   --data '{
     "name": "Ana Souza",
-    "email": "ana@example.com",
-    "phone": "(19) 99999-9999",
+    "email": "ana@gmail.com",
+    "phone": "(19) 98935-4849",
     "subject": "Troca de aparelho",
     "message": "Gostaria de saber como funciona a troca do meu aparelho.",
     "consent": true,
@@ -138,7 +138,7 @@ curl -i -X POST https://miplacemagazine.com.br/api/contact \
 npx vercel dev
 curl -i -X POST http://localhost:3000/api/contact \
   -H 'Content-Type: application/json' \
-  --data '{"name":"Ana Souza","email":"ana@example.com","message":"Mensagem de teste local.","consent":true,"website":""}'
+  --data '{"name":"Ana Souza","email":"ana@gmail.com","message":"Mensagem de teste local.","consent":true,"website":""}'
 ```
 
 ## 5. Limites e comportamento
