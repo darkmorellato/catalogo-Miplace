@@ -171,3 +171,9 @@ catalogo-Miplace-main/
 - **Teste local:** funciona em servidor estático porque o fallback é chamado direto pelo navegador.
 - **Validação:** o campo Mensagem tem `minlength="10"`; o Telefone usa máscara `(19) 98935-4849` e exige 11 dígitos; o E-mail usa regex estrita e bloqueia domínios de exemplo/descartáveis, com a mesma regra no front-end e na API.
 - **Limite:** 20 requisições por IP a cada 10 minutos; o front-end exibe a mensagem real do 429 e não chama o fallback nesse caso.
+
+## 14. Catálogo v2.1.0 (2026-11-08)
+
+- **Novo produto:** Honor Play 20A (id 31), R$ 1.599, specs do GSMArena e quatro imagens em `honor/play20a-1..4.webp`.
+- **Ordenação:** marcas em ordem alfabética e, dentro de cada marca, modelos em ordem alfabética; filtros de marca na mesma ordem. O primeiro card continua sendo o destaque visual; o selo `highlight` não altera mais a posição.
+- **Contagem:** 28 produtos e 9 marcas; snapshot e testes atualizados.

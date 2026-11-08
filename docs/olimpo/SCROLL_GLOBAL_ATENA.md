@@ -214,7 +214,7 @@ Preferir um módulo pequeno, `modules/scroll.js` (80–120 linhas), carregado an
 - [ ] `prefers-reduced-motion`: sem timeline/transform; todo o conteúdo visível e legível.
 - [ ] Sem JS: texto, imagens e CTAs aparecem; nenhuma seção em branco.
 - [ ] Mobile 360/390: sem overflow horizontal; sticky não prende; catálogo/contato intactos.
-- [ ] Catálogo renderiza 27 produtos; busca, filtros, modal, lightbox e wishlist inalterados.
+- [ ] Catálogo renderiza 28 produtos; busca, filtros, modal, lightbox e wishlist inalterados.
 - [ ] Manifesto mantém os 3 capítulos sticky e a copy aprovada.
 - [ ] Objeto facetado só em Números e Compromissos; `aria-hidden`; estático em mobile/reduced.
 - [ ] Performance: Lighthouse mobile ≥85; LCP ≤2,5 s; CLS <0,1; sem long task >50 ms por scroll.

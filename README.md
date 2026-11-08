@@ -1,9 +1,9 @@
 # Miplace Group — site corporativo e catálogo
 
-Site institucional e catálogo digital da Miplace Group, grupo de varejo de tecnologia com operação em Piracicaba e Amparo (SP). A versão 2.0.13 mantém o reposicionamento corporativo, o scroll editorial reversível, o áudio com início no primeiro clique e o formulário com fallback de envio, telefone mascarado, validação de e-mail real e limite de tentativas mais claro, sem objeto 3D, sem remover o catálogo, a busca, os filtros e a experiência de compra assistida.
+Site institucional e catálogo digital da Miplace Group, grupo de varejo de tecnologia com operação em Piracicaba e Amparo (SP). A versão 2.1.0 mantém o reposicionamento corporativo, o scroll editorial reversível, o áudio com início no primeiro clique e o formulário com fallback de envio, telefone mascarado, validação de e-mail real e limite de tentativas mais claro. O catálogo agora tem 28 produtos e é ordenado por marca e modelo em ordem alfabética.
 
 - **Produção:** https://miplacemagazine.com.br/
-- **Versão de entrega:** 2.0.13 (8 de novembro de 2026)
+- **Versão de entrega:** 2.1.0 (8 de novembro de 2026)
 - **Stack:** HTML, CSS e JavaScript vanilla, Tailwind CSS v4, PWA e Vercel
 - **Idioma padrão:** português (Brasil), com camada corporativa em inglês e espanhol
 
@@ -19,7 +19,7 @@ O catálogo é informativo. A compra e a contratação do parcelamento acontecem
 ## O que está incluído
 
 - Home corporativa com as seções A Miplace, Negócios, Marcas, Presença, Compromissos, Carreiras, Imprensa, Coleção e Contato.
-- Catálogo com 27 produtos, 9 marcas e filtros por marca e categoria.
+- Catálogo com 28 produtos, 9 marcas e filtros por marca e categoria.
 - Busca, modal de produto, galeria com lightbox e lista de favoritos local.
 - Páginas legais: [Privacidade](privacidade.html), [Termos de uso](termos.html) e [Acessibilidade](acessibilidade.html), em versão 1.0 sujeita a revisão jurídica.
 - Camada corporativa PT/EN/ES em `modules/i18n.js`, carregada no `index.html`.
@@ -50,7 +50,7 @@ catalogo-Miplace-main/
 ├── acessibilidade.html         # declaração de acessibilidade
 ├── app.js                      # orquestrador da aplicação
 ├── stores.js                   # dados canônicos das 4 lojas
-├── produtos.json               # dados canônicos dos 27 produtos
+├── produtos.json               # dados canônicos dos 28 produtos
 ├── styles.css                  # estilos editoriais e componentes
 ├── tailwind.css                # build gerado do Tailwind
 ├── src/input.css               # fonte do Tailwind

@@ -429,7 +429,7 @@ function initExperienceScroll() {
 - [ ] `#experiencia`, `#catalogo`, `#contato` e IDs do briefing intactos.
 - [ ] `window.renderProducts`, `initCatalog`, modal, lightbox e wishlist intactos.
 - [ ] i18n PT/EN/ES atualizado para as chaves da nova seção.
-- [ ] `npm run build` e `npm test` passando; catálogo com 27 produtos.
+- [ ] `npm run build` e `npm test` passando; catálogo com 28 produtos.
 
 ---
 

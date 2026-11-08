@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | **0. Contratos** | Sessão atual, antes de produzir | Fechar interfaces entre as frentes | `REQUISITOS`, `ARQUITETURA`, `DESIGN_SYSTEM`/tokens, `DADOS`/schema, `API_CONTATO`, critérios de QA e segurança | **M0:** Afrodite inicia sem bloqueio de copy, token, dado ou contrato |
 | **1. Produção** | Sessão atual | Executar as 15 frentes na propriedade de arquivos do briefing | Home/catálogo, i18n, corporate, analytics, concierge, API, PWA, CI, docs, legal, QA | **M1:** cada frente entrega artefato + snippet + evidência; zero edição fora do escopo |
-| **2. Integração** | Sessão atual, após M1 | Zeus pluga módulos; Afrodite dá suporte | `index.html` integrado, ordem de scripts, CSS, CSP/headers, catálogo preservado | **M2:** `npm run build` e `npm test` verdes; 27 produtos; IDs/contratos intactos |
+| **2. Integração** | Sessão atual, após M1 | Zeus pluga módulos; Afrodite dá suporte | `index.html` integrado, ordem de scripts, CSS, CSP/headers, catálogo preservado | **M2:** `npm run build` e `npm test` verdes; 28 produtos; IDs/contratos intactos |
 | **3. Gate final** | Sessão atual, antes do go-live | Provar qualidade, segurança e conformidade | QA visual/funcional, WCAG AA, CSP/API/LGPD, páginas legais, docs e pendências | **M3:** zero P0/P1; Argos e Ártemis aprovam; Zeus aceita o DoD |
 | **4. Go-live** | Pós-aprovação | Publicar com risco controlado | Deploy Vercel, smoke de produção, rollback, monitoramento | **M4:** usuário autoriza; site no ar com smoke verde |
 
@@ -64,7 +64,7 @@
 ## 5. Critérios de aceite
 
 - Home com todas as seções e copy aprovada; catálogo, busca, filtros, modal, lightbox e wishlist funcionando.
-- 27 produtos renderizados; `produtos.json` e `stores.js` preservados como fontes canônicas.
+- 28 produtos renderizados; `produtos.json` e `stores.js` preservados como fontes canônicas.
 - PT/EN/ES na camada corporativa, fallback PT, `html lang`, título e meta description atualizados.
 - Responsivo em 360, 768, 1024 e 1440 px; WCAG 2.2 AA; `prefers-reduced-motion` respeitado.
 - `npm run build`, `npm test` e `node scripts/test-site.js` passando no commit aprovado.
@@ -77,7 +77,7 @@
 - [ ] Aprovação formal do usuário em M3 e autorização de deploy.
 - [ ] Build reproduzível no commit aprovado; `npm test` verde.
 - [ ] Backup do deployment anterior e rollback documentado.
-- [ ] Smoke em produção: home, 27 produtos, busca, modal, wishlist, i18n, contato e legal.
+- [ ] Smoke em produção: home, 28 produtos, busca, modal, wishlist, i18n, contato e legal.
 - [ ] CSP/headers validados; zero erro de console em desktop e mobile.
 - [ ] Service worker com cache bump e fallback offline; API fora do cache.
 - [ ] Domínio/SSL/canonical, `robots.txt` e `sitemap.xml` conferidos.

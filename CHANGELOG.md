@@ -2,7 +2,20 @@
 
 Todas as mudanças relevantes deste site são registradas aqui. O formato segue, como referência, o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); o versionamento segue SemVer.
 
-> Registro da versão 2.0.13 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+> Registro da versão 2.1.0 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+
+## [2.1.0] - 2026-11-08
+
+### Adicionado
+
+- Honor Play 20A (id 31), a partir de R$ 1.599, com dados do GSMArena: tela de 6,9" HD+ 90 Hz, Helio G81, 4 GB RAM, 64/128 GB com microSD, câmera principal de 13 MP, frontal de 5 MP, bateria de 6.000 mAh com 15 W, display traseiro, Android 15/MagicOS 9 e 4G LTE.
+- Galeria do Play 20A com quatro imagens em `honor/play20a-1.webp` a `play20a-4.webp`.
+
+### Alterado
+
+- Catálogo ordenado por marca em ordem alfabética e, dentro de cada marca, por modelo; os filtros de marca seguem a mesma ordem.
+- Contagens atualizadas de 27 para 28 produtos na home, no concierge, no README e na documentação.
+- Versão dos assets para `?v=2.1.0`, `package.json` para `2.1.0` e `BUILD_TIMESTAMP` para `2026-11-08.16`.
 
 ## [2.0.13] - 2026-11-08
 

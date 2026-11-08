@@ -43,15 +43,15 @@ try {
 if (!Array.isArray(data)) fail('o arquivo raiz deve ser um array');
 
 // Invariantes canônicos do catálogo versão 1.2.x
-const brands = { Realme: 7, Honor: 5, Motorola: 5, Redmi: 3, Poco: 2, iPhone: 1, Samsung: 2, Infinix: 1, Tecno: 1 };
+const brands = { Realme: 7, Honor: 6, Motorola: 5, Redmi: 3, Poco: 2, iPhone: 1, Samsung: 2, Infinix: 1, Tecno: 1 };
 // IDs estáveis: 13 (MOTO G15), 15 (MOTO G86 5G) e 16 (EDGE 50 FUSION) foram removidos da coleção
-const expectedIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+const expectedIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
 const actualIds = data.map(p => p.id).sort((a, b) => a - b);
 if (!deepEqual(actualIds, expectedIds)) {
     fail(`IDs divergem do esperado.\n  esperado: [${expectedIds.join(',')}]\n  obtido:   [${actualIds.join(',')}]`);
 }
-ok('IDs canônicos (1..30 sem 13, 15 e 16) sem duplicados');
+ok('IDs canônicos (1..31 sem 13, 15 e 16) sem duplicados');
 
 const actualBrands = data.reduce((acc, p) => {
     acc[p.brand] = (acc[p.brand] || 0) + 1;

@@ -10,7 +10,7 @@
 
 - Projeto: `/home/dark/Desktop/codes/catalogo-Miplace-main/`
 - Hoje: catálogo editorial de smartphones e tablets, vanilla JS + Tailwind v4 + PWA, hospedado na Vercel.
-- Base real: 27 produtos, 9 marcas, 4 lojas em Piracicaba e Amparo (SP), parcelamento em até 24x no boleto sem consulta, 7 anos de mercado.
+- Base real: 28 produtos, 9 marcas, 4 lojas em Piracicaba e Amparo (SP), parcelamento em até 24x no boleto sem consulta, 7 anos de mercado.
 - O site atual é bem executado, mas comunica "revista de catálogo local". O alvo é comunicar **grupo de tecnologia com padrão global**, sem perder a alma local e sem quebrar o catálogo.
 
 ## 2. Posicionamento
@@ -28,7 +28,7 @@
 - 4 lojas: Miplace XV Prime, Miplace Honor e Miplace Realme (Piracicaba); Miplace Premium (Amparo).
 - 2 cidades: Piracicaba e Amparo, SP.
 - 9 marcas: Apple/iPhone, Samsung, Motorola, Realme, Honor, Redmi, Poco, Infinix, Tecno.
-- 27 produtos no catálogo (conferir no `produtos.json` na data da entrega).
+- 28 produtos no catálogo (conferir no `produtos.json` na data da entrega).
 - Parcelamento em até 24x no boleto, sem consulta.
 - Acessórios e proteção Rockspace.
 - Endereços, telefones, WhatsApp, Instagram e Facebook de `stores.js`.
@@ -76,7 +76,7 @@ Não criar, em nenhum texto ou dado:
   - `Acesso` — `Parcelamento em até 24x no boleto, sem consulta, para aproximar a alta tecnologia da vida real.`
   - `Proximidade` — `Quatro lojas, equipes especializadas e atendimento humano antes, durante e depois da compra.`
 
-**Números:** 7 anos · 4 lojas · 9 marcas globais · 27 produtos · 24x no boleto · 2 cidades
+**Números:** 7 anos · 4 lojas · 9 marcas globais · 28 produtos · 24x no boleto · 2 cidades
 
 **Negócios**
 - H2: `Um grupo, várias formas de chegar até você.`

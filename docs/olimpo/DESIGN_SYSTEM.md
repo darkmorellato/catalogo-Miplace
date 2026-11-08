@@ -264,7 +264,7 @@ Extras derivados, documentados em `tokens.css`: `--color-brand-hover` `#741717` 
 ### 6.11 Stats
 - Número em Playfair 56–72 px (mobile 40–48); label DM Sans 12 px/700 caixa alta, tracking `0.18em`; régua superior 1 px.
 - Grade de 6 itens: 6 colunas no desktop, 3 no tablet, 2 no mobile.
-- Usar somente fatos aprovados: `7 anos`, `4 lojas`, `9 marcas globais`, `27 produtos`, `24x no boleto`, `2 cidades`.
+- Usar somente fatos aprovados: `7 anos`, `4 lojas`, `9 marcas globais`, `28 produtos`, `24x no boleto`, `2 cidades`.
 - Contadores só uma vez por seção; reduced motion mostra o número final imediatamente.
 
 ### 6.12 Brand tiles
@@ -529,7 +529,7 @@ Regras: ordem de leitura igual à do desktop; CTAs com 44 px; nada de texto sobr
 - [ ] Imagens sem distorção; alt correto; lazy abaixo da dobra.
 
 ### Catálogo preservado
-- [ ] 27 produtos renderizam em `#products-grid`.
+- [ ] 28 produtos renderizam em `#products-grid`.
 - [ ] Busca, filtros, modal, lightbox e wishlist funcionam.
 - [ ] IDs e funções globais do briefing intactos.
 - [ ] Nenhum dado de `produtos.json` ou `stores.js` foi inventado/removido.

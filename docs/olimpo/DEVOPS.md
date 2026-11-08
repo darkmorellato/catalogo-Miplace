@@ -117,7 +117,7 @@ Regras:
 > Enquanto `miplacemagazine.com.br` não resolver (NXDOMAIN registrado em `docs/olimpo/INFRA.md`), usar a URL de produção `*.vercel.app` nos comandos de smoke e só trocar para o domínio final após o DNS/TLS estabilizar.
 
 - [ ] `curl -I https://miplacemagazine.com.br/` retorna 200.
-- [ ] Home renderiza o hero e o catálogo carrega os 27 produtos.
+- [ ] Home renderiza o hero e o catálogo carrega os 28 produtos.
 - [ ] Busca, filtro por marca/Tablets, modal, lightbox e wishlist funcionam.
 - [ ] Formulário de contato responde e o fallback WhatsApp aparece em falha.
 - [ ] Service Worker novo assume o controle (Application → Service Workers).

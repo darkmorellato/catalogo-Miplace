@@ -354,7 +354,7 @@ update();
 ### Preservação
 - [ ] `#sobre`, `#catalogo`, `#contato`, IDs e funções globais intactos.
 - [ ] Busca, filtro, modal, lightbox e wishlist intactos.
-- [ ] `npm run build` e `npm test` passando; 27 produtos.
+- [ ] `npm run build` e `npm test` passando; 28 produtos.
 - [ ] Nenhuma alteração em `produtos.json`, PWA, `vercel.json` ou API.
 
 ---

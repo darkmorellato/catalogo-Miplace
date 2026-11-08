@@ -1,343 +1,32 @@
 [
   {
-    "id": 1,
-    "brand": "Realme",
-    "name": "REALME P4 LITE",
+    "id": 31,
+    "brand": "Honor",
+    "name": "HONOR PLAY 20A",
     "highlight": false,
-    "image": "realme/p4lite-1.webp",
-    "price": "A partir de R$ 1.499",
-    "description": "O Realme P4 Lite é um smartphone de entrada que se destaca pela bateria de 6.600 mAh com ótima autonomia, tela de 6,8\" com 120 Hz e suporte a NFC, sendo ideal para o uso diário.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Unisoc T7250"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "4 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "64 GB, 128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,8\" IPS LCD, HD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 8 MP | Frontal 5 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "6.600 mAh (Carregamento 15W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 16 (Realme UI)"
-      },
-      {
-        "label": "Recursos",
-        "value": "NFC, P2, Impressão digital lateral"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Bateria",
-        "text": "Bateria de 6.600 mAh com ótima autonomia para o dia inteiro."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo fino (8,4 mm) e disponível nas cores Roxo Pulse e Cinza Titan."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
-      }
-    ],
-    "gallery": [
-      "realme/p4lite-1.webp",
-      "realme/p4lite-2.webp",
-      "realme/p4lite-3.webp",
-      "realme/p4lite-4.webp"
-    ]
-  },
-  {
-    "id": 2,
-    "brand": "Realme",
-    "name": "REALME P4 POWER",
-    "highlight": false,
-    "image": "realme/p4power-1.webp",
-    "price": "A partir de R$ 2.699",
-    "description": "O Realme P4 Power é um smartphone intermediário que se destaca pela bateria Titan de 10.001 mAh com carregamento ultra rápido de 80W, tela AMOLED de 6,8\" com 144 Hz e certificação IP69, sendo ideal para quem busca máxima autonomia.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "MediaTek Dimensity 7400 Ultra"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "8 GB ou 12 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,8\" AMOLED, FHD+, 144 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP (OIS) | Frontal 16 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "10.001 mAh (Carregamento 80W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 16 (Realme UI 7.0)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP69, MIL-STD-810H, NFC"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Bateria",
-        "text": "Bateria Titan de 10.001 mAh com autonomia de vários dias e carregamento de 80W."
-      },
-      {
-        "title": "Design",
-        "text": "Tela HyperGlow 4D Curve+ e disponível nas cores Prata Power e Laranja Flash."
-      },
-      {
-        "title": "Performance",
-        "text": "Ótimo desempenho para tarefas diárias e jogos."
-      }
-    ],
-    "gallery": [
-      "realme/p4power-1.webp",
-      "realme/p4power-2.webp",
-      "realme/p4power-3.webp",
-      "realme/p4power-4.webp"
-    ]
-  },
-  {
-    "id": 3,
-    "brand": "Realme",
-    "name": "REALME C71",
-    "highlight": false,
-    "image": "realme/c71-1.webp",
+    "image": "honor/play20a-1.webp",
     "price": "A partir de R$ 1.599",
-    "description": "O Realme C71 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação.",
+    "description": "O Honor Play 20A é um smartphone de entrada com tela de 6,9 polegadas, display traseiro, bateria de 6.000 mAh e Android 15 com MagicOS 9.",
     "specs": [
       {
+        "label": "Rede",
+        "value": "4G LTE (dual Nano-SIM)"
+      },
+      {
         "label": "Processador",
-        "value": "Unisoc T7250"
+        "value": "Mediatek Helio G81 (12 nm)"
       },
       {
         "label": "Memória RAM",
-        "value": "6 GB ou 8 GB (+ virtual)"
+        "value": "4 GB"
       },
       {
         "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
+        "value": "64 GB ou 128 GB (microSDXC dedicado)"
       },
       {
         "label": "Tela",
-        "value": "6,67\" IPS LCD, HD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 5 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "6.000 mAh (Carregamento 45W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (Realme UI 6.0)"
-      },
-      {
-        "label": "Recursos",
-        "value": "NFC"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Resistência",
-        "text": "Projetado para quedas de até 1,5 metros."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo (8,4 mm) e disponível nas cores Branco, Verde e Violeta."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias, bom desempenho para o dia a dia."
-      }
-    ],
-    "gallery": [
-      "realme/c71-1.webp",
-      "realme/c71-2.webp",
-      "realme/c71-3.webp",
-      "realme/c71-4.webp"
-    ]
-  },
-  {
-    "id": 4,
-    "brand": "Realme",
-    "name": "REALME C85",
-    "highlight": false,
-    "image": "realme/c85-1.webp",
-    "price": "A partir de R$ 2.099",
-    "description": "O Realme C85 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Mediatek Dimensity 6300"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "6 GB ou 8 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,8\" IPS LCD, HD+, 144 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 8 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "7.000 mAh (Carregamento 45W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (Realme UI 6.0)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP68/IP69k, NFC"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Resistência",
-        "text": "Projetado para quedas de até 1,5 metros."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo (8,4 mm) e disponível nas cores Azul e Preto."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias, bom desempenho em jogos."
-      }
-    ],
-    "gallery": [
-      "realme/c85-1.webp",
-      "realme/c85-2.webp",
-      "realme/c85-3.webp",
-      "realme/c85-4.webp"
-    ]
-  },
-  {
-    "id": 5,
-    "brand": "Realme",
-    "name": "REALME C85 PRO",
-    "highlight": false,
-    "image": "realme/c85pro-1.webp",
-    "price": "A partir de R$ 2.299",
-    "description": "O Realme C85 Pro é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Snapdragon 685"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "6 GB ou 8 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,8\" AMOLED, FHD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 8 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "7.000 mAh (Carregamento 45W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (Realme UI 6.0)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP68/IP69k, NFC"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Resistência",
-        "text": "Projetado para quedas de até 1,5 metros."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo (8,1 mm) e disponível nas cores Rosa e Verde."
-      },
-      {
-        "title": "Performance",
-        "text": "Ótimo desempenho para tarefas diárias e jogos."
-      }
-    ],
-    "gallery": [
-      "realme/c85pro-1.webp",
-      "realme/c85pro-2.webp",
-      "realme/c85pro-3.webp",
-      "realme/c85pro-4.webp"
-    ]
-  },
-  {
-    "id": 6,
-    "brand": "Realme",
-    "name": "REALME NOTE 70",
-    "highlight": false,
-    "image": "realme/note70-1.webp",
-    "price": "A partir de R$ 1.399",
-    "description": "O Realme Note 70 é um smartphone de entrada com design elegante, certificação IP54 e personalização de LED traseiro.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Unisoc T7250"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "4 GB ou 6 GB (+ virtual)"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
-      },
-      {
-        "label": "Tela",
-        "value": "6,72\" IPS LCD, HD+, 90 Hz"
+        "value": "6,9\" TFT LCD, HD+ (720 x 1600), 90 Hz"
       },
       {
         "label": "Câmeras",
@@ -345,37 +34,38 @@
       },
       {
         "label": "Bateria",
-        "value": "6.300 mAh (Carregamento 15W)"
+        "value": "6.000 mAh (carregamento 15 W)"
       },
       {
         "label": "Sistema",
-        "value": "Android 15 (Realme UI 5.0)"
+        "value": "Android 15 (MagicOS 9)"
       },
       {
         "label": "Recursos",
-        "value": "IP54"
+        "value": "Display traseiro, leitor lateral, USB-C, Bluetooth, GPS"
       }
     ],
     "highlights": [
       {
-        "title": "Resistência",
-        "text": "Projetado para quedas de até 1,8 metros."
+        "title": "Display traseiro",
+        "text": "Tela secundária na traseira para relógio, notificações e atalhos."
       },
       {
-        "title": "Design",
-        "text": "Corpo (7,9 mm) e disponível nas cores Preto e Dourado."
+        "title": "Bateria de longa duração",
+        "text": "6.000 mAh com carregamento de 15 W para acompanhar o dia inteiro."
       },
       {
-        "title": "Performance",
-        "text": "Ótimo desempenho para tarefas diárias e internet."
+        "title": "Tela ampla",
+        "text": "6,9 polegadas com 90 Hz para vídeos, jogos e leitura."
       }
     ],
     "gallery": [
-      "realme/note70-1.webp",
-      "realme/note70-2.webp",
-      "realme/note70-3.webp",
-      "realme/note70-4.webp"
-    ]
+      "honor/play20a-1.webp",
+      "honor/play20a-2.webp",
+      "honor/play20a-3.webp",
+      "honor/play20a-4.webp"
+    ],
+    "category": "Celular"
   },
   {
     "id": 7,
@@ -693,129 +383,130 @@
     ]
   },
   {
-    "id": 12,
-    "brand": "Motorola",
-    "name": "MOTO G06",
+    "id": 23,
+    "brand": "Infinix",
+    "name": "INFINIX SMART 20 4G",
     "highlight": false,
-    "image": "motorola/g06-1.webp",
-    "price": "A partir de R$ 1.299",
-    "description": "O Moto G06 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.",
+    "image": "infinix/smart20-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Infinix Smart 20 é um smartphone de entrada que se destaca pela bateria de 5.200 mAh, tela de 6,78\" com 120 Hz e 700 nits, além de NFC e infravermelho — recursos raros na faixa de preço. O processador Helio G81 Ultimate entrega desempenho fluido para o uso diário.",
     "specs": [
       {
         "label": "Processador",
-        "value": "Mediatek Helio G81 Ultra"
+        "value": "MediaTek Helio G81 Ultimate"
       },
       {
         "label": "Memória RAM",
-        "value": "4 GB ou 8 GB (+ virtual)"
+        "value": "4 GB (+ virtual)"
       },
       {
         "label": "Armazenamento",
-        "value": "128 GB ou 256 GB"
+        "value": "64 GB ou 128 GB (microSD)"
       },
       {
         "label": "Tela",
-        "value": "6,88\" IPS LCD, HD+, 120 Hz"
+        "value": "6,78\" IPS LCD, HD+, 120 Hz"
       },
       {
         "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 8 MP"
+        "value": "Principal 8 MP | Frontal 8 MP"
       },
       {
         "label": "Bateria",
-        "value": "5.200 mAh (Carregamento 10W)"
+        "value": "5.200 mAh (Carregamento 15W)"
       },
       {
         "label": "Sistema",
-        "value": "Android 15 (My UX)"
+        "value": "Android 16 (XOS 16)"
       },
       {
         "label": "Recursos",
-        "value": "IP64"
+        "value": "NFC, infravermelho, IP64, leitor digital lateral, P2"
       }
     ],
     "highlights": [
       {
-        "title": "Confiabilidade",
-        "text": "Projetado com alta qualidade e durabilidade."
+        "title": "Bateria",
+        "text": "Bateria de 5.200 mAh com carregamento de 15W e carga reversa de 5W."
       },
       {
-        "title": "Design",
-        "text": "Corpo fino (8,3 mm)."
+        "title": "Tela",
+        "text": "Display de 6,78\" com 120 Hz e até 700 nits para uso confortável ao sol."
       },
       {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+        "title": "Recursos",
+        "text": "NFC, infravermelho e proteção IP64 contra poeira e respingos."
       }
     ],
     "gallery": [
-      "motorola/g06-1.webp",
-      "motorola/g06-2.webp",
-      "motorola/g06-3.webp",
-      "motorola/g06-4.webp"
+      "infinix/smart20-1.webp",
+      "infinix/smart20-2.webp",
+      "infinix/smart20-3.webp",
+      "infinix/smart20-4.webp"
     ]
   },
   {
-    "id": 14,
-    "brand": "Motorola",
-    "name": "MOTO G56 5G",
+    "id": 22,
+    "brand": "iPhone",
+    "name": "IPHONE 13/14/15/16/17",
     "highlight": false,
-    "image": "motorola/g56-1.webp",
-    "price": "A partir de R$ 1.899",
-    "description": "O Moto G56 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 5.200 mAh e design resistente, ideal para uso diário e streaming.",
+    "specialPrice": "Sob Consulta",
+    "image": "iphone/iphone-1.webp",
+    "price": "A partir de R$ 3.899",
+    "description": "A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.",
     "specs": [
       {
         "label": "Processador",
-        "value": "Mediatek Dimensity 7060"
+        "value": "Apple Silicon"
       },
       {
         "label": "Memória RAM",
-        "value": "4 GB ou 6 GB (+ virtual)"
+        "value": "6 GB, 8 GB ou 12 GB"
       },
       {
         "label": "Armazenamento",
-        "value": "128 GB, 256 GB ou 512 GB"
+        "value": "128 GB, 256 GB, 512 GB ou 1 TB"
       },
       {
         "label": "Tela",
-        "value": "6,72\" IPS LCD, FHD+, 120 Hz"
+        "value": "6,1\" ou 6,7\" Super Retina XDR OLED"
       },
       {
         "label": "Câmeras",
-        "value": "Principal 50 MP | Frontal 32 MP"
+        "value": "Sistema de câmeras avançado"
       },
       {
         "label": "Bateria",
-        "value": "5.200 mAh (Carregamento 30W)"
+        "value": "Duração variável, geralmente um dia inteiro"
       },
       {
         "label": "Sistema",
-        "value": "Android 15 (My UX)"
+        "value": "iOS"
       },
       {
         "label": "Recursos",
-        "value": "IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros"
+        "value": "Face ID, resistência à água IP68, carregamento MagSafe"
       }
     ],
     "highlights": [
       {
-        "title": "Conectividade",
-        "text": "Suporte a redes 5G para internet mais rápida."
-      },
-      {
-        "title": "Performance",
-        "text": "Adequado para tarefas diárias e streaming, jogos e multitarefa."
+        "title": "Desempenho",
+        "text": "Processador Apple Silicon para uma experiência fluida e rápida."
       },
       {
         "title": "Design",
-        "text": "Corpo fino (8,4 mm) e disponível nas cores Preto, Cinza e Azul."
+        "text": "Construção premium em aço inoxidável e vidro, disponível em várias cores."
+      },
+      {
+        "title": "Câmeras",
+        "text": "Sistema de câmeras avançado com recursos como modo noturno e gravação em 4K."
       }
     ],
     "gallery": [
-      "motorola/g56-1.webp",
-      "motorola/g56-2.webp",
-      "motorola/g56-3.webp",
-      "motorola/g56-4.webp"
+      "iphone/iphone-1.webp",
+      "iphone/iphone-2.webp",
+      "iphone/iphone-3.webp",
+      "iphone/iphone-4.webp"
     ]
   },
   {
@@ -945,45 +636,171 @@
     ]
   },
   {
-    "id": 19,
-    "brand": "Redmi",
-    "name": "NOTE 15 PRO 5G",
+    "id": 12,
+    "brand": "Motorola",
+    "name": "MOTO G06",
     "highlight": false,
-    "image": "redmi/note15pro5g-1.webp",
-    "price": "A partir de R$ 2.599",
-    "description": "O Redmi Note 15 Pro 5G é um smartphone de alto desempenho que se destaca pela sua conectividade 5G, bateria, design resistente, ideal para fotografia e entretenimento.",
+    "image": "motorola/g06-1.webp",
+    "price": "A partir de R$ 1.299",
+    "description": "O Moto G06 é um smartphone de entrada que se destaca pela sua bateria de 5.200 mAh e design resistente, ideal para uso diário.",
     "specs": [
       {
         "label": "Processador",
-        "value": "Mediatek Dimensity 7400 Ultra"
+        "value": "Mediatek Helio G81 Ultra"
       },
       {
         "label": "Memória RAM",
-        "value": "8 GB ou 12 GB (+ virtual)"
+        "value": "4 GB ou 8 GB (+ virtual)"
       },
       {
         "label": "Armazenamento",
-        "value": "256 GB ou 512 GB"
+        "value": "128 GB ou 256 GB"
       },
       {
         "label": "Tela",
-        "value": "6,83\" AMOLED, FHD+, 120 Hz"
+        "value": "6,88\" IPS LCD, HD+, 120 Hz"
       },
       {
         "label": "Câmeras",
-        "value": "Principal 200 MP | Frontal 20 MP"
+        "value": "Principal 50 MP | Frontal 8 MP"
       },
       {
         "label": "Bateria",
-        "value": "6580 mAh (Carregamento 45W)"
+        "value": "5.200 mAh (Carregamento 10W)"
       },
       {
         "label": "Sistema",
-        "value": "Android 15 (HyperOS)"
+        "value": "Android 15 (My UX)"
       },
       {
         "label": "Recursos",
-        "value": "IP68/IP69K, NFC, Conectividade 5G, Resistência a quedas 2,5 metros"
+        "value": "IP64"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Confiabilidade",
+        "text": "Projetado com alta qualidade e durabilidade."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,3 mm)."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "motorola/g06-1.webp",
+      "motorola/g06-2.webp",
+      "motorola/g06-3.webp",
+      "motorola/g06-4.webp"
+    ]
+  },
+  {
+    "id": 24,
+    "brand": "Motorola",
+    "name": "MOTO G17 4G",
+    "highlight": false,
+    "image": "motorola/g17-1.webp",
+    "price": "A partir de R$ 1.599",
+    "description": "O Moto G17 é um intermediário completo com tela FHD+ de 6,72\", câmera principal de 50 MP com sensor Sony LYTIA 600 e selfie de 32 MP. Bateria de 5.200 mAh com TurboPower 20W, som estéreo Dolby Atmos e proteção IP64.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G81 Extreme"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ até 8 GB de RAM Boost)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB (microSD até 1 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 60 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP (Sony LYTIA 600) + 5 MP ultra-wide | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (TurboPower 20W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP64, Dolby Atmos, NFC, Gorilla Glass 3, P2"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Câmeras",
+        "text": "Sensor Sony LYTIA 600 de 50 MP e selfie de 32 MP para fotos nítidas."
+      },
+      {
+        "title": "Tela",
+        "text": "Painel FHD+ de 6,72\" com até 1.050 nits de brilho e Gorilla Glass 3."
+      },
+      {
+        "title": "Áudio",
+        "text": "Alto-falantes estéreo com Dolby Atmos para séries e músicas."
+      }
+    ],
+    "gallery": [
+      "motorola/g17-1.webp",
+      "motorola/g17-2.webp",
+      "motorola/g17-3.webp",
+      "motorola/g17-4.webp"
+    ]
+  },
+  {
+    "id": 14,
+    "brand": "Motorola",
+    "name": "MOTO G56 5G",
+    "highlight": false,
+    "image": "motorola/g56-1.webp",
+    "price": "A partir de R$ 1.899",
+    "description": "O Moto G56 5G é um smartphone intermediário que se destaca pela sua conectividade 5G, bateria de 5.200 mAh e design resistente, ideal para uso diário e streaming.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7060"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB, 256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP | Frontal 32 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.200 mAh (Carregamento 30W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (My UX)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69, NFC, Conectividade 5G, Resistência a quedas 1,2 metros"
       }
     ],
     "highlights": [
@@ -992,19 +809,19 @@
         "text": "Suporte a redes 5G para internet mais rápida."
       },
       {
-        "title": "Desempenho",
-        "text": "Processador Mediatek Dimensity 7400 Ultra para uma experiência fluida."
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias e streaming, jogos e multitarefa."
       },
       {
         "title": "Design",
-        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+        "text": "Corpo fino (8,4 mm) e disponível nas cores Preto, Cinza e Azul."
       }
     ],
     "gallery": [
-      "redmi/note15pro5g-1.webp",
-      "redmi/note15pro5g-2.webp",
-      "redmi/note15pro5g-3.webp",
-      "redmi/note15pro5g-4.webp"
+      "motorola/g56-1.webp",
+      "motorola/g56-2.webp",
+      "motorola/g56-3.webp",
+      "motorola/g56-4.webp"
     ]
   },
   {
@@ -1134,193 +951,192 @@
     ]
   },
   {
-    "id": 22,
-    "brand": "iPhone",
-    "name": "IPHONE 13/14/15/16/17",
+    "id": 3,
+    "brand": "Realme",
+    "name": "REALME C71",
     "highlight": false,
-    "specialPrice": "Sob Consulta",
-    "image": "iphone/iphone-1.webp",
-    "price": "A partir de R$ 3.899",
-    "description": "A linha iPhone é conhecida por seu design premium, desempenho excepcional e integração perfeita com o ecossistema Apple.",
+    "image": "realme/c71-1.webp",
+    "price": "A partir de R$ 1.599",
+    "description": "O Realme C71 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação.",
     "specs": [
       {
         "label": "Processador",
-        "value": "Apple Silicon"
+        "value": "Unisoc T7250"
       },
       {
         "label": "Memória RAM",
-        "value": "6 GB, 8 GB ou 12 GB"
+        "value": "6 GB ou 8 GB (+ virtual)"
       },
       {
         "label": "Armazenamento",
-        "value": "128 GB, 256 GB, 512 GB ou 1 TB"
+        "value": "128 GB ou 256 GB"
       },
       {
         "label": "Tela",
-        "value": "6,1\" ou 6,7\" Super Retina XDR OLED"
+        "value": "6,67\" IPS LCD, HD+, 120 Hz"
       },
       {
         "label": "Câmeras",
-        "value": "Sistema de câmeras avançado"
+        "value": "Principal 50 MP | Frontal 5 MP"
       },
       {
         "label": "Bateria",
-        "value": "Duração variável, geralmente um dia inteiro"
+        "value": "6.000 mAh (Carregamento 45W)"
       },
       {
         "label": "Sistema",
-        "value": "iOS"
+        "value": "Android 15 (Realme UI 6.0)"
       },
       {
         "label": "Recursos",
-        "value": "Face ID, resistência à água IP68, carregamento MagSafe"
+        "value": "NFC"
       }
     ],
     "highlights": [
       {
-        "title": "Desempenho",
-        "text": "Processador Apple Silicon para uma experiência fluida e rápida."
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
       },
       {
         "title": "Design",
-        "text": "Construção premium em aço inoxidável e vidro, disponível em várias cores."
+        "text": "Corpo (8,4 mm) e disponível nas cores Branco, Verde e Violeta."
       },
       {
-        "title": "Câmeras",
-        "text": "Sistema de câmeras avançado com recursos como modo noturno e gravação em 4K."
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias, bom desempenho para o dia a dia."
       }
     ],
     "gallery": [
-      "iphone/iphone-1.webp",
-      "iphone/iphone-2.webp",
-      "iphone/iphone-3.webp",
-      "iphone/iphone-4.webp"
+      "realme/c71-1.webp",
+      "realme/c71-2.webp",
+      "realme/c71-3.webp",
+      "realme/c71-4.webp"
     ]
   },
   {
-    "id": 23,
-    "brand": "Infinix",
-    "name": "INFINIX SMART 20 4G",
+    "id": 4,
+    "brand": "Realme",
+    "name": "REALME C85",
     "highlight": false,
-    "image": "infinix/smart20-1.webp",
-    "price": "A partir de R$ 1.499",
-    "description": "O Infinix Smart 20 é um smartphone de entrada que se destaca pela bateria de 5.200 mAh, tela de 6,78\" com 120 Hz e 700 nits, além de NFC e infravermelho — recursos raros na faixa de preço. O processador Helio G81 Ultimate entrega desempenho fluido para o uso diário.",
+    "image": "realme/c85-1.webp",
+    "price": "A partir de R$ 2.099",
+    "description": "O Realme C85 é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
     "specs": [
       {
         "label": "Processador",
-        "value": "MediaTek Helio G81 Ultimate"
+        "value": "Mediatek Dimensity 6300"
       },
       {
         "label": "Memória RAM",
-        "value": "4 GB (+ virtual)"
+        "value": "6 GB ou 8 GB (+ virtual)"
       },
       {
         "label": "Armazenamento",
-        "value": "64 GB ou 128 GB (microSD)"
+        "value": "128 GB ou 256 GB"
       },
       {
         "label": "Tela",
-        "value": "6,78\" IPS LCD, HD+, 120 Hz"
+        "value": "6,8\" IPS LCD, HD+, 144 Hz"
       },
       {
         "label": "Câmeras",
-        "value": "Principal 8 MP | Frontal 8 MP"
+        "value": "Principal 50 MP | Frontal 8 MP"
       },
       {
         "label": "Bateria",
-        "value": "5.200 mAh (Carregamento 15W)"
+        "value": "7.000 mAh (Carregamento 45W)"
       },
       {
         "label": "Sistema",
-        "value": "Android 16 (XOS 16)"
+        "value": "Android 15 (Realme UI 6.0)"
       },
       {
         "label": "Recursos",
-        "value": "NFC, infravermelho, IP64, leitor digital lateral, P2"
+        "value": "IP68/IP69k, NFC"
       }
     ],
     "highlights": [
       {
-        "title": "Bateria",
-        "text": "Bateria de 5.200 mAh com carregamento de 15W e carga reversa de 5W."
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
       },
       {
-        "title": "Tela",
-        "text": "Display de 6,78\" com 120 Hz e até 700 nits para uso confortável ao sol."
+        "title": "Design",
+        "text": "Corpo (8,4 mm) e disponível nas cores Azul e Preto."
       },
       {
-        "title": "Recursos",
-        "text": "NFC, infravermelho e proteção IP64 contra poeira e respingos."
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias, bom desempenho em jogos."
       }
     ],
     "gallery": [
-      "infinix/smart20-1.webp",
-      "infinix/smart20-2.webp",
-      "infinix/smart20-3.webp",
-      "infinix/smart20-4.webp"
+      "realme/c85-1.webp",
+      "realme/c85-2.webp",
+      "realme/c85-3.webp",
+      "realme/c85-4.webp"
     ]
   },
   {
-    "id": 24,
-    "brand": "Motorola",
-    "name": "MOTO G17 4G",
+    "id": 5,
+    "brand": "Realme",
+    "name": "REALME C85 PRO",
     "highlight": false,
-    "image": "motorola/g17-1.webp",
-    "price": "A partir de R$ 1.599",
-    "description": "O Moto G17 é um intermediário completo com tela FHD+ de 6,72\", câmera principal de 50 MP com sensor Sony LYTIA 600 e selfie de 32 MP. Bateria de 5.200 mAh com TurboPower 20W, som estéreo Dolby Atmos e proteção IP64.",
+    "image": "realme/c85pro-1.webp",
+    "price": "A partir de R$ 2.299",
+    "description": "O Realme C85 Pro é um smartphone intermediário que se destaca pelo seu processador e design elegante com certificação IP68/IP69k até 6 metros por 30 minutos.",
     "specs": [
       {
         "label": "Processador",
-        "value": "MediaTek Helio G81 Extreme"
+        "value": "Snapdragon 685"
       },
       {
         "label": "Memória RAM",
-        "value": "4 GB (+ até 8 GB de RAM Boost)"
+        "value": "6 GB ou 8 GB (+ virtual)"
       },
       {
         "label": "Armazenamento",
-        "value": "128 GB ou 256 GB (microSD até 1 TB)"
+        "value": "128 GB ou 256 GB"
       },
       {
         "label": "Tela",
-        "value": "6,72\" IPS LCD, FHD+, 60 Hz"
+        "value": "6,8\" AMOLED, FHD+, 120 Hz"
       },
       {
         "label": "Câmeras",
-        "value": "Principal 50 MP (Sony LYTIA 600) + 5 MP ultra-wide | Frontal 32 MP"
+        "value": "Principal 50 MP | Frontal 8 MP"
       },
       {
         "label": "Bateria",
-        "value": "5.200 mAh (TurboPower 20W)"
+        "value": "7.000 mAh (Carregamento 45W)"
       },
       {
         "label": "Sistema",
-        "value": "Android 15"
+        "value": "Android 15 (Realme UI 6.0)"
       },
       {
         "label": "Recursos",
-        "value": "IP64, Dolby Atmos, NFC, Gorilla Glass 3, P2"
+        "value": "IP68/IP69k, NFC"
       }
     ],
     "highlights": [
       {
-        "title": "Câmeras",
-        "text": "Sensor Sony LYTIA 600 de 50 MP e selfie de 32 MP para fotos nítidas."
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,5 metros."
       },
       {
-        "title": "Tela",
-        "text": "Painel FHD+ de 6,72\" com até 1.050 nits de brilho e Gorilla Glass 3."
+        "title": "Design",
+        "text": "Corpo (8,1 mm) e disponível nas cores Rosa e Verde."
       },
       {
-        "title": "Áudio",
-        "text": "Alto-falantes estéreo com Dolby Atmos para séries e músicas."
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e jogos."
       }
     ],
     "gallery": [
-      "motorola/g17-1.webp",
-      "motorola/g17-2.webp",
-      "motorola/g17-3.webp",
-      "motorola/g17-4.webp"
+      "realme/c85pro-1.webp",
+      "realme/c85pro-2.webp",
+      "realme/c85pro-3.webp",
+      "realme/c85pro-4.webp"
     ]
   },
   {
@@ -1384,6 +1200,321 @@
       "realme/c100x-2.webp",
       "realme/c100x-3.webp",
       "realme/c100x-4.webp"
+    ]
+  },
+  {
+    "id": 6,
+    "brand": "Realme",
+    "name": "REALME NOTE 70",
+    "highlight": false,
+    "image": "realme/note70-1.webp",
+    "price": "A partir de R$ 1.399",
+    "description": "O Realme Note 70 é um smartphone de entrada com design elegante, certificação IP54 e personalização de LED traseiro.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB ou 6 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,72\" IPS LCD, HD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 13 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.300 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (Realme UI 5.0)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Resistência",
+        "text": "Projetado para quedas de até 1,8 metros."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo (7,9 mm) e disponível nas cores Preto e Dourado."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e internet."
+      }
+    ],
+    "gallery": [
+      "realme/note70-1.webp",
+      "realme/note70-2.webp",
+      "realme/note70-3.webp",
+      "realme/note70-4.webp"
+    ]
+  },
+  {
+    "id": 1,
+    "brand": "Realme",
+    "name": "REALME P4 LITE",
+    "highlight": false,
+    "image": "realme/p4lite-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Realme P4 Lite é um smartphone de entrada que se destaca pela bateria de 6.600 mAh com ótima autonomia, tela de 6,8\" com 120 Hz e suporte a NFC, sendo ideal para o uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB, 128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,8\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 8 MP | Frontal 5 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.600 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (Realme UI)"
+      },
+      {
+        "label": "Recursos",
+        "value": "NFC, P2, Impressão digital lateral"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Bateria",
+        "text": "Bateria de 6.600 mAh com ótima autonomia para o dia inteiro."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo fino (8,4 mm) e disponível nas cores Roxo Pulse e Cinza Titan."
+      },
+      {
+        "title": "Performance",
+        "text": "Adequado para tarefas diárias (redes sociais, apps de transporte)."
+      }
+    ],
+    "gallery": [
+      "realme/p4lite-1.webp",
+      "realme/p4lite-2.webp",
+      "realme/p4lite-3.webp",
+      "realme/p4lite-4.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "brand": "Realme",
+    "name": "REALME P4 POWER",
+    "highlight": false,
+    "image": "realme/p4power-1.webp",
+    "price": "A partir de R$ 2.699",
+    "description": "O Realme P4 Power é um smartphone intermediário que se destaca pela bateria Titan de 10.001 mAh com carregamento ultra rápido de 80W, tela AMOLED de 6,8\" com 144 Hz e certificação IP69, sendo ideal para quem busca máxima autonomia.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Dimensity 7400 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,8\" AMOLED, FHD+, 144 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP (OIS) | Frontal 16 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "10.001 mAh (Carregamento 80W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (Realme UI 7.0)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP69, MIL-STD-810H, NFC"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Bateria",
+        "text": "Bateria Titan de 10.001 mAh com autonomia de vários dias e carregamento de 80W."
+      },
+      {
+        "title": "Design",
+        "text": "Tela HyperGlow 4D Curve+ e disponível nas cores Prata Power e Laranja Flash."
+      },
+      {
+        "title": "Performance",
+        "text": "Ótimo desempenho para tarefas diárias e jogos."
+      }
+    ],
+    "gallery": [
+      "realme/p4power-1.webp",
+      "realme/p4power-2.webp",
+      "realme/p4power-3.webp",
+      "realme/p4power-4.webp"
+    ]
+  },
+  {
+    "id": 19,
+    "brand": "Redmi",
+    "name": "NOTE 15 PRO 5G",
+    "highlight": false,
+    "image": "redmi/note15pro5g-1.webp",
+    "price": "A partir de R$ 2.599",
+    "description": "O Redmi Note 15 Pro 5G é um smartphone de alto desempenho que se destaca pela sua conectividade 5G, bateria, design resistente, ideal para fotografia e entretenimento.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Mediatek Dimensity 7400 Ultra"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "8 GB ou 12 GB (+ virtual)"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "256 GB ou 512 GB"
+      },
+      {
+        "label": "Tela",
+        "value": "6,83\" AMOLED, FHD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 200 MP | Frontal 20 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6580 mAh (Carregamento 45W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (HyperOS)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP68/IP69K, NFC, Conectividade 5G, Resistência a quedas 2,5 metros"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Conectividade",
+        "text": "Suporte a redes 5G para internet mais rápida."
+      },
+      {
+        "title": "Desempenho",
+        "text": "Processador Mediatek Dimensity 7400 Ultra para uma experiência fluida."
+      },
+      {
+        "title": "Design",
+        "text": "Tela AMOLED com resolução FHD+ e taxa de atualização de até 120 Hz."
+      }
+    ],
+    "gallery": [
+      "redmi/note15pro5g-1.webp",
+      "redmi/note15pro5g-2.webp",
+      "redmi/note15pro5g-3.webp",
+      "redmi/note15pro5g-4.webp"
+    ]
+  },
+  {
+    "id": 30,
+    "brand": "Redmi",
+    "name": "REDMI A7 PRO 4G",
+    "highlight": false,
+    "image": "redmi/a7pro-1.webp",
+    "price": "A partir de R$ 1.499",
+    "description": "O Redmi A7 Pro 4G é um smartphone de entrada que se destaca pela tela de 6,9\" com 120 Hz, pela bateria de 6.000 mAh com ótima autonomia e pelo Android 16 com HyperOS 3, sendo ideal para o uso diário.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "Unisoc T7250 (12 nm)"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "64 GB ou 128 GB UFS 2.2 (microSD dedicado)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,9\" IPS LCD, HD+, 120 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 13 MP | Frontal 8 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "6.000 mAh (Carregamento 15W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 16 (HyperOS 3)"
+      },
+      {
+        "label": "Recursos",
+        "value": "NFC (variável por região), Impressão digital lateral, P2, FM, USB Type-C, Resistente a poeira e respingos"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Tela",
+        "text": "Display de 6,9\" IPS LCD com 120 Hz e 800 nits no modo de alta luminosidade."
+      },
+      {
+        "title": "Bateria",
+        "text": "Bateria de 6.000 mAh para até 2,5 dias de uso regular e carregamento de 15W."
+      },
+      {
+        "title": "Design",
+        "text": "Corpo de 8,2 mm e 208 g, nas cores Preto, Azul Névoa, Verde Palmeira e Laranja Poente."
+      }
+    ],
+    "gallery": [
+      "redmi/a7pro-1.webp",
+      "redmi/a7pro-2.webp",
+      "redmi/a7pro-3.webp",
+      "redmi/a7pro-4.webp"
     ]
   },
   {
@@ -1451,69 +1582,6 @@
     ]
   },
   {
-    "id": 27,
-    "brand": "Samsung",
-    "name": "SAMSUNG A17 4G/5G",
-    "highlight": false,
-    "image": "samsung/a17-1.webp",
-    "price": "A partir de R$ 1.599",
-    "description": "O Galaxy A17 combina tela Super AMOLED de 6,7\" com 90 Hz e câmera principal de 50 MP com estabilização óptica (OIS). Disponível nas versões 4G (Helio G99) e 5G (Exynos 1330), com 6 anos de atualizações de sistema e segurança.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "MediaTek Helio G99 (4G) | Samsung Exynos 1330 (5G)"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "4 GB, 6 GB ou 8 GB"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "128 GB ou 256 GB (microSD até 2 TB)"
-      },
-      {
-        "label": "Tela",
-        "value": "6,7\" Super AMOLED, FHD+, 90 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 50 MP (OIS) + 5 MP ultra-wide + 2 MP macro | Frontal 13 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "5.000 mAh (Carregamento 25W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 15 (One UI 7)"
-      },
-      {
-        "label": "Recursos",
-        "value": "IP54, NFC, Gorilla Glass Victus+, 5G (versão 5G), leitor digital lateral"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Tela",
-        "text": "Painel Super AMOLED de 6,7\" em FHD+ com 90 Hz e Gorilla Glass Victus+."
-      },
-      {
-        "title": "Câmera",
-        "text": "Principal de 50 MP com OIS e frontal de 13 MP para selfies nítidas."
-      },
-      {
-        "title": "Atualizações",
-        "text": "6 anos de atualizações de sistema e de segurança garantidos pela Samsung."
-      }
-    ],
-    "gallery": [
-      "samsung/a17-1.webp",
-      "samsung/a17-2.webp",
-      "samsung/a17-3.webp",
-      "samsung/a17-4.webp"
-    ]
-  },
-  {
     "id": 28,
     "brand": "Samsung",
     "name": "SAMSUNG A07 4G",
@@ -1577,6 +1645,69 @@
     ]
   },
   {
+    "id": 27,
+    "brand": "Samsung",
+    "name": "SAMSUNG A17 4G/5G",
+    "highlight": false,
+    "image": "samsung/a17-1.webp",
+    "price": "A partir de R$ 1.599",
+    "description": "O Galaxy A17 combina tela Super AMOLED de 6,7\" com 90 Hz e câmera principal de 50 MP com estabilização óptica (OIS). Disponível nas versões 4G (Helio G99) e 5G (Exynos 1330), com 6 anos de atualizações de sistema e segurança.",
+    "specs": [
+      {
+        "label": "Processador",
+        "value": "MediaTek Helio G99 (4G) | Samsung Exynos 1330 (5G)"
+      },
+      {
+        "label": "Memória RAM",
+        "value": "4 GB, 6 GB ou 8 GB"
+      },
+      {
+        "label": "Armazenamento",
+        "value": "128 GB ou 256 GB (microSD até 2 TB)"
+      },
+      {
+        "label": "Tela",
+        "value": "6,7\" Super AMOLED, FHD+, 90 Hz"
+      },
+      {
+        "label": "Câmeras",
+        "value": "Principal 50 MP (OIS) + 5 MP ultra-wide + 2 MP macro | Frontal 13 MP"
+      },
+      {
+        "label": "Bateria",
+        "value": "5.000 mAh (Carregamento 25W)"
+      },
+      {
+        "label": "Sistema",
+        "value": "Android 15 (One UI 7)"
+      },
+      {
+        "label": "Recursos",
+        "value": "IP54, NFC, Gorilla Glass Victus+, 5G (versão 5G), leitor digital lateral"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Tela",
+        "text": "Painel Super AMOLED de 6,7\" em FHD+ com 90 Hz e Gorilla Glass Victus+."
+      },
+      {
+        "title": "Câmera",
+        "text": "Principal de 50 MP com OIS e frontal de 13 MP para selfies nítidas."
+      },
+      {
+        "title": "Atualizações",
+        "text": "6 anos de atualizações de sistema e de segurança garantidos pela Samsung."
+      }
+    ],
+    "gallery": [
+      "samsung/a17-1.webp",
+      "samsung/a17-2.webp",
+      "samsung/a17-3.webp",
+      "samsung/a17-4.webp"
+    ]
+  },
+  {
     "id": 29,
     "brand": "Tecno",
     "name": "TECNO SPARK GO 3 4G",
@@ -1637,69 +1768,6 @@
       "tecno/sparkgo3-2.webp",
       "tecno/sparkgo3-3.webp",
       "tecno/sparkgo3-4.webp"
-    ]
-  },
-  {
-    "id": 30,
-    "brand": "Redmi",
-    "name": "REDMI A7 PRO 4G",
-    "highlight": false,
-    "image": "redmi/a7pro-1.webp",
-    "price": "A partir de R$ 1.499",
-    "description": "O Redmi A7 Pro 4G é um smartphone de entrada que se destaca pela tela de 6,9\" com 120 Hz, pela bateria de 6.000 mAh com ótima autonomia e pelo Android 16 com HyperOS 3, sendo ideal para o uso diário.",
-    "specs": [
-      {
-        "label": "Processador",
-        "value": "Unisoc T7250 (12 nm)"
-      },
-      {
-        "label": "Memória RAM",
-        "value": "4 GB"
-      },
-      {
-        "label": "Armazenamento",
-        "value": "64 GB ou 128 GB UFS 2.2 (microSD dedicado)"
-      },
-      {
-        "label": "Tela",
-        "value": "6,9\" IPS LCD, HD+, 120 Hz"
-      },
-      {
-        "label": "Câmeras",
-        "value": "Principal 13 MP | Frontal 8 MP"
-      },
-      {
-        "label": "Bateria",
-        "value": "6.000 mAh (Carregamento 15W)"
-      },
-      {
-        "label": "Sistema",
-        "value": "Android 16 (HyperOS 3)"
-      },
-      {
-        "label": "Recursos",
-        "value": "NFC (variável por região), Impressão digital lateral, P2, FM, USB Type-C, Resistente a poeira e respingos"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Tela",
-        "text": "Display de 6,9\" IPS LCD com 120 Hz e 800 nits no modo de alta luminosidade."
-      },
-      {
-        "title": "Bateria",
-        "text": "Bateria de 6.000 mAh para até 2,5 dias de uso regular e carregamento de 15W."
-      },
-      {
-        "title": "Design",
-        "text": "Corpo de 8,2 mm e 208 g, nas cores Preto, Azul Névoa, Verde Palmeira e Laranja Poente."
-      }
-    ],
-    "gallery": [
-      "redmi/a7pro-1.webp",
-      "redmi/a7pro-2.webp",
-      "redmi/a7pro-3.webp",
-      "redmi/a7pro-4.webp"
     ]
   }
 ]

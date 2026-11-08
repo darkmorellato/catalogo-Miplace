@@ -5,23 +5,23 @@
 ## 1. Ordem de scripts no `index.html`
 
 ```html
-<script src="stores.js?v=2.0.13" defer></script>
-<script src="modules/ui.js?v=2.0.13" defer></script>
-<script src="modules/i18n.js?v=2.0.13" defer></script>
-<script src="modules/analytics.js?v=2.0.13" defer></script>
-<script src="modules/catalog.js?v=2.0.13" defer></script>
-<script src="modules/modal.js?v=2.0.13" defer></script>
-<script src="modules/wishlist.js?v=2.0.13" defer></script>
-<script src="modules/scroll.js?v=2.0.13" defer></script>
-<script src="modules/corporate.js?v=2.0.13" defer></script>
-<script src="modules/concierge.js?v=2.0.13" defer></script>
-<script src="app.js?v=2.0.13" defer></script>
+<script src="stores.js?v=2.1.0" defer></script>
+<script src="modules/ui.js?v=2.1.0" defer></script>
+<script src="modules/i18n.js?v=2.1.0" defer></script>
+<script src="modules/analytics.js?v=2.1.0" defer></script>
+<script src="modules/catalog.js?v=2.1.0" defer></script>
+<script src="modules/modal.js?v=2.1.0" defer></script>
+<script src="modules/wishlist.js?v=2.1.0" defer></script>
+<script src="modules/scroll.js?v=2.1.0" defer></script>
+<script src="modules/corporate.js?v=2.1.0" defer></script>
+<script src="modules/concierge.js?v=2.1.0" defer></script>
+<script src="app.js?v=2.1.0" defer></script>
 ```
 
 ## 2. Checagens de integração
 
 - [ ] Todos os IDs/contratos do briefing preservados.
-- [ ] `#products-grid` renderiza 27 produtos.
+- [ ] `#products-grid` renderiza 28 produtos.
 - [ ] Busca, filtros, modal, lightbox e wishlist funcionando.
 - [ ] i18n troca PT/EN/ES e persiste.
 - [ ] Formulário faz POST em `/api/contact`; fallback WhatsApp funciona.
@@ -31,8 +31,8 @@
 - [ ] Remover `openingHoursSpecification` do JSON-LD até o cliente confirmar os horários reais das 4 lojas (hoje 09–18/09–13 é dado não confirmado).
 - [ ] `sitemap.xml` inclui as páginas novas.
 - [ ] `sw.js` não cacheia a API e faz fallback offline.
-- [ ] Concierge integrado com `modules/concierge.js?v=2.0.13` e `content/concierge-faq.json` publicado; testar ESC, foco, mobile 360px e fallback WhatsApp.
-- [ ] Analytics integrado com `modules/analytics.js?v=2.0.13`; disparar `page_view`, `view_item`, `contact_whatsapp` e `generate_lead`.
+- [ ] Concierge integrado com `modules/concierge.js?v=2.1.0` e `content/concierge-faq.json` publicado; testar ESC, foco, mobile 360px e fallback WhatsApp.
+- [ ] Analytics integrado com `modules/analytics.js?v=2.1.0`; disparar `page_view`, `view_item`, `contact_whatsapp` e `generate_lead`.
 - [ ] `vercel.json`: `/sw.js` com `Cache-Control: no-cache`, `/api/*` com `no-store`, HTML com `must-revalidate`; assets `immutable` só com `?v=` bumped no mesmo release.
 - [ ] `favicon_io/site.webmanifest` com `scope: "/"` e `start_url: "/"` (correto para manifest em subpasta).
 - [ ] Sem erro de console em desktop e mobile.

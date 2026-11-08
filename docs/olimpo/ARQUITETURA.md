@@ -8,7 +8,7 @@
 
 ## 1. Parecer sobre o briefing
 
-**Aprovo a direção arquitetural.** A stack estática é adequada ao problema: 27 produtos, conteúdo editorial de baixa frequência, SEO e performance importam mais do que interatividade de aplicação. Não há motivo para React/Next nesta entrega.
+**Aprovo a direção arquitetural.** A stack estática é adequada ao problema: 28 produtos, conteúdo editorial de baixa frequência, SEO e performance importam mais do que interatividade de aplicação. Não há motivo para React/Next nesta entrega.
 
 - **Concordo** com vanilla JS + Tailwind v4 + PWA + Vercel; o catálogo existente e os contratos globais devem ser preservados.
 - **Concordo** com home única + 3 páginas legais: narrativa corporativa em uma URL canônica, páginas legais separadas para obrigação e SEO próprio.
@@ -107,7 +107,7 @@ A ordem abaixo é a do `INTEGRACAO.md:7-18`; `defer` garante execução após o 
 
 | Fonte | Papel | Regra | Dono |
 |---|---|---|---|
-| `produtos.json` | 27 produtos, 9 marcas, imagens, preços | Fonte canônica; **não alterar** nesta entrega; validado por `scripts/validate-products.js` e snapshot | Hades/Afrodite |
+| `produtos.json` | 28 produtos, 9 marcas, imagens, preços | Fonte canônica; **não alterar** nesta entrega; validado por `scripts/validate-products.js` e snapshot | Hades/Afrodite |
 | `stores.js` | 4 lojas, endereços, WhatsApp, redes, geo | Fonte canônica; pode ganhar campos, **não perder**; alimenta JSON-LD e cards | Afrodite |
 | `content/company.json` | Fatos corporativos estruturados (números, compromissos, jurídico) | Publicado; `null`/`"status":"pendente"` para lacunas; **copy crítica deve existir no HTML**, não só no JSON | Hades |
 | `content/schema/company.schema.json` | JSON Schema do `company.json` | Validar o arquivo antes de publicar; não é carregado pelo cliente | Hades |
@@ -146,7 +146,7 @@ Implementação atual: `api/contact.js` (CommonJS, Vercel Node 22). O cliente en
 ### ADR-001 — Manter vanilla JS + Tailwind v4 + PWA + Vercel
 
 - **Status:** Aceito.
-- **Contexto:** catálogo estático de 27 produtos, editorial de baixa frequência, SEO e LCP críticos; o código atual já tem contratos globais, testes de snapshot e build Tailwind.
+- **Contexto:** catálogo estático de 28 produtos, editorial de baixa frequência, SEO e LCP críticos; o código atual já tem contratos globais, testes de snapshot e build Tailwind.
 - **Decisão:** manter a stack; não introduzir React/Next/Astro nesta entrega; não adicionar biblioteca pesada. Type safety continua via JSDoc + `tsc --noEmit` (`jsconfig.json`).
 - **Consequências:** bundle pequeno e deploy simples; estado manual e acoplamento por `window.*` exigem disciplina de módulos e testes de contrato. Um framework futura pode ser avaliado se houver CMS, rotas por idioma ou área logada.
 - **Alternativas:** Next/Astro dariam componente/SSG, mas exigiriam reescrever catálogo e contratos, contra o prazo e o escopo de preservação.
@@ -218,7 +218,7 @@ Implementação atual: `api/contact.js` (CommonJS, Vercel Node 22). O cliente en
 
 - [ ] Todos os IDs do BRIEFING §6 preservados, incluindo `#category-filters`, `#search-input`, `#search-clear`, `#search-count`, `#products-grid`, `#stores-grid`, `#contato-dropdown-content`, `#contato-menu`, `#hamburger-btn`, `#mobile-menu`, `#lightbox`, `#product-modal`, `#modal-content`, `#wishlist-fab`, `#wishlist-drawer`, `#back-to-top`, `#scroll-progress`, `#page-fade`.
 - [ ] `window.renderFilters`, `renderProducts`, `initCatalog`, `initModal`, `initSearch`, `renderStoreCards`, `renderContactDropdown` e `window.MiplaceWishlist` continuam disponíveis.
-- [ ] `#products-grid` renderiza 27 produtos; filtros, busca, modal, lightbox e wishlist funcionam em desktop e mobile.
+- [ ] `#products-grid` renderiza 28 produtos; filtros, busca, modal, lightbox e wishlist funcionam em desktop e mobile.
 - [ ] Ordem de scripts exatamente `stores → ui → i18n → analytics → catalog → modal → wishlist → corporate → concierge → app`, com `defer`; nenhum módulo novo é chamado antes de existir.
 
 ### HTML, semântica e SEO
@@ -253,7 +253,7 @@ Implementação atual: `api/contact.js` (CommonJS, Vercel Node 22). O cliente en
 ### Catálogo e dados
 
 - [ ] `produtos.json` e `stores.js` intocados nos dados; nenhum preço/endereço copiado à mão para o HTML.
-- [ ] 27 produtos, 9 marcas, 4 lojas; `npm test` e `npm run validate:products` verdes.
+- [ ] 28 produtos, 9 marcas, 4 lojas; `npm test` e `npm run validate:products` verdes.
 - [ ] Cards de loja continuam vindo de `stores.js`; `injectSchemaOrg` atualizado para `Organization` + `WebSite` + lojas.
 
 ### Contato

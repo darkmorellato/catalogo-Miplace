@@ -171,7 +171,7 @@ Não testado: leitores de tela reais (NVDA/VoiceOver), Safari/Firefox, clique re
 - **Sem persistência:** recarregar a página zera a conversa (por design).
 - **Dependência de `stores.js`:** se `window.STORES` não estiver disponível, o WhatsApp cai em "Ver contato" (`#contato`).
 - **Shadow DOM:** navegadores modernos e leitores de tela atuais atravessam shadow roots; versões antigas podem não anunciar o conteúdo. Validar com Argos/Íris.
-- **Conteúdo datado:** "27 produtos", "9 marcas", "4 lojas" e "24x" precisam de revisão quando o catálogo/condições mudarem. O JSON é a fonte; não espalhe esses números em outros lugares.
+- **Conteúdo datado:** "28 produtos", "9 marcas", "4 lojas" e "24x" precisam de revisão quando o catálogo/condições mudarem. O JSON é a fonte; não espalhe esses números em outros lugares.
 - **Sem métricas:** não há contador de abertura/resolução. Se o time quiser medir, usar apenas `intent.id` (nunca o texto) e com opt-in.
 
 ## 7. Roadmap para LLM/RAG (com aprovação humana)
@@ -210,4 +210,4 @@ Não testado: leitores de tela reais (NVDA/VoiceOver), Safari/Firefox, clique re
 - [ ] Teste com NVDA/VoiceOver e Safari/Firefox (Argos/Íris).
 - [ ] Decidir se o concierge terá EN/ES ou aviso "atendimento em português" (Afrodite/Hécate).
 - [ ] Definir owner e cadência de revisão do FAQ (Hera/Hécate).
-- [ ] Se o catálogo mudar de 27 produtos/9 marcas, atualizar a resposta de `produtos`/`marcas` no JSON.
+- [ ] Se o catálogo mudar de 28 produtos/9 marcas, atualizar a resposta de `produtos`/`marcas` no JSON.

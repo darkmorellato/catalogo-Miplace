@@ -1,14 +1,14 @@
 {
-  "generated": "2026-10-03T17:58:50.609Z",
-  "count": 27,
+  "generated": "2026-11-08T11:09:45.205Z",
+  "count": 28,
   "brands": {
-    "Realme": 7,
-    "Honor": 5,
-    "Motorola": 5,
-    "Redmi": 3,
-    "Poco": 2,
-    "iPhone": 1,
+    "Honor": 6,
     "Infinix": 1,
+    "iPhone": 1,
+    "Motorola": 5,
+    "Poco": 2,
+    "Realme": 7,
+    "Redmi": 3,
     "Samsung": 2,
     "Tecno": 1
   },
@@ -39,6 +39,7 @@
     27,
     28,
     29,
-    30
+    30,
+    31
   ]
 }

@@ -8,7 +8,7 @@
 | ID | Regra |
 |---|---|
 | RN-01 | Usar “até 24x no boleto, sem consulta”; proibido “sem juros”, “aprovação garantida”, “score” ou “parcela fixa”. |
-| RN-02 | Só fatos do §2.1: 7 anos, 4 lojas, 2 cidades, 9 marcas, 27 produtos, 24x, Rockspace. Proibido criar executivos, CNPJ, prêmios, clientes, depoimentos, e-mails ou métricas. |
+| RN-02 | Só fatos do §2.1: 7 anos, 4 lojas, 2 cidades, 9 marcas, 28 produtos, 24x, Rockspace. Proibido criar executivos, CNPJ, prêmios, clientes, depoimentos, e-mails ou métricas. |
 | RN-03 | Lacuna vira compromisso (“estamos estruturando”) ou `null`/`status: pendente`; registrar em `docs/olimpo/PENDENCIAS.md`. |
 | RN-04 | `produtos.json` é a fonte canônica: 27 registros na entrega, sem alterar dados; preservar IDs e contratos do catálogo. |
 | RN-05 | `stores.js` é a fonte canônica das 4 lojas; pode ganhar campos, não perder. Não criar endereço, telefone ou rede social. |
@@ -41,7 +41,7 @@ Cenário: menu mobile
 Cenário: conteúdo aprovado e sem invenção
   Dado que acesso a home
   Quando leio hero, manifesto e faixa de números
-  Então vejo o H1 "Tecnologia global. Cuidado local.", os 3 pilares e os indicadores 7 anos, 4 lojas, 9 marcas, 27 produtos, 24x e 2 cidades
+  Então vejo o H1 "Tecnologia global. Cuidado local.", os 3 pilares e os indicadores 7 anos, 4 lojas, 9 marcas, 28 produtos, 24x e 2 cidades
   E não encontro CNPJ, executivo, prêmio, cliente, depoimento ou métrica fora do §2.1
 ```
 
@@ -152,7 +152,7 @@ Cenário: páginas publicadas e linkadas
 | RNF-05 | i18n | 3 locales; 100% das chaves corporativas traduzidas; nenhuma chave crua; fallback PT; persistência; `<html lang>`, `title` e description sincronizados | Script de troca de idioma + inspeção de chaves |
 | RNF-06 | Responsividade | Layout íntegro em 360, 768, 1024 e 1440px; sem rolagem horizontal; menu mobile acessível; hierarquia preservada | Teste visual e de viewport |
 | RNF-07 | Compatibilidade/PWA | Navegadores evergreen atuais e iOS/Android atuais; sem erro de console; SW e `offline.html` preservados; API não cacheada | Matriz de navegadores + teste offline |
-| RNF-08 | Integridade de dados | 27 produtos, 9 marcas e 4 lojas vêm de `produtos.json`/`stores.js`; contagem confere; nenhum dado inventado; produtos em PT | `npm run validate:products` + `npm test` |
+| RNF-08 | Integridade de dados | 28 produtos, 9 marcas e 4 lojas vêm de `produtos.json`/`stores.js`; contagem confere; nenhum dado inventado; produtos em PT | `npm run validate:products` + `npm test` |
 
 ## 4. Matriz de rastreabilidade — seção → requisito
 
@@ -189,4 +189,4 @@ Checkout, pagamento online, CMS, blog, login, dark mode automático, operação 
 
 ---
 
-**Gate de release (mínimo):** catálogo intacto com 27 produtos e contratos preservados; PT/EN/ES funcional com fallback e persistência; formulário válido, com honeypot, POST correto e fallback por WhatsApp.
+**Gate de release (mínimo):** catálogo intacto com 28 produtos e contratos preservados; PT/EN/ES funcional com fallback e persistência; formulário válido, com honeypot, POST correto e fallback por WhatsApp.

@@ -64,7 +64,7 @@ Falhas: `privacidade.html`, `termos.html` e `acessibilidade.html` ausentes; bloc
 |---|---|---|---|---|
 | F-01 | Home | Todas as seções do briefing existem e as âncoras (`#inicio`, `#sobre`, `#negocios`, `#marcas`, `#presenca`, `#compromissos`, `#carreiras`, `#imprensa`, `#catalogo`, `#contato`) navegam | P0 | Playwright + screenshot |
 | F-02 | Navegação | Menu desktop e mobile abrem/fecham; link ativo correto; skip link visível no foco | P0 | Playwright |
-| F-03 | Catálogo | 27 produtos renderizam com nome, marca, imagem, preço e condições | P0 | Playwright + contagem |
+| F-03 | Catálogo | 28 produtos renderizam com nome, marca, imagem, preço e condições | P0 | Playwright + contagem |
 | F-04 | Busca | Busca por nome e marca; limpar; contador; estado sem resultado | P0 | Playwright |
 | F-05 | Filtros | Filtro por categoria/marca combina com busca e mantém URL/estado | P1 | Playwright |
 | F-06 | Modal/lightbox | Abrir detalhes, galeria, fechar por botão/Escape/backdrop; foco retorna ao card | P0 | Playwright |
@@ -155,7 +155,7 @@ Testar home e uma página legal; verificar preload do hero, fonte, `fetchpriorit
 - [ ] `npm run build`
 - [ ] `node scripts/test-site.js --strict`
 - [ ] Smoke manual das seções e páginas legais
-- [ ] Catálogo: 27 produtos, busca, filtros, modal, lightbox e wishlist
+- [ ] Catálogo: 28 produtos, busca, filtros, modal, lightbox e wishlist
 - [ ] Formulário: sucesso, validação e fallback
 - [ ] axe sem `critical`/`serious`; teclado e foco revisados
 - [ ] Lighthouse mobile dentro do orçamento

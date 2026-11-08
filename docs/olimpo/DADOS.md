@@ -15,7 +15,7 @@ Ele **não substitui** `produtos.json` nem `stores.js`. Produtos continuam em `p
 
 | Fonte | Autoridade | O que fornece | Não pode |
 |---|---|---|---|
-| `produtos.json` | Canônica de produtos | 27 produtos, 9 marcas, preços, specs, imagens | Ser alterado por esta camada |
+| `produtos.json` | Canônica de produtos | 28 produtos, 9 marcas, preços, specs, imagens | Ser alterado por esta camada |
 | `stores.js` | Canônica de lojas | 4 lojas, endereços, telefones, WhatsApp, Instagram, Facebook, geolocalização | Perder campos; é editado por Afrodite |
 | `docs/olimpo/BRIEFING.md` | Aprovada por Zeus | Posicionamento, copy, fatos permitidos, proibições | Ser contrariada |
 | `index.html` | Site atual | Domínio, canonical, texto de 7 anos e condições do boleto | Ser fonte de dados jurídicos |

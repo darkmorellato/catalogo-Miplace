@@ -28,7 +28,7 @@
     };
 
     /** @type {CatalogFilter[]} */
-    const brands = ['Todos', 'Tablets', 'Realme', 'Honor', 'Motorola', 'Redmi', 'Poco', 'iPhone', 'Samsung', 'Infinix', 'Tecno'];
+    const brands = ['Todos', 'Tablets', 'Honor', 'Infinix', 'iPhone', 'Motorola', 'Poco', 'Realme', 'Redmi', 'Samsung', 'Tecno'];
 
     // Ordenação alfabética da coleção: A→Z, sem diferenciar maiúsculas e com
     // números naturais (G6 < G15). pt-BR para corretor de acentos.
@@ -120,12 +120,13 @@
                 return searchableText.includes(q);
             });
         }
-        // Coleção em ordem alfabética (A→Z). Produtos com highlight ficam no
-        // topo: a posição 0 renderiza o card em destaque (md:col-span-2).
+        // Coleção agrupada por marca em ordem alfabética e, dentro de cada
+        // marca, por modelo. O primeiro card vira o destaque visual; o selo
+        // "Destaque" continua vindo do campo highlight, sem mudar a ordem.
         // Copia antes de ordenar para não mutar window.MiplaceProducts.
         filtered = filtered.slice().sort((a, b) => {
-            const pinned = (a.highlight ? 0 : 1) - (b.highlight ? 0 : 1);
-            return pinned !== 0 ? pinned : nameCollator.compare(a.name, b.name);
+            const byBrand = nameCollator.compare(a.brand, b.brand);
+            return byBrand !== 0 ? byBrand : nameCollator.compare(a.name, b.name);
         });
         if (searchCount) {
             searchCount.textContent = state.currentSearch.length > 0
