@@ -166,6 +166,7 @@ catalogo-Miplace-main/
 
 - **Caminho principal:** `POST /api/contact` na Vercel, com Resend e as variáveis `RESEND_API_KEY`/`CONTACT_FROM_EMAIL`.
 - **Fallback:** se a API retornar 404, 502 ou 503, ou falhar por rede, `modules/corporate.js` envia por `https://formsubmit.co/ajax/contasgeraljack@gmail.com`.
-- **Ativação:** o FormSubmit exige uma ativação única no e-mail de destino; o link foi solicitado em 2026-11-08.
+- **Ativação:** o FormSubmit foi ativado no e-mail de destino e testado em produção em 2026-11-08.
 - **CSP:** `connect-src` inclui `https://formsubmit.co`; a política de privacidade registra o operador de contingência.
 - **Teste local:** funciona em servidor estático porque o fallback é chamado direto pelo navegador.
+- **Validação:** o campo Mensagem tem `minlength="10"` e o front-end exibe a mensagem real da API (400) em vez do erro genérico.

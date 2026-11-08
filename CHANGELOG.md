@@ -2,7 +2,20 @@
 
 Todas as mudanças relevantes deste site são registradas aqui. O formato segue, como referência, o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); o versionamento segue SemVer.
 
-> Registro da versão 2.0.10 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+> Registro da versão 2.0.11 integrada e validada em 2026-11-08. Os itens de publicação dependem das pendências listadas em `docs/olimpo/PENDENCIAS.md`.
+
+## [2.0.11] - 2026-11-08
+
+### Corrigido
+
+- O formulário agora mostra a mensagem real de validação da API em vez do erro genérico “Não foi possível enviar agora”.
+- O campo Mensagem ganhou `minlength="10"`, alinhado à regra da API; textos curtos são bloqueados pelo navegador antes do envio.
+- O aviso de fallback com e-mail/WhatsApp só aparece quando o envio realmente falha.
+- FormSubmit ativado e testado em produção; mensagens válidas chegam a `contasgeraljack@gmail.com`.
+
+### Alterado
+
+- Versão dos assets para `?v=2.0.11`, `package.json` para `2.0.11` e `BUILD_TIMESTAMP` para `2026-11-08.13`.
 
 ## [2.0.10] - 2026-11-08
 

@@ -79,7 +79,7 @@ Atualize a documentação no mesmo PR quando:
 
 - Cada documento tem um dono indicado na tabela.
 - Revisão editorial a cada release; revisão de conteúdo legal antes de qualquer publicação.
-- A documentação acompanha a versão do site (2.0.10 nesta entrega).
+- A documentação acompanha a versão do site (2.0.11 nesta entrega).
 - O histórico de mudanças do produto fica no `CHANGELOG.md`; o histórico detalhado de implementação fica no Git.
 
 ## 4. Glossário PT/EN/ES

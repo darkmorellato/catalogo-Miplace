@@ -8,9 +8,9 @@
 // IMPORTANTE: bump BUILD_TIMESTAMP a cada release.
 // ============================================================
 
-const BUILD_TIMESTAMP = '2026-11-08.12';
+const BUILD_TIMESTAMP = '2026-11-08.13';
 const CACHE_NAME = `miplace-v${BUILD_TIMESTAMP}`;
-const ASSET_VERSION = '2.0.10';
+const ASSET_VERSION = '2.0.11';
 const OFFLINE_URL = '/offline.html';
 const NETWORK_TIMEOUT_MS = 4000;
 

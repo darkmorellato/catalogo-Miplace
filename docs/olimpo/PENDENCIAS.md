@@ -10,7 +10,7 @@
 | 4 | Escritórios/operação internacional | Seção Presença | Confirmar países, endereços e datas; hoje só há lojas no Brasil |
 | 5 | E-mail e telefone de imprensa | Central de Imprensa | Informar canais oficiais |
 | 6 | E-mail/ATS de carreiras | Banco de talentos | Informar destino dos currículos |
-| 7 | Provedor de envio do formulário | `api/contact.js` | Destino definido: `contasgeraljack@gmail.com`; fallback FormSubmit implementado. Falta clicar na ativação enviada ao e-mail de destino e, para o caminho principal, configurar `RESEND_API_KEY` e `CONTACT_FROM_EMAIL` verificado no Resend |
+| 7 | Provedor de envio do formulário | `api/contact.js` | Destino definido: `contasgeraljack@gmail.com`; fallback FormSubmit ativado e testado em produção em 2026-11-08. Para o caminho principal, configurar `RESEND_API_KEY` e `CONTACT_FROM_EMAIL` verificado no Resend |
 | 8 | Ferramenta de analytics | `modules/analytics.js` | Definir GA4/Plausible/Matomo e IDs |
 | 9 | Métricas e metas ESG | Seção Compromissos | Enviar indicadores auditados antes de publicar números |
 | 10 | Logos oficiais das marcas | Parede de marcas | Confirmar licença de uso; por ora usar tipografia |
@@ -31,7 +31,7 @@
 | 25 | Publicação das páginas legais | Release | Aprovar a revisão jurídica e publicar; manter a data de atualização |
 | 26 | Assuntos "Privacidade" e "Acessibilidade" no formulário | Contato e páginas legais | Afrodite inclui as opções no `select`; API já aceita `subject` livre |
 | 27 | DNS e projeto Vercel | Publicação | `miplacemagazine.com.br` e `www` estão NXDOMAIN; criar zona DNS, conectar o projeto e validar TLS/redirects |
-| 28 | Credenciais de envio do formulário | `api/contact.js` | Configurar `RESEND_API_KEY` e `CONTACT_FROM_EMAIL` (remetente verificado); `CONTACT_TO_EMAIL` já tem padrão `contasgeraljack@gmail.com`. Sem as duas, a API responde 503 e o front-end usa o fallback FormSubmit (após ativação única no e-mail de destino) |
+| 28 | Credenciais de envio do formulário | `api/contact.js` | Configurar `RESEND_API_KEY` e `CONTACT_FROM_EMAIL` (remetente verificado); `CONTACT_TO_EMAIL` já tem padrão `contasgeraljack@gmail.com`. Sem as duas, a API responde 503 e o front-end usa o fallback FormSubmit, já ativado |
 | 29 | Teste runtime/E2E | Catálogo, formulário e PWA | Playwright/Cypress em fase 2; hoje há teste Node de estrutura + smoke manual em Chromium |
 | 30 | HSTS `preload` e subdomínios | Segurança/SEO | Auditar todos os subdomínios antes de submeter o domínio à lista de preload |
 

@@ -388,6 +388,30 @@
         const submit = /** @type {HTMLButtonElement | null} */ (form.querySelector('button[type="submit"]'));
         const fallback = document.getElementById('contact-fallback');
         const whatsappLinks = Array.from(document.querySelectorAll('[data-whatsapp-link]'));
+
+        class ContactValidationError extends Error {
+            /** @param {string} message */
+            constructor(message) {
+                super(message);
+                this.name = 'ContactValidationError';
+            }
+        }
+
+        /**
+         * Mostra a mensagem real da API em vez do erro genérico.
+         * @param {string} message
+         * @returns {void}
+         */
+        const showValidationMessage = (message) => {
+            const status = document.getElementById('contact-status');
+            if (!status) return;
+            contactStatusKey = '';
+            status.textContent = message;
+            status.classList.remove('is-success', 'is-error', 'is-info');
+            status.classList.add('is-error');
+            status.setAttribute('role', 'status');
+            status.setAttribute('aria-live', 'polite');
+        };
         whatsappLinks.forEach(link => {
             link.addEventListener('click', () => {
                 track('contact_whatsapp', { source_name: link.id || 'contact' });
@@ -463,6 +487,14 @@
                     } else if ([404, 502, 503].includes(response.status)) {
                         apiUnavailable = true;
                     } else {
+                        const body = await response.json().catch(() => null);
+                        const fieldMessage = body
+                            && Array.isArray(body.errors)
+                            && body.errors[0]
+                            && typeof body.errors[0].message === 'string'
+                            ? body.errors[0].message
+                            : '';
+                        if (fieldMessage) throw new ContactValidationError(fieldMessage);
                         throw new Error(`HTTP ${response.status}`);
                     }
                 } catch (error) {
@@ -486,9 +518,14 @@
                 setStatus('contact.success', 'success');
                 form.reset();
                 fallback?.classList.remove('is-visible');
-            } catch (_error) {
-                setStatus('contact.error', 'error');
-                fallback?.classList.add('is-visible');
+            } catch (error) {
+                if (error instanceof ContactValidationError) {
+                    showValidationMessage(error.message);
+                    fallback?.classList.remove('is-visible');
+                } else {
+                    setStatus('contact.error', 'error');
+                    fallback?.classList.add('is-visible');
+                }
             } finally {
                 window.clearTimeout(timer);
                 if (submit) {
