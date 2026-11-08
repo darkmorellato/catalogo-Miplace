@@ -41,7 +41,7 @@
         const container = document.getElementById('category-filters');
         if (!container) return;
         container.innerHTML = brands.map(brand => `
-            <button type="button" data-brand="${escapeHTML(brand)}" class="filter-btn relative pb-1 transition-colors" style="color:${state.currentFilter === brand ? '#1c1917' : '#44403c'}; ${state.currentFilter === brand ? 'border-bottom: 2px solid #1c1917;' : ''}">
+            <button type="button" data-brand="${escapeHTML(brand)}" class="filter-btn${state.currentFilter === brand ? ' is-active' : ''}" aria-pressed="${state.currentFilter === brand ? 'true' : 'false'}">
                 ${escapeHTML(brand)}
             </button>
         `).join('');
@@ -58,11 +58,11 @@
         const grid = document.getElementById('products-grid');
         if (grid) {
             grid.innerHTML = Array.from({ length: 6 }).map(() => `
-                <div class="pb-8 flex flex-col gap-4" style="border-bottom:1px solid rgba(28,25,23,0.2);">
-                    <div class="w-full aspect-video rounded-sm animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-3 rounded-sm w-1/3 animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-6 rounded-sm w-3/4 animate-pulse" style="background-color:#eaeaeb;"></div>
-                    <div class="h-3 rounded-sm w-1/2 animate-pulse" style="background-color:#eaeaeb;"></div>
+                <div class="pb-8 flex flex-col gap-4" style="border-bottom:1px solid rgba(20,20,20,0.2);">
+                    <div class="w-full aspect-video rounded-sm animate-pulse" style="background-color:#ebe7dd;"></div>
+                    <div class="h-3 rounded-sm w-1/3 animate-pulse" style="background-color:#ebe7dd;"></div>
+                    <div class="h-6 rounded-sm w-3/4 animate-pulse" style="background-color:#ebe7dd;"></div>
+                    <div class="h-3 rounded-sm w-1/2 animate-pulse" style="background-color:#ebe7dd;"></div>
                 </div>`).join('');
         }
         requestAnimationFrame(() => {
@@ -90,9 +90,9 @@
      */
     function renderEmptyState(term) {
         return `<div class="col-span-full flex flex-col items-center justify-center py-24 text-center">
-            <i class="fa-solid fa-magnifying-glass text-4xl mb-6" style="color:rgba(28,25,23,0.2);"></i>
-            <h3 class="font-serif text-3xl mb-3" style="color:#1c1917;">Nenhum produto encontrado</h3>
-            <p class="font-sans text-sm mb-8" style="color:#44403c;">Não há produtos para <strong>${escapeHTML(term)}</strong> no momento.</p>
+            <i class="fa-solid fa-magnifying-glass text-4xl mb-6" style="color:rgba(20,20,20,0.2);"></i>
+            <h3 class="font-serif text-3xl mb-3" style="color:#141414;">Nenhum produto encontrado</h3>
+            <p class="font-sans text-sm mb-8" style="color:#4a4641;">Não há produtos para <strong>${escapeHTML(term)}</strong> no momento.</p>
             <button type="button" data-action="reset-search" class="font-sans uppercase tracking-widest text-xs font-bold px-8 py-3 btn-hover-ink-border">
                 Ver todos os produtos
             </button>
@@ -105,6 +105,8 @@
         if (!container) return;
         const searchCount = document.getElementById('search-count');
         const data = productsData();
+        const collectionTotal = document.getElementById('collection-total');
+        if (collectionTotal) collectionTotal.textContent = String(data.length);
         /** @type {Product[]} */
         let filtered = state.currentFilter === 'Todos'
             ? data
@@ -142,43 +144,43 @@
                 ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover img-zoom transition-opacity duration-500 grid-gallery-img" data-product-id="${p.id}" data-current-idx="0">`
                 : (p.image
                     ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover img-zoom">`
-                    : `<i class="fa-solid fa-mobile-screen text-5xl img-zoom" style="color:rgba(28,25,23,0.2);"></i>`);
+                    : `<i class="fa-solid fa-mobile-screen text-5xl img-zoom" style="color:rgba(20,20,20,0.2);"></i>`);
             const microSpecs = p.specs && p.specs.length > 0
                 ? p.specs.slice(0, 2).map(/** @param {ProductSpec} s */ s => s.value.split(' ')[0] + ' ' + (s.value.split(' ')[1] || '')).join(' • ')
                 : '';
             const wishlistActive = window.MiplaceWishlist?.has(p.id);
             return `
-            <div class="${gridClass} group flex flex-col justify-between h-full" data-reveal data-tilt data-id="${p.id}" style="border-bottom:1px solid rgba(28,25,23,0.2); --reveal-delay: ${(index % 4) * 90}ms;">
+            <div class="${gridClass} group flex flex-col justify-between h-full" data-reveal data-tilt data-id="${p.id}" style="border-bottom:1px solid rgba(20,20,20,0.2); --reveal-delay: ${(index % 4) * 90}ms;">
                 <div>
-                    <div class="product-img-wrap w-full aspect-video flex items-center justify-center mb-6 img-zoom-container card-shimmer relative cursor-pointer overflow-hidden" style="background-color:#eaeaeb;" data-open-product="${p.id}">
-                        ${p.highlight ? '<span class="absolute top-4 left-4 text-[10px] uppercase tracking-widest px-3 py-1.5" style="background-color:#1c1917;color:#f4f4f0;z-index:30;">Destaque</span>' : ''}
+                    <div class="product-img-wrap w-full aspect-video flex items-center justify-center mb-6 img-zoom-container card-shimmer relative cursor-pointer overflow-hidden" style="background-color:#ebe7dd;" data-open-product="${p.id}">
+                        ${p.highlight ? '<span class="absolute top-4 left-4 text-[10px] uppercase tracking-widest px-3 py-1.5" style="background-color:#141414;color:#f5f2ea;z-index:30;">Destaque</span>' : ''}
                         <div class="w-full h-full relative reveal-img" data-parallax data-speed="${index % 2 === 0 ? '0.05' : '0.07'}" style="z-index:0;">${imageContent}</div>
                         <div class="specular" aria-hidden="true"></div>
-                        <div class="ver-detalhes-overlay absolute inset-0 flex items-center justify-center" style="background-color:rgba(28,25,23,0.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); z-index:20;">
-                            <span class="ver-detalhes-label font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3" style="color:#f4f4f0; border:1px solid #f4f4f0; background-color:rgba(28,25,23,0.55);">Ver Detalhes</span>
+                        <div class="ver-detalhes-overlay absolute inset-0 flex items-center justify-center" style="background-color:rgba(20,20,20,0.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); z-index:20;">
+                            <span class="ver-detalhes-label font-sans uppercase tracking-[0.2em] text-xs font-bold px-6 py-3" style="color:#f5f2ea; border:1px solid #f5f2ea; background-color:rgba(20,20,20,0.55);">Ver Detalhes</span>
                         </div>
                         <button type="button" data-wishlist-toggle="${p.id}" data-wishlist-source="card" data-wishlist-name="${escapeHTML(p.name)}" aria-pressed="${wishlistActive ? 'true' : 'false'}" aria-label="${wishlistActive ? 'Remover' : 'Adicionar'} ${escapeHTML(p.name)} ${wishlistActive ? 'dos' : 'aos'} favoritos" class="wishlist-btn ${wishlistActive ? 'is-active' : ''}">
                             <i class="fa-regular fa-heart heart-outline" aria-hidden="true"></i>
                             <i class="fa-solid fa-heart heart-filled" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <div class="flex justify-between items-end mb-3 pb-2" style="border-bottom:1px solid rgba(28,25,23,0.1);">
-                        <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${escapeHTML(p.brand)}</span>
-                        <span class="font-sans text-[9px] uppercase tracking-widest" style="color:#57534e;">Ref. ${String(p.id).padStart(3, '0')}</span>
+                    <div class="flex justify-between items-end mb-3 pb-2" style="border-bottom:1px solid rgba(20,20,20,0.1);">
+                        <span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#4a4641;">${escapeHTML(p.brand)}</span>
+                        <span class="font-sans text-[9px] uppercase tracking-widest" style="color:#79736b;">Ref. ${String(p.id).padStart(3, '0')}</span>
                     </div>
-                    <h4 class="font-serif ${titleSize} leading-none tracking-tight mb-2" style="color:#1c1917;">${escapeHTML(p.name)}</h4>
-                    ${microSpecs ? `<p class="font-sans text-[10px] uppercase tracking-[0.15em] truncate" style="color:#57534e;">${escapeHTML(microSpecs)}</p>` : ''}
+                    <h4 class="font-serif ${titleSize} leading-none tracking-tight mb-2" style="color:#141414;">${escapeHTML(p.name)}</h4>
+                    ${microSpecs ? `<p class="font-sans text-[10px] uppercase tracking-[0.15em] truncate" style="color:#79736b;">${escapeHTML(microSpecs)}</p>` : ''}
                 </div>
-                <div class="mt-6 flex items-end justify-between pt-4" style="border-top:1px solid rgba(28,25,23,0.1);">
+                <div class="mt-6 flex items-end justify-between pt-4" style="border-top:1px solid rgba(20,20,20,0.1);">
                     <div class="font-sans text-sm">
                         ${p.specialPrice
-                            ? `<span class="font-bold" style="color:#1c1917;">${escapeHTML(p.specialPrice)}</span>`
+                            ? `<span class="font-bold" style="color:#141414;">${escapeHTML(p.specialPrice)}</span>`
                             : p.price
-                                ? `<span class="block text-[10px] uppercase tracking-widest mb-1" style="color:#44403c;">A partir de</span><span class="font-bold text-base leading-tight block" style="color:#1c1917;">${escapeHTML(p.price.replace('A partir de ', ''))}</span>`
-                                : `<span class="block text-[10px] uppercase tracking-widest mb-1" style="color:#44403c;">Entre em Contato</span><span class="font-bold text-xs leading-tight block" style="color:#1c1917;">Confirmar disponibilidade</span>`
+                                ? `<span class="block text-[10px] uppercase tracking-widest mb-1" style="color:#4a4641;">A partir de</span><span class="font-bold text-base leading-tight block" style="color:#141414;">${escapeHTML(p.price.replace('A partir de ', ''))}</span>`
+                                : `<span class="block text-[10px] uppercase tracking-widest mb-1" style="color:#4a4641;">Entre em Contato</span><span class="font-bold text-xs leading-tight block" style="color:#141414;">Confirmar disponibilidade</span>`
                         }
                     </div>
-                    <button type="button" data-open-product="${p.id}" aria-label="Ver detalhes de ${escapeHTML(p.name)}" class="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300" style="border:1px solid rgba(28,25,23,0.3); color:#1c1917;" title="Ver detalhes">
+                    <button type="button" data-open-product="${p.id}" aria-label="Ver detalhes de ${escapeHTML(p.name)}" class="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300" style="border:1px solid rgba(20,20,20,0.3); color:#141414;" title="Ver detalhes">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>

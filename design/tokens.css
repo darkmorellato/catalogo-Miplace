@@ -1,0 +1,185 @@
+/* ============================================================
+   MIPLACE GROUP — DESIGN TOKENS
+   Fonte única de verdade para cor, tipo, espaço, movimento e foco.
+   Uso: importar antes de styles.css / tailwind.css.
+   Este arquivo contém apenas custom properties; nenhum layout.
+   Valores-base aprovados no BRIEFING.md (seção 4.1).
+   ============================================================ */
+
+:root {
+  /* ── Marca / base crua ───────────────────────────────────── */
+  --paper: #f5f2ea;
+  --paper-2: #ebe7dd;
+  --ink: #141414;
+  --ink-2: #4a4641;
+  --ink-3: #79736b;
+  --accent: #8c1d1d;
+  --gold: #b9965a;
+  --gold-text: #7d6234; /* derivado: 5,12:1 sobre paper */
+  --forest: #173b32;
+  --line: rgba(20, 20, 20, 0.14);
+  --line-strong: rgba(20, 20, 20, 0.32);
+  --font-display-stack: "Playfair Display", Georgia, serif;
+  --font-sans-stack: "DM Sans", system-ui, sans-serif;
+  --font-display: var(--font-display-stack);
+  --font-sans: var(--font-sans-stack);
+  --max: 1280px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --section: clamp(72px, 10vw, 140px);
+  --radius: 2px;
+
+  /* ── Aliases semânticos de cor ───────────────────────────── */
+  --color-bg: var(--paper);
+  --color-bg-subtle: var(--paper-2);
+  --color-surface: var(--paper);
+  --color-surface-alt: var(--paper-2);
+  --color-text: var(--ink);
+  --color-text-secondary: var(--ink-2);
+  --color-text-tertiary: var(--ink-3); /* apenas texto grande/terciário */
+  --color-brand: var(--accent);
+  --color-brand-hover: #741717;        /* derivado: 10,0:1 sobre paper */
+  --color-brand-soft: color-mix(in srgb, var(--accent) 8%, var(--paper));
+  --color-gold: var(--gold);
+  --color-gold-text: var(--gold-text);
+  --color-gold-soft: color-mix(in srgb, var(--gold) 18%, var(--paper));
+  --color-forest: var(--forest);
+  --color-forest-deep: #0f2a23;        /* derivado: 13,6:1 com paper */
+  --color-border: var(--line);
+  --color-border-strong: var(--line-strong);
+  --color-border-functional: var(--ink-3); /* 4,19:1: serve para inputs */
+  --color-focus: var(--accent);
+  --color-focus-dark: var(--gold);
+  --color-success: var(--forest);
+  --color-warning: var(--color-gold-text);
+  --color-danger: var(--accent);
+  --color-info: var(--ink-2);
+
+  /* ── Seções escuras ──────────────────────────────────────── */
+  --color-dark-bg: var(--forest);
+  --color-dark-bg-deep: var(--color-forest-deep);
+  --color-dark-text: var(--paper);
+  --color-dark-muted: rgba(245, 242, 234, 0.78); /* 7,36:1 sobre forest */
+  --color-dark-border: rgba(245, 242, 234, 0.24);
+  --color-dark-border-strong: rgba(245, 242, 234, 0.48); /* 3,8:1 */
+  --color-dark-accent: var(--gold); /* 4,43:1: texto grande ou detalhe */
+
+  /* ── Tipografia ──────────────────────────────────────────── */
+  --font-body: var(--font-sans);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --text-display: clamp(3rem, 7vw, 6rem);       /* 48–96px */
+  --text-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --text-h2: clamp(2rem, 3.8vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 2.4vw, 2.25rem);
+  --text-h4: 1.25rem;
+  --text-lead: clamp(1.125rem, 1.4vw, 1.375rem); /* 18–22px */
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-eyebrow: 0.75rem;                      /* 12px */
+
+  --leading-display: 0.98;
+  --leading-heading: 1.05;
+  --leading-body: 1.65;
+  --leading-lead: 1.55;
+  --leading-caption: 1.4;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.01em;
+  --tracking-eyebrow: 0.18em;
+  --tracking-button: 0.08em;
+  --tracking-nav: 0.12em;
+
+  --measure-lead: 60ch;
+  --measure-body: 68ch;
+
+  /* ── Grid e ritmo ────────────────────────────────────────── */
+  --container: var(--max);
+  --grid-columns: 12;
+  --grid-gap: 24px;
+  --grid-gap-tablet: 20px;
+  --grid-gap-mobile: 16px;
+  --section-tight: clamp(48px, 7vw, 88px);
+
+  /* ── Espaçamento (base 4px) ──────────────────────────────── */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* ── Bordas, raios e sombras ─────────────────────────────── */
+  --border-width: 1px;
+  --border-width-strong: 3px;
+  --radius-sm: 1px;
+  --radius-pill: 999px; /* só ícones circulares e status */
+  --shadow-none: none;
+  --shadow-soft: 0 1px 2px rgba(20, 20, 20, 0.06);
+  --shadow-modal: 0 24px 80px rgba(20, 20, 20, 0.18);
+
+  /* ── Controles e ícones ──────────────────────────────────── */
+  --target-min: 44px;
+  --control-sm: 40px;
+  --control-md: 44px;
+  --control-lg: 52px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
+
+  /* ── Foco ────────────────────────────────────────────────── */
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --focus-style: 2px solid var(--color-focus);
+  --focus-style-dark: 2px solid var(--color-focus-dark);
+
+  /* ── Movimento ───────────────────────────────────────────── */
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --duration-slow: 400ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-shift: 24px;
+  --stagger: 70ms;
+
+  /* ── Camadas ─────────────────────────────────────────────── */
+  --z-base: 0;
+  --z-sticky: 40;
+  --z-header: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-skip: 400;
+
+  /* ── Opacidade ───────────────────────────────────────────── */
+  --opacity-muted: 0.72;
+  --opacity-disabled: 0.45;
+}
+
+/* Tokens de movimento desligados: o layout permanece estável. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --reveal-shift: 0px;
+    --stagger: 0ms;
+  }
+}
+
+/* Em contraste reforçado, o texto terciário sobe para secundário. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-tertiary: var(--ink-2);
+    --color-border: var(--line-strong);
+  }
+}

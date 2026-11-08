@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração de Acessibilidade — Miplace Group</title>
+    <meta name="description" content="Declaração de acessibilidade do site da Miplace Group: compromisso com WCAG 2.2 AA, medidas adotadas, limitações conhecidas e canal para reportar barreiras.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f5f2ea">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="https://miplacemagazine.com.br/acessibilidade.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Declaração de Acessibilidade — Miplace Group">
+    <meta property="og:description" content="Compromisso, medidas, limitações e canal de contato sobre acessibilidade do site.">
+    <meta property="og:url" content="https://miplacemagazine.com.br/acessibilidade.html">
+    <meta property="og:image" content="https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Miplace Group">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="tailwind.css?v=2.0.0">
+    <link rel="stylesheet" href="styles.css?v=2.0.0">
+
+    <style>
+        :root {
+            --legal-paper: #f5f2ea;
+            --legal-paper-2: #ebe7dd;
+            --legal-ink: #141414;
+            --legal-ink-2: #4a4641;
+            --legal-ink-3: #79736b;
+            --legal-accent: #8c1d1d;
+            --legal-gold: #b9965a;
+            --legal-forest: #173b32;
+            --legal-line: rgba(20, 20, 20, 0.14);
+            --legal-max: 1180px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; background: var(--legal-paper); }
+
+        body.legal-page {
+            margin: 0;
+            border: 0;
+            background: var(--legal-paper);
+            color: var(--legal-ink);
+            font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .legal-wrap { width: min(var(--legal-max), calc(100% - 40px)); margin-inline: auto; }
+
+        .legal-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(245, 242, 234, 0.94);
+            border-bottom: 1px solid var(--legal-line);
+            backdrop-filter: blur(12px);
+        }
+
+        .legal-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 14px 0;
+        }
+
+        .legal-brand {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--legal-ink);
+            white-space: nowrap;
+        }
+
+        .legal-brand span { color: var(--legal-accent); }
+
+        .legal-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 18px; }
+
+        .legal-nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 8px 0;
+            border-bottom: 1px solid transparent;
+            color: var(--legal-ink-2);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .legal-nav a:hover { color: var(--legal-accent); border-bottom-color: var(--legal-accent); }
+        .legal-nav a[aria-current="page"] { color: var(--legal-ink); border-bottom-color: var(--legal-gold); }
+
+        .legal-main { padding: 56px 0 88px; }
+        .legal-doc { max-width: 860px; margin-inline: auto; }
+
+        .legal-eyebrow {
+            margin: 0 0 14px;
+            color: var(--legal-accent);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .legal-doc h1 {
+            margin: 0;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+        }
+
+        .legal-updated {
+            margin: 18px 0 0;
+            color: var(--legal-ink-3);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .legal-lead { margin: 24px 0 0; max-width: 70ch; color: var(--legal-ink-2); font-size: 1.08rem; }
+
+        .legal-summary {
+            margin: 34px 0 8px;
+            padding: 22px 24px;
+            border: 1px solid var(--legal-line);
+            background: var(--legal-paper-2);
+        }
+
+        .legal-summary h2 {
+            margin: 0 0 12px;
+            font-family: "DM Sans", system-ui, sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .legal-summary ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 36px; }
+        .legal-summary li { margin: 4px 0; break-inside: avoid; }
+        .legal-summary a { color: var(--legal-ink-2); text-underline-offset: 3px; }
+        .legal-summary a:hover { color: var(--legal-accent); }
+
+        .legal-section { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--legal-line); }
+
+        .legal-section h2 {
+            margin: 0 0 14px;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.5rem;
+            line-height: 1.25;
+        }
+
+        .legal-section h3 { margin: 24px 0 8px; font-size: 1rem; }
+        .legal-section p, .legal-section li { color: var(--legal-ink-2); }
+        .legal-section ul, .legal-section ol { padding-left: 1.3rem; }
+        .legal-section li { margin: 6px 0; }
+        .legal-section a { color: var(--legal-accent); text-underline-offset: 3px; }
+
+        .legal-note {
+            margin: 24px 0;
+            padding: 16px 20px;
+            border-left: 3px solid var(--legal-gold);
+            background: var(--legal-paper-2);
+            color: var(--legal-ink-2);
+            font-size: 0.95rem;
+        }
+
+        .legal-footer { padding: 44px 0; background: var(--legal-forest); color: var(--legal-paper); }
+
+        .legal-footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .legal-footer p {
+            margin: 0 0 8px;
+            color: rgba(245, 242, 234, 0.72);
+            font-size: 0.78rem;
+        }
+
+        .legal-footer a {
+            color: var(--legal-paper);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(245, 242, 234, 0.35);
+        }
+
+        .legal-footer a:hover { border-bottom-color: var(--legal-gold); }
+
+        .legal-footer nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 100;
+            padding: 12px 16px;
+            background: var(--legal-ink);
+            color: var(--legal-paper);
+            text-decoration: none;
+        }
+
+        .skip-link:focus { left: 16px; top: 16px; }
+        :focus-visible { outline: 2px solid var(--legal-accent); outline-offset: 3px; }
+
+        @media (max-width: 720px) {
+            .legal-header-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .legal-nav { gap: 0 14px; }
+            .legal-main { padding-top: 36px; }
+            .legal-summary ol { columns: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        @media print {
+            .legal-header, .legal-footer, .legal-summary { display: none; }
+            body.legal-page { background: #fff; color: #000; }
+            .legal-main { padding: 0; }
+            .legal-section { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="legal-page">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="legal-header">
+        <div class="legal-wrap legal-header-inner">
+            <a class="legal-brand" href="index.html">Miplace <span>Group</span></a>
+            <nav class="legal-nav" aria-label="Navegação das páginas legais">
+                <a href="index.html">Início</a>
+                <a href="privacidade.html">Privacidade</a>
+                <a href="termos.html">Termos</a>
+                <a href="acessibilidade.html" aria-current="page">Acessibilidade</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="conteudo" class="legal-main">
+        <div class="legal-wrap">
+            <article class="legal-doc">
+                <p class="legal-eyebrow">Documentos legais</p>
+                <h1>Declaração de Acessibilidade</h1>
+                <p class="legal-updated">Última atualização: <time datetime="2026-11-07">7 de novembro de 2026</time></p>
+                <p class="legal-lead">A Miplace Group se compromete a oferecer uma experiência digital acessível a todas as pessoas, incluindo pessoas com deficiência, em linha com a Lei Brasileira de Inclusão (Lei nº 13.146/2015) e as Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.2, nível AA.</p>
+
+                <nav class="legal-summary" aria-label="Sumário da declaração">
+                    <h2>Nesta página</h2>
+                    <ol>
+                        <li><a href="#compromisso">Compromisso</a></li>
+                        <li><a href="#medidas">Medidas adotadas</a></li>
+                        <li><a href="#limitacoes">Limitações conhecidas</a></li>
+                        <li><a href="#avaliacao">Avaliação e compatibilidade</a></li>
+                        <li><a href="#reportar">Como reportar uma barreira</a></li>
+                        <li><a href="#melhoria">Melhoria contínua</a></li>
+                    </ol>
+                </nav>
+
+                <section class="legal-section" id="compromisso">
+                    <h2>1. Compromisso</h2>
+                    <p>A acessibilidade é tratada como parte da qualidade do site, e não como um recurso opcional. O objetivo é que pessoas com diferentes necessidades possam navegar, consultar produtos, entender as informações das lojas e entrar em contato sem barreiras desnecessárias.</p>
+                    <p>Este compromisso alcança o site institucional, o catálogo e as páginas legais. Canais de terceiros, como WhatsApp, mapas e redes sociais, seguem as práticas dos respectivos provedores.</p>
+                </section>
+
+                <section class="legal-section" id="medidas">
+                    <h2>2. Medidas adotadas</h2>
+                    <ul>
+                        <li>HTML semântico com landmarks, títulos hierárquicos e um único <code>h1</code> por página.</li>
+                        <li>Link de salto para o conteúdo principal e navegação completa por teclado.</li>
+                        <li>Indicadores de foco visíveis e contraste compatível com a meta WCAG 2.2 AA.</li>
+                        <li>Textos alternativos nas imagens do catálogo, usando o nome do modelo como descrição.</li>
+                        <li>Rótulos e instruções nos controles de busca, filtros, favoritos e formulário.</li>
+                        <li>Mensagens de erro associadas aos campos e anúncio de status em região <code>aria-live</code> no formulário de contato.</li>
+                        <li>Layout responsivo para telas pequenas e ampliação de texto sem perda de conteúdo.</li>
+                        <li>Respeito a <code>prefers-reduced-motion</code> e ausência de autoplay de áudio.</li>
+                        <li>Idioma da página declarado em <code>lang="pt-BR"</code> e estrutura previsível de navegação.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-section" id="limitacoes">
+                    <h2>3. Limitações conhecidas</h2>
+                    <ul>
+                        <li>Experiências 3D e efeitos visuais podem não funcionar em dispositivos antigos ou com recursos limitados; nesses casos, o conteúdo estático permanece disponível.</li>
+                        <li>Fontes e bibliotecas carregadas por CDN dependem da disponibilidade de terceiros; o site mantém alternativas tipográficas do sistema.</li>
+                        <li>As imagens do catálogo usam o nome do modelo como texto alternativo. Descrições visuais mais detalhadas podem ser solicitadas pelo canal de atendimento.</li>
+                        <li>Conteúdos abertos em serviços de terceiros, como mapas, redes sociais e WhatsApp, não são controlados pela Miplace Group.</li>
+                        <li>Não há certificação externa de acessibilidade nesta versão. A declaração descreve o compromisso e as medidas em andamento, não um selo de conformidade.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-section" id="avaliacao">
+                    <h2>4. Avaliação e compatibilidade</h2>
+                    <p>O site foi desenvolvido para as versões atuais dos principais navegadores — Chrome, Edge, Firefox e Safari — e para uso em celulares, tablets e computadores. A navegação por teclado e a ampliação de texto são consideradas nas revisões internas.</p>
+                    <p>Testes formais com leitores de tela e auditorias independentes fazem parte do plano de melhoria contínua. Resultados e eventuais correções devem ser registrados pela frente de qualidade do projeto.</p>
+                    <p>Se você usa tecnologia assistiva e encontrar uma barreira, o relato é essencial para priorizar a correção.</p>
+                </section>
+
+                <section class="legal-section" id="reportar">
+                    <h2>5. Como reportar uma barreira</h2>
+                    <p>Use o <a href="index.html#contato">formulário de contato</a> com o assunto <strong>Acessibilidade</strong> e informe, se possível. Se a opção ainda não estiver disponível, selecione <strong>Geral</strong> e escreva "Acessibilidade" na mensagem.</p>
+                    <ul>
+                        <li>a página ou seção onde a barreira ocorreu;</li>
+                        <li>o dispositivo, o sistema operacional e o navegador utilizados;</li>
+                        <li>a tecnologia assistiva empregada, se houver;</li>
+                        <li>uma descrição do que impediu ou dificultou o uso; e</li>
+                        <li>um canal para retorno, caso queira acompanhar a resposta.</li>
+                    </ul>
+                    <p>Se o formulário estiver indisponível, procure uma das quatro lojas da Miplace Group ou use o WhatsApp divulgado na seção de presença do site.</p>
+                    <p>Os relatos serão analisados e encaminhados ao time responsável. Responderemos em prazo razoável, considerando a complexidade da correção.</p>
+                </section>
+
+                <section class="legal-section" id="melhoria">
+                    <h2>6. Melhoria contínua</h2>
+                    <p>A Miplace Group revisa a experiência periodicamente e busca incorporar acessibilidade nas decisões de design, conteúdo e desenvolvimento. Novas funcionalidades devem nascer com requisitos de teclado, foco, contraste, texto alternativo e compatibilidade com tecnologias assistivas.</p>
+                    <p>Esta declaração será atualizada quando houver mudanças relevantes no site ou conclusão de novas etapas de avaliação.</p>
+                    <div class="legal-note">
+                        <strong>Transparência:</strong> esta é a versão 1.0 da declaração, publicada em 7 de novembro de 2026. Ela não representa certificação externa e será revisada após auditoria de acessibilidade.
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer class="legal-footer">
+        <div class="legal-wrap legal-footer-inner">
+            <div>
+                <p>Miplace Group © 2026. Todos os direitos reservados.</p>
+                <p>Marcas mencionadas pertencem aos seus respectivos proprietários.</p>
+            </div>
+            <nav aria-label="Links legais e institucionais">
+                <a href="index.html">Início</a>
+                <a href="privacidade.html">Privacidade</a>
+                <a href="termos.html">Termos</a>
+                <a href="acessibilidade.html">Acessibilidade</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

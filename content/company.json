@@ -1,0 +1,457 @@
+{
+  "$schema": "./schema/company.schema.json",
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "contentVersion": "0.1.0",
+    "status": "parcial",
+    "locale": "pt-BR",
+    "generatedAt": "2026-11-07",
+    "updatedAt": "2026-11-07",
+    "validUntil": "2027-02-05",
+    "sources": [
+      {
+        "id": "briefing",
+        "path": "docs/olimpo/BRIEFING.md",
+        "capturedAt": "2026-11-07"
+      },
+      {
+        "id": "stores",
+        "path": "stores.js",
+        "capturedAt": "2026-11-07"
+      },
+      {
+        "id": "produtos",
+        "path": "produtos.json",
+        "capturedAt": "2026-11-07"
+      },
+      {
+        "id": "site",
+        "path": "index.html",
+        "capturedAt": "2026-11-07"
+      }
+    ],
+    "pending": [
+      "identity.legalName",
+      "identity.cnpj",
+      "identity.foundationYear",
+      "stores.items[].openingHours",
+      "channels.generalEmail",
+      "channels.generalPhone",
+      "channels.press.email",
+      "channels.press.phone",
+      "channels.press.kitUrl",
+      "channels.careers.email",
+      "channels.careers.talentPoolUrl",
+      "governance.leadership",
+      "governance.board",
+      "international.operation",
+      "links.legal (publicação)"
+    ],
+    "notes": "Campos sem fonte confirmada usam null + status pendente. Nenhum dado jurídico, financeiro, de liderança ou de operação internacional foi inventado. stores.js e produtos.json continuam sendo as fontes canônicas de lojas e produtos; este arquivo traz apenas a camada corporativa."
+  },
+  "identity": {
+    "legalName": null,
+    "corporateBrand": "Miplace Group",
+    "retailBrand": "Miplace",
+    "editorialSignature": "Miplace Magazine",
+    "cnpj": null,
+    "foundationYear": null,
+    "status": "parcial",
+    "pending": [
+      "legalName",
+      "cnpj",
+      "foundationYear"
+    ],
+    "source": [
+      "docs/olimpo/BRIEFING.md#2"
+    ]
+  },
+  "tagline": "Tecnologia global. Cuidado local.",
+  "descriptor": "Grupo brasileiro de tecnologia e lifestyle que conecta pessoas às melhores marcas do mundo com curadoria, acesso facilitado e atendimento próximo.",
+  "positioning": {
+    "category": "Grupo brasileiro de tecnologia e lifestyle",
+    "attributes": [
+      "curadoria",
+      "acesso facilitado",
+      "atendimento próximo"
+    ],
+    "tone": [
+      "executivo",
+      "confiante",
+      "humano",
+      "sem hype"
+    ],
+    "languages": [
+      "pt-BR",
+      "en",
+      "es"
+    ],
+    "primaryLocale": "pt-BR",
+    "status": "confirmado",
+    "source": [
+      "docs/olimpo/BRIEFING.md#2"
+    ]
+  },
+  "facts": {
+    "yearsInMarket": 7,
+    "stores": 4,
+    "cities": 2,
+    "brands": 9,
+    "products": 27,
+    "asOf": "2026-11-07",
+    "status": "confirmado",
+    "source": [
+      "docs/olimpo/BRIEFING.md#2.1",
+      "index.html:234",
+      "stores.js:7-93",
+      "produtos.json"
+    ]
+  },
+  "businessUnits": {
+    "status": "confirmado",
+    "source": [
+      "docs/olimpo/BRIEFING.md#2.4"
+    ],
+    "items": [
+      {
+        "id": "varejo",
+        "name": "Varejo",
+        "description": "Lojas físicas com consultoria especializada e as principais marcas do mercado."
+      },
+      {
+        "id": "crediario-servicos",
+        "name": "Crediário & Serviços",
+        "description": "Parcelamento próprio em até 24x no boleto, sem consulta, e suporte pós-venda."
+      },
+      {
+        "id": "digital-curadoria",
+        "name": "Digital & Curadoria",
+        "description": "Catálogo online, conteúdo editorial e atendimento por WhatsApp."
+      },
+      {
+        "id": "parcerias",
+        "name": "Parcerias",
+        "description": "Relações de longo prazo com fabricantes e distribuidores globais."
+      }
+    ]
+  },
+  "brands": {
+    "count": 9,
+    "status": "confirmado",
+    "source": [
+      "produtos.json",
+      "index.html:211",
+      "docs/olimpo/BRIEFING.md#2.1"
+    ],
+    "items": [
+      {
+        "name": "Apple",
+        "catalogBrand": "iPhone"
+      },
+      {
+        "name": "Samsung",
+        "catalogBrand": "Samsung"
+      },
+      {
+        "name": "Motorola",
+        "catalogBrand": "Motorola"
+      },
+      {
+        "name": "Realme",
+        "catalogBrand": "Realme"
+      },
+      {
+        "name": "Honor",
+        "catalogBrand": "Honor"
+      },
+      {
+        "name": "Redmi",
+        "catalogBrand": "Redmi"
+      },
+      {
+        "name": "Poco",
+        "catalogBrand": "Poco"
+      },
+      {
+        "name": "Infinix",
+        "catalogBrand": "Infinix"
+      },
+      {
+        "name": "Tecno",
+        "catalogBrand": "Tecno"
+      }
+    ],
+    "accessories": [
+      {
+        "name": "Rockspace",
+        "category": "Acessórios e proteção",
+        "status": "confirmado",
+        "note": "Marca citada no site e no briefing; não há itens Rockspace em produtos.json."
+      }
+    ]
+  },
+  "commerce": {
+    "installments": {
+      "max": 24,
+      "method": "boleto",
+      "creditCheck": false,
+      "status": "confirmado"
+    },
+    "notes": [
+      "Parcelamento em até 24x no boleto, sem consulta.",
+      "Sujeito a análise e condições da loja física."
+    ],
+    "status": "confirmado",
+    "source": [
+      "docs/olimpo/BRIEFING.md#2.1",
+      "index.html:234",
+      "index.html:304"
+    ]
+  },
+  "stores": {
+    "canonicalSource": "stores.js",
+    "count": 4,
+    "cities": [
+      {
+        "name": "Piracicaba",
+        "state": "SP",
+        "storeCount": 3
+      },
+      {
+        "name": "Amparo",
+        "state": "SP",
+        "storeCount": 1
+      }
+    ],
+    "items": [
+      {
+        "id": "xv",
+        "name": "Miplace XV Prime",
+        "city": "Piracicaba",
+        "state": "SP",
+        "address": {
+          "street": "R. Quinze de Novembro, 936 - Centro",
+          "cep": "13400-370",
+          "mapsQuery": "R.+Quinze+de+Novembro,+936+-+Centro,+Piracicaba+-+SP"
+        },
+        "phone": "+55-19-98960-5504",
+        "phoneDisplay": "(19) 98960-5504",
+        "whatsapp": "5519989605504",
+        "instagram": {
+          "handle": "@miplace.prime",
+          "url": "https://instagram.com/miplace.prime"
+        },
+        "facebook": {
+          "name": "Miplace XV de Novembro",
+          "url": "https://www.facebook.com/share/1G15m1Tcu8/?mibextid=wwXIfr"
+        },
+        "geo": {
+          "lat": -22.7253,
+          "lng": -47.6476
+        },
+        "openingHours": null
+      },
+      {
+        "id": "honor",
+        "name": "Miplace Honor",
+        "city": "Piracicaba",
+        "state": "SP",
+        "address": {
+          "street": "R. Dom Pedro II, 857 - Centro",
+          "cep": "13400-390",
+          "mapsQuery": "R.+Dom+Pedro+II,+857+-+Centro,+Piracicaba+-+SP"
+        },
+        "phone": "+55-19-99497-5131",
+        "phoneDisplay": "(19) 99497-5131",
+        "whatsapp": "5519994975131",
+        "instagram": {
+          "handle": "@miplace.dompedro",
+          "url": "https://instagram.com/miplace.dompedro"
+        },
+        "facebook": {
+          "name": "Miplace Honor",
+          "url": "https://www.facebook.com/share/1AXgkFAVgQ/?mibextid=wwXIfr"
+        },
+        "geo": {
+          "lat": -22.7248,
+          "lng": -47.6491
+        },
+        "openingHours": null
+      },
+      {
+        "id": "realme",
+        "name": "Miplace Realme",
+        "city": "Piracicaba",
+        "state": "SP",
+        "address": {
+          "street": "R. Benjamin Constant, 1230 - Centro",
+          "cep": "13400-053",
+          "mapsQuery": "R.+Benjamin+Constant,+1230+-+Centro,+Piracicaba+-+SP"
+        },
+        "phone": "+55-19-99451-0123",
+        "phoneDisplay": "(19) 99451-0123",
+        "whatsapp": "5519994510123",
+        "instagram": {
+          "handle": "@miplace.benjamin",
+          "url": "https://instagram.com/miplace.benjamin"
+        },
+        "facebook": {
+          "name": "Miplace Realme",
+          "url": "https://www.facebook.com/share/1KgggPkqQL/?mibextid=wwXIfr"
+        },
+        "geo": {
+          "lat": -22.7261,
+          "lng": -47.6468
+        },
+        "openingHours": null
+      },
+      {
+        "id": "premium",
+        "name": "Miplace Premium",
+        "city": "Amparo",
+        "state": "SP",
+        "address": {
+          "street": "R. Treze de Maio, 26 - Centro",
+          "cep": "13900-005",
+          "mapsQuery": "R.+Treze+de+Maio,+26+-+Centro,+Amparo+-+SP"
+        },
+        "phone": "+55-19-99961-8865",
+        "phoneDisplay": "(19) 99961-8865",
+        "whatsapp": "5519999618865",
+        "instagram": {
+          "handle": "@miplace.premium",
+          "url": "https://instagram.com/miplace.premium"
+        },
+        "facebook": {
+          "name": "Miplace Premium",
+          "url": "https://www.facebook.com/share/1DYqbVuA7G/?mibextid=wwXIfr"
+        },
+        "geo": {
+          "lat": -22.7021,
+          "lng": -46.7708
+        },
+        "openingHours": null
+      }
+    ],
+    "status": "parcial",
+    "pending": [
+      "items[].openingHours"
+    ],
+    "source": [
+      "stores.js:7-93"
+    ]
+  },
+  "channels": {
+    "website": {
+      "url": "https://miplacemagazine.com.br/",
+      "status": "confirmado"
+    },
+    "contactForm": {
+      "endpoint": "/api/contact",
+      "method": "POST",
+      "status": "planejado"
+    },
+    "storeWhatsapp": {
+      "baseUrl": "https://wa.me/",
+      "scope": "por loja",
+      "status": "confirmado",
+      "source": "stores.js:20,37,54,71,88"
+    },
+    "storeInstagram": {
+      "scope": "por loja",
+      "status": "confirmado",
+      "source": "stores.js:21,38,55,72,89"
+    },
+    "storeFacebook": {
+      "scope": "por loja",
+      "status": "confirmado",
+      "source": "stores.js:22,39,56,73,90"
+    },
+    "generalEmail": null,
+    "generalPhone": null,
+    "press": {
+      "email": null,
+      "phone": null,
+      "kitUrl": null,
+      "status": "pendente"
+    },
+    "careers": {
+      "email": null,
+      "talentPoolUrl": null,
+      "status": "pendente"
+    },
+    "pending": [
+      "generalEmail",
+      "generalPhone",
+      "press.email",
+      "press.phone",
+      "press.kitUrl",
+      "careers.email",
+      "careers.talentPoolUrl"
+    ],
+    "status": "parcial"
+  },
+  "commitments": {
+    "note": "Compromissos em evolução. Estamos estruturando nossos indicadores e metas públicas.",
+    "metricsStatus": "pendente",
+    "status": "em_evolucao",
+    "source": [
+      "docs/olimpo/BRIEFING.md#2.4"
+    ],
+    "items": [
+      {
+        "id": "acesso",
+        "name": "Acesso",
+        "description": "Crédito transparente e condições claras para democratizar o acesso à tecnologia."
+      },
+      {
+        "id": "circularidade",
+        "name": "Circularidade",
+        "description": "Estruturar logística reversa e descarte responsável de eletrônicos."
+      },
+      {
+        "id": "pessoas",
+        "name": "Pessoas",
+        "description": "Formação contínua e oportunidades de carreira para o nosso time."
+      },
+      {
+        "id": "transparencia",
+        "name": "Transparência",
+        "description": "Comunicação clara sobre preços, prazos e condições."
+      }
+    ]
+  },
+  "governance": {
+    "leadership": null,
+    "board": null,
+    "status": "pendente",
+    "pending": [
+      "leadership",
+      "board"
+    ],
+    "note": "Nomes, cargos e bios não foram informados; não preencher sem autorização de uso."
+  },
+  "international": {
+    "operation": null,
+    "confirmedCountries": [
+      "BR"
+    ],
+    "ambition": "global",
+    "status": "pendente",
+    "note": "Nenhuma operação internacional confirmada; 'ambição global' é posicionamento, não operação."
+  },
+  "links": {
+    "website": "https://miplacemagazine.com.br/",
+    "catalog": "#catalogo",
+    "stores": "#presenca",
+    "legal": {
+      "privacy": "/privacidade.html",
+      "terms": "/termos.html",
+      "accessibility": "/acessibilidade.html",
+      "status": "planejado"
+    },
+    "press": "#imprensa",
+    "careers": "#carreiras",
+    "status": "parcial"
+  }
+}

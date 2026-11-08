@@ -13,6 +13,17 @@ declare global {
     STORES: Store[];
     MiplaceWishlist: WishlistAPI;
     MiplaceCatalog: { getStore: () => CatalogState; brands: CatalogFilter[] };
+    MiplaceI18n: {
+      getLocale: () => string;
+      setLocale: (locale: string) => void;
+      t: (key: string) => string;
+      apply: () => void;
+    };
+    MiplaceAnalytics?: {
+      track: (name: string, props?: Record<string, unknown>) => boolean;
+      page: (section: string) => boolean;
+    };
+    refreshCorporateReveal?: () => void;
 
     initScrollReveal: () => void;
     initRevealIn: (container: ParentNode) => void;
@@ -41,6 +52,7 @@ declare global {
     closeLightbox: () => void;
     injectSchemaOrg: () => void;
     renderContactDropdown: (id: string) => void;
+    renderContactLinks: (id: string) => void;
     renderStoreCards: (id: string) => void;
   }
 }

@@ -1,0 +1,1149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miplace:company:1.0.0",
+  "title": "Miplace Group — company.json",
+  "description": "Contrato da camada de conteúdo corporativo do site Miplace Group. Campos sem fonte confirmada devem ser null com status pendente.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "_meta",
+    "identity",
+    "tagline",
+    "descriptor",
+    "positioning",
+    "facts",
+    "businessUnits",
+    "brands",
+    "commerce",
+    "stores",
+    "channels",
+    "commitments",
+    "governance",
+    "international",
+    "links"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "_meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "identity": {
+      "$ref": "#/$defs/identity"
+    },
+    "tagline": {
+      "type": "string",
+      "minLength": 1
+    },
+    "descriptor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "positioning": {
+      "$ref": "#/$defs/positioning"
+    },
+    "facts": {
+      "$ref": "#/$defs/facts"
+    },
+    "businessUnits": {
+      "$ref": "#/$defs/businessUnits"
+    },
+    "brands": {
+      "$ref": "#/$defs/brands"
+    },
+    "commerce": {
+      "$ref": "#/$defs/commerce"
+    },
+    "stores": {
+      "$ref": "#/$defs/stores"
+    },
+    "channels": {
+      "$ref": "#/$defs/channels"
+    },
+    "commitments": {
+      "$ref": "#/$defs/commitments"
+    },
+    "governance": {
+      "$ref": "#/$defs/governance"
+    },
+    "international": {
+      "$ref": "#/$defs/international"
+    },
+    "links": {
+      "$ref": "#/$defs/links"
+    }
+  },
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "confirmado",
+        "parcial",
+        "pendente",
+        "em_evolucao",
+        "planejado"
+      ]
+    },
+    "dateString": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "sourceList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "pendingList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "contentVersion",
+        "status",
+        "locale",
+        "generatedAt",
+        "updatedAt",
+        "validUntil",
+        "sources",
+        "pending",
+        "notes"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "locale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generatedAt": {
+          "$ref": "#/$defs/dateString"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/dateString"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/dateString"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "path",
+              "capturedAt"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "capturedAt": {
+                "$ref": "#/$defs/dateString"
+              }
+            }
+          }
+        },
+        "pending": {
+          "$ref": "#/$defs/pendingList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legalName",
+        "corporateBrand",
+        "retailBrand",
+        "editorialSignature",
+        "cnpj",
+        "foundationYear",
+        "status",
+        "pending",
+        "source"
+      ],
+      "properties": {
+        "legalName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "corporateBrand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retailBrand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "editorialSignature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cnpj": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{14}$"
+        },
+        "foundationYear": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1900,
+          "maximum": 2100
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "pending": {
+          "$ref": "#/$defs/pendingList"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        }
+      }
+    },
+    "positioning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "attributes",
+        "tone",
+        "languages",
+        "primaryLocale",
+        "status",
+        "source"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tone": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "languages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "pt-BR",
+              "en",
+              "es"
+            ]
+          }
+        },
+        "primaryLocale": {
+          "type": "string",
+          "enum": [
+            "pt-BR",
+            "en",
+            "es"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        }
+      }
+    },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "yearsInMarket",
+        "stores",
+        "cities",
+        "brands",
+        "products",
+        "asOf",
+        "status",
+        "source"
+      ],
+      "properties": {
+        "yearsInMarket": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "stores": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cities": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "brands": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "products": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "asOf": {
+          "$ref": "#/$defs/dateString"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        }
+      }
+    },
+    "businessUnits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source",
+        "items"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "description"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "brands": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "status",
+        "source",
+        "items",
+        "accessories"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "catalogBrand"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "catalogBrand": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "accessories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "category",
+              "status",
+              "note"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "category": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "$ref": "#/$defs/status"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "commerce": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "installments",
+        "notes",
+        "status",
+        "source"
+      ],
+      "properties": {
+        "installments": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max",
+            "method",
+            "creditCheck",
+            "status"
+          ],
+          "properties": {
+            "max": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 48
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "boleto",
+                "cartao",
+                "pix",
+                "dinheiro",
+                "outro"
+              ]
+            },
+            "creditCheck": {
+              "type": "boolean"
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "notes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        }
+      }
+    },
+    "stores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalSource",
+        "count",
+        "cities",
+        "items",
+        "status",
+        "pending",
+        "source"
+      ],
+      "properties": {
+        "canonicalSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "state",
+              "storeCount"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              },
+              "storeCount": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "city",
+              "state",
+              "address",
+              "phone",
+              "phoneDisplay",
+              "whatsapp",
+              "instagram",
+              "facebook",
+              "geo",
+              "openingHours"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "city": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              },
+              "address": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "street",
+                  "cep",
+                  "mapsQuery"
+                ],
+                "properties": {
+                  "street": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "cep": {
+                    "type": "string",
+                    "pattern": "^\\d{5}-\\d{3}$"
+                  },
+                  "mapsQuery": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "phone": {
+                "type": "string",
+                "pattern": "^\\+55-\\d{2}-\\d{4,5}-\\d{4}$"
+              },
+              "phoneDisplay": {
+                "type": "string",
+                "minLength": 1
+              },
+              "whatsapp": {
+                "type": "string",
+                "pattern": "^\\d{12,13}$"
+              },
+              "instagram": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "handle",
+                  "url"
+                ],
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "pattern": "^@"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https://"
+                  }
+                }
+              },
+              "facebook": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https://"
+                  }
+                }
+              },
+              "geo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "lat",
+                  "lng"
+                ],
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                  },
+                  "lng": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180
+                  }
+                }
+              },
+              "openingHours": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "weekdays": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "saturday": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sunday": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "pending": {
+          "$ref": "#/$defs/pendingList"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        }
+      }
+    },
+    "channels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "website",
+        "contactForm",
+        "storeWhatsapp",
+        "storeInstagram",
+        "storeFacebook",
+        "generalEmail",
+        "generalPhone",
+        "press",
+        "careers",
+        "pending",
+        "status"
+      ],
+      "properties": {
+        "website": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "status"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "contactForm": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "endpoint",
+            "method",
+            "status"
+          ],
+          "properties": {
+            "endpoint": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "POST"
+              ]
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "storeWhatsapp": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baseUrl",
+            "scope",
+            "status",
+            "source"
+          ],
+          "properties": {
+            "baseUrl": {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "storeInstagram": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "status",
+            "source"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "storeFacebook": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "status",
+            "source"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "generalEmail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+        },
+        "generalPhone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "press": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "email",
+            "phone",
+            "kitUrl",
+            "status"
+          ],
+          "properties": {
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kitUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^https://"
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "careers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "email",
+            "talentPoolUrl",
+            "status"
+          ],
+          "properties": {
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+            },
+            "talentPoolUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^https://"
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "pending": {
+          "$ref": "#/$defs/pendingList"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "commitments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "note",
+        "metricsStatus",
+        "status",
+        "source",
+        "items"
+      ],
+      "properties": {
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metricsStatus": {
+          "$ref": "#/$defs/status"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceList"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "description"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leadership",
+        "board",
+        "status",
+        "pending",
+        "note"
+      ],
+      "properties": {
+        "leadership": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "board": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "pending": {
+          "$ref": "#/$defs/pendingList"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "international": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "confirmedCountries",
+        "ambition",
+        "status",
+        "note"
+      ],
+      "properties": {
+        "operation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confirmedCountries": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+          }
+        },
+        "ambition": {
+          "type": "string",
+          "enum": [
+            "global",
+            "nacional",
+            "regional"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "website",
+        "catalog",
+        "stores",
+        "legal",
+        "press",
+        "careers",
+        "status"
+      ],
+      "properties": {
+        "website": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "catalog": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stores": {
+          "type": "string",
+          "minLength": 1
+        },
+        "legal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "privacy",
+            "terms",
+            "accessibility",
+            "status"
+          ],
+          "properties": {
+            "privacy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "terms": {
+              "type": "string",
+              "minLength": 1
+            },
+            "accessibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "$ref": "#/$defs/status"
+            }
+          }
+        },
+        "press": {
+          "type": "string",
+          "minLength": 1
+        },
+        "careers": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    }
+  }
+}

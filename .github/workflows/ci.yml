@@ -1,0 +1,56 @@
+name: CI
+
+# Qualidade obrigatória antes do merge. O deploy é feito pela integração
+# Git da Vercel (preview por PR e produção no merge para main), não por este
+# workflow: assim nenhum token da Vercel precisa existir no GitHub.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build e testes
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      # O `npm run build` do projeto roda `lint:fix`. O lint "seco" abaixo
+      # garante que erros reais falhem antes de qualquer auto-correção.
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck (JSDoc/TypeScript)
+        run: npm run typecheck
+
+      - name: Testes de catálogo
+        run: npm test
+
+      # Script opcional, de propriedade do Argos. Enquanto não existir no
+      # package.json, o --if-present encerra com sucesso sem quebrar o CI.
+      - name: Testes de site (quando existirem)
+        run: npm run test:site --if-present
+
+      - name: Build
+        run: npm run build

@@ -168,19 +168,19 @@
                 const tel = store.whatsapp;
                 const fmt = `(${tel.slice(2,4)}) ${tel.slice(4,9)}-${tel.slice(9)}`;
                 return `
-                <div class="p-4" style="background-color:#eaeaeb; border-left:4px solid #1c1917;">
-                    <h5 class="font-serif font-bold text-lg mb-2" style="color:#1c1917;">${escapeHTML(store.name)}</h5>
+                <div class="p-4" style="background-color:#ebe7dd; border-left:4px solid #141414;">
+                    <h5 class="font-serif font-bold text-lg mb-2" style="color:#141414;">${escapeHTML(store.name)}</h5>
                     <div class="flex flex-col gap-2">
-                        <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> ${fmt}</a>
-                        <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot text-base"></i> ${escapeHTML(store.address.street)}</a>
+                        <a href="https://wa.me/${tel}?text=${productNameEncoded}" target="_blank" rel="noopener noreferrer" class="text-sm font-sans font-bold flex items-center gap-2 w-max link-whatsapp" style="color:#141414;"><i class="fa-brands fa-whatsapp text-lg"></i> ${fmt}</a>
+                        <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="text-xs font-sans flex items-center gap-2 w-max link-maps" style="color:#4a4641;"><i class="fa-solid fa-map-location-dot text-base"></i> ${escapeHTML(store.address.street)}</a>
                     </div>
                 </div>`;
             }).join('');
             return `
-            <div id="${id}" data-contacts-panel style="display:none; background-color:#f4f4f0; color:#1c1917;" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-slide-up p-6 border z-50 max-h-[50vh] overflow-y-auto">
-                <div class="flex justify-between items-center mb-2 pb-2" style="border-bottom:1px solid rgba(28,25,23,0.2);">
-                    <span class="font-sans text-[10px] font-bold uppercase tracking-widest" style="color:#44403c;">Lojas em ${escapeHTML(city)}</span>
-                    <button type="button" data-contacts-close style="color:#1c1917;" title="Fechar" aria-label="Fechar lojas de ${escapeHTML(city)}"><i class="fa-solid fa-xmark"></i></button>
+            <div id="${id}" data-contacts-panel style="display:none; background-color:#f5f2ea; color:#141414;" class="absolute bottom-full left-0 w-full mb-4 flex-col gap-4 animate-slide-up p-6 border z-50 max-h-[50vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-2 pb-2" style="border-bottom:1px solid rgba(20,20,20,0.2);">
+                    <span class="font-sans text-[10px] font-bold uppercase tracking-widest" style="color:#4a4641;">Lojas em ${escapeHTML(city)}</span>
+                    <button type="button" data-contacts-close style="color:#141414;" title="Fechar" aria-label="Fechar lojas de ${escapeHTML(city)}"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 ${items}
             </div>`;
@@ -190,7 +190,7 @@
             const panel = `contacts-${city.toLowerCase().replace(/[^a-z]/g, '')}`;
             const filled = i === 0;
             return `
-            <button type="button" data-contacts-toggle="${panel}" class="flex-1 font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 flex items-center justify-center gap-2" style="${filled ? 'background-color:#1c1917; color:#f4f4f0;' : 'border:1px solid #1c1917; color:#1c1917; background-color:#f4f4f0;'}">
+            <button type="button" data-contacts-toggle="${panel}" class="flex-1 font-sans uppercase tracking-widest font-bold text-xs px-4 py-4 flex items-center justify-center gap-2" style="${filled ? 'background-color:#141414; color:#f5f2ea;' : 'border:1px solid #141414; color:#141414; background-color:#f5f2ea;'}">
                 <i class="fa-solid fa-location-dot"></i> ${escapeHTML(city)}
             </button>`;
         }).join('');
@@ -206,9 +206,9 @@
      */
     function buildGalleryHTML(galleryImages) {
         if (galleryImages.length === 0) {
-            return `<div class="w-full flex items-center justify-center h-full"><i class="fa-solid fa-mobile-screen text-8xl" style="color:rgba(28,25,23,0.2);"></i></div>`;
+            return `<div class="w-full flex items-center justify-center h-full"><i class="fa-solid fa-mobile-screen text-8xl" style="color:rgba(20,20,20,0.2);"></i></div>`;
         }
-        return `<div class="w-full flex flex-col gap-3 p-3">${galleryImages.map((img, i) => `<div class="w-full aspect-video rounded-sm overflow-hidden relative cursor-zoom-in group transition-all duration-300 modal-thumb" style="background-color:#f4f4f0; border:1px solid rgba(28,25,23,0.1); --thumb-delay: ${Math.min(i, 6) * 80}ms;" data-lightbox-open="${i}" title="Clique para ampliar"><img ${i === 0 ? 'id="modal-hero-img" ' : ''}src="${escapeHTML(img)}" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background-color:rgba(28,25,23,0.1);"><span class="text-[9px] font-sans uppercase tracking-widest px-2 py-1 rounded-sm" style="background-color:#1c1917; color:#f4f4f0;">Ampliar</span></div></div>`).join('')}</div>`;
+        return `<div class="w-full flex flex-col gap-3 p-3">${galleryImages.map((img, i) => `<div class="w-full aspect-video rounded-sm overflow-hidden relative cursor-zoom-in group transition-all duration-300 modal-thumb" style="background-color:#f5f2ea; border:1px solid rgba(20,20,20,0.1); --thumb-delay: ${Math.min(i, 6) * 80}ms;" data-lightbox-open="${i}" title="Clique para ampliar"><img ${i === 0 ? 'id="modal-hero-img" ' : ''}src="${escapeHTML(img)}" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background-color:rgba(20,20,20,0.1);"><span class="text-[9px] font-sans uppercase tracking-widest px-2 py-1 rounded-sm" style="background-color:#141414; color:#f5f2ea;">Ampliar</span></div></div>`).join('')}</div>`;
     }
 
     /**
@@ -217,7 +217,7 @@
      */
     function buildSpecsHTML(specs) {
         if (!specs || !specs.length) return '';
-        return `<div class="mt-8 pt-6" style="border-top:1px solid #1c1917;"><h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4" style="color:#1c1917;">Ficha Técnica</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm font-sans">${specs.map(spec => `<div class="pb-2" style="border-bottom:1px solid rgba(28,25,23,0.1);"><span class="block text-[10px] uppercase tracking-widest" style="color:#44403c;">${escapeHTML(spec.label)}</span><span class="font-medium" style="color:#1c1917;">${escapeHTML(spec.value)}</span></div>`).join('')}</div></div>`;
+        return `<div class="mt-8 pt-6" style="border-top:1px solid #141414;"><h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4" style="color:#141414;">Ficha Técnica</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm font-sans">${specs.map(spec => `<div class="pb-2" style="border-bottom:1px solid rgba(20,20,20,0.1);"><span class="block text-[10px] uppercase tracking-widest" style="color:#4a4641;">${escapeHTML(spec.label)}</span><span class="font-medium" style="color:#141414;">${escapeHTML(spec.value)}</span></div>`).join('')}</div></div>`;
     }
 
     /**
@@ -226,7 +226,7 @@
      */
     function buildHighlightsHTML(highlights) {
         if (!highlights || !highlights.length) return '';
-        return `<div class="mt-8"><h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4" style="color:#1c1917;">Destaques</h4><ul class="space-y-4">${highlights.map(h => `<li class="font-sans text-sm"><strong class="block mb-1" style="color:#1c1917;">${escapeHTML(h.title)}</strong><span class="leading-relaxed" style="color:#44403c;">${escapeHTML(h.text)}</span></li>`).join('')}</ul></div>`;
+        return `<div class="mt-8"><h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4" style="color:#141414;">Destaques</h4><ul class="space-y-4">${highlights.map(h => `<li class="font-sans text-sm"><strong class="block mb-1" style="color:#141414;">${escapeHTML(h.title)}</strong><span class="leading-relaxed" style="color:#4a4641;">${escapeHTML(h.text)}</span></li>`).join('')}</ul></div>`;
     }
 
     /**
@@ -259,31 +259,31 @@
 
         if (product.description) {
             dom.modalContent.innerHTML = `
-                <div class="w-full md:w-5/12 overflow-y-auto modal-scroll-pane" style="background-color:#eaeaeb; border-right:1px solid rgba(28,25,23,0.1); max-height:95vh;">
+                <div class="w-full md:w-5/12 overflow-y-auto modal-scroll-pane" style="background-color:#ebe7dd; border-right:1px solid rgba(20,20,20,0.1); max-height:95vh;">
                     <div class="w-full">${galleryHTML}</div>
                 </div>
-                <div class="w-full md:w-7/12 px-8 py-10 md:px-14 md:py-12 flex flex-col overflow-y-auto modal-scroll-pane modal-cascade" style="background-color:#f4f4f0; color:#1c1917; max-height:95vh;">
-                    <div class="mb-3"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#44403c;">${escapeHTML(product.brand)}</span></div>
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-5 leading-none" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
-                    ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-8 inline-block w-max" style="color:#1c1917; border-bottom:2px solid #1c1917;">${escapeHTML(product.price)}</p>` : ''}
-                    <p class="font-sans text-sm md:text-base leading-relaxed mb-8" style="color:#44403c;">${escapeHTML(product.description)}</p>
+                <div class="w-full md:w-7/12 px-8 py-10 md:px-14 md:py-12 flex flex-col overflow-y-auto modal-scroll-pane modal-cascade" style="background-color:#f5f2ea; color:#141414; max-height:95vh;">
+                    <div class="mb-3"><span class="font-sans text-[10px] font-bold uppercase tracking-[0.2em]" style="color:#4a4641;">${escapeHTML(product.brand)}</span></div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-5 leading-none" style="color:#141414;">${escapeHTML(product.name)}</h2>
+                    ${product.price ? `<p class="font-sans text-xl font-bold pb-4 mb-8 inline-block w-max" style="color:#141414; border-bottom:2px solid #141414;">${escapeHTML(product.price)}</p>` : ''}
+                    <p class="font-sans text-sm md:text-base leading-relaxed mb-8" style="color:#4a4641;">${escapeHTML(product.description)}</p>
                     ${highlightsHTML}${specsHTML}
-                    <div class="mt-12 pt-10 w-full relative" style="border-top:1px solid #1c1917;">
-                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-5" style="color:#1c1917;">Escolha a cidade para comprar</h4>
+                    <div class="mt-12 pt-10 w-full relative" style="border-top:1px solid #141414;">
+                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-5" style="color:#141414;">Escolha a cidade para comprar</h4>
                         <div class="relative w-full">${contactsHTML}</div>
                     </div>
                 </div>
                 ${wishlistButton}`;
         } else {
             dom.modalContent.innerHTML = `
-                <div class="w-full p-12 flex flex-col items-center justify-center min-h-[40vh] text-center" style="background-color:#f4f4f0;">
-                    <div class="w-32 h-32 rounded-full flex items-center justify-center mb-6" style="background-color:#eaeaeb;">
-                        ${product.image ? `<img src="${escapeHTML(product.image)}" class="w-20 h-20 object-contain" decoding="async" alt="${escapeHTML(product.name)}">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(28,25,23,0.2);"></i>`}
+                <div class="w-full p-12 flex flex-col items-center justify-center min-h-[40vh] text-center" style="background-color:#f5f2ea;">
+                    <div class="w-32 h-32 rounded-full flex items-center justify-center mb-6" style="background-color:#ebe7dd;">
+                        ${product.image ? `<img src="${escapeHTML(product.image)}" class="w-20 h-20 object-contain" decoding="async" alt="${escapeHTML(product.name)}">` : `<i class="fa-solid fa-mobile-screen text-4xl" style="color:rgba(20,20,20,0.2);"></i>`}
                     </div>
-                    <h2 class="font-serif text-3xl font-bold mb-4" style="color:#1c1917;">${escapeHTML(product.name)}</h2>
-                    <p class="font-sans mb-8" style="color:#44403c;">Ainda estamos preparando os detalhes deste editorial.</p>
-                    <div class="mt-8 pt-8 w-full text-left relative" style="border-top:1px solid #1c1917;">
-                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4 text-center" style="color:#1c1917;">Escolha a cidade para comprar</h4>
+                    <h2 class="font-serif text-3xl font-bold mb-4" style="color:#141414;">${escapeHTML(product.name)}</h2>
+                    <p class="font-sans mb-8" style="color:#4a4641;">Ainda estamos preparando os detalhes deste editorial.</p>
+                    <div class="mt-8 pt-8 w-full text-left relative" style="border-top:1px solid #141414;">
+                        <h4 class="font-sans text-xs uppercase tracking-[0.2em] font-bold mb-4 text-center" style="color:#141414;">Escolha a cidade para comprar</h4>
                         <div class="relative w-full">${contactsHTML}</div>
                     </div>
                 </div>

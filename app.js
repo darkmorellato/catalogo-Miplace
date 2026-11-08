@@ -1,5 +1,5 @@
 // ============================================================
-// MIPLACE MAGAZINE — app.js
+// MIPLACE GROUP — app.js
 // Entrada principal: dados, inicialização e efeitos visuais
 // Módulos: modules/ui.js, modules/catalog.js, modules/modal.js
 // @ts-check
@@ -7,6 +7,25 @@
 
 (() => {
     'use strict';
+
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    /** @returns {void} */
+    function forcePageTop() {
+        const html = document.documentElement;
+        const previous = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, 0);
+        html.scrollTop = 0;
+        document.body.scrollTop = 0;
+        html.style.scrollBehavior = previous;
+    }
+
+    forcePageTop();
+    document.addEventListener('DOMContentLoaded', forcePageTop, { once: true });
+    window.addEventListener('pageshow', event => {
+        if (event.persisted) forcePageTop();
+    });
 
     /** @type {AppState} */
     const state = {
@@ -88,12 +107,12 @@
         const banner = document.createElement('div');
         banner.id = 'produtos-error-banner';
         banner.className = 'col-span-full flex flex-col items-center justify-center py-16 px-6 text-center mb-8';
-        banner.style.cssText = 'background-color:#fef2f2;border:1px solid #991b1b;color:#1c1917;';
+        banner.style.cssText = 'background-color:#fef2f2;border:1px solid #8c1d1d;color:#141414;';
         banner.innerHTML = `
-            <i class="fa-solid fa-triangle-exclamation text-3xl mb-4" style="color:#991b1b;" aria-hidden="true"></i>
-            <h3 class="font-serif text-xl mb-2" style="color:#991b1b;">Não conseguimos carregar o catálogo</h3>
-            <p class="font-sans text-xs mb-4" style="color:#44403c;">Verifique sua conexão e tente novamente.</p>
-            <button type="button" id="produtos-retry-btn" class="font-sans uppercase tracking-widest text-xs font-bold px-6 py-2" style="background-color:#1c1917;color:#f4f4f0;">Tentar novamente</button>
+            <i class="fa-solid fa-triangle-exclamation text-3xl mb-4" style="color:#8c1d1d;" aria-hidden="true"></i>
+            <h3 class="font-serif text-xl mb-2" style="color:#8c1d1d;">Não conseguimos carregar o catálogo</h3>
+            <p class="font-sans text-xs mb-4" style="color:#4a4641;">Verifique sua conexão e tente novamente.</p>
+            <button type="button" id="produtos-retry-btn" class="font-sans uppercase tracking-widest text-xs font-bold px-6 py-2" style="background-color:#141414;color:#f5f2ea;">Tentar novamente</button>
         `;
         grid.prepend(banner);
         const btn = /** @type {HTMLButtonElement | null} */ (document.getElementById('produtos-retry-btn'));
@@ -139,7 +158,7 @@
 
     /** @returns {void} */
     function setupMagneticLinks() {
-        const nav = document.querySelector('nav .hidden.md\\:flex');
+        const nav = document.querySelector('nav.desktop-nav');
         if (!(nav instanceof HTMLElement)) return;
         const links = nav.querySelectorAll('a');
         if (!links.length) return;
@@ -214,6 +233,7 @@
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
+                document.body.classList.toggle('is-scrolled', winScroll > 280);
                 if (state.scrollProgress) state.scrollProgress.style.width = scrolled + '%';
                 if (state.backToTop) {
                     const visible = winScroll > 400;
@@ -229,41 +249,125 @@
         }
     }
 
-    /** @returns {void} */
+    /**
+     * Trilha de fundo com controle explícito e volume baixo.
+     * A música só começa no clique do botão: o navegador libera áudio
+     * após um gesto e o controle mantém o estado previsível.
+     * @returns {void}
+     */
     function setupAudio() {
         const bg = document.getElementById('bg-music');
         const control = document.getElementById('audio-control');
         const icon = document.getElementById('audio-icon');
         const pulse = document.getElementById('audio-pulse');
         if (!(bg instanceof HTMLAudioElement) || !(control instanceof HTMLElement) || !(icon instanceof HTMLElement)) return;
-        state.audio.bg = bg;
-        state.audio.control = control;
-        state.audio.icon = icon;
 
-        const toggle = () => {
-            if (state.audio.isPlaying) {
-                bg.pause();
-                icon.classList.remove('fa-compact-disc', 'animate-spin-slow');
-                icon.classList.add('fa-music');
-                if (pulse) pulse.classList.remove('hidden');
-                state.audio.isPlaying = false;
-            } else {
-                bg.volume = 0.05;
-                bg.play().then(() => {
-                    icon.classList.remove('fa-music');
-                    icon.classList.add('fa-compact-disc', 'animate-spin-slow');
-                    if (pulse) pulse.classList.add('hidden');
-                    state.audio.isPlaying = true;
-                }).catch(err => console.log('Autoplay bloqueado pelo navegador:', err));
-            }
+        const TARGET_VOLUME = 0.07;
+        let isPlaying = false;
+        let isLoading = false;
+        let fadeFrame = 0;
+        let pauseTimer = 0;
+
+        const t = (/** @type {string} */ key, /** @type {string} */ fallback) => window.MiplaceI18n?.t(key) || fallback;
+
+        const setVisualState = () => {
+            control.classList.toggle('is-playing', isPlaying);
+            control.classList.toggle('is-loading', isLoading);
+            control.setAttribute('aria-pressed', String(isPlaying));
+            control.setAttribute('aria-busy', String(isLoading));
+            control.setAttribute('aria-label', t(isPlaying ? 'audio.pause' : 'audio.play', isPlaying ? 'Pausar música de fundo' : 'Ativar música de fundo'));
+            control.title = t('audio.title', 'Música de fundo');
+            icon.classList.remove('fa-spinner', 'fa-spin');
+            icon.classList.toggle('fa-music', !isPlaying && !isLoading);
+            icon.classList.toggle('fa-pause', isPlaying);
+            if (isLoading) icon.classList.add('fa-spinner', 'fa-spin');
+            if (pulse) pulse.classList.toggle('hidden', isPlaying);
         };
 
-        control.addEventListener('click', e => { e.stopPropagation(); toggle(); });
-        document.body.addEventListener('click', function firstInteraction(e) {
-            const target = /** @type {Node | null} */ (e.target);
+        /**
+         * @param {number} target
+         * @param {number} duration
+         * @returns {void}
+         */
+        const fadeTo = (target, duration) => {
+            cancelAnimationFrame(fadeFrame);
+            const start = performance.now();
+            const initial = bg.volume;
+            const step = (/** @type {DOMHighResTimeStamp} */ now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                bg.volume = initial + (target - initial) * progress;
+                if (progress < 1) fadeFrame = requestAnimationFrame(step);
+            };
+            fadeFrame = requestAnimationFrame(step);
+        };
+
+        /** Pré-carrega ao passar o mouse ou focar o botão, sem tocar. */
+        const warm = () => {
+            if (bg.readyState > 0 || isLoading) return;
+            bg.preload = 'auto';
+            bg.load();
+        };
+
+        const play = () => {
+            if (isLoading) return;
+            window.clearTimeout(pauseTimer);
+            isLoading = true;
+            setVisualState();
+            bg.volume = 0;
+            bg.play().then(() => {
+                isPlaying = true;
+                isLoading = false;
+                setVisualState();
+                fadeTo(TARGET_VOLUME, 1200);
+            }).catch(err => {
+                console.log('Não foi possível tocar a música:', err);
+                isPlaying = false;
+                isLoading = false;
+                setVisualState();
+            });
+        };
+
+        const pause = () => {
+            isPlaying = false;
+            setVisualState();
+            fadeTo(0, 220);
+            window.clearTimeout(pauseTimer);
+            pauseTimer = window.setTimeout(() => {
+                bg.pause();
+            }, 230);
+        };
+
+        const toggle = () => { if (isPlaying) pause(); else play(); };
+
+        bg.addEventListener('play', () => {
+            if (isPlaying) return;
+            isPlaying = true;
+            setVisualState();
+        });
+        bg.addEventListener('pause', () => {
+            if (!isPlaying) return;
+            isPlaying = false;
+            setVisualState();
+        });
+
+        control.addEventListener('click', event => {
+            event.stopPropagation();
+            toggle();
+        });
+        control.addEventListener('pointerenter', warm, { passive: true });
+        control.addEventListener('focus', warm);
+
+        // Autoplay no primeiro clique em qualquer área da página. O botão
+        // de música é a única forma de pausar; clicar fora não interrompe.
+        // O capture garante que o gesto seja lido antes de stopPropagation.
+        document.addEventListener('click', event => {
+            const target = /** @type {Node | null} */ (event.target);
             if (target && control.contains(target)) return;
-            if (!state.audio.isPlaying) toggle();
-        }, { once: true });
+            if (!isPlaying) play();
+        }, { once: true, capture: true });
+
+        setVisualState();
+        window.addEventListener('miplace:localechange', setVisualState);
     }
 
     /** @returns {void} */
@@ -325,20 +429,6 @@
     }
 
     /** @returns {void} */
-    function setupHeroTitleSplit() {
-        const h1 = document.querySelector('h1.font-serif');
-        if (!(h1 instanceof HTMLElement) || h1.dataset.splitDone) return;
-        h1.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        const text = h1.textContent?.trim() || '';
-        h1.innerHTML = text.split('').map((ch, i) =>
-            ch === ' '
-                ? ' '
-                : `<span class="split-letter" style="animation-delay:${i * 0.06}s">${ch}</span>`
-        ).join('');
-        h1.dataset.splitDone = '1';
-    }
-
-    /** @returns {void} */
     function setupContactDropdown() {
         document.addEventListener('click', e => {
             const target = /** @type {Node} */ (e.target);
@@ -363,14 +453,6 @@
                 window.toggleContato();
                 return;
             }
-            if (target.closest('#hamburger-btn')) {
-                window.toggleMobileMenu();
-                return;
-            }
-            if (target.closest('[data-close-mobile-menu]')) {
-                window.closeMobileMenu();
-                return;
-            }
             if (target.closest('[data-clear-search]')) {
                 window.clearSearch();
                 return;
@@ -380,11 +462,26 @@
 
     /** @returns {void} */
     function registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
-                .catch(err => console.warn('[PWA] Falha:', err));
+        if (!('serviceWorker' in navigator)) return;
+
+        const local = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+        if (local) {
+            // Em desenvolvimento, o SW só atrapalha: serve JS/CSS antigos
+            // enquanto os arquivos mudam. Desregistra e limpa o cache local.
+            navigator.serviceWorker.getRegistrations()
+                .then(regs => Promise.all(regs.map(reg => reg.unregister())))
+                .catch(() => {});
+            if ('caches' in window) {
+                caches.keys()
+                    .then(keys => Promise.all(keys.map(key => caches.delete(key))))
+                    .catch(() => {});
+            }
+            return;
         }
+
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
+            .catch(err => console.warn('[PWA] Falha:', err));
     }
 
     /** @returns {void} */
@@ -392,7 +489,6 @@
         state.backToTop = document.getElementById('back-to-top');
         state.scrollProgress = document.getElementById('scroll-progress');
 
-        if (typeof window.injectSchemaOrg === 'function') window.injectSchemaOrg();
         if (typeof window.initCatalog === 'function') window.initCatalog();
         if (typeof window.initModal === 'function') window.initModal();
         if (typeof window.initSearch === 'function') window.initSearch();
@@ -405,15 +501,15 @@
             if (window.MiplaceWishlist) window.MiplaceWishlist.refresh();
         });
         window.renderContactDropdown('contato-dropdown-content');
+        window.renderContactLinks('contact-store-list');
         window.renderStoreCards('stores-grid');
-        document.querySelectorAll('#stores-grid .reveal').forEach(el => el.classList.add('active'));
+        if (typeof window.refreshCorporateReveal === 'function') window.refreshCorporateReveal();
 
         setupContactDropdown();
         setupInlineDelegation();
         registerServiceWorker();
         setupScroll();
         setupAudio();
-        setupHeroTitleSplit();
         setupParallax();
         setupMagneticLinks();
         setupRipple();

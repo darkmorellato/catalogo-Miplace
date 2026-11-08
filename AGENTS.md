@@ -1,4 +1,4 @@
-# AGENTS.md — Convenções do projeto Miplace Magazine
+# AGENTS.md — Convenções do projeto Miplace Group
 
 > Catálogo digital de smartphones e tablets premium. Stack: **vanilla JS + Tailwind v4 + PWA** (sem framework).
 > Este arquivo documenta convenções, comandos e arquitetura para assistentes de IA e contribuidores.
@@ -19,7 +19,7 @@
 - **Dados**: `produtos.json` é a fonte canônica; carregado por `app.js` via `fetch()` com retry exponencial e banner de erro inline. Campo opcional `category` (`'Celular'` implícito | `'Tablet'`) alimenta o chip de filtro "Tablets".
 - **Marcas válidas**: `Realme, Honor, Motorola, Redmi, Poco, iPhone, Samsung, Infinix, Tecno` (lista única em `modules/catalog.js`, `types/product.d.ts`, `scripts/validate-products.js` — alterar nos 3 lugares).
 - **PWA**: Service Worker (`sw.js`, `BUILD_TIMESTAMP = '1.2.1'`) com cache-first para assets, network-first para `produtos.json` e navegações.
-- **Hero**: vídeo institucional local (`videos/hero.mp4`, 720² h264 ~4,4 MB, sem áudio, autoplay muted loop) exibido dentro da moldura (`moldura-celular.webp`) com poster `videos/hero-poster.webp`.
+- **Hero**: vídeo institucional local (`videos/hero-1080.mp4`, 1080² h264 ~9,8 MB, sem áudio, autoplay muted loop) exibido em painel cinematográfico sem moldura, com poster `videos/hero-poster-1080.webp`.
 - **CSP**: definida via header em `vercel.json` (não usar `<meta>` per spec).
 - **Headers de segurança**: HSTS, Permissions-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy.
 
@@ -61,7 +61,7 @@
 catalogo-Miplace-main/
 ├── index.html                    # HTML único, scripts com ?v=1.2.0 (cache-bust)
 ├── app.js                        # Entry: init, parallax, scroll, audio, SW
-├── stores.js                     # 5 lojas (Piracicaba/Amparo), STORES global
+├── stores.js                     # 4 lojas (Piracicaba/Amparo), STORES global
 ├── modules/
 │   ├── ui.js                     # trapFocus, debounce, trackEvent, playUIClick, menus
 │   ├── catalog.js                # Filtros (marcas + Tablets), busca, render, carrossel com IntersectionObserver
@@ -132,3 +132,40 @@ catalogo-Miplace-main/
 - **index.html**: scripts com `?v=1.1.1` para forçar bypass do SW
 - **Removido**: `<meta http-equiv="Content-Security-Policy-Report-Only">` (inválido em meta per spec)
 - **v1.2.0**: hero simplificado `<picture>`→`<img webp>` (216 KB → 44 KB); `styles.css` ganhou `?v=` (estava `immutable` sem bust); `convert-webp.js` DIRS corrigidos (minúsculos, batem com o disco); `validate-products` passou a exigir existência dos arquivos de imagem; duplicatas mortas removidas (MP3 `peacefull` + 12 PNGs ≈ 22 MB); `jsconfig.json` perdeu `baseUrl`/`paths` (removidos no TS 7); `.eslintrc.json` legado removido; migração Tailwind v4 (`tailwind.config.js` → `@theme` em `src/input.css`).
+
+## 10. Camada corporativa v2.0.5 (2026-11-07)
+
+- **Posicionamento:** home única corporativa Miplace Group, com a assinatura editorial Miplace Magazine preservada na coleção. Seções: `inicio`, `sobre`, `numeros`, `negocios`, `marcas`, `presenca`, `compromissos`, `carreiras`, `imprensa`, `catalogo`, `contato`.
+- **Novos módulos:** `modules/i18n.js` (PT/EN/ES), `modules/corporate.js` (menu, contadores, reveal, acordeões, formulário, capítulos editoriais do Manifesto), `modules/analytics.js` (privacy-first) e `modules/concierge.js` (FAQ local em Shadow DOM).
+- **Manifesto editorial:** `#sobre` usa três capítulos com mídia sticky, crossfade e contador; `IntersectionObserver` em `corporate.js`, sem listener de scroll; mobile e reduced motion estáticos.
+- **Dados:** `content/company.json` + schema (dados corporativos, lacunas como `null`), `content/concierge-faq.json` e `docs/olimpo/PENDENCIAS.md`.
+- **API:** `api/contact.js` (Vercel Node, validação, honeypot, rate limit, Resend opcional). Contrato em `docs/olimpo/API_CONTATO.md`.
+- **PWA:** `sw.js` com `BUILD_TIMESTAMP`, precache versionado e CSS fora do cache do worker; `offline.html` autocontido.
+- **Segurança:** CSP/headers em `vercel.json`, `.vercelignore` para não publicar docs/scripts de desenvolvimento.
+- **Docs:** briefing, requisitos, arquitetura, design system, dados, QA, segurança, infra, DevOps, IA e plano em `docs/olimpo/`.
+- **Comandos:** `npm run build`, `npm test`, `npm run test:site`, `npm run dev`.
+- **Regra de release:** subir `package.json`, `?v=` dos assets e `BUILD_TIMESTAMP` do `sw.js` no mesmo commit.
+
+## 11. Scroll global v2.0.7 (2026-11-08)
+
+- **Motor:** `modules/scroll.js` usa um único listener de `scroll` com `requestAnimationFrame` e grava `--p`/`--pe` em `[data-scroll]`; `IntersectionObserver` limita o cálculo às seções próximas.
+- **Modos:** `hero` (saída do topo), `pin` (progresso interno do Manifesto) e `cover` (cobertura das demais seções e do rodapé).
+- **Camadas:** títulos/réguas, linha de progresso do Manifesto, régua de Números, watermarks em Negócios/Presença e rodapé. O conteúdo continua one-shot; só a decoração reverte ao subir.
+- **Sem objeto 3D:** o prisma do Hero e de Compromissos foi removido na v2.0.7 a pedido do usuário.
+- **Fallback:** watermarks ocultos abaixo de 640px; `prefers-reduced-motion` desliga os transforms e mantém o conteúdo legível.
+- **Release:** `modules/scroll.js` entrou no precache do `sw.js`; assets em `?v=2.0.7`.
+
+## 12. Áudio de fundo v2.0.10 (2026-11-08)
+
+- **Gestos:** o primeiro clique em qualquer área da página inicia a música; depois disso, clicar fora não pausa nem reinicia. A pausa é feita apenas em `#audio-control`; o primeiro clique no botão também toca e o segundo pausa.
+- **Fonte:** `audio/peaceful-days.mp3` em 128 kbps (2,6 MB) como principal e o MP3 original em 320 kbps como fallback.
+- **Carregamento:** `preload="none"` por padrão; o arquivo é aquecido em `pointerenter`/`focus` e o botão mostra spinner com `aria-busy` enquanto `play()` resolve.
+- **Volume:** fade de entrada até `0.07`; pausa com fade curto.
+
+## 13. Contato v2.0.9 (2026-11-08)
+
+- **Caminho principal:** `POST /api/contact` na Vercel, com Resend e as variáveis `RESEND_API_KEY`/`CONTACT_FROM_EMAIL`.
+- **Fallback:** se a API retornar 404, 502 ou 503, ou falhar por rede, `modules/corporate.js` envia por `https://formsubmit.co/ajax/contasgeraljack@gmail.com`.
+- **Ativação:** o FormSubmit exige uma ativação única no e-mail de destino; o link foi solicitado em 2026-11-08.
+- **CSP:** `connect-src` inclui `https://formsubmit.co`; a política de privacidade registra o operador de contingência.
+- **Teste local:** funciona em servidor estático porque o fallback é chamado direto pelo navegador.

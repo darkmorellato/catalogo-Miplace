@@ -1,0 +1,26 @@
+# Arquivos de desenvolvimento, documentação e CI que não devem ser publicados.
+# O build da Vercel continua tendo acesso a package.json, src/, types/, jsconfig.json
+# e scripts/validate-products.js; apenas os artefatos internos abaixo são excluídos.
+
+docs/
+design/
+tests/
+.github/
+AGENTS.md
+README.md
+CHANGELOG.md
+
+# Scripts de desenvolvimento (validate-products.js é usado no build e permanece)
+scripts/test-site.js
+scripts/test-snapshot.js
+scripts/convert-webp.js
+scripts/patch-html.js
+scripts/update-refs-webp.js
+scripts/.products-snapshot.json
+
+# Dependências, segredos e artefatos locais
+node_modules/
+.vercel/
+.env
+.env.*
+.DS_Store

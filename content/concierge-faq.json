@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.11.07",
+  "locale": "pt-BR",
+  "brand": "Miplace",
+  "updatedAt": "2026-11-07",
+  "disclaimer": "Respostas curtas com fatos do briefing. Preços, prazos e condições são confirmados na loja.",
+  "quickReplies": [
+    "parcelamento",
+    "garantia",
+    "lojas",
+    "falar-atendente"
+  ],
+  "fallback": {
+    "message": "Ainda não tenho essa resposta pronta. Posso te encaminhar para o time da loja — é só escolher o WhatsApp abaixo.",
+    "actions": [
+      {
+        "type": "whatsapp",
+        "label": "Falar com a loja",
+        "message": "Olá! Vim pelo site da Miplace e tenho uma dúvida."
+      },
+      {
+        "type": "anchor",
+        "label": "Ver contato",
+        "href": "#contato"
+      }
+    ]
+  },
+  "intents": [
+    {
+      "id": "parcelamento",
+      "label": "Parcelamento",
+      "questions": [
+        "Como funciona o parcelamento?",
+        "Quantas vezes posso parcelar?",
+        "O parcelamento é no boleto?",
+        "É sem consulta?",
+        "Como fica o valor da parcela?"
+      ],
+      "keywords": [
+        "parcelamento",
+        "parcelar",
+        "parcelado",
+        "boleto",
+        "24x",
+        "24 vezes",
+        "sem consulta",
+        "entrada",
+        "prestacao"
+      ],
+      "answer": "O parcelamento é em até 24x no boleto, sem consulta. O valor da parcela e as condições são confirmados na loja, de acordo com o produto.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver catálogo",
+          "href": "#catalogo"
+        },
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e queria entender as condições de parcelamento."
+        }
+      ]
+    },
+    {
+      "id": "formas-pagamento",
+      "label": "Formas de pagamento",
+      "questions": [
+        "Quais são as formas de pagamento?",
+        "Posso pagar no Pix?",
+        "Posso pagar no crédito?",
+        "Aceita cartão?",
+        "Tem outra opção além do boleto?"
+      ],
+      "keywords": [
+        "formas de pagamento",
+        "forma de pagamento",
+        "pix",
+        "cartao",
+        "dinheiro",
+        "debito",
+        "credito",
+        "pagamento"
+      ],
+      "answer": "A condição divulgada é o parcelamento em até 24x no boleto, sem consulta. Para outras formas de pagamento, confirme com a loja.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Consultar a loja",
+          "message": "Olá! Vim pelo site e queria saber quais formas de pagamento a loja aceita."
+        }
+      ]
+    },
+    {
+      "id": "garantia",
+      "label": "Garantia",
+      "questions": [
+        "O aparelho tem garantia?",
+        "Qual é o prazo de garantia?",
+        "Cobre defeito de fabricação?",
+        "Como aciono a garantia?"
+      ],
+      "keywords": [
+        "garantia",
+        "defeito",
+        "quebrou",
+        "conserto",
+        "assistencia",
+        "cobertura"
+      ],
+      "answer": "A garantia varia por marca e modelo. Confirme o prazo e a cobertura na loja; a nota fiscal é o documento da compra.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e tenho uma dúvida sobre a garantia de um aparelho."
+        }
+      ]
+    },
+    {
+      "id": "troca-devolucao",
+      "label": "Troca e devolução",
+      "questions": [
+        "Posso trocar um produto?",
+        "Como faço para devolver?",
+        "Aceita devolução por arrependimento?",
+        "Qual é a política de troca?"
+      ],
+      "keywords": [
+        "troca",
+        "trocar",
+        "devolucao",
+        "devolver",
+        "arrependimento",
+        "estorno"
+      ],
+      "answer": "Trocas e devoluções seguem o Código de Defesa do Consumidor e a política da loja. Fale com a loja onde comprou para avaliar o seu caso.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e preciso de orientação sobre troca ou devolução."
+        }
+      ]
+    },
+    {
+      "id": "lojas",
+      "label": "Lojas e endereços",
+      "questions": [
+        "Onde ficam as lojas?",
+        "Quantas lojas vocês têm?",
+        "Qual o endereço da Miplace?",
+        "Qual o horário de funcionamento?",
+        "Vocês atendem em Amparo?"
+      ],
+      "keywords": [
+        "endereco",
+        "onde fica",
+        "onde voces ficam",
+        "localizacao",
+        "como chegar",
+        "rua",
+        "avenida",
+        "cep",
+        "horario",
+        "abre",
+        "fecha",
+        "quantas lojas",
+        "quais lojas",
+        "piracicaba",
+        "amparo",
+        "lojas"
+      ],
+      "answer": "São 4 lojas: 3 em Piracicaba (XV Prime, Honor e Realme) e 1 em Amparo (Premium). Endereços e contatos estão na seção Presença. Horários, confirme com a loja.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver lojas e endereços",
+          "href": "#presenca"
+        }
+      ]
+    },
+    {
+      "id": "marcas",
+      "label": "Marcas",
+      "questions": [
+        "Quais marcas vocês trabalham?",
+        "Vocês vendem iPhone?",
+        "Tem Samsung e Motorola?",
+        "Vocês vendem Xiaomi?",
+        "O que é Rockspace?"
+      ],
+      "keywords": [
+        "marcas",
+        "apple",
+        "iphone",
+        "samsung",
+        "motorola",
+        "realme",
+        "honor",
+        "redmi",
+        "poco",
+        "infinix",
+        "tecno",
+        "xiaomi",
+        "rockspace"
+      ],
+      "answer": "Trabalhamos com Apple/iPhone, Samsung, Motorola, Realme, Honor, Redmi, Poco, Infinix e Tecno. Também temos acessórios e proteção Rockspace.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver catálogo",
+          "href": "#catalogo"
+        }
+      ]
+    },
+    {
+      "id": "produtos",
+      "label": "Produtos",
+      "questions": [
+        "Quais produtos vocês têm?",
+        "Vocês vendem tablets?",
+        "Vocês têm celular?",
+        "Vocês têm tablet?",
+        "Quais modelos estão disponíveis?"
+      ],
+      "keywords": [
+        "produtos",
+        "catalogo",
+        "modelos",
+        "celular",
+        "celulares",
+        "smartphones",
+        "tablet",
+        "tablets",
+        "colecao",
+        "o que voces vendem"
+      ],
+      "answer": "O catálogo reúne 27 produtos entre smartphones e tablets. A disponibilidade por loja é confirmada no atendimento.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Explorar o catálogo",
+          "href": "#catalogo"
+        },
+        {
+          "type": "whatsapp",
+          "label": "Consultar disponibilidade",
+          "message": "Olá! Vim pelo site e queria confirmar a disponibilidade de um modelo."
+        }
+      ]
+    },
+    {
+      "id": "precos",
+      "label": "Preços",
+      "priority": 10,
+      "questions": [
+        "Quanto custa o iPhone?",
+        "Qual é o preço do celular?",
+        "Os preços estão no site?",
+        "Tem desconto?"
+      ],
+      "keywords": [
+        "preco",
+        "valor",
+        "quanto custa",
+        "quanto e",
+        "quanto esta",
+        "custa",
+        "barato",
+        "caro",
+        "desconto"
+      ],
+      "answer": "Cada produto tem o preço indicado no catálogo. Para confirmar o valor atual e a condição de parcelamento, fale com a loja.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver preços no catálogo",
+          "href": "#catalogo"
+        },
+        {
+          "type": "whatsapp",
+          "label": "Confirmar com a loja",
+          "message": "Olá! Vim pelo site e queria confirmar o valor de um produto."
+        }
+      ]
+    },
+    {
+      "id": "estoque",
+      "label": "Disponibilidade",
+      "questions": [
+        "Tem em estoque?",
+        "O produto está disponível?",
+        "Tem pronta entrega?",
+        "A loja tem o modelo que eu quero?"
+      ],
+      "keywords": [
+        "estoque",
+        "disponivel",
+        "tem em estoque",
+        "pronta entrega",
+        "disponibilidade"
+      ],
+      "answer": "O catálogo mostra a coleção, mas a disponibilidade pode variar por loja. Confirme o modelo desejado no WhatsApp da loja.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Consultar disponibilidade",
+          "message": "Olá! Vim pelo site e queria saber se um modelo está disponível."
+        }
+      ]
+    },
+    {
+      "id": "escolher-modelo",
+      "label": "Ajuda para escolher",
+      "priority": 5,
+      "questions": [
+        "Qual celular combina comigo?",
+        "Me indica um celular bom para fotos?",
+        "Qual é o melhor celular para jogos?",
+        "Preciso de um celular com boa bateria."
+      ],
+      "keywords": [
+        "qual celular",
+        "melhor celular",
+        "me indica",
+        "indicacao",
+        "recomenda",
+        "recomendacao",
+        "fotos",
+        "camera",
+        "jogos",
+        "bateria",
+        "custo beneficio"
+      ],
+      "answer": "Conte como você usa o aparelho (fotos, jogos, bateria) e quanto pretende investir. O time da loja indica o modelo; no catálogo você também filtra por marca.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver catálogo",
+          "href": "#catalogo"
+        },
+        {
+          "type": "whatsapp",
+          "label": "Pedir indicação",
+          "message": "Olá! Vim pelo site e queria uma indicação de celular para o meu perfil."
+        }
+      ]
+    },
+    {
+      "id": "acessorios",
+      "label": "Acessórios",
+      "questions": [
+        "Vocês vendem capinha?",
+        "Tem capa ou capinha?",
+        "Tem película de vidro?",
+        "Vendem carregador?",
+        "O que é a linha Rockspace?"
+      ],
+      "keywords": [
+        "acessorios",
+        "acessorio",
+        "capa",
+        "capinha",
+        "pelicula",
+        "carregador",
+        "fone",
+        "rockspace",
+        "protecao"
+      ],
+      "answer": "Temos acessórios e proteção Rockspace. Modelos e disponibilidade são confirmados na loja.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver catálogo",
+          "href": "#catalogo"
+        },
+        {
+          "type": "whatsapp",
+          "label": "Consultar acessórios",
+          "message": "Olá! Vim pelo site e queria saber sobre acessórios disponíveis."
+        }
+      ]
+    },
+    {
+      "id": "crediario-documentos",
+      "label": "Documentos do crediário",
+      "questions": [
+        "O que preciso para comprar no crediário?",
+        "Quais documentos devo levar?",
+        "Precisa de comprovante de renda?",
+        "Como funciona a aprovação?"
+      ],
+      "keywords": [
+        "documentos",
+        "documento",
+        "preciso levar",
+        "o que levar",
+        "rg",
+        "cpf",
+        "comprovante",
+        "crediario",
+        "aprovacao"
+      ],
+      "answer": "As condições do crediário são confirmadas na loja. Não envie documentos ou dados pessoais por este chat; o time orienta o que levar.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e queria saber o que preciso para comprar no crediário."
+        }
+      ]
+    },
+    {
+      "id": "segunda-via-boleto",
+      "label": "Segunda via de boleto",
+      "priority": 5,
+      "questions": [
+        "Como pego a segunda via do boleto?",
+        "Perdi meu boleto, e agora?",
+        "O boleto venceu, como pagar?",
+        "Preciso emitir outro boleto."
+      ],
+      "keywords": [
+        "segunda via",
+        "2 via",
+        "boleto vencido",
+        "pagar o boleto",
+        "pagar boleto",
+        "emitir boleto"
+      ],
+      "answer": "Fale com a loja onde comprou pelo WhatsApp para solicitar a segunda via. Não envie CPF ou dados do boleto por este chat.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e preciso de ajuda com a segunda via do boleto."
+        }
+      ]
+    },
+    {
+      "id": "pos-venda",
+      "label": "Pós-venda e assistência",
+      "priority": 3,
+      "questions": [
+        "Meu aparelho deu problema, e agora?",
+        "Como funciona a assistência técnica?",
+        "O celular não liga, o que faço?",
+        "Preciso de suporte depois da compra."
+      ],
+      "keywords": [
+        "pos venda",
+        "assistencia",
+        "meu aparelho",
+        "quebrou",
+        "nao liga",
+        "tela",
+        "defeito",
+        "conserto",
+        "reparo"
+      ],
+      "answer": "Fale com a loja onde comprou; o time orienta sobre garantia e assistência. Não envie dados pessoais ou senhas por aqui.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Falar com a loja",
+          "message": "Olá! Vim pelo site e preciso de orientação de pós-venda."
+        }
+      ]
+    },
+    {
+      "id": "falar-atendente",
+      "label": "Falar com atendente",
+      "questions": [
+        "Quero falar com uma pessoa.",
+        "Qual é o telefone ou WhatsApp da loja?",
+        "Como entro em contato?",
+        "Tem atendimento humano?"
+      ],
+      "keywords": [
+        "atendente",
+        "humano",
+        "vendedor",
+        "whatsapp",
+        "telefone",
+        "contato",
+        "falar com alguem",
+        "atendimento",
+        "suporte"
+      ],
+      "answer": "Claro. Escolha a loja abaixo para falar no WhatsApp, ou use a seção Contato.",
+      "actions": [
+        {
+          "type": "whatsapp",
+          "label": "Escolher loja no WhatsApp",
+          "message": "Olá! Vim pelo site da Miplace e gostaria de atendimento."
+        },
+        {
+          "type": "anchor",
+          "label": "Ver contato",
+          "href": "#contato"
+        }
+      ]
+    },
+    {
+      "id": "carreiras",
+      "label": "Carreiras",
+      "questions": [
+        "Como envio meu currículo?",
+        "Vocês estão contratando?",
+        "Tem vaga de vendedor?",
+        "Quero trabalhar na Miplace.",
+        "Onde fica o banco de talentos?"
+      ],
+      "keywords": [
+        "carreira",
+        "trabalhar",
+        "emprego",
+        "vaga",
+        "curriculo",
+        "banco de talentos",
+        "estagio"
+      ],
+      "answer": "As oportunidades e o banco de talentos estão na seção Carreiras. Não envie currículo por este chat.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver carreiras",
+          "href": "#carreiras"
+        }
+      ]
+    },
+    {
+      "id": "imprensa",
+      "label": "Imprensa",
+      "questions": [
+        "Como falo com a imprensa?",
+        "Quero material institucional.",
+        "Podem me passar dados da empresa?",
+        "Como agendar uma entrevista?"
+      ],
+      "keywords": [
+        "imprensa",
+        "jornalista",
+        "entrevista",
+        "material institucional",
+        "midia",
+        "comunicacao"
+      ],
+      "answer": "Materiais institucionais e contato de imprensa estão na seção Imprensa.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Ver imprensa",
+          "href": "#imprensa"
+        }
+      ]
+    },
+    {
+      "id": "sobre",
+      "label": "Sobre a Miplace",
+      "questions": [
+        "Quem é a Miplace?",
+        "Há quanto tempo a empresa existe?",
+        "Quantos anos de mercado a Miplace tem?",
+        "Onde a Miplace atua?",
+        "Quantas marcas vocês têm?"
+      ],
+      "keywords": [
+        "quem e a miplace",
+        "quem sao voces",
+        "quem e voces",
+        "sobre a miplace",
+        "historia",
+        "7 anos",
+        "ha quanto tempo",
+        "quantos anos",
+        "anos de mercado",
+        "empresa",
+        "grupo"
+      ],
+      "answer": "A Miplace atua há 7 anos em Piracicaba e Amparo, com 4 lojas e 9 marcas globais. Curadoria, acesso facilitado e atendimento próximo.",
+      "actions": [
+        {
+          "type": "anchor",
+          "label": "Conhecer a Miplace",
+          "href": "#sobre"
+        }
+      ]
+    },
+    {
+      "id": "privacidade",
+      "label": "Privacidade",
+      "questions": [
+        "Vocês guardam o que eu escrevo aqui?",
+        "Este chat coleta meus dados?",
+        "Como funciona a privacidade do concierge?",
+        "Vocês salvam meu CPF?",
+        "Meus dados ficam salvos?"
+      ],
+      "keywords": [
+        "privacidade",
+        "lgpd",
+        "dados pessoais",
+        "dados",
+        "guarda",
+        "salva",
+        "salvam",
+        "armazena",
+        "conversa",
+        "cookie"
+      ],
+      "answer": "Este concierge roda no seu navegador: não envia sua conversa para servidor, não salva dados pessoais e não pede cadastro. Veja a Política de Privacidade.",
+      "actions": [
+        {
+          "type": "link",
+          "label": "Política de Privacidade",
+          "href": "privacidade.html"
+        }
+      ]
+    }
+  ]
+}

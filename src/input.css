@@ -6,12 +6,17 @@
 @source "../modules";
 
 @theme {
-    --font-sans: "DM Sans", sans-serif;
-    --font-serif: "Playfair Display", serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+    --font-serif: "Playfair Display", Georgia, serif;
 
-    --color-paper: #f4f4f0;
-    --color-paper-dark: #eaeaeb;
-    --color-ink: #1c1917;
-    --color-ink-light: #44403c;
-    --color-accent: #991b1b;
+    --color-paper: #f5f2ea;
+    --color-paper-2: #ebe7dd;
+    --color-paper-dark: #ebe7dd;
+    --color-ink: #141414;
+    --color-ink-2: #4a4641;
+    --color-ink-light: #4a4641;
+    --color-ink-3: #79736b;
+    --color-accent: #8c1d1d;
+    --color-gold: #b9965a;
+    --color-forest: #173b32;
 }

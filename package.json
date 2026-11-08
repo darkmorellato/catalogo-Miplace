@@ -1,12 +1,13 @@
 {
   "name": "catalogo-miplace",
-  "version": "1.2.0",
+  "version": "2.0.10",
   "private": true,
-  "description": "Catálogo digital Miplace Magazine — smartphones premium",
+  "description": "Website corporativo Miplace Group — tecnologia, catálogo e atendimento",
   "scripts": {
     "validate:products": "node scripts/validate-products.js",
     "test:snapshot": "node scripts/test-snapshot.js",
     "test": "node scripts/validate-products.js && node scripts/test-snapshot.js",
+    "test:site": "node scripts/test-site.js",
     "lint": "eslint app.js stores.js modules/ scripts/",
     "lint:fix": "eslint --fix app.js stores.js modules/ scripts/",
     "typecheck": "tsc -p jsconfig.json --noEmit",

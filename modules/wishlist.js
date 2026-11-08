@@ -336,9 +336,9 @@
         if (count === 0) {
             drawer.content.innerHTML = `
                 <div id="wishlist-empty" class="flex flex-col items-center justify-center h-full text-center py-12">
-                    <i class="fa-regular fa-heart text-5xl mb-4" style="color:rgba(28,25,23,0.2);" aria-hidden="true"></i>
-                    <h3 class="font-serif text-xl mb-2" style="color:#1c1917;">Sua lista está vazia</h3>
-                    <p class="font-sans text-xs" style="color:#44403c;">Toque no coração em qualquer produto para favoritá-lo.</p>
+                    <i class="fa-regular fa-heart text-5xl mb-4" style="color:rgba(20,20,20,0.2);" aria-hidden="true"></i>
+                    <h3 class="font-serif text-xl mb-2" style="color:#141414;">Sua lista está vazia</h3>
+                    <p class="font-sans text-xs" style="color:#4a4641;">Toque no coração em qualquer produto para favoritá-lo.</p>
                 </div>`;
             return;
         }
@@ -350,7 +350,7 @@
             return `
             <div class="wishlist-item" data-open-product="${p.id}">
                 <div class="wishlist-item-image">
-                    ${p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async">` : `<i class="fa-solid fa-mobile-screen" style="color:rgba(28,25,23,0.2);"></i>`}
+                    ${p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async">` : `<i class="fa-solid fa-mobile-screen" style="color:rgba(20,20,20,0.2);"></i>`}
                 </div>
                 <div class="wishlist-item-info">
                     <div class="wishlist-item-brand">${escapeHTML(p.brand)}</div>

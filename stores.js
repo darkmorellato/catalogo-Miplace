@@ -57,23 +57,6 @@ const STORES = [
         geo: { lat: -22.7261, lng: -47.6468 }
     },
     {
-        id: 'kassouf',
-        name: 'Miplace Kassouf',
-        city: 'Amparo',
-        logo: { jpg: 'logo/kf (1).webp', png: 'logo/kf (1).webp' },
-        address: {
-            street: 'R. Treze de Maio, 218 - sala 09 - Centro',
-            cep: '13900-005',
-            mapsQuery: 'R.+Treze+de+Maio,+218+-+sala+09+-+Centro,+Amparo+-+SP'
-        },
-        phone: '+55-19-97107-7066',
-        phoneDisplay: '(19) 97107-7066',
-        whatsapp: '5519971077066',
-        instagram: { handle: '@miplace.kassouf', url: 'https://instagram.com/miplace.kassouf' },
-        facebook: { name: 'Miplace Kassouf', url: 'https://www.facebook.com/share/1ASHdG4hNB/?mibextid=wwXIfr' },
-        geo: { lat: -22.7019, lng: -46.7706 }
-    },
-    {
         id: 'premium',
         name: 'Miplace Premium',
         city: 'Amparo',
@@ -112,10 +95,10 @@ function renderContactDropdown(containerId) {
     /** @type {(s: unknown) => string} */
     const esc = window.escapeHTML;
     const grouped = getStoresByCity();
-    let html = `<div class="border shadow-2xl flex flex-col py-2" style="background-color:#f4f4f0; border-color:#1c1917;">`;
+    let html = `<div class="border shadow-2xl flex flex-col py-2" style="background-color:#f5f2ea; border-color:#141414;">`;
     const cities = Object.keys(grouped);
     cities.forEach((city, ci) => {
-        html += `<span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#44403c; background-color:#eaeaeb;">${esc(city)}, SP</span>`;
+        html += `<span class="text-[9px] px-4 py-2 uppercase tracking-[0.2em] font-bold" style="color:#4a4641; background-color:#ebe7dd;">${esc(city)}, SP</span>`;
         grouped[city].forEach((store, si) => {
             const isLast = ci === cities.length - 1 && si === grouped[city].length - 1;
             const borderBottom = !isLast && si === grouped[city].length - 1 ? 'border-bottom:1px solid #e5e5e5;' : '';
@@ -127,6 +110,24 @@ function renderContactDropdown(containerId) {
     });
     html += `</div>`;
     container.innerHTML = html;
+}
+
+/**
+ * Lista os contatos individuais de cada loja no bloco de contato.
+ * @param {string} containerId
+ * @returns {void}
+ */
+function renderContactLinks(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    /** @type {(s: unknown) => string} */
+    const esc = window.escapeHTML;
+    container.innerHTML = STORES.map(store => `
+        <a class="contact-store-link" href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer">
+            <span class="contact-store-name">${esc(store.name)}</span>
+            <span class="contact-store-phone">${esc(store.phoneDisplay)}</span>
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>`).join('');
 }
 
 /**
@@ -143,25 +144,29 @@ function renderStoreCards(containerId) {
     const cities = Object.keys(grouped);
     cities.forEach(city => {
         html += `
-            <div class="lg:col-span-6 reveal">
-                <h3 class="font-sans uppercase tracking-[0.3em] text-lg font-bold pb-4 mb-8" style="color:#1c1917; border-bottom: 1px solid #1c1917;">${esc(city)}, SP</h3>
-                <div class="space-y-8">`;
+            <div class="store-city" data-corp-reveal>
+                <h3 class="store-city-title">${esc(city)}, SP</h3>
+                <div class="store-list">`;
         grouped[city].forEach(store => {
             html += `
-                    <div class="flex flex-col sm:flex-row justify-between sm:items-end pb-6" style="border-bottom: 1px solid rgba(28,25,23,0.2);">
-                        <div class="flex items-center gap-4">
-                            <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="Logo ${esc(store.name)}" width="64" height="64" class="w-16 h-16 rounded-full object-cover" style="border: 1px solid rgba(28,25,23,0.2);">
+                    <article class="store-card">
+                        <div class="store-card-head">
+                            <img src="${store.logo.jpg}" loading="lazy" onerror="this.onerror=null; this.src='${store.logo.png}';" alt="Logo ${esc(store.name)}" width="56" height="56" class="store-logo">
                             <div>
-                                <h4 class="font-serif text-2xl font-bold mb-2" style="color:#1c1917;">${esc(store.name)}</h4>
-                                <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm max-w-xs block hover:underline link-maps" style="color:#44403c;"><i class="fa-solid fa-map-location-dot mr-1"></i> ${esc(store.address.street)}<br>CEP: ${esc(store.address.cep)}</a>
+                                <h4>${esc(store.name)}</h4>
+                                <p>${esc(store.city)}, SP</p>
                             </div>
                         </div>
-                        <div class="flex flex-col items-start sm:items-end gap-2 mt-4 sm:mt-0">
-                            <a href="${store.instagram.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-instagram" style="color:#1c1917;"><i class="fa-brands fa-instagram text-lg"></i> ${esc(store.instagram.handle)}</a>
-                            <a href="${store.facebook.url}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-facebook" style="color:#1c1917;"><i class="fa-brands fa-facebook text-lg"></i> ${esc(store.facebook.name)}</a>
-                            <a href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer" class="font-sans text-sm font-bold flex items-center gap-2 link-whatsapp" style="color:#1c1917;"><i class="fa-brands fa-whatsapp text-lg"></i> ${esc(store.phoneDisplay)}</a>
+                        <a href="https://maps.google.com/?q=${store.address.mapsQuery}" target="_blank" rel="noopener noreferrer" class="store-address link-maps">
+                            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                            <span>${esc(store.address.street)}<br>CEP: ${esc(store.address.cep)}</span>
+                        </a>
+                        <div class="store-links">
+                            <a href="${store.instagram.url}" target="_blank" rel="noopener noreferrer" class="link-instagram" aria-label="Instagram ${esc(store.name)}"><i class="fa-brands fa-instagram" aria-hidden="true"></i> ${esc(store.instagram.handle)}</a>
+                            <a href="${store.facebook.url}" target="_blank" rel="noopener noreferrer" class="link-facebook" aria-label="Facebook ${esc(store.name)}"><i class="fa-brands fa-facebook" aria-hidden="true"></i> ${esc(store.facebook.name)}</a>
+                            <a href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener noreferrer" class="link-whatsapp" aria-label="WhatsApp ${esc(store.name)}"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ${esc(store.phoneDisplay)}</a>
                         </div>
-                    </div>`;
+                    </article>`;
         });
         html += `
                 </div>
@@ -179,29 +184,40 @@ function injectSchemaOrg() {
     /* eslint-disable quotes -- Schema.org exige aspas duplas em todas as chaves/valores */
     const schema = {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Miplace Magazine",
-        "description": "Catálogo exclusivo de smartphones premium com parcelamento em até 24x no boleto sem consulta.",
-        "url": "https://miplacemagazine.com.br/",
-        "logo": "https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png",
-        "location": STORES.map(store => ({
-            "@type": "Store",
-            "name": store.name,
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": store.address.street,
-                "addressLocality": store.city,
-                "addressRegion": "SP",
-                "postalCode": store.address.cep,
-                "addressCountry": "BR"
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://miplacemagazine.com.br/#organization",
+                "name": "Miplace Group",
+                "alternateName": "Miplace Magazine",
+                "description": "Grupo brasileiro de tecnologia e lifestyle com curadoria global, quatro lojas em Piracicaba e Amparo e parcelamento em até 24x no boleto.",
+                "url": "https://miplacemagazine.com.br/",
+                "logo": "https://miplacemagazine.com.br/favicon_io/android-chrome-512x512.png",
+                "sameAs": Array.from(new Set(STORES.flatMap(store => [store.instagram.url, store.facebook.url]))),
+                "location": STORES.map(store => ({
+                    "@type": "Store",
+                    "name": store.name,
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": store.address.street,
+                        "addressLocality": store.city,
+                        "addressRegion": "SP",
+                        "postalCode": store.address.cep,
+                        "addressCountry": "BR"
+                    },
+                    "geo": { "@type": "GeoCoordinates", "latitude": store.geo.lat, "longitude": store.geo.lng },
+                    "telephone": store.phone
+                }))
             },
-            "geo": { "@type": "GeoCoordinates", "latitude": store.geo.lat, "longitude": store.geo.lng },
-            "telephone": store.phone,
-            "openingHoursSpecification": [
-                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
-                { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
-            ]
-        }))
+            {
+                "@type": "WebSite",
+                "@id": "https://miplacemagazine.com.br/#website",
+                "url": "https://miplacemagazine.com.br/",
+                "name": "Miplace Group",
+                "inLanguage": ["pt-BR", "en", "es"],
+                "publisher": { "@id": "https://miplacemagazine.com.br/#organization" }
+            }
+        ]
     };
     /* eslint-enable quotes */
     el.textContent = JSON.stringify(schema);
@@ -213,5 +229,6 @@ function injectSchemaOrg() {
 window.STORES = STORES;
 window.getStoresByCity = getStoresByCity;
 window.renderContactDropdown = renderContactDropdown;
+window.renderContactLinks = renderContactLinks;
 window.renderStoreCards = renderStoreCards;
 window.injectSchemaOrg = injectSchemaOrg;
